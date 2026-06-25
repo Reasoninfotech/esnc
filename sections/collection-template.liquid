@@ -94,19 +94,25 @@
               </form>
             </div>
 
-            <div class="bl_right d-flex align-items-center justify-content-end" style="gap: 15px; flex-shrink: 0;">
-              <div class="gridlist-toggle d-flex">
+            <div class="bl_right d-flex align-items-center justify-content-end" style="gap: 20px; flex-shrink: 0;">
+              <div class="gridlist-toggle d-flex align-items-center" style="gap: 8px;">
                   <a href="#" id="grid-4" title="Grid View 4" data-type="grid-4" class="active d-none d-lg-block"><i class="zmdi zmdi-view-comfy"></i></a>
+                  <span style="width: 1px; height: 14px; background: #dcdcdc; display: inline-block;"></span>
                   <a href="#" id="grid-3" title="Grid View 3" data-type="grid-3" class="{% if viewtype != 'canvas' %}active{% endif %}"><i class="zmdi zmdi-view-week"></i></a>
+                  <span style="width: 1px; height: 14px; background: #dcdcdc; display: inline-block;"></span>
                   <a href="#" id="grid-2" title="Grid View 2" data-type="grid-2"><i class="zmdi zmdi-pause"></i></a>
+                  <span style="width: 1px; height: 14px; background: #dcdcdc; display: inline-block;"></span>
                   <a href="#" id="list" title="List View" data-type="list"><i class="zmdi zmdi-view-headline"></i></a>
               </div>
               
               {% if section.settings.sort_enable %}
                 <div class="" data-sortby-filter>
-                  <div class="dropdown-toggle d-flex align-items-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border: 1px solid #ccc; padding: 5px 15px; border-radius: 4px; background: #fff; cursor: pointer;">
-                    <span class="sort-by__label" style="font-size: 12px; font-weight: 600; text-transform: uppercase;"></span>
-                    <i class="zmdi zmdi-caret-down" style="margin-left: 10px;"></i>
+                  <div class="dropdown-toggle d-flex align-items-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border: 1px solid #222; border-radius: 4px; background: #f4f4f4; cursor: pointer; height: 38px; padding: 0;">
+                    <span class="sort-by__label" style="font-size: 12px; font-weight: 500; text-transform: uppercase; color: #101010; padding: 0 15px 0 15px; line-height: 38px;"></span>
+                    <div style="height: 20px; width: 1px; background-color: #222; margin: 0;"></div>
+                    <div style="padding: 0 10px; height: 100%; display: flex; align-items: center; justify-content: center;">
+                      <i class="zmdi zmdi-caret-down" style="font-size: 16px; color: #101010;"></i>
+                    </div>
                   </div>
                   <div class="dropdown-menu dropdown-menu-right text-right">
                     {%- for option in collection.sort_options -%}
