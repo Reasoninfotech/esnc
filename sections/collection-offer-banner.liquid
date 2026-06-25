@@ -320,15 +320,93 @@
     .offer-title {
       font-size: 24px !important;
     }
+    .offer-bundle-container {
+      flex-direction: column !important;
+      align-items: center !important;
+      width: 100% !important;
+      box-sizing: border-box;
+      padding: 15px !important;
+    }
+    .offer-slots-group {
+      justify-content: center;
+      width: 100%;
+      gap: 5px !important;
+    }
     .offer-slot {
-      width: 100px;
-      height: 100px;
+      width: 90px;
+      height: 90px;
+      flex: none;
     }
     .slot-product-image {
       height: 60px;
     }
     .offer-action-area {
       max-width: 100%;
+      width: 100%;
+    }
+    .offer-action-box {
+      width: 100%;
+      height: auto;
+      flex-direction: column;
+    }
+
+    /* Floating Mobile Sticky Bar */
+    .offer-mobile-sticky-bar {
+      background: transparent !important;
+      box-shadow: none !important;
+      padding: 0 15px 15px 15px !important;
+      pointer-events: none;
+      text-align: center;
+    }
+    .sticky-inner {
+      flex-direction: row;
+      align-items: stretch;
+      justify-content: center;
+      background: #fff;
+      padding: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      gap: 8px;
+      pointer-events: auto;
+      display: inline-flex;
+      margin: 0 auto;
+    }
+    .sticky-slots {
+      gap: 5px;
+    }
+    .sticky-slot {
+      width: 55px;
+      height: 55px;
+      flex: none;
+    }
+    .sticky-action {
+      flex-direction: column;
+      justify-content: space-between;
+      width: 95px;
+      padding: 0;
+    }
+    .sticky-price {
+      background: transparent;
+      padding: 0;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex: none;
+      gap: 5px;
+    }
+    .sticky-price span {
+      font-size: 9px;
+      line-height: 1;
+      text-align: left;
+    }
+    .sticky-price strong {
+      font-size: 11px;
+      line-height: 1;
+    }
+    .sticky-action .btn-checkout {
+      font-size: 11px;
+      padding: 5px;
+      height: 28px;
+      flex: none;
+      width: 100%;
     }
   }
 
