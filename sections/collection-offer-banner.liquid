@@ -422,17 +422,23 @@
           const originalColor = btn.style.color;
           const originalBorder = btn.style.borderColor;
           
-          btn.innerHTML = '<i class="zmdi zmdi-check" style="font-size: 18px; margin: 0 auto; display: block;"></i>';
-          btn.style.backgroundColor = '#ffffff';
-          btn.style.borderColor = '#ffffff';
-          btn.style.color = '#000000';
+          btn.classList.add('loading_btn');
           
+          // Show checkmark after a tiny delay if loading_btn has a spinner animation
           setTimeout(() => {
-            btn.innerHTML = originalHTML;
-            btn.style.backgroundColor = originalBg;
-            btn.style.borderColor = originalBorder;
-            btn.style.color = originalColor;
-          }, 1000);
+            btn.innerHTML = '<i class="zmdi zmdi-check" style="font-size: 18px; margin: 0 auto; display: block;"></i>';
+            btn.style.backgroundColor = '#4caf50';
+            btn.style.borderColor = '#4caf50';
+            btn.style.color = '#fff';
+            
+            setTimeout(() => {
+              btn.classList.remove('loading_btn');
+              btn.innerHTML = originalHTML;
+              btn.style.backgroundColor = originalBg;
+              btn.style.borderColor = originalBorder;
+              btn.style.color = originalColor;
+            }, 1000);
+          }, 300);
         }
       }, true); // Use capture phase to intercept before form submits
     }
@@ -445,9 +451,8 @@
           const btn = item.querySelector('.btnAddToCart');
           if (btn && btn.hasAttribute('data-original-html')) {
             btn.innerHTML = btn.getAttribute('data-original-html');
-            btn.style.backgroundColor = '';
+            btn.style.background = '';
             btn.style.color = '';
-            btn.style.borderColor = '';
           }
         }
       });
