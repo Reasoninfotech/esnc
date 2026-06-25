@@ -1,57 +1,56 @@
-<div class="offer-banner-section" id="offer-banner-{{ section.id }}" style="background-color: #fff; padding-bottom: 30px;">
+<div class="offer-banner-section" id="offer-banner-{{ section.id }}" style="background-color: {{ section.settings.bg_color | default: '#ebebd3' }}; padding-bottom: 40px;">
   {% if section.settings.banner_image != blank %}
     <div class="offer-banner-image">
       <img src="{{ section.settings.banner_image | img_url: 'master' }}" alt="{{ section.settings.banner_image.alt | default: section.settings.title }}" style="width: 100%; height: auto; display: block;" />
     </div>
   {% endif %}
 
-  <div class="offer-banner-content-wrapper" style="padding-top: 50px; text-align: center;">
+  <div class="offer-banner-content-wrapper" style="padding-top: 40px; text-align: center;">
     <div class="container container_1320">
       
       {% if section.settings.title != blank %}
-        <h2 class="offer-title" style="font-family: var(--f_family_second); font-size: 32px; font-weight: 400; margin-bottom: 30px; color: #101010;">{{ section.settings.title }}</h2>
+        <h2 class="offer-title" style="font-family: var(--f_family_second); font-size: 32px; font-weight: 400; margin-bottom: 10px; color: #101010;">{{ section.settings.title }}</h2>
       {% endif %}
 
-      <div class="offer-grey-box" style="background-color: #f7f7f7; padding: 30px 20px 40px; max-width: 700px; margin: 0 auto; width: 100%;">
-        {% if section.settings.subtitle != blank %}
-          <p class="offer-subtitle" style="font-size: 13px; color: #555; margin-bottom: 25px;">{{ section.settings.subtitle }}</p>
-        {% endif %}
+      {% if section.settings.subtitle != blank %}
+        <p class="offer-subtitle" style="font-size: 15px; color: #555; margin-bottom: 30px;">{{ section.settings.subtitle }}</p>
+      {% endif %}
 
-        <div class="offer-slots-container">
-          {% for i in (1..section.settings.num_slots) %}
-            <div class="offer-slot empty" data-slot-index="{{ i }}">
-              <div class="slot-inner">
-                <div class="slot-icon">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C10.8954 2 10 2.89543 10 4V5H7C5.89543 5 5 5.89543 5 7V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V7C19 5.89543 18.1046 5 17 5H14V4C14 2.89543 13.1046 2 12 2ZM12 4C12.5523 4 13 4.44772 13 5H11C11 4.44772 11.4477 4 12 4ZM7 7H17V19H7V7Z" fill="#bca07e"/>
-                  </svg>
-                </div>
-                <div class="slot-number">{{ i }}</div>
-                <div class="slot-product-info" style="display: none;">
-                  <img src="" alt="" class="slot-product-image" />
-                  <span class="slot-product-title"></span>
-                  <button type="button" class="slot-remove-btn" aria-label="Remove">&times;</button>
-                  <input type="hidden" class="slot-product-id" value="" />
-                </div>
+      <div class="offer-slots-container">
+        {% for i in (1..section.settings.num_slots) %}
+          <div class="offer-slot empty" data-slot-index="{{ i }}">
+            <div class="slot-inner">
+              <div class="slot-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C10.8954 2 10 2.89543 10 4V5H7C5.89543 5 5 5.89543 5 7V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V7C19 5.89543 18.1046 5 17 5H14V4C14 2.89543 13.1046 2 12 2ZM12 4C12.5523 4 13 4.44772 13 5H11C11 4.44772 11.4477 4 12 4ZM7 7H17V19H7V7Z" fill="#bca07e"/>
+                </svg>
+              </div>
+              <div class="slot-number">{{ i }}</div>
+              <div class="slot-product-info" style="display: none;">
+                <img src="" alt="" class="slot-product-image" />
+                <span class="slot-product-title"></span>
+                <button type="button" class="slot-remove-btn" aria-label="Remove">&times;</button>
+                <input type="hidden" class="slot-product-id" value="" />
               </div>
             </div>
-          {% endfor %}
-        </div>
-
-        <div class="offer-action-area">
-          <div class="offer-initial-price">
-            <span style="font-size: 13px; color: #555;">Initial Price</span>
-            <strong style="font-size: 14px; font-weight: 700;">{{ section.settings.initial_price }}</strong>
           </div>
-          <button type="button" id="offer-checkout-btn" class="btn btn-checkout disabled" disabled>
-            {% if section.settings.use_checkout_btn %}
-              Checkout
-            {% else %}
-              Add to Cart
-            {% endif %}
-          </button>
-        </div>
+        {% endfor %}
       </div>
+
+      <div class="offer-action-area">
+        <div class="offer-initial-price">
+          <span style="font-size: 13px; color: #555;">Initial Price</span>
+          <strong style="font-size: 15px; font-weight: 700;">{{ section.settings.initial_price }}</strong>
+        </div>
+        <button type="button" id="offer-checkout-btn" class="btn btn-checkout disabled" disabled>
+          {% if section.settings.use_checkout_btn %}
+            Checkout
+          {% else %}
+            Add to Cart
+          {% endif %}
+        </button>
+      </div>
+
     </div>
   </div>
 
@@ -104,7 +103,7 @@
   .offer-slot {
     width: 140px;
     height: 140px;
-    background: #e8e6e1; /* very light beige/grey */
+    background: rgba(0,0,0,0.04);
     border: 1px dotted #bca07e;
     position: relative;
     display: flex;
@@ -186,7 +185,7 @@
     display: flex;
     align-items: stretch;
     justify-content: center;
-    max-width: 380px;
+    max-width: 320px;
     margin: 0 auto;
   }
   .offer-initial-price {
@@ -194,25 +193,21 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background: #fff;
-    padding: 10px 20px;
+    background: #e8e8e8;
+    padding: 12px 10px;
     flex: 1;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
   }
   .btn-checkout {
     background: #000;
     color: #fff;
     border: none;
-    padding: 14px 20px;
-    font-size: 14px;
+    padding: 12px 10px;
+    font-size: 15px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
     flex: 1;
     text-transform: capitalize;
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
   }
   .btn-checkout:hover {
     background: #333;
@@ -248,7 +243,7 @@
   .sticky-slot {
     flex: 1;
     height: 65px;
-    background: #e8e6e1;
+    background: rgba(0,0,0,0.04);
     border: 1px dotted #bca07e;
     position: relative;
     display: flex;
@@ -292,11 +287,9 @@
     gap: 10px;
     align-items: center;
     justify-content: center;
-    background: #f7f7f7;
+    background: #e8e8e8;
     padding: 10px 20px;
     flex: 1;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
   }
   .sticky-action .btn-checkout {
     padding: 10px 20px;
