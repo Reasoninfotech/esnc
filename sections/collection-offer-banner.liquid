@@ -1,0 +1,630 @@
+<div class="offer-banner-section" id="offer-banner-{{ section.id }}">
+  {% if section.settings.banner_image != blank %}
+    <div class="offer-banner-image">
+      <img src="{{ section.settings.banner_image | img_url: 'master' }}" alt="{{ section.settings.banner_image.alt | default: section.settings.title }}" style="width: 100%; height: auto; display: block;" />
+    </div>
+  {% endif %}
+
+  <div class="offer-banner-content-wrapper" style="background-color: {{ section.settings.bg_color }};">
+    <div class="container container_1320">
+      <div class="offer-banner-content">
+        {% if section.settings.title != blank %}
+          <h2 class="offer-title">{{ section.settings.title }}</h2>
+        {% endif %}
+        {% if section.settings.subtitle != blank %}
+          <p class="offer-subtitle">{{ section.settings.subtitle }}</p>
+        {% endif %}
+
+        <div class="offer-slots-container">
+          {% for i in (1..section.settings.num_slots) %}
+            <div class="offer-slot empty" data-slot-index="{{ i }}">
+              <div class="slot-inner">
+                <div class="slot-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C10.8954 2 10 2.89543 10 4V5H7C5.89543 5 5 5.89543 5 7V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V7C19 5.89543 18.1046 5 17 5H14V4C14 2.89543 13.1046 2 12 2ZM12 4C12.5523 4 13 4.44772 13 5H11C11 4.44772 11.4477 4 12 4ZM7 7H17V19H7V7Z" fill="#C1A783"/>
+                  </svg>
+                </div>
+                <div class="slot-number">{{ i }}</div>
+                <div class="slot-product-info" style="display: none;">
+                  <img src="" alt="" class="slot-product-image" />
+                  <span class="slot-product-title"></span>
+                  <button type="button" class="slot-remove-btn" aria-label="Remove">&times;</button>
+                  <input type="hidden" class="slot-product-id" value="" />
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="offer-action-area">
+          <div class="offer-initial-price">
+            <span>Initial Price</span>
+            <strong>{{ section.settings.initial_price }}</strong>
+          </div>
+          <button type="button" id="offer-checkout-btn" class="btn btn-checkout disabled" disabled>
+            {% if section.settings.use_checkout_btn %}
+              Checkout
+            {% else %}
+              Add to Cart
+            {% endif %}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Sticky Bar -->
+  <div class="offer-mobile-sticky-bar" id="offer-sticky-bar" style="display: none;">
+    <div class="container">
+      <div class="sticky-inner">
+        <div class="sticky-slots">
+          {% for i in (1..section.settings.num_slots) %}
+            <div class="sticky-slot empty" data-slot-index="{{ i }}">
+              <div class="slot-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C10.8954 2 10 2.89543 10 4V5H7C5.89543 5 5 5.89543 5 7V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V7C19 5.89543 18.1046 5 17 5H14V4C14 2.89543 13.1046 2 12 2ZM12 4C12.5523 4 13 4.44772 13 5H11C11 4.44772 11.4477 4 12 4ZM7 7H17V19H7V7Z" fill="#C1A783"/>
+                </svg>
+              </div>
+              <div class="slot-number">{{ i }}</div>
+              <div class="slot-product-info" style="display: none;">
+                <img src="" alt="" class="slot-product-image" />
+                <button type="button" class="slot-remove-btn" aria-label="Remove">&times;</button>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="sticky-action">
+          <div class="sticky-price">
+            <span>Initial Price</span>
+            <strong>{{ section.settings.initial_price }}</strong>
+          </div>
+          <button type="button" id="sticky-checkout-btn" class="btn btn-checkout disabled" disabled>
+            {% if section.settings.use_checkout_btn %}
+              Checkout
+            {% else %}
+              Add to Cart
+            {% endif %}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .offer-banner-content-wrapper {
+    padding: 40px 0;
+    text-align: center;
+  }
+  .offer-title {
+    font-family: var(--f_family_second);
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  .offer-subtitle {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  .offer-slots-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+  .offer-slot {
+    width: 140px;
+    height: 140px;
+    background: #e8e6e1; /* Slightly darker than bg for empty slot */
+    border: 1px dashed #d1cece;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  .offer-slot.filled {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+  }
+  .offer-slot .slot-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .offer-slot .slot-number {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 14px;
+    color: #a0a0a0;
+  }
+  .slot-product-info {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .slot-product-image {
+    width: 100%;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 5px;
+  }
+  .slot-product-title {
+    font-size: 11px;
+    line-height: 1.2;
+    text-align: center;
+    padding: 0 5px;
+    color: #333;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .slot-remove-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    border-radius: 50%;
+    border: none;
+    font-size: 12px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .slot-remove-btn:hover {
+    background: #000;
+  }
+
+  .offer-action-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background: #e8e6e1;
+    padding: 10px 20px;
+    border-radius: 0;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .offer-initial-price {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    color: #333;
+  }
+  .offer-initial-price strong {
+    font-weight: 700;
+  }
+  .btn-checkout {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    min-width: 150px;
+  }
+  .btn-checkout:hover {
+    background: #333;
+  }
+  .btn-checkout.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Sticky Bar Mobile */
+  .offer-mobile-sticky-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    z-index: 999;
+    padding: 10px 0;
+  }
+  .sticky-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .sticky-slots {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .sticky-slot {
+    flex: 1;
+    height: 60px;
+    background: #f8f8f8;
+    border: 1px dashed #d1cece;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sticky-slot.filled {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+  }
+  .sticky-slot .slot-number {
+    position: absolute;
+    bottom: 2px;
+    right: 5px;
+    font-size: 10px;
+    color: #a0a0a0;
+  }
+  .sticky-slot .slot-product-info {
+    padding: 5px;
+  }
+  .sticky-slot .slot-product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0;
+  }
+  .sticky-slot .slot-remove-btn {
+    top: 2px;
+    right: 2px;
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+  }
+  .sticky-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sticky-price {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    align-items: center;
+  }
+  .sticky-price strong {
+    font-size: 16px;
+  }
+  .sticky-action .btn-checkout {
+    padding: 10px 20px;
+    font-size: 14px;
+    min-width: 120px;
+  }
+
+  @media (min-width: 768px) {
+    .offer-mobile-sticky-bar {
+      display: none !important;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .offer-title {
+      font-size: 24px;
+    }
+    .offer-slot {
+      width: 100px;
+      height: 100px;
+    }
+    .slot-product-image {
+      height: 60px;
+    }
+    .offer-action-area {
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // State
+    const MAX_SLOTS = {{ section.settings.num_slots }};
+    let selectedProducts = [];
+    const useCheckoutBtn = {{ section.settings.use_checkout_btn }};
+    const mainBundleProductId = {{ section.settings.main_product.selected_or_first_available_variant.id | default: 'null' }};
+    
+    const bannerSection = document.getElementById('offer-banner-{{ section.id }}');
+    const stickyBar = document.getElementById('offer-sticky-bar');
+    const checkoutBtns = document.querySelectorAll('.btn-checkout');
+
+    // Intercept Add to Cart clicks in the grid
+    const gridContainer = document.getElementById('ProductGridContainer');
+    if (gridContainer) {
+      gridContainer.addEventListener('click', function(e) {
+        // Find if the click is on the add to cart button or its children
+        const btn = e.target.closest('.btnAddToCart');
+        if (btn) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          if (selectedProducts.length >= MAX_SLOTS) {
+            alert('You have already selected ' + MAX_SLOTS + ' samples.');
+            return;
+          }
+
+          // Get product data
+          const productForm = btn.closest('form');
+          let productId = btn.getAttribute('data-pid');
+          if (!productId && productForm) {
+            const idInput = productForm.querySelector('input[name="id"]');
+            if(idInput) productId = idInput.value;
+          }
+          
+          const productCard = btn.closest('.item-product');
+          const titleEl = productCard.querySelector('.product__title a');
+          const title = titleEl ? titleEl.textContent.trim() : 'Sample Product';
+          
+          const imgEl = productCard.querySelector('img.product__thumbnail-second') || productCard.querySelector('img.product__thumbnail');
+          let imgSrc = '';
+          if (imgEl) {
+             imgSrc = imgEl.getAttribute('data-src') || imgEl.getAttribute('src');
+             if (imgSrc) imgSrc = imgSrc.replace('{width}', '180');
+          }
+
+          // Add to selected array
+          selectedProducts.push({
+            id: productId,
+            title: title,
+            image: imgSrc
+          });
+
+          updateUI();
+          
+          // Show a nice feedback that item was added
+          const originalHTML = btn.innerHTML;
+          btn.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i>';
+          btn.style.backgroundColor = '#4caf50';
+          btn.style.borderColor = '#4caf50';
+          btn.style.color = '#fff';
+          setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.style.backgroundColor = '';
+            btn.style.borderColor = '';
+            btn.style.color = '';
+          }, 1000);
+        }
+      }, true); // Use capture phase to intercept before form submits
+    }
+
+    function updateUI() {
+      // Update slots in main banner and sticky bar
+      const containers = [bannerSection, stickyBar];
+      
+      containers.forEach(container => {
+        if (!container) return;
+        const slots = container.querySelectorAll('.offer-slot, .sticky-slot');
+        
+        slots.forEach((slot, index) => {
+          const product = selectedProducts[index];
+          const infoDiv = slot.querySelector('.slot-product-info');
+          const iconDiv = slot.querySelector('.slot-icon');
+          
+          if (product) {
+            slot.classList.add('filled');
+            slot.classList.remove('empty');
+            
+            const img = infoDiv.querySelector('.slot-product-image');
+            if (img) img.src = product.image;
+            
+            const title = infoDiv.querySelector('.slot-product-title');
+            if (title) title.textContent = product.title;
+            
+            infoDiv.style.display = 'flex';
+            if (iconDiv) iconDiv.style.display = 'none';
+          } else {
+            slot.classList.remove('filled');
+            slot.classList.add('empty');
+            
+            infoDiv.style.display = 'none';
+            if (iconDiv) iconDiv.style.display = 'block';
+          }
+        });
+      });
+
+      // Update button state
+      checkoutBtns.forEach(btn => {
+        if (selectedProducts.length === MAX_SLOTS) {
+          btn.classList.remove('disabled');
+          btn.removeAttribute('disabled');
+        } else {
+          btn.classList.add('disabled');
+          btn.setAttribute('disabled', 'disabled');
+        }
+      });
+    }
+
+    // Remove item logic
+    document.addEventListener('click', function(e) {
+      if (e.target.closest('.slot-remove-btn')) {
+        e.preventDefault();
+        const slot = e.target.closest('.offer-slot, .sticky-slot');
+        if (slot) {
+          const index = parseInt(slot.getAttribute('data-slot-index')) - 1;
+          selectedProducts.splice(index, 1);
+          updateUI();
+        }
+      }
+    });
+
+    // Sticky bar scroll logic
+    const contentWrapper = bannerSection.querySelector('.offer-banner-content-wrapper');
+    window.addEventListener('scroll', function() {
+      if (window.innerWidth < 768 && contentWrapper) {
+        const rect = contentWrapper.getBoundingClientRect();
+        // If the bottom of the banner wrapper is above the viewport (scrolled past)
+        if (rect.bottom < 0) {
+          stickyBar.style.display = 'block';
+        } else {
+          stickyBar.style.display = 'none';
+        }
+      } else {
+        stickyBar.style.display = 'none';
+      }
+    });
+    // Trigger scroll event on load to set initial state
+    window.dispatchEvent(new Event('scroll'));
+
+    // Checkout/Add to Cart Logic
+    checkoutBtns.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (selectedProducts.length < MAX_SLOTS) return;
+
+        if (!mainBundleProductId) {
+          alert('Main bundle product is not configured in the section settings.');
+          return;
+        }
+
+        const originalText = this.textContent;
+        checkoutBtns.forEach(b => {
+          b.innerHTML = 'Processing...';
+          b.style.opacity = '0.7';
+          b.classList.add('disabled');
+        });
+
+        // Build properties object dynamically based on selected products
+        let propertiesObj = {};
+        selectedProducts.forEach((prod, idx) => {
+          propertiesObj[`Sample ${idx + 1}`] = prod.title;
+        });
+
+        fetch('/cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                items: [{
+                    id: parseInt(mainBundleProductId),
+                    quantity: 1,
+                    properties: propertiesObj
+                }]
+            })
+        })
+        .then(function(response) {
+            if (response.ok) {
+                if (useCheckoutBtn) {
+                   window.location.href = '/checkout';
+                } else {
+                   // If not redirecting to checkout, just reload page or open cart drawer
+                   window.location.href = '/cart';
+                }
+            } else {
+                return response.json().then(function(errorData) {
+                    console.error('Error:', errorData);
+                    alert('Failed to add items to cart: ' + (errorData.description || 'Unknown error'));
+                    resetBtns(originalText);
+                });
+            }
+        })
+        .catch(function(error) {
+            console.error('Error:', error);
+            resetBtns(originalText);
+        });
+      });
+    });
+
+    function resetBtns(text) {
+       checkoutBtns.forEach(b => {
+          b.innerHTML = text;
+          b.style.opacity = '1';
+          b.classList.remove('disabled');
+       });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Offer Bundle Banner",
+  "tag": "section",
+  "class": "offer-bundle-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Top Banner Image"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f3f1ed"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Get 3 x 2ml Samples for Only $3, Limited Time Only"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Complete Your Set To Enjoy All 3 Samples For Only $3."
+    },
+    {
+      "type": "range",
+      "id": "num_slots",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "label": "Number of Samples",
+      "default": 3
+    },
+    {
+      "type": "text",
+      "id": "initial_price",
+      "label": "Initial Price Display",
+      "default": "$3"
+    },
+    {
+      "type": "header",
+      "content": "Bundle Product Configuration"
+    },
+    {
+      "type": "product",
+      "id": "main_product",
+      "label": "Bundle Product (Added to Cart)",
+      "info": "This product represents the bundle offer. The selected samples will be attached to it as properties."
+    },
+    {
+      "type": "checkbox",
+      "id": "use_checkout_btn",
+      "label": "Enable Checkout Button",
+      "default": true,
+      "info": "If checked, button says 'Checkout' and goes straight to checkout. If unchecked, it says 'Add to Cart' and updates cart."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Offer Bundle Banner",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

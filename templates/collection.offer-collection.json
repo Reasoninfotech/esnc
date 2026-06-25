@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "offer_banner": {
+      "type": "collection-offer-banner",
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "collection-template",
+      "settings": {
+        "products_per_page": 12,
+        "sort_enable": true,
+        "show_tags": false
+      }
+    }
+  },
+  "order": [
+    "offer_banner",
+    "main"
+  ]
+}
