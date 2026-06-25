@@ -1,0 +1,418 @@
+<style>
+  #simple-bundles-io-options-{{ section.id }} .select2 .selection .select2-selection.select2-selection--single {
+            color: #000;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: inline-flex;
+            justify-content: flex-start;
+            border: 2px solid #101010;
+            border-radius: 100px;
+            background-color: transparent;
+            appearance: none;
+        }
+        #simple-bundles-io-options-{{ section.id }} .select2 .selection .select2-selection.select2-selection--single .select2-selection__rendered {
+            font-size: 17px;
+            color: #101010;
+            line-height: normal;
+            padding: 14px 18px;
+        }
+        #simple-bundles-io-options-{{ section.id }} .product-select .select2-search__field {
+            position: relative;
+        }
+
+      #simple-bundles-io-options-{{ section.id }} .select2-container {
+          display: block;
+          width: 100% !important;
+          margin-bottom: 20px;
+      }
+
+    #simple-bundles-io-options-{{ section.id }} .select2-container {
+        display: block;
+        width: 100% !important;
+        margin-bottom: 20px;
+    }
+
+    #simple-bundles-io-options-{{ section.id }} #buy-now-button {
+        padding: 0 5px;
+        height: 50px;
+        line-height: 50px;
+        width: 100%;
+        background: #2abab0;
+        position: relative;
+        border-radius: 100px;
+        color: #fff;
+        border: none;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    #simple-bundles-io-options-{{ section.id }} #buy-now-button:hover {
+        color: #fff;
+        background: #000;
+    }
+
+    #simple-bundles-io-options-{{ section.id }} p.form-error {
+        color: red;
+        display: none;
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+    
+    #simple-bundles-io-options-{{ section.id }} label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+    }
+
+    #simple-bundles-io-options-{{ section.id }} .pimage img {
+        width: 100%;
+        border-radius: 10px;
+    }
+    
+    #simple-bundles-io-options-{{ section.id }} .bundle-items {
+        padding: 15px 0px;
+    }
+</style>
+
+<div style="padding:50px 0;" id="simple-bundles-io-options-{{ section.id }}">
+    <div class="container">
+        <div class="product-single row">
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                <div class="pimage">
+                    {% if section.settings.section_image != blank %}
+                        <img src="{{ section.settings.section_image | img_url: '800x' }}" alt="{{ section.settings.title }}">
+                    {% else %}
+                        <img src="https://cdn.shopify.com/s/files/1/0648/4167/9013/files/Niche_Ramadan_2025_Post.png?v=1741671866" alt="Niche">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="pt-20 block_information col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                <h1 class="fa-2x">{{ section.settings.title }}</h1>
+                
+                <div class="bundle-items">
+                    <div class="bundle-item">
+                        <label for="bundleone-{{ section.id }}">{{ section.settings.select1_label }}</label>
+                        <select id="bundleone-{{ section.id }}" class="bundleone-{{ section.id }} selectproduct appendbundle1" required=""></select>
+                    </div>
+                    <div class="bundle-item" style="margin-top: 15px;">
+                        <label for="bundletwo-{{ section.id }}">{{ section.settings.select2_label }}</label>
+                        <select id="bundletwo-{{ section.id }}" class="bundletwo-{{ section.id }} selectproduct appendbundle2" required=""></select>
+                    </div>
+                    <div class="bundle-item" style="margin-top: 15px;">
+                        <label for="bundlethree-{{ section.id }}">{{ section.settings.select3_label }}</label>
+                        <select id="bundlethree-{{ section.id }}" class="bundlethree-{{ section.id }} selectproduct appendbundle3" required=""></select>
+                    </div>
+                </div>
+                
+                <div class="product-form__item product-form__item--submit">
+                    <p class="form-error">Please select all 3 products before continuing.</p>
+                    <button type="button" id="buy-now-button" class="hover_x btn ">
+                        <span id="AddToCartText">{{ section.settings.btn_text }}</span>
+                        <i class="zmdi zmdi-long-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<script>
+    (function() {
+        const sid = '{{ section.id }}';
+        const productsPerPage = 500;
+
+        function formatProductResult(option) {
+            if (!option.id || option.id === '') return option.text;
+            var imgSrc = $(option.element).attr('data-image');
+            if (!imgSrc || imgSrc === 'null' || imgSrc === '') return option.text;
+
+            // Fix protocol-relative URLs
+            if (imgSrc.startsWith('//')) {
+                imgSrc = 'https:' + imgSrc;
+            }
+
+            // Remove query params and get clean CDN image, resize to small
+            imgSrc = imgSrc.split('?')[0];
+            // Add Shopify image size param
+            imgSrc = imgSrc.replace(/(\.[a-z]+)$/, '_80x80$1');
+
+            var $result = $(
+                '<span style="display:flex;align-items:center;gap:10px;padding:4px 0;">' +
+                    '<img src="' + imgSrc + '" ' +
+                        'style="width:40px;height:40px;object-fit:cover;border-radius:6px;flex-shrink:0;" ' +
+                        'onerror="this.style.display=\'none\'" />' +
+                    '<span>' + option.text + '</span>' +
+                '</span>'
+            );
+            return $result;
+        }
+
+        function initSelect2(selectId) {
+            var $el = $('#' + selectId);
+            // Destroy first if already initialized
+            if ($el.hasClass('select2-hidden-accessible')) {
+                $el.select2('destroy');
+            }
+            $el.select2({
+                templateResult: formatProductResult
+            });
+            $el.on('select2:open', function() {
+                setTimeout(function() {
+                    $('.select2-search__field').attr('placeholder', 'Search Here');
+                }, 0);
+            });
+        }
+
+        function fetchProducts(page, filterTag, selectClass, collectionHandle, selectId) {
+            if (!collectionHandle) {
+                var $c = $('.' + selectClass);
+                $c.empty().append('<option value="">-- No Collection Selected --</option>');
+                initSelect2(selectId);
+                return;
+            }
+
+            $.ajax({
+                url: '/collections/' + collectionHandle + '/products.json',
+                data: { limit: productsPerPage, page: page },
+                dataType: 'json'
+            }).done(function(productresponse) {
+                var allProducts = productresponse.products;
+                var filteredProducts = filterTag
+                    ? allProducts.filter(p => p.tags && p.tags.includes(filterTag))
+                    : allProducts;
+
+                var sortedProducts = filteredProducts.sort((a, b) => a.title.localeCompare(b.title));
+
+                var $container = $('.' + selectClass);
+                $container.empty();
+
+                var html = '<option value="" data-image="">-- Select a Product --</option>';
+
+                sortedProducts.forEach(function(product) {
+                    var hasAvailable = product.variants.some(v => v.available);
+                    if (!hasAvailable) return;
+
+                    // Get image URL from featured_image object or string
+                    var imgUrl = '';
+                    if (product.featured_image) {
+                        if (typeof product.featured_image === 'object' && product.featured_image.src) {
+                            imgUrl = product.featured_image.src;
+                        } else if (typeof product.featured_image === 'string') {
+                            imgUrl = product.featured_image;
+                        }
+                    }
+                    // Also try images array as fallback
+                    if (!imgUrl && product.images && product.images.length > 0) {
+                        imgUrl = product.images[0].src || '';
+                    }
+
+                    var safeTitle = product.title.replace(/"/g, '&quot;');
+                    html += '<option value="' + product.variants[0].id + '" '
+                          + 'data-title="' + safeTitle + '" '
+                          + 'data-image="' + imgUrl + '">'
+                          + product.title
+                          + '</option>';
+                });
+
+                $container.append(html);
+
+                // ✅ Init Select2 AFTER options loaded
+                initSelect2(selectId);
+
+            }).fail(function() {
+                console.error('Failed to fetch: ' + collectionHandle);
+                $('.' + selectClass).append('<option value="">-- Failed to Load --</option>');
+                initSelect2(selectId);
+            });
+        }
+
+        var col1 = '{{ section.settings.collection1.handle }}';
+        var col2 = '{{ section.settings.collection2.handle }}';
+        var col3 = '{{ section.settings.collection3.handle }}';
+
+        fetchProducts(1, '', 'appendbundle1', col1, 'bundleone-' + sid);
+        fetchProducts(1, '', 'appendbundle2', col2, 'bundletwo-' + sid);
+        fetchProducts(1, '', 'appendbundle3', col3, 'bundlethree-' + sid);
+
+        $(document).on('change', '#bundleone-' + sid + ', #bundletwo-' + sid + ', #bundlethree-' + sid, function() {
+            $('#simple-bundles-io-options-' + sid + ' .form-error').hide();
+        });
+
+        var buyBtn = document.querySelector('#simple-bundles-io-options-' + sid + ' #buy-now-button');
+        if (buyBtn) {
+            buyBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                var bundleoneSelect  = document.getElementById('bundleone-'   + sid);
+                var bundletwoSelect  = document.getElementById('bundletwo-'   + sid);
+                var bundlethreeSelect = document.getElementById('bundlethree-' + sid);
+
+                var bundleone   = bundleoneSelect.value;
+                var bundletwo   = bundletwoSelect.value;
+                var bundlethree = bundlethreeSelect.value;
+
+                $('#simple-bundles-io-options-' + sid + ' .form-error').hide();
+
+                if (!bundleone || !bundletwo || !bundlethree) {
+                    $('#simple-bundles-io-options-' + sid + ' .form-error').show();
+                    return false;
+                }
+
+                var title1 = bundleoneSelect.options[bundleoneSelect.selectedIndex].getAttribute('data-title');
+                var title2 = bundletwoSelect.options[bundletwoSelect.selectedIndex].getAttribute('data-title');
+                var title3 = bundlethreeSelect.options[bundlethreeSelect.selectedIndex].getAttribute('data-title');
+
+                var mainProductId = '{{ section.settings.main_product.selected_or_first_available_variant.id }}';
+                if (!mainProductId) {
+                    alert('Main product is not configured correctly.');
+                    return false;
+                }
+
+                var prop1 = '{{ section.settings.prop_sample1 | escape }}';
+                var prop2 = '{{ section.settings.prop_sample2 | escape }}';
+                var prop3 = '{{ section.settings.prop_sample3 | escape }}';
+
+                var propertiesObj = {};
+                propertiesObj[prop1] = title1;
+                propertiesObj[prop2] = title2;
+                propertiesObj[prop3] = title3;
+
+                var btn = this;
+                btn.innerHTML = 'Adding...';
+                btn.style.opacity = '0.7';
+
+                fetch('/cart/add.js', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        items: [{
+                            id: parseInt(mainProductId),
+                            quantity: 1,
+                            properties: propertiesObj
+                        }]
+                    })
+                })
+                .then(function(response) {
+                    if (response.ok) {
+                        {% comment %} window.location.href = '/cart'; {% endcomment %}
+                    } else {
+                        return response.json().then(function(errorData) {
+                            console.error('Error:', errorData);
+                            alert('Failed to add items to cart.');
+                            btn.innerHTML = '{{ section.settings.btn_text }}';
+                            btn.style.opacity = '1';
+                        });
+                    }
+                })
+                .catch(function(error) {
+                    console.error('Error:', error);
+                    btn.innerHTML = '{{ section.settings.btn_text }}';
+                    btn.style.opacity = '1';
+                });
+            });
+        }
+    })();
+</script>
+
+{% schema %}
+{
+  "name": "Custom 3x2ml Bundle",
+  "tag": "section",
+  "class": "bundle-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "section_image",
+      "label": "Left Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Create Your 3x2ml Bundle"
+    },
+    {
+      "type": "header",
+      "content": "📦 Main Bundle Product"
+    },
+    {
+      "type": "product",
+      "id": "main_product",
+      "label": "Bundle Product (Added to Cart)"
+    },
+    {
+      "type": "header",
+      "content": "🧪 3 Sample Selections"
+    },
+    {
+      "type": "text",
+      "id": "select1_label",
+      "label": "Sample 1 Label",
+      "default": "Pick Sample 1:"
+    },
+    {
+      "type": "collection",
+      "id": "collection1",
+      "label": "Collection for Sample 1"
+    },
+    {
+      "type": "text",
+      "id": "prop_sample1",
+      "label": "Cart Property Name 1",
+      "default": "Sample 1"
+    },
+    {
+      "type": "text",
+      "id": "select2_label",
+      "label": "Sample 2 Label",
+      "default": "Pick Sample 2:"
+    },
+    {
+      "type": "collection",
+      "id": "collection2",
+      "label": "Collection for Sample 2"
+    },
+    {
+      "type": "text",
+      "id": "prop_sample2",
+      "label": "Cart Property Name 2",
+      "default": "Sample 2"
+    },
+    {
+      "type": "text",
+      "id": "select3_label",
+      "label": "Sample 3 Label",
+      "default": "Pick Sample 3:"
+    },
+    {
+      "type": "collection",
+      "id": "collection3",
+      "label": "Collection for Sample 3"
+    },
+    {
+      "type": "text",
+      "id": "prop_sample3",
+      "label": "Cart Property Name 3",
+      "default": "Sample 3"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text",
+      "default": "Add To Cart"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom 3x2ml Bundle",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
