@@ -1,0 +1,608 @@
+{% if section.settings.background_color != blank %}
+  <style>
+    #shopify-section-{{ section.id }} .page-width {
+      background-color: {{ section.settings.background_color }};
+    }
+  </style>
+{% endif %}
+
+<div class="distance" data-section-id="{{ section.id }}" data-section-type="nov-slick">
+  <div class="page-width{% if section.settings.class %} {{ section.settings.class }}{% endif %}">
+    {% if section.settings.has_fullwidth == false %}
+      <div class="container_90">
+    {% endif %}
+      <div class="block_customs">
+        <div class="custom-content row">
+          {% for block in section.blocks %}
+            <div class="custom__item {{ block.settings.width }} {{ block.settings.width_lg }} {{ block.settings.width_md }}{% if block.settings.class != blank %} {{ block.settings.class }}{% endif %}" style="padding-top: {{ section.settings.distance_top }};padding-bottom: {{ section.settings.distance_bottom }};">
+              {% case block.type %}
+                {% when 'text' %}
+                  <div class="block_text {{ block.settings.alignment }}">
+                    {% if block.settings.title != blank %}
+                      <div class="title" style="{% if block.settings.color_title != blank %}color: {{ block.settings.color_title }};{% endif %}{% if block.settings.size_title != blank %}font-size: {{ block.settings.size_title }};{% endif %}">{{ block.settings.title | nofilter }}</div>
+                    {% endif %}
+                    {% if block.settings.sub != blank %}
+                      <div class="sub" style="{% if block.settings.color_sub != blank %}color: {{ block.settings.color_sub }};{% endif %}{% if block.settings.size_sub != blank %}font-size: {{ block.settings.size_sub }};{% endif %}">{{ block.settings.sub | nofilter }}</div>
+                    {% endif %}
+                    {% if block.settings.description != blank %}
+                      <div class="description">{{ block.settings.description}}</div>
+                    {% endif %}
+                    {% if block.settings.show_button %}
+                      <div class="button_label d-inline-flex justify-content-center">
+                        <a href="{{ block.settings.button_link }}" class="hover_x d-flex align-items-center justify-content-center">
+                          <span>{{ block.settings.button_label | nofilter }}</span>
+                          <i class="zmdi zmdi-long-arrow-right"></i>
+                        </a>
+                      </div>
+                    {% endif %}
+                    {% if block.settings.show_social == true %}
+                      <div class="social text-center">
+                        {% include 'nov-social' %}
+                      </div>
+                    {% endif %}
+                  </div>
+                {% when 'newsletter' %}
+                  <div class="block_newsletter">
+                    <div class="block_title {{ block.settings.alignment }}">
+                      {% if block.settings.title != blank %}
+                        <div class="title" style="{% if block.settings.color_title != blank %}color: {{ block.settings.color_title }};{% endif %}{% if block.settings.size_title != blank %}font-size: {{ block.settings.size_title }};{% endif %}">{{ block.settings.title | nofilter }}</div>
+                      {% endif %}
+                      {% if block.settings.sub != blank %}
+                        <div class="sub" style="{% if block.settings.color_sub != blank %}color: {{ block.settings.color_sub }};{% endif %}{% if block.settings.size_sub != blank %}font-size: {{ block.settings.size_sub}};{% endif %}">{{ block.settings.sub | nofilter }}"</div>
+                      {% endif %}
+                    </div>
+                    <div class="block_form">
+                      {% form 'customer' %}
+                        {{ form.errors | default_errors }}
+                        {% if form.posted_successfully? %}
+                          <p class="form--success text-center" style="color: #000;">{{ 'general.newsletter_form.confirmation' | t }}</p>
+                        {% else %}
+                          <div class="input-group">
+                            <input type="hidden" name="contact[tags]" value="newsletter">
+                            <input type="email"
+                              name="contact[email]"
+                              id="Email_newsletter"
+                              class="input-group__field newsletter__input"
+                              value="{% if customer %}{{ customer.email }}{% endif %}"
+                              placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}">
+                            <button type="submit" class="newsletter__submit" name="commit" id="Subscribe_newsletter">
+                              {{ 'general.newsletter_form.submit_form' | t }}
+                            </button>
+                          </div>
+                        {% endif %}
+                      {% endform %}
+                    </div>
+                  </div>
+              {% endcase %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% if section.blocks.size == 0 %}
+        {% include 'no-blocks' %}
+      {% endif %}
+    {% if section.settings.has_fullwidth == false %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Custom content",
+    "class": "index-section section-custom wow fadeIn animated",
+    "settings": [
+      {
+        "type": "text",
+        "id": "class",
+        "label": "Class"
+      },
+      {
+        "type": "checkbox",
+        "id": "has_fullwidth",
+        "label": "Full Width",
+        "default":   false
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background colors"
+      },
+      {
+        "type": "text",
+        "id": "distance_top",
+        "label": "Top Distance Section",
+        "default": "30px"
+      },
+      {
+        "type": "text",
+        "id": "distance_bottom",
+        "label": "Bottom Distance Section",
+        "default": "30px"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "text",
+        "name": "Text",
+        "settings": [
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width (Large Desktop)",
+            "default": "col-xl-6",
+            "options": [
+              {
+                "value": "col-xl-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-xl-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-xl-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-xl-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-xl-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-xl-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-xl-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-xl-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-xl-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-xl-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_lg",
+            "label": "Container width (Desktop)",
+            "default": "col-lg-6",
+            "options": [
+              {
+                "value": "col-lg-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-lg-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-lg-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-lg-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-lg-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-lg-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-lg-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-lg-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-lg-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-lg-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_md",
+            "label": "Container width(Tablet)",
+            "default": "col-md-6",
+            "options": [
+              {
+                "value": "col-md-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-md-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-md-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-md-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-md-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-md-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-md-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-md-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-md-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-md-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Visit Our Store"
+          },
+          {
+            "type": "text",
+            "id": "size_title",
+            "label": "Size Title",
+            "default": "3rem"
+          },
+          {
+            "type": "color",
+            "id": "color_title",
+            "label": "Color Title",
+            "default": "#000"
+          },
+          {
+            "type": "text",
+            "id": "sub",
+            "label": "Subtitle",
+            "default": "Be the first to know about our new arrivals and exclusive offers."
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description"
+          },
+          {
+            "type": "text",
+            "id": "size_sub",
+            "label": "Size Subtitle",
+            "default": "1.6rem"
+          },
+          {
+            "type": "color",
+            "id": "color_sub",
+            "label": "Color Subtitle",
+            "default": "#000"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_button",
+            "label": "Show Button",
+            "default": true
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label",
+            "default": "See On Map"
+          },
+          {
+            "type": "text",
+            "id": "size_button",
+            "label": "Size Button",
+            "default": "1.6rem"
+          },
+          {
+            "type": "color",
+            "id": "color_button",
+            "label": "Color Button",
+            "default": "#000"
+          },
+          {
+            "type": "color",
+            "id": "bg_title_link",
+            "label": "Background Title Link"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_social",
+            "label": "Enable Social",
+            "default": true
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Alignment",
+            "options": [
+              {
+                "value": "text-left",
+                "label": "Left"
+              },
+              {
+                "value": "text-center",
+                "label": "Center"
+              },
+              {
+                "value": "text-right",
+                "label": "Right"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "class",
+            "label": "Class"
+          }
+        ]
+      },
+      {
+        "type": "newsletter",
+        "name": "Newsletter",
+        "settings": [
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width (Large Desktop)",
+            "default": "col-xl-6",
+            "options": [
+              {
+                "value": "col-xl-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-xl-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-xl-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-xl-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-xl-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-xl-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-xl-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-xl-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-xl-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-xl-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_lg",
+            "label": "Container width (Desktop)",
+            "default": "col-lg-6",
+            "options": [
+              {
+                "value": "col-lg-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-lg-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-lg-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-lg-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-lg-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-lg-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-lg-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-lg-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-lg-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-lg-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_md",
+            "label": "Container width(Tablet)",
+            "default": "col-md-6",
+            "options": [
+              {
+                "value": "col-md-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-md-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-md-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-md-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-md-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-md-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-md-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-md-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-md-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-md-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Sign Up Now & Get 10% Off"
+          },
+          {
+            "type": "text",
+            "id": "size_title",
+            "label": "Size Title",
+            "default": "3rem"
+          },
+          {
+            "type": "color",
+            "id": "color_title",
+            "label": "Color Title",
+            "default": "#000"
+          },
+          {
+            "type": "text",
+            "id": "sub",
+            "label": "Subtitle",
+            "default": "Be the first to know about our new arrivals and exclusive offers."
+          },
+          {
+            "type": "text",
+            "id": "size_sub",
+            "label": "Size Subtitle",
+            "default": "1.6rem"
+          },
+          {
+            "type": "color",
+            "id": "color_sub",
+            "label": "Color Subtitle",
+            "default": "#000"
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Alignment",
+            "options": [
+              {
+                "value": "text-left",
+                "label": "Left"
+              },
+              {
+                "value": "text-center",
+                "label": "Center"
+              },
+              {
+                "value": "text-right",
+                "label": "Right"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "class",
+            "label": "Class"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom content",
+        "category": "Content",
+        "blocks": [
+          {
+            "type": "text"
+          },
+          {
+            "type": "newsletter"
+          },
+          {
+            "type": "text"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

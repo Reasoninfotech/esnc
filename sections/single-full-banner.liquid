@@ -1,0 +1,49 @@
+{% schema %}
+{
+  "name": "Full Image with Link",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "fullimage",
+      "label": "Image"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link URL"
+    } 
+  ],
+  "presets": [
+    {
+      "name": "Full Image with Link",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="full-image-withlink">
+  {% if section.settings.fullimage %}
+    <a href="{{ section.settings.link }}" class="image-link-wrapper" target="_blank" rel="noopener noreferrer">
+      <picture>
+        <source 
+        srcset="{{ section.settings.fullimage | img_url: '768x' }}" 
+        media="(max-width: 768px)">
+        <source 
+        srcset="{{ section.settings.fullimage | img_url: '1024x' }}" 
+        media="(min-width: 769px) and (max-width: 1200px)">
+        <img 
+        fetchpriority="high"
+        decoding="async"
+        src="{{ section.settings.fullimage | img_url: '2048x' }}" 
+        alt="Banner Image" 
+        width="1920" 
+        height="641" 
+        style="max-width: 100%; height: auto; width:100%;" >
+      </picture>      
+    </a>
+  {% else %}
+    <p>No image selected. Please add an image in the editor.</p>
+  {% endif %}
+</div>
+

@@ -1,0 +1,267 @@
+{% if section.settings.background_color != blank %}
+  <style>
+    #shopify-section-{{ section.id }}.section-gallery-ins {
+      {% if section.settings.background_color != blank %}
+        background-color: {{ section.settings.background_color }};
+      {% endif %}
+    }
+  </style>
+{% endif %}
+<div class="distance" style="padding-top: {{ section.settings.distance_top }};padding-bottom: {{ section.settings.distance_bottom }}">
+  <div data-section-id="{{ section.id }}" data-section-type="nov-owl" class="wow fadeInUp animated">
+    {% if section.settings.has_fullwidth == false %}
+      <div class="container_ct">
+    {% endif %}
+      <div class="nov-gallery position-relative">
+        {% if section.settings.title != blank %}
+          <div class="block_title {{ section.settings.title_alignment }}">
+            <div class="title_block" style="{% if section.settings.color_title != blank %}color: {{ section.settings.color_title }};{% endif %}{% if section.settings.size_title != blank %}font-size: {{ section.settings.size_title }};{% endif %}">{{ section.settings.title | nofilter }}</div>
+          </div>
+        {% endif %}
+        <div class="block_content">
+          <div class="gallery nov-owl-carousel owl-carousel owl-theme" 
+            data-autoplay="{{ section.settings.autoplay }}" 
+            data-autoplayTimeout="{{ section.settings.autoplay_speed }}" 
+            data-loop="{{ section.settings.loop }}" 
+            data-dots="false" 
+            data-nav="false" 
+            data-margin="{{ section.settings.spacing }}"
+            data-items="{{ section.settings.grid_number }}" 
+            data-items_tablet="{{ section.settings.items_tablet }}" 
+            data-items_mobile="{{ section.settings.items_mobile }}" 
+            data-center="false" 
+            data-start="0">
+            {% for block in section.blocks %}
+              {% if block.settings.image != blank %}
+                <div class="card_gallery hover-image">
+                  <a href="{{ block.settings.image | img_url: '600x600' }}" data-fancybox="gallery">
+                    <noscript>
+                      <div class="gallery_image-wrapper">
+                        {{ block.settings.image | img_url: '304x304' | img_tag: block.settings.image.alt, 'gallery_image' }}
+                      </div>
+                    </noscript>
+                    <div class="respone_image" style="padding-top:{{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100}}%;">
+                      {% assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                      <img class="gallery_image lazyload"
+                        src="{{ block.settings.image | img_url: '600x600' }}"
+                        data-src="{{ img_url }}"
+                        data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                        data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                        data-sizes="auto"
+                        alt="{{ block.settings.image.alt | escape }}">
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                    </div>
+                  </a>
+                </div>
+              {% else %}
+                <img src="https://via.placeholder.com/600x600?text=600x600">
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% if section.settings.has_fullwidth == false %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Gallery Instagram",
+    "class": "index-section section-gallery-ins",
+    "settings":[
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Vinova Gallery Instagram"
+      },
+      {
+        "type": "text",
+        "id": "size_title",
+        "label": "Size Title",
+        "default": "3rem"
+      },
+      {
+        "type": "color",
+        "id": "color_title",
+        "label": "Color Title",
+        "default": "#000"
+      },
+      {
+        "type": "select",
+        "id": "title_alignment",
+        "label": "Title alignment",
+        "default": "text-left",
+        "options": [
+          {
+            "value": "text-left",
+            "label": "Left"
+          },
+          {
+            "value": "text-center",
+            "label": "Center"
+          },
+          {
+            "value": "text-right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "grid_number",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "label": "Products per row",
+        "default": 4
+      },
+      {
+        "type": "range",
+        "id": "items_tablet",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "label": "Items Tablet",
+        "default": 3,
+        "info": "Select number Items Tablet for slider"
+      },
+      {
+        "type": "range",
+        "id": "items_mobile",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "label": "Items Mobile",
+        "default": 2,
+        "info": "Select number Items Mobile for slider"
+      },
+      {
+        "type": "checkbox",
+        "id": "autoplay",
+        "label": "Enable Autoplay",
+        "default": false
+      },
+      { 
+        "type": "select",
+        "id": "autoplay_speed",
+        "label": "Change slides every",
+        "options": [
+          { "value": "4000", "label": "4 seconds" },
+          { "value": "5000", "label": "5 seconds" },
+          { "value": "6000", "label": "6 seconds" },
+          { "value": "7000", "label": "7 seconds" },
+          { "value": "8000", "label": "8 seconds" },
+          { "value": "9000", "label": "9 seconds" },
+          { "value": "10000", "label": "10 seconds" }
+        ],
+        "default": "5000"
+      },
+      {
+        "type": "select",
+        "id": "spacing",
+        "label": "Spacing Items",
+        "default": "20",
+        "options": [
+        {
+          "label": "0px",
+          "value": "0"
+        },
+        {
+          "label": "5px",
+          "value": "5"
+        },
+        {
+          "label": "10px",
+          "value": "10"
+        },
+        {
+          "label": "15px",
+          "value": "15"
+        },
+        {
+          "label": "20px",
+          "value": "20"
+        },
+        {
+          "label": "25px",
+          "value": "25"
+        },
+        {
+          "label": "30px",
+          "value": "30"
+        }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "loop",
+        "label": "Enable Loop",
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background colors"
+      },
+      {
+        "type": "checkbox",
+        "id": "has_fullwidth",
+        "label": "Full Width",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "distance_top",
+        "label": "Top Distance Section",
+        "default": "30px"
+      },
+      {
+        "type": "text",
+        "id": "distance_bottom",
+        "label": "Bottom Distance Section",
+        "default": "30px"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Vinova Gallery Instagram",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

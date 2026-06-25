@@ -1,0 +1,1390 @@
+<div class="distance">
+  {% if section.settings.has_fullwidth == false %}
+  <div class="container_90">
+  {% endif %}
+  <div data-section-id="{{ section.id }}" data-section-type="slideshow-section" class="slideshow">
+    {% if section.blocks.size > 0 %}
+      <div id="homeslider" class="main-slider" data-autoplay="{{ section.settings.autoplay }}" data-speed="6000" data-arrows="{{ section.settings.arrows }}" data-dots="{{ section.settings.dots }}">
+        {% for block in section.blocks %}
+          {% if block.type == 'image' %}
+            {% if block.settings.image != blank %}
+             <div class="item image">
+                
+                  {% if block.settings.slider_link != blank %}
+                  <a href="{{ block.settings.slider_link }}">
+                  {% endif %}
+                    {% if block.settings.image != blank %}                     
+                      
+                       
+                      <img src="{{ block.settings.image | img_url: '2048x768' }}" 
+                       srcset="{{ block.settings.image | img_url: '768x' }} 768w, 
+                               {{ block.settings.image | img_url: '2048x768' }} 1024w, 
+                               {{ block.settings.image | img_url: '2048x' }} 2048w" 
+                       sizes="(max-width: 768px) 768px, (min-width: 769px) 1024px" 
+                       alt="{{ block.settings.image.alt }} " 
+                       width="1920" 
+                       height="600"
+                       loading="eager"
+                       fetchpriority="high">
+                      
+                    {% else %}
+                      <img src="https://via.placeholder.com/1920x950" width="1920" height="600">
+                    {% endif %}
+                  {% if block.settings.slider_link != blank %}
+                  </a>
+                  {% endif %}
+                  <figcaption class="caption">
+                    <div class="content-caption content-captiont-{{ forloop.index }} {% if block.settings.text_align == 'left' %}rtl-left {% elsif block.settings.text_align == 'right' %}rtl-right {% else %}rtl-center{% endif %}">
+                      <div class="content position-absolute content-{{ forloop.index }}">
+                        {% unless block.settings.caption_1 == blank %}
+                          <div class="caption-animate caption-1 mb-xs-10" data-animate="{{ block.settings.cap_animate_1 }} animated" style="color: {{ block.settings.color_cap1 }};">{{ block.settings.caption_1 | nofilter }}</div>
+                        {% endunless %}
+                        {% unless block.settings.caption_2 == blank %}
+                          <div class="caption-animate caption-2 mb-xs-20" data-animate="{{ block.settings.cap_animate_2 }} animated" style="color: {{ block.settings.color_cap2 }};">{{ block.settings.caption_2 | nofilter }}</div>
+                        {% endunless %}
+                        {% unless block.settings.caption_3 == blank %}
+                          <div class="caption-animate caption-3" data-animate="{{ block.settings.cap_animate_3 }} animated" style="color: {{ block.settings.color_cap3 }};">{{ block.settings.caption_3 | nofilter }}</div>
+                        {% endunless %}
+                        {% unless block.settings.caption_4 == blank %}
+                          <div class="caption-animate caption-4" data-animate="{{ block.settings.cap_animate_4 }} animated" style="color: {{ block.settings.color_cap4 }};">{{ block.settings.caption_4 | nofilter }}</div>
+                        {% endunless %}
+                        {% unless block.settings.cap_link == blank %}
+                            {% if block.settings.cap_link != '#' %}
+                          <div class="caption-animate cap_link hover_x dfdfdf" data-animate="{{ block.settings.cap_link_animate }} animated" style="background: {{ block.settings.background_cap_link }}">
+                            <a href="{{ block.settings.cap_link }}" style="color: {{ block.settings.color_cap_link }}; border: 2px solid {{ block.settings.color_cap_link }}">
+                              <span>{{ block.settings.title_link }}</span>
+                              <i class="zmdi zmdi-long-arrow-right"></i>
+                            </a>
+                          </div>
+                              {% endif %}
+                        {% endunless %}
+                      </div>
+                    </div>
+                  </figcaption>
+                
+              </div> 
+            {% endif %}
+            {% if block.settings.image == blank %}
+            <div class="item image blank">
+              <figure>
+                {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                <figcaption class="caption-animate caption {% if block.settings.type_caption == '1' %}type_1{else}type_2{% endif %}">
+                  {% unless block.settings.caption_1 == blank %}
+                    <div class="caption-animate caption-1"data-animate="bounceInRight">{{ block.settings.caption_1 | nofilter }}</div>
+                  {% endunless %}
+                  {% unless block.settings.caption_2 == blank %}
+                    <div class="caption-animate caption-2" data-animate="bounceInLeft">{{ block.settings.caption_2 | nofilter }}</div>
+                  {% endunless %}
+                  {% unless block.settings.caption_3 == blank %}
+                    <div class="caption-animate caption-3" data-animate="bounceInRight">{{ block.settings.caption_3 | nofilter }}</div>
+                  {% endunless %}
+                  {% unless block.settings.caption_4 == blank %}
+                    <div class="caption-animate caption-4" data-animate="bounceInLeft">{{ block.settings.caption_4 | nofilter }}</div>
+                  {% endunless %}
+                </figcaption>
+              </figure>
+              </div>  
+            {% endif %}
+          {% endif %}
+          {% if block.type == 'video' %}
+            {% if block.settings.type_video == 'video_youtobe' %}
+              <div class="item youtube">
+                <iframe allow='autoplay' class="embed-player slide-media" width="980" height="520" src="https://www.youtube.com/embed/{{ block.settings.video_url_youtobe.id }}?autoplay=1" frameborder="0" allowfullscreen></iframe>
+              </div>
+            {% endif %}
+            {% if block.settings.type_video == 'video_links' %}
+              <div class="item youtube">
+                <video playsinline preload autoplay loop muted style="width: 100%;max-width: 100%; height: auto;">
+                  <source src="{{ block.settings.video_url_links }}" type="video/mp4" />
+                </video>
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% if section.blocks.size == 0 %}
+      <div class="placeholder-noblocks">
+        {{ 'homepage.onboarding.no_content' | t }}
+      </div>
+    {% endif %}
+  </div>
+    {% comment %}
+  {% if section.settings.shop_link != blank %}
+    <div class="shop_link hover_x fixed_shop_link">
+      <a href="{{ section.settings.shop_link }}">
+        <span>Shop Now</span>
+        <i class="zmdi zmdi-long-arrow-right"></i>
+      </a>
+    </div>
+  {% endif %}
+    {% endcomment %}
+  {% if section.settings.has_fullwidth == false %}
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+  {
+    "name": "Vinova Slideshow",
+    "class": "index-section section-slideshow",
+    "settings": [
+      {
+        "type": "text",
+        "id": "height_slideshow_larges_desktop",
+        "label": "Height Slideshow (in unit 1440px ↑)",
+        "default": "700px"
+      },
+      {
+        "type": "text",
+        "id": "height_slideshow_large_desktop",
+        "label": "Height Slideshow (in unit 1200px ↑)",
+        "default": "700px"
+      },
+      {
+        "type": "text",
+        "id": "height_slideshow_desktop",
+        "label": "Height Slideshow (in unit 1200px ↓)",
+        "default": "700px"
+      },
+      {
+        "type": "text",
+        "id": "height_slideshow_tablet",
+        "label": "Height Slideshow (in unit 992px ↓)",
+        "default": "700px"
+      },
+      {
+        "type": "text",
+        "id": "height_slideshow_mobile",
+        "label": "Height Slideshow (in unit 768px ↓)",
+        "default": "700px"
+      },
+      {
+        "type": "text",
+        "id": "height_slideshow_mobile_small",
+        "label": "Height Slideshow (in unit 576px ↓)",
+        "default": "700px"
+      },
+      {
+        "type": "checkbox",
+        "id": "autoplay",
+        "label": "Auto-rotate slides",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "arrows",
+        "label": "Enable arrows",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "dots",
+        "label": "Enable dots",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "has_fullwidth",
+        "label": "Full Width",
+        "default":   false
+      },
+      {
+        "type": "text",
+        "id": "distance_top",
+        "label": "Top Distance Section",
+        "default": "30px"
+      },
+      {
+        "type": "text",
+        "id": "distance_bottom",
+        "label": "Bottom Distance Section",
+        "default": "30px"
+      },
+      {
+        "type": "url",
+        "id": "shop_link",
+        "label": "Link button"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image Slideshow"
+          },
+          {
+            "type": "header",
+            "content": "Caption"
+          },
+          {
+            "type": "text",
+            "id": "caption_1",
+            "label": "Caption 1"
+          },
+
+          {
+            "type": "color",
+            "id": "color_cap1",
+            "label": "Color",
+            "default": "#000"
+          },
+          {
+            "type": "text",
+            "id": "fz_cap1",
+            "label": "Font Size (in unit 1200px ↑)"
+          },
+          {
+            "type": "text",
+            "id": "fz_cap1lg",
+            "label": "Font Size (in unit 992px ↑)"
+          },
+          {
+            "type": "text",
+            "id": "fz_cap1t",
+            "label": "Font Size Tablet (in unit 991px ↓)"
+          },
+          {
+            "type": "text",
+            "id": "fz_cap1m",
+            "label": "Font Size Mobile Large (in unit 767px ↓)"
+          },
+          {
+            "type": "text",
+            "id": "fz_cap1mb",
+            "label": "Font Size Mobile (in unit 575px ↓)"
+          },
+          {
+            "type": "select",
+            "id": "cap_animate_1",
+            "label": "Text Animate",
+            "options": [
+              {
+                "value": "bounce",
+                "label": "bounce"
+              },
+              {
+                "value": "swing",
+                "label": "swing"
+              },
+              {
+                "value": "wobble",
+                "label": "wobble"
+              },
+              {
+                "value": "bounceIn",
+                "label": "bounceIn"
+              },
+              {
+                "value": "bounceInDown",
+                "label": "bounceInDown"
+              },
+              {
+                "value": "bounceInLeft",
+                "label": "bounceInLeft"
+              },
+              {
+                "value": "bounceInRight",
+                "label": "founceInRight"
+              },
+              {
+                "value": "bounceInUp",
+                "label": "founceInUp"
+              },
+              {
+                "value": "fadeIn",
+                "label": "fadeIn"
+              },
+              {
+                "value": "fadeInDown",
+                "label": "fadeInDown"
+              },
+              {
+                "value": "fadeInDownBig",
+                "label": "fadeInDownBig"
+              },
+              {
+                "value": "fadeInLeft",
+                "label": "fadeInLeft"
+              },
+              {
+                "value": "fadeInLeftBig",
+                "label": "fadeInLeftBig"
+              },
+              {
+                "value": "fadeInRight",
+                "label": "fadeInRight"
+              },
+              {
+                "value": "fadeInRightBig",
+                "label": "fadeInRightBig"
+              },
+              {
+                "value": "fadeInUp",
+                "label": "fadeInUp"
+              },
+              {
+                "value": "fadeInUpBig",
+                "label": "fadeInUpBig"
+              },
+              {
+                "value": "flipInX",
+                "label": "flipInX"
+              },
+              {
+                "value": "lightSpeedIn",
+                "label": "lightSpeedIn"
+              },
+              {
+                "value": "slideInUp",
+                "label": "slideInUp"
+              },
+              {
+                "value": "slideInDown",
+                "label": "slideInDown"
+              },
+              {
+                "value": "slideInLeft",
+                "label": "slideInLeft"
+              },
+              {
+                "value": "slideInRight",
+                "label": "slideInRight"
+              },
+              {
+                "value": "zoomIn",
+                "label": "zoomIn"
+              },
+              {
+                "value": "zoomInDown",
+                "label": "zoomInDown"
+              },
+              {
+                "value": "zoomInLeft",
+                "label": "zoomInLeft"
+              },
+              {
+                "value": "zoomInRight",
+                "label": "zoomInRight"
+              },
+              {
+                "value": "zoomInUp",
+                "label": "zoomInUp"
+              },
+              {
+                "value": "jackInTheBox",
+                "label": "jackInTheBox"
+              },
+              {
+                "value": "rollIn",
+                "label": "rollIn"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "caption_2",
+            "label": "Caption 2"
+          },
+          {
+             "type": "color",
+             "id": "color_cap2",
+             "label": "Color",
+             "default": "#000"
+          },
+          {
+            "type": "text",
+            "id": "fz_cap2",
+            "label": "Font Size (in unit 1200px ↑)"
+          },
+          {
+            "type": "text",
+            "id": "fz_cap2lg",
+            "label": "Font Size (in unit 992px ↑)"
+          },
+          {
+            "type": "text",
+            "id": "fz_cap2t",
+            "label": "Font Size Tablet (in unit 991px ↓)"
+          },
+          {
+            "type": "text",
+            "id": "fz_cap2m",
+            "label": "Font Size Mobile Large (in unit 767px ↓)"
+          },
+          {
+            "type": "text",
+            "id": "fz_cap2mb",
+            "label": "Font Size Mobile (in unit 575px ↓)"
+          },
+          {
+            "type": "select",
+            "id": "cap_animate_2",
+            "label": "Text Animate",
+            "options": [
+              {
+                "value": "bounce",
+                "label": "bounce"
+              },
+              {
+                "value": "swing",
+                "label": "swing"
+              },
+              {
+                "value": "wobble",
+                "label": "wobble"
+              },
+              {
+                "value": "bounceIn",
+                "label": "bounceIn"
+              },
+              {
+                "value": "bounceInDown",
+                "label": "bounceInDown"
+              },
+              {
+                "value": "bounceInLeft",
+                "label": "bounceInLeft"
+              },
+              {
+                "value": "bounceInRight",
+                "label": "founceInRight"
+              },
+              {
+                "value": "bounceInUp",
+                "label": "founceInUp"
+              },
+              {
+                "value": "fadeIn",
+                "label": "fadeIn"
+              },
+              {
+                "value": "fadeInDown",
+                "label": "fadeInDown"
+              },
+              {
+                "value": "fadeInDownBig",
+                "label": "fadeInDownBig"
+              },
+              {
+                "value": "fadeInLeft",
+                "label": "fadeInLeft"
+              },
+              {
+                "value": "fadeInLeftBig",
+                "label": "fadeInLeftBig"
+              },
+              {
+                "value": "fadeInRight",
+                "label": "fadeInRight"
+              },
+              {
+                "value": "fadeInRightBig",
+                "label": "fadeInRightBig"
+              },
+              {
+                "value": "fadeInUp",
+                "label": "fadeInUp"
+              },
+              {
+                "value": "fadeInUpBig",
+                "label": "fadeInUpBig"
+              },
+              {
+                "value": "flipInX",
+                "label": "flipInX"
+              },
+              {
+                "value": "lightSpeedIn",
+                "label": "lightSpeedIn"
+              },
+              {
+                "value": "slideInUp",
+                "label": "slideInUp"
+              },
+              {
+                "value": "slideInDown",
+                "label": "slideInDown"
+              },
+              {
+                "value": "slideInLeft",
+                "label": "slideInLeft"
+              },
+              {
+                "value": "slideInRight",
+                "label": "slideInRight"
+              },
+              {
+                "value": "zoomIn",
+                "label": "zoomIn"
+              },
+              {
+                "value": "zoomInDown",
+                "label": "zoomInDown"
+              },
+              {
+                "value": "zoomInLeft",
+                "label": "zoomInLeft"
+              },
+              {
+                "value": "zoomInRight",
+                "label": "zoomInRight"
+              },
+              {
+                "value": "zoomInUp",
+                "label": "zoomInUp"
+              },
+              {
+                "value": "jackInTheBox",
+                "label": "jackInTheBox"
+              },
+              {
+                "value": "rollIn",
+                "label": "rollIn"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "caption_3",
+            "label": "Caption 3"
+          },
+          {
+             "type": "color",
+             "id": "color_cap3",
+             "label": "Color",
+             "default": "#000"
+          },
+          {
+            "type": "text",
+            "id": "fz_cap3",
+            "label": "Font Size (in unit 1200px ↑)"
+          },
+          {
+            "type": "text",
+            "id": "fz_cap3lg",
+            "label": "Font Size (in unit 992px ↑)"
+          },
+          {
+            "type": "text",
+            "id": "fz_cap3t",
+            "label": "Font Size Tablet (in unit 991px ↓)"
+          },
+          {
+            "type": "text",
+            "id": "fz_cap3m",
+            "label": "Font Size Mobile Large (in unit 767px ↓)"
+          },
+          {
+            "type": "text",
+            "id": "fz_cap3mb",
+            "label": "Font Size Mobile (in unit 575px ↓)"
+          },
+          {
+            "type": "select",
+            "id": "cap_animate_3",
+            "label": "Text Animate",
+            "options": [
+              {
+                "value": "bounce",
+                "label": "bounce"
+              },
+              {
+                "value": "swing",
+                "label": "swing"
+              },
+              {
+                "value": "wobble",
+                "label": "wobble"
+              },
+              {
+                "value": "bounceIn",
+                "label": "bounceIn"
+              },
+              {
+                "value": "bounceInDown",
+                "label": "bounceInDown"
+              },
+              {
+                "value": "bounceInLeft",
+                "label": "bounceInLeft"
+              },
+              {
+                "value": "bounceInRight",
+                "label": "founceInRight"
+              },
+              {
+                "value": "bounceInUp",
+                "label": "founceInUp"
+              },
+              {
+                "value": "fadeIn",
+                "label": "fadeIn"
+              },
+              {
+                "value": "fadeInDown",
+                "label": "fadeInDown"
+              },
+              {
+                "value": "fadeInDownBig",
+                "label": "fadeInDownBig"
+              },
+              {
+                "value": "fadeInLeft",
+                "label": "fadeInLeft"
+              },
+              {
+                "value": "fadeInLeftBig",
+                "label": "fadeInLeftBig"
+              },
+              {
+                "value": "fadeInRight",
+                "label": "fadeInRight"
+              },
+              {
+                "value": "fadeInRightBig",
+                "label": "fadeInRightBig"
+              },
+              {
+                "value": "fadeInUp",
+                "label": "fadeInUp"
+              },
+              {
+                "value": "fadeInUpBig",
+                "label": "fadeInUpBig"
+              },
+              {
+                "value": "flipInX",
+                "label": "flipInX"
+              },
+              {
+                "value": "lightSpeedIn",
+                "label": "lightSpeedIn"
+              },
+              {
+                "value": "slideInUp",
+                "label": "slideInUp"
+              },
+              {
+                "value": "slideInDown",
+                "label": "slideInDown"
+              },
+              {
+                "value": "slideInLeft",
+                "label": "slideInLeft"
+              },
+              {
+                "value": "slideInRight",
+                "label": "slideInRight"
+              },
+              {
+                "value": "zoomIn",
+                "label": "zoomIn"
+              },
+              {
+                "value": "zoomInDown",
+                "label": "zoomInDown"
+              },
+              {
+                "value": "zoomInLeft",
+                "label": "zoomInLeft"
+              },
+              {
+                "value": "zoomInRight",
+                "label": "zoomInRight"
+              },
+              {
+                "value": "zoomInUp",
+                "label": "zoomInUp"
+              },
+              {
+                "value": "jackInTheBox",
+                "label": "jackInTheBox"
+              },
+              {
+                "value": "rollIn",
+                "label": "rollIn"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "caption_4",
+            "label": "Caption 4"
+          },
+          {
+             "type": "color",
+             "id": "color_cap4",
+             "label": "Color",
+             "default": "#000"
+          },
+          {
+            "type": "text",
+            "id": "fz_cap4",
+            "label": "Font Size (in unit 1200px ↑)"
+          },
+          {
+            "type": "text",
+            "id": "fz_cap4lg",
+            "label": "Font Size (in unit 992px ↑)"
+          },
+          {
+            "type": "text",
+            "id": "fz_cap4t",
+            "label": "Font Size Tablet (in unit 991px ↓)"
+          },
+          {
+            "type": "text",
+            "id": "fz_cap4m",
+            "label": "Font Size Mobile Large (in unit 767px ↓)"
+          },
+          {
+            "type": "text",
+            "id": "fz_cap4mb",
+            "label": "Font Size Mobile (in unit 575px ↓)"
+          },
+          {
+            "type": "select",
+            "id": "cap_animate_4",
+            "label": "Text Animate",
+            "options": [
+              {
+                "value": "bounce",
+                "label": "bounce"
+              },
+              {
+                "value": "swing",
+                "label": "swing"
+              },
+              {
+                "value": "wobble",
+                "label": "wobble"
+              },
+              {
+                "value": "bounceIn",
+                "label": "bounceIn"
+              },
+              {
+                "value": "bounceInDown",
+                "label": "bounceInDown"
+              },
+              {
+                "value": "bounceInLeft",
+                "label": "bounceInLeft"
+              },
+              {
+                "value": "bounceInRight",
+                "label": "founceInRight"
+              },
+              {
+                "value": "bounceInUp",
+                "label": "founceInUp"
+              },
+              {
+                "value": "fadeIn",
+                "label": "fadeIn"
+              },
+              {
+                "value": "fadeInDown",
+                "label": "fadeInDown"
+              },
+              {
+                "value": "fadeInDownBig",
+                "label": "fadeInDownBig"
+              },
+              {
+                "value": "fadeInLeft",
+                "label": "fadeInLeft"
+              },
+              {
+                "value": "fadeInLeftBig",
+                "label": "fadeInLeftBig"
+              },
+              {
+                "value": "fadeInRight",
+                "label": "fadeInRight"
+              },
+              {
+                "value": "fadeInRightBig",
+                "label": "fadeInRightBig"
+              },
+              {
+                "value": "fadeInUp",
+                "label": "fadeInUp"
+              },
+              {
+                "value": "fadeInUpBig",
+                "label": "fadeInUpBig"
+              },
+              {
+                "value": "flipInX",
+                "label": "flipInX"
+              },
+              {
+                "value": "lightSpeedIn",
+                "label": "lightSpeedIn"
+              },
+              {
+                "value": "slideInUp",
+                "label": "slideInUp"
+              },
+              {
+                "value": "slideInDown",
+                "label": "slideInDown"
+              },
+              {
+                "value": "slideInLeft",
+                "label": "slideInLeft"
+              },
+              {
+                "value": "slideInRight",
+                "label": "slideInRight"
+              },
+              {
+                "value": "zoomIn",
+                "label": "zoomIn"
+              },
+              {
+                "value": "zoomInDown",
+                "label": "zoomInDown"
+              },
+              {
+                "value": "zoomInLeft",
+                "label": "zoomInLeft"
+              },
+              {
+                "value": "zoomInRight",
+                "label": "zoomInRight"
+              },
+              {
+                "value": "zoomInUp",
+                "label": "zoomInUp"
+              },
+              {
+                "value": "jackInTheBox",
+                "label": "jackInTheBox"
+              },
+              {
+                "value": "rollIn",
+                "label": "rollIn"
+              }
+            ]
+          },
+          {
+            "type": "header",
+            "content": "Button"
+          },
+          {
+            "type": "text",
+            "id": "title_link",
+            "label": "Text button"
+          },
+          {
+            "type": "color",
+            "id": "color_cap_link",
+            "label": "Color",
+            "default": "#fff"
+          },
+          {
+            "type": "color",
+            "id": "background_cap_link",
+            "label": "Background button link",
+            "default": "#000"
+          },
+          {
+            "type": "url",
+            "id": "cap_link",
+            "label": "Link button"
+          },
+          {
+            "type": "select",
+            "id": "cap_link_animate",
+            "label": "Button Animate",
+            "options": [
+              {
+                "value": "bounce",
+                "label": "bounce"
+              },
+              {
+                "value": "swing",
+                "label": "swing"
+              },
+              {
+                "value": "wobble",
+                "label": "wobble"
+              },
+              {
+                "value": "bounceIn",
+                "label": "bounceIn"
+              },
+              {
+                "value": "bounceInDown",
+                "label": "bounceInDown"
+              },
+              {
+                "value": "bounceInLeft",
+                "label": "bounceInLeft"
+              },
+              {
+                "value": "bounceInRight",
+                "label": "founceInRight"
+              },
+              {
+                "value": "bounceInUp",
+                "label": "founceInUp"
+              },
+              {
+                "value": "fadeIn",
+                "label": "fadeIn"
+              },
+              {
+                "value": "fadeInDown",
+                "label": "fadeInDown"
+              },
+              {
+                "value": "fadeInDownBig",
+                "label": "fadeInDownBig"
+              },
+              {
+                "value": "fadeInLeft",
+                "label": "fadeInLeft"
+              },
+              {
+                "value": "fadeInLeftBig",
+                "label": "fadeInLeftBig"
+              },
+              {
+                "value": "fadeInRight",
+                "label": "fadeInRight"
+              },
+              {
+                "value": "fadeInRightBig",
+                "label": "fadeInRightBig"
+              },
+              {
+                "value": "fadeInUp",
+                "label": "fadeInUp"
+              },
+              {
+                "value": "fadeInUpBig",
+                "label": "fadeInUpBig"
+              },
+              {
+                "value": "flipInX",
+                "label": "flipInX"
+              },
+              {
+                "value": "lightSpeedIn",
+                "label": "lightSpeedIn"
+              },
+              {
+                "value": "slideInUp",
+                "label": "slideInUp"
+              },
+              {
+                "value": "slideInDown",
+                "label": "slideInDown"
+              },
+              {
+                "value": "slideInLeft",
+                "label": "slideInLeft"
+              },
+              {
+                "value": "slideInRight",
+                "label": "slideInRight"
+              },
+              {
+                "value": "zoomIn",
+                "label": "zoomIn"
+              },
+              {
+                "value": "zoomInDown",
+                "label": "zoomInDown"
+              },
+              {
+                "value": "zoomInLeft",
+                "label": "zoomInLeft"
+              },
+              {
+                "value": "zoomInRight",
+                "label": "zoomInRight"
+              },
+              {
+                "value": "zoomInUp",
+                "label": "zoomInUp"
+              },
+              {
+                "value": "jackInTheBox",
+                "label": "jackInTheBox"
+              },
+              {
+                "value": "rollIn",
+                "label": "rollIn"
+              }
+            ]
+          },
+          {
+            "type": "header",
+            "content": "Caption Position"
+          },
+          {
+            "type": "select",
+            "id": "text_align",
+            "label": "Text align",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "width_position",
+            "label": "Width (%) (in unit 1200px ↑)",
+            "default": "50"
+          },
+          {
+            "type": "text",
+            "id": "width_position_desktop",
+            "label": "Width Desktop (%) (in unit 1199px ↓)",
+            "default": "20"
+          },
+          {
+            "type": "text",
+            "id": "width_position_tablet",
+            "label": "Width Tablet (%) (in unit 991px ↓)",
+            "default": "20"
+          },
+          {
+            "type": "text",
+            "id": "width_position_mobile",
+            "label": "Width Mobile (%) (in unit 767px ↓)",
+            "default": "0"
+          },
+          {
+            "type": "text",
+            "id": "left_position",
+            "label": "Left (%) (in unit 1200px ↑)",
+            "default": "50"
+          },
+          {
+            "type": "text",
+            "id": "left_position_desktop",
+            "label": "Left Desktop (%) (in unit 1199px ↓)",
+            "default": "20"
+          },
+          {
+            "type": "text",
+            "id": "left_position_tablet",
+            "label": "Left Tablet (%) (in unit 991px ↓)",
+            "default": "20"
+          },
+          {
+            "type": "text",
+            "id": "left_position_mobile",
+            "label": "Left Mobile (%) (in unit 767px ↓)",
+            "default": "0"
+          },
+          {
+            "type": "text",
+            "id": "top_position",
+            "label": "Top (%) (in unit 1200px ↑)",
+            "default": "50"
+          },
+          {
+            "type": "text",
+            "id": "top_position_desktop",
+            "label": "Top Desktop (%) (in unit 1199px ↓)",
+            "default": "20"
+          },
+          {
+            "type": "text",
+            "id": "top_position_t",
+            "label": "Top Tablet (%) (in unit 991px ↓)",
+            "default": "50"
+          },
+          {
+            "type": "text",
+            "id": "top_position_m",
+            "label": "Top Mobile (%) (in unit 767px ↓)",
+            "default": "15"
+          },
+          {
+            "type": "text",
+            "id": "top_position_xs",
+            "label": "Top Mobile (%) (in unit 575px ↓)",
+            "default": "10"
+          },
+          {
+            "type": "url",
+            "id": "slider_link",
+            "label": "Slide link"
+          }
+        ]
+      },
+      {
+        "type": "video",
+        "name": "Video Slider",
+        "settings": [
+          {
+            "type": "select",
+            "id": "type_video",
+            "label": "Select Video Type",
+            "options": [
+              {
+                "value": "video_youtobe",
+                "label": "Video Youtube"
+              },
+              {
+                "value": "video_links",
+                "label": "Video Links"
+              }
+            ],
+            "default": "video_links"
+          },
+          {
+            "type": "video_url",
+            "id": "video_url_youtobe",
+            "label": "Video Link Youtube",
+            "accept": ["youtube", "vimeo"],
+            "default": "https:\/\/www.youtube.com\/watch?v=K5w4mgO4NgQ&ab_channel=Stradivarius"
+          },
+          {
+            "type": "url",
+            "id": "video_url_links",
+            "label": "Video link",
+            "info": "Video Link"
+          },
+          {
+            "type": "paragraph",
+            "content": "You can update the file here. [View customers](/admin/settings/files)"
+          }
+        ]
+      }
+    ], 
+    "presets": [{
+      "name": "Vinova Slideshow",
+      "category": "Image",
+      "settings": {
+        "autoplay": true
+      },
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }]
+  }
+{% endschema %}
+
+<style>
+  #shopify-section-{{ section.id }} .distance {
+    padding-top: {{ section.settings.distance_top }};
+    padding-bottom: {{ section.settings.distance_bottom }};
+  }
+  {% for block in section.blocks %}
+    #shopify-section-{{ section.id }} .content-{{ forloop.index }} {
+      left: {{ block.settings.left_position }}%;
+      width: {{ block.settings.width_position }}%;
+    }
+    #shopify-section-{{ section.id }} .content-{{ forloop.index }} .caption-1 {
+      font-size: {{ block.settings.fz_cap1 }}
+    }
+    #shopify-section-{{ section.id }} .content-{{ forloop.index }} .caption-2 {
+      font-size: {{ block.settings.fz_cap2 }}
+    }
+    #shopify-section-{{ section.id }} .content-{{ forloop.index }} .caption-3 {
+      font-size: {{ block.settings.fz_cap3 }}
+    }
+    #shopify-section-{{ section.id }} .content-{{ forloop.index }} .caption-4 {
+      font-size: {{ block.settings.fz_cap4 }}
+    }
+    .lang-rtl .content-{{ forloop.index }} {
+      right: {{ block.settings.left_position }}%;
+    }
+    #shopify-section-{{ section.id }} .content-captiont-{{ forloop.index }} {
+      top: {{ block.settings.top_position }}%;
+    }
+    @media(max-width: 1199px) {
+      #shopify-section-{{ section.id }} .content-{{ forloop.index }} {
+        left: {{ block.settings.left_position_desktop }}%;
+        width: {{ block.settings.width_position_desktop }}%;
+      }
+      .lang-rtl .content-{{ forloop.index }} {
+        right: {{ block.settings.left_position_desktop }}%;
+      }
+      #shopify-section-{{ section.id }} .content-captiont-{{ forloop.index }} {
+        top: {{ block.settings.top_position_desktop }}%;
+      }
+      #shopify-section-{{ section.id }} .content-{{ forloop.index }} .caption-1 {
+        font-size: {{ block.settings.fz_cap1lg }}
+      }
+      #shopify-section-{{ section.id }} .content-{{ forloop.index }} .caption-2 {
+        font-size: {{ block.settings.fz_cap2lg }}
+      }
+      #shopify-section-{{ section.id }} .content-{{ forloop.index }} .caption-3 {
+        font-size: {{ block.settings.fz_cap3lg }}
+      }
+      #shopify-section-{{ section.id }} .content-{{ forloop.index }} .caption-4 {
+        font-size: {{ block.settings.fz_cap4lg }}
+      }
+    }
+    @media(max-width: 991px) {
+      #shopify-section-{{ section.id }} .content-{{ forloop.index }} {
+        left: {{ block.settings.left_position_tablet }}%;
+        width: {{ block.settings.width_position_tablet }}%;
+      }
+      .lang-rtl .content-{{ forloop.index }} {
+        right: {{ block.settings.left_position_tablet }}%;
+      }
+      #shopify-section-{{ section.id }} .content-captiont-{{ forloop.index }} {
+        top: {{ block.settings.top_position_t }}%;
+      }
+      #shopify-section-{{ section.id }} .content-{{ forloop.index }} .caption-1 {
+        font-size: {{ block.settings.fz_cap1t }};
+      }
+      #shopify-section-{{ section.id }} .content-{{ forloop.index }} .caption-2 {
+        font-size: {{ block.settings.fz_cap2t }};
+      }
+      #shopify-section-{{ section.id }} .content-{{ forloop.index }} .caption-3 {
+        font-size: {{ block.settings.fz_cap3t }};
+      }
+      #shopify-section-{{ section.id }} .content-{{ forloop.index }} .caption-4 {
+        font-size: {{ block.settings.fz_cap4t }};
+      }
+    }
+    @media(max-width: 767px) {
+      #shopify-section-{{ section.id }} .content-{{ forloop.index }} {
+        left: {{ block.settings.left_position_mobile }}%;
+        width: {{ block.settings.width_position_mobile }}%;
+      }
+      .lang-rtl .content-{{ forloop.index }} {
+        right: {{ block.settings.left_position_mobile }}%;
+      }
+      #shopify-section-{{ section.id }} .content-captiont-{{ forloop.index }} {
+        top: {{ block.settings.top_position_m }}%;
+      }
+      #shopify-section-{{ section.id }} .content-{{ forloop.index }} .caption-1 {
+        font-size: {{ block.settings.fz_cap1m }};
+      }
+      #shopify-section-{{ section.id }} .content-{{ forloop.index }} .caption-2 {
+        font-size: {{ block.settings.fz_cap2m }};
+      }
+      #shopify-section-{{ section.id }} .content-{{ forloop.index }} .caption-3 {
+        font-size: {{ block.settings.fz_cap3m }};
+      }
+      #shopify-section-{{ section.id }} .content-{{ forloop.index }} .caption-4 {
+        font-size: {{ block.settings.fz_cap4m }};
+      }
+    }
+    @media(max-width: 575px) {
+      #shopify-section-{{ section.id }} .content-{{ forloop.index }} .caption-1 {
+        font-size: {{ block.settings.fz_cap1mb }};
+      }
+      #shopify-section-{{ section.id }} .content-{{ forloop.index }} .caption-2 {
+        font-size: {{ block.settings.fz_cap2mb }};
+      }
+      #shopify-section-{{ section.id }} .content-{{ forloop.index }} .caption-3 {
+        font-size: {{ block.settings.fz_cap3mb }};
+      }
+      #shopify-section-{{ section.id }} .content-{{ forloop.index }} .caption-4 {
+        font-size: {{ block.settings.fz_cap4mb }};
+      }
+      #shopify-section-{{ section.id }} .content-captiont-{{ forloop.index }} {
+        top: {{ block.settings.top_position_xs }}%;
+      }
+    }
+  {% endfor %}
+  @media (min-width: 1200px) {
+    #shopify-section-{{ section.id }} .slideshow .main-slider {
+      height: {{ section.settings.height_slideshow_large_desktop }}; 
+    }
+    #shopify-section-{{ section.id }} .slideshow .slick-slide {
+      height: {{ section.settings.height_slideshow_large_desktop }};
+    }
+    #shopify-section-{{ section.id }} .slideshow video {
+      min-height: {{ section.settings.height_slideshow_large_desktop }};
+      object-fit: cover;
+    }
+  }
+  @media (min-width: 1441px) {
+    #shopify-section-{{ section.id }} .slideshow .main-slider {
+      height: {{ section.settings.height_slideshow_larges_desktop }}; 
+    }
+    #shopify-section-{{ section.id }} .slideshow .slick-slide {
+      height: {{ section.settings.height_slideshow_larges_desktop }};
+    }
+    #shopify-section-{{ section.id }} .slideshow video {
+      min-height: {{ section.settings.height_slideshow_larges_desktop }};
+      object-fit: initial;
+    }
+  }
+  @media (max-width: 1199px) {
+    #shopify-section-{{ section.id }} .slideshow .main-slider {
+      height: {{ section.settings.height_slideshow_desktop }}; 
+    }
+    #shopify-section-{{ section.id }} .slideshow .slick-slide {
+      height: {{ section.settings.height_slideshow_desktop }};
+    }
+    #shopify-section-{{ section.id }} .slideshow video {
+      min-height: {{ section.settings.height_slideshow_desktop }};
+      object-fit: cover;
+    }
+  }
+  @media (max-width: 991px) {
+    #shopify-section-{{ section.id }} .slideshow .main-slider {
+      height: {{ section.settings.height_slideshow_tablet }}; 
+    }
+    #shopify-section-{{ section.id }} .slideshow .slick-slide {
+      height: {{ section.settings.height_slideshow_tablet }};
+    }
+    #shopify-section-{{ section.id }} .slideshow video {
+      min-height: {{ section.settings.height_slideshow_tablet }};
+      object-fit: cover;
+    }
+  }
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .slideshow .main-slider {
+      height: {{ section.settings.height_slideshow_mobile }}; 
+    }
+    #shopify-section-{{ section.id }} .slideshow .slick-slide {
+      height: {{ section.settings.height_slideshow_mobile }};
+    }
+    #shopify-section-{{ section.id }} .slideshow video {
+      min-height: {{ section.settings.height_slideshow_mobile }};
+      object-fit: cover;
+    }
+  }
+  @media (max-width: 575px) {
+    #shopify-section-{{ section.id }} .slideshow .main-slider {
+      height: {{ section.settings.height_slideshow_mobile_small }}; 
+    }
+    #shopify-section-{{ section.id }} .slideshow .slick-slide {
+      height: {{ section.settings.height_slideshow_mobile_small }};
+    }
+    #shopify-section-{{ section.id }} .slideshow video {
+      min-height: {{ section.settings.height_slideshow_mobile_small }};
+      object-fit: cover;
+    }
+  }
+</style>

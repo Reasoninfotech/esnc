@@ -1,0 +1,398 @@
+{% if template == "product.tabdesc" %}
+  {% assign viewtype = 'type1' %}
+{% elsif template == "product.thumb_grid" %}
+  {% assign viewtype = 'type2' %}
+{% elsif template == "product.thumbleft" %}
+  {% assign viewtype = 'type3' %}
+{% elsif template == "product.thumb_all" %}
+  {% assign viewtype = 'type4' %}
+{% elsif template == "product.thumb_vertical" %}
+  {% assign viewtype = 'type5' %}
+{% elsif template == "product.nothumb" %}
+  {% assign viewtype = 'type6' %}
+{% else %}
+  {% if settings.type_sidebar_product == 'tab_desc' %}
+    {% assign viewtype = 'type1' %}
+  {% elsif settings.type_sidebar_product == 'thumb_grid' %}
+    {% assign viewtype = 'type2' %}
+  {% elsif settings.type_sidebar_product == 'thumb_left' %}
+    {% assign viewtype = 'type3' %}
+  {% elsif settings.type_sidebar_product == 'thumb_all' %}
+    {% assign viewtype = 'type4' %}
+  {% elsif settings.type_sidebar_product == 'thumb_vertical' %}
+    {% assign viewtype = 'type5' %}
+  {% elsif settings.type_sidebar_product == 'thumb_none' %}
+    {% assign viewtype = 'type6' %}
+  {% endif %}
+{% endif %}
+{% if template == "product.nothumb" or settings.type_sidebar_product == 'thumb_none' %}
+<div class=" nothumb">
+{% endif %}
+  {% include 'nov-breadcrumb' %}
+<div class="product-template__container{% if settings.breadcrumbs_enable %} product_mt{% endif %}{% if viewtype =='type1' %} tabdesc{% elsif viewtype =='type2' %} thumb_grid mt-80{% elsif viewtype =='type3' %} thumb_left{% elsif viewtype =='type4' %} thumb_all{% elsif viewtype =='type5' %} thumb_vertical{% else %} thumb_none{% endif %}"
+itemscope itemtype="http://schema.org/Product" id="ProductSection-{{ section.id }}" data-section-id="{{ section.id }}" data-enable-history-state="true" data-type="product-template" data-wishlist-product>
+  <meta itemprop="name" content="{{ product.title }}">
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+  <meta itemprop="image" content="{{ product.featured_image.src | img_url: '800x' }}">
+  {% assign variantCount = product.variants | size %}
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+
+  {%- assign product_image = '1120x' -%}
+  {% comment %}
+  {% if viewtype =='type1' %}
+    {% include 'product-template-tab-desc' %}
+  {% elsif viewtype =='type2' %}
+    {% include 'product-template-thumb-grid' %}
+  {% elsif viewtype =='type3' %}
+    {% include 'product-template-thumb-left' %}
+  {% elsif viewtype =='type4' %}
+    {% include 'product-template-thumb-all' %}
+  {% elsif viewtype =='type5' %}
+    {% include 'product-template-thumb-vertical' %}
+  {% else viewtype =='type6' %}
+    {% include 'product-template-no-thumb' %}
+  {% endif %}
+  {% endcomment %}
+  {% include 'bundle-product-template-tab-desc' %}
+
+  {% comment %}
+    {% if settings.show_rating %}
+      <div id="ProductSignleReview" class="product-single__review pb-100 pt-100" style="background: {{ section.settings.bg_review }};">
+        <div class="container">
+          {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %}
+        </div>
+      </div>
+    {% endif %}
+  
+
+    {% if settings.show_related %}
+      <div class="BottomContent">
+        <div class="container_90">
+          {% include 'nov-related' %}
+        </div>
+      </div>
+    {% endif %}
+    {% endcomment %}
+  </div>
+
+  {% unless product == empty %}
+    <script type="application/json" id="ProductJson-{{ section.id }}">
+      {{ product | json }}
+    </script>
+  {% endunless %}
+{% if template == "product.nothumb" or settings.type_sidebar_product == 'thumb_none' %}
+</div>
+{% endif %}
+{% for block in section.blocks %}
+{% if block.type == 'block_img' and block.settings.custom_content != blank %}
+  <div class="nov-modal__block-image modal fade" id="ImageModal{{ forloop.index }}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <img src="{{ block.settings.custom_content | img_url: '1170x' }}" alt="{{ block.settings.custom_content.alt }}">
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+{% endfor %}
+<script>
+  // Override default values of shop.strings for each template.
+  // Alternate product templates can change values of
+  // add to cart button, sold out, and unavailable states here.
+  theme.productStrings = {
+    addToCart: {{ 'products.product.add_to_cart' | t | json }},
+    soldOut: {{ 'products.product.sold_out' | t | json }},
+    unavailable: {{ 'products.product.unavailable' | t | json }}
+  }
+
+  var selectCallbackProduct = function(variant, selector) {
+    novtheme.productPage({
+      money_format: theme.moneyFormat,
+      variant: variant,
+      selector: selector
+    })
+  };
+
+  $(document).ready(function() {
+    {% if product.available and product.variants.size > 0 %}
+      new Shopify.OptionSelectors('productSelect', {
+        product: {{ product | json }},
+        onVariantSelected: selectCallbackProduct,
+        enableHistoryState: true
+      });
+
+      Shopify.linkOptionSelectors({{ product | json }});
+    {% endif %}
+
+    // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
+    {% if product.options.size == 1 and product.options.first != 'Title' %}
+      $('.selector-wrapper:eq(0)').prepend('<label for="productSelect-option-0">{{ product.options.first | escape }}</label>');
+    {% endif %}
+
+    // Hide selectors if we only have 1 variant and its title contains 'Default'.
+    {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+      $('.selector-wrapper').hide();
+    {% endif %}
+
+    // Auto-select first available variant on page load. Otherwise the product looks sold out.
+    {% assign found_one_in_stock = false %}
+    {% for variant in product.variants %}
+      {% if variant.available and found_one_in_stock == false %}
+        {% assign found_one_in_stock = true %}
+        {% for option in product.options %}
+        $('.single-option-selector:eq({{ forloop.index0 }})').val({{ variant.options[forloop.index0] | json }}).trigger('change');
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+    var json_product = {{ product | json }};
+  });
+</script>
+
+{% render 'product-schema' %}
+
+{% schema %}
+  {
+    "name": "Product pages",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_notes",
+        "label": "Show Notes",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_quantity_selector",
+        "label": "Show Quantity Selector",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "product_swatch_enable",
+        "label": "Enable Swatch",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_share",
+        "label": "Show Share",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show Vendor",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_sku",
+        "label": "Show Sku",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_categories",
+        "label": "Show Categories",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_tags",
+        "label": "Show Tags",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_available",
+        "label": "Show Available",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_des",
+        "label": "Show Summary Description",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_zoom",
+        "label": "Enable Image Zoom",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "bg_review",
+        "label": "Background Block Review",
+        "default": "#f1f1f1"
+      },
+      {
+        "type": "header",
+        "content": "Accordion"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_description",
+        "label": "Show Description",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_payments",
+        "label": "Show Payments",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "title_payments",
+        "label": "Title payments",
+        "default": "Guaranteed safe checkout:"
+      },
+      {
+        "type": "text",
+        "id": "size_title",
+        "label": "Size Title",
+        "default": "10px"
+      },
+      {
+        "type": "color",
+        "id": "color_title_payments",
+        "label": "Color Title",
+        "default": "#222"
+      },
+      {
+        "type": "image_picker",
+        "id": "payments",
+        "label": "Upload Image Payments"
+      },
+      {
+        "type": "text",
+        "id": "time",
+        "label": "Ship Time",
+        "default": "Orders ship within 5 to 10 business days."
+      },
+      {
+        "type": "text",
+        "id": "size_time",
+        "label": "Size",
+        "default": "12px"
+      },
+      {
+        "type": "color",
+        "id": "color_time",
+        "label": "Color",
+        "default": "#494949"
+      },
+      {
+        "type": "text",
+        "id": "truck",
+        "label": "Transport",
+        "default": "Hoorey ! This item ships free to the US"
+      },
+      {
+        "type": "text",
+        "id": "size_truck",
+        "label": "Size",
+        "default": "12px"
+      },
+      {
+        "type": "color",
+        "id": "color_truck",
+        "label": "Color",
+        "default": "#494949"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color Tab"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block_text",
+        "name": "Block Text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "custom_title",
+            "label": "Block Title"
+          },
+          {
+            "type": "textarea",
+            "id": "custom_content",
+            "label": "Block content"
+          }
+        ]
+      },
+      {
+        "type": "block_img",
+        "name": "Block Image",
+        "settings": [
+          {
+            "type": "text",
+            "id": "custom_title",
+            "label": "Block Title"
+          },
+          {
+            "type": "image_picker",
+            "id": "custom_content",
+            "label": "Image"
+          }
+        ]
+      },
+      {
+        "type": "block_video",
+        "name": "Block Video",
+        "settings": [
+          {
+            "type": "text",
+            "id": "custom_title",
+            "label": "Block Title"
+          },
+          {
+            "type": "video_url",
+            "id": "video_url",
+            "label": "Video link",
+            "accept": ["youtube", "vimeo"],
+            "info": "Only For Youtube And Vimeo"
+          }
+        ]
+      },
+      {
+        "type": "block_icons",
+        "name": "Block icons",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "custom_icon1",
+            "label": "Icon 1"
+          },
+          {
+            "type": "image_picker",
+            "id": "custom_icon2",
+            "label": "Icon 2"
+          },
+          {
+            "type": "image_picker",
+            "id": "custom_icon3",
+            "label": "Icon 3"
+          },
+          {
+            "type": "image_picker",
+            "id": "custom_icon4",
+            "label": "Icon 4"
+          },
+          {
+            "type": "image_picker",
+            "id": "custom_icon5",
+            "label": "Icon 5"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

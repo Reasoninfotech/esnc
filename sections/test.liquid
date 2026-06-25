@@ -1,0 +1,32 @@
+{% schema %}
+{
+  "name": "Test",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "fullimage",
+      "label": "Image"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link URL"
+    } 
+  ],
+  "presets": [
+    {
+      "name": "Test",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="full-image-withlink">
+  <picture>
+        <source srcset="//esnc.com.au/cdn/shop/files/Boxingday_768x.webp?v=1735042779" media="(max-width: 768px)">
+        <source srcset="//esnc.com.au/cdn/shop/files/Boxingday_1024x.webp?v=1735042779" media="(min-width: 769px) and (max-width: 1200px)">
+        <img fetchpriority="high" decoding="async" src="//esnc.com.au/cdn/shop/files/Boxingday_2048x.webp?v=1735042779" alt="Banner Image" width="19020" height="641" style="max-width: 100%; height: auto; width:100%;">
+      </picture>
+</div>
+

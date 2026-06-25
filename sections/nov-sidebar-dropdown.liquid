@@ -1,0 +1,570 @@
+{% if settings.type_sidebar != 'sidebar_hidden' %}
+  <div class="block_groups">
+    {% for block in section.blocks %}
+      {% if block.type == 'block_categories' %}
+        {% assign NovCategories = block.settings.sidebar_categories_menu %}
+        <div class="sidebar-block categories__sidebar sidebar-block__{{ forloop.index }} {{ block.settings.sidebar_categories_class }}">
+          <div class="title-block dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span>{{ block.settings.sidebar_categories_title }}</span>
+          </div>
+          {% if linklists[NovCategories] != empty %}
+            <div class="block__content dropdown-menu">
+              {% for link in linklists[NovCategories].links %}
+                {%- assign three_level_nav = false -%}
+                {%- assign child_list_handle = link.title | handleize -%}
+    
+                {% if linklists[child_list_handle].links != blank %}
+                  {% for childlink in linklists[child_list_handle].links %}
+                    {% assign grand_child_list_handle = childlink.title | handleize %}
+                    {% if linklists[grand_child_list_handle].links != blank %}
+                    {%- assign three_level_nav = true -%}
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+    
+                {% if linklists[child_list_handle].links != blank %}
+                  <div class="cateTitle hasSubCategory open level1">
+                    <span class="arrow collapsed" data-toggle="collapse" data-target="#subCategory-{{ child_list_handle }}" aria-expanded="true"></span>
+                    <a class="cateItem {% if link.active %}active{% endif %}" href="{{ link.url }}">{{ link.title }}</a>
+                    <div class="subCategory collapse" id="subCategory-{{ child_list_handle }}" aria-expanded="true">
+                      {% for childlink in linklists[child_list_handle].links %}
+                        {% assign grand_child_list_handle = childlink.title | handle %}
+                        {% if linklists[grand_child_list_handle].links != blank %}
+                          <div class="cateTitle hasSubCategory level2">
+                            <span class="arrow collapsed" data-toggle="collapse" data-target="#subCategory-{{ grand_child_list_handle }}"aria-expanded="true"></span>
+                            <a class="cateItem {% if childlink.active %}active{% endif %}" href="{{ childlink.url }}">{{ childlink.title }}</a>
+                            <div class="subCategory collapse" id="subCategory-{{ grand_child_list_handle }}" aria-expanded="true">
+                              {% for grandchildlink in linklists[grand_child_list_handle].links %}
+                                <div class="cateTitle">
+                                  <a href="{{ grandchildlink.url }}" class="cateItem{% if grandchildlink.active %} active{% endif %}{% if forloop.last %} cateItem--last{% endif %}">{{ grandchildlink.title | escape }}</a>
+                                </div>
+                              {% endfor %}
+                            </div>
+                          </div>
+                        {% else %}
+                          <div class="cateTitle">
+                            <a href="{{ childlink.url }}" class="cateItem{% if childlink.active %} active{% endif %}{% if forloop.last %} cateItem--last{% endif %}">{{ childlink.title | escape }}</a>
+                          </div>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                  </div>
+                {% else %}
+                  <div class="cateTitle">
+                    <a class="cateItem {% if link.active %}active{% endif %}" href="{{ link.url }}">{{ link.title }}</a>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    
+      {% if block.type == 'block_productlist' %}
+        {%- assign collection = collections[block.settings.sidebar_collection] -%}
+        {% if collection.products.size > 0 %}
+        <div class="sidebar-block productlist__sidebar sidebar-block__{{ forloop.index }} {{ block.settings.sidebar_categories_class }}">
+          <div class="title-block">
+            <span>{{ block.settings.sidebar_productlist_title }}</span>
+          </div>
+          {% for product in collection.products limit: block.settings.number_show %}
+            <div class="item-product{% unless product.available %} product-price--sold-out{% endunless %}{% if forloop.last != true %} mb-5{% endif %} d-flex">
+              <div class="thumbnail-container">
+                <a href="{{ product.url | within: collection }}">
+                  <img class="img-fluid product__thumbnail lazyload" data-src="{{ product.featured_image | product_img_url: '85x' }}" alt="{{ product.featured_image.alt | escape }}">
+                  {% for image in product.images %}
+                    {% if forloop.first != true %}
+                        <img class="img-fluid product__thumbnail-second lazyload" data-src="{{ image.src | product_img_url: '85x' }}" alt="{{ product.featured_image.alt | escape }}">
+                        {% break %}
+                    {% endif %}
+                  {% endfor %}
+                </a>
+              </div>
+    
+              <div class="product__info ml-15">
+                <div class="product__title"><a href="{{ product.url | within: collection }}">{{ product.title }}</a></div>
+                {% if settings.show_rating %}
+                <div class="product__review">
+                  {% render 'judgeme_widgets'
+                    , widget_type: 'judgeme_preview_badge'
+                    , jm_style: ''
+                    , concierge_install: true
+                    , product: product %}
+                </div>
+                {% endif %}
+                <div class="product__price">
+                  {% include 'product-price' %}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      {% endif %}
+    
+      {% if block.type == 'block_recentpost' %}
+        <div class="sidebar-block recentpost__sidebar sidebar-block__{{ forloop.index }} {{ block.settings.block_class }}">
+            {% if block.settings.block_title != blank %}
+            <div class="title-block">
+              <span>{{ block.settings.block_title }}</span>
+            </div>
+            {% endif %}
+            {% if block.settings.number_show != blank %}
+              {% assign numberLimit = block.settings.number_show %}
+              <div class="block__content">
+                <div>
+                {% for article in blogs.news.articles limit: numberLimit %}
+                  <div class="post-item">
+                    <div class="post__title">{{ article.title | link_to: article.url }}</div>
+                    <div class="post__info">
+                      {% if block.settings.show_comment %}
+                        {% if blog.comments_enabled? %}
+                          <span class="post__countcomment">
+                            <i class="zmdi zmdi-comments"></i>{{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}
+                          </span>
+                        {% endif %}
+                      {% endif %}
+                      {% if block.settings.show_date %}
+                        <span class="post__date text-uppercase">
+                          <i class="zmdi zmdi-calendar-note"></i>{{ article.published_at | time_tag: '%d %b, %Y' }}
+                        </span>
+                      {% endif %}
+    
+                      {% if block.settings.show_author %}
+                        <span class="article__author"><i class="zmdi zmdi-account"></i>{{ 'blogs.article.by_author' | t: author: article.author }}</span>
+                      {% endif %}
+                    </div>
+                    <div class="post__excerpt">
+                      {% if article.excerpt.size > 0 %}
+                        {{ article.excerpt }}
+                      {% else %}
+                        {{ article.content | strip_html | truncate: 100 }}
+                      {% endif %}
+                    </div>
+                    <div class="read_more">{{ 'blogs.article.view_more' | t | link_to: article.url }}</div>
+                  </div>
+                {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+        </div>
+      {% endif %}
+    
+      {% if block.type == 'block_producttags' %}
+        <div class="sidebar-block producttags__sidebar sidebar-block__{{ forloop.index }} {{ block.settings.block_class }}">
+            {% if block.settings.block_title != blank %}
+            <div class="title-block">
+              <span>{{ block.settings.block_title }}</span>
+            </div>
+            {% endif %}
+            {% if block.settings.number_show != blank %}
+              {% assign collection = collections.all %}
+              {% paginate collection.products by 1000 %} 
+              <div class="block__content">
+                {% assign numberLimit = block.settings.number_show %}
+                <ul class="listSidebarBlog list-unstyled">
+                  {% for tag in collection.tags limit:numberLimit %}
+                    <li>{{ tag | link_to_tag: tag }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+              {% endpaginate %}
+            {% endif %}
+        </div>
+      {% endif %}
+    
+      {% if block.type == 'block_banner' %}
+        <div class="sidebar-block sidebar-block__{{ forloop.index }} {{ block.settings.banner_class }}">
+            {% if block.settings.banner_title != blank %}
+            <div class="title-block">
+              <span>{{ block.settings.banner_title }}</span>
+            </div>
+            {% endif %}
+            {% if block.settings.banner_image != blank %}
+              <div class="block__content">
+                <img class="lazyload" data-src="{{ block.settings.banner_image | img_url: 'original' }}" alt="{% if block.settings.banner_title != blank %}{{ block.settings.banner_title }}{% else %}banner sidebar{% endif %}">
+              </div>
+            {% endif %}
+        </div>
+      {% endif %}
+    
+      {% if block.type == 'block_filter' %}
+        <div id="novSidebarAjaxFilter" class="sidebar-block sidebar-block__{{ forloop.index }} {{ block.settings.banner_class }}">
+          {% if block.settings.block_title != blank %}
+          <div class="title-block">
+            <span>{{ block.settings.block_title }}</span>
+          </div>
+          {% endif %}
+          <div class="block__content">
+            <div class="list-filter-selected">
+              <div class="filter-item_title align-items-center {% if noFilter %}{% endif %}">
+                <a href="#" class="novClearAll ml-auto">{{ 'collections.filters.clear_all' | t }}</a>
+              </div>
+            </div>
+            <div class="list-filter">
+              
+              {% if block.settings.filter_tags == true %}
+                {% if current_tags == blank %}
+                  {% assign noFilter = true %}
+                {% else %}
+                  {% assign noFilter = false %}
+                {% endif %}
+              <div class="filter-item filter-tags">
+                <div class="filter-item_title dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span>{{ 'collections.filters.filter_tags' | t }}</span>
+                </div>
+                <div class="filter-item_content dropdown-menu">
+                  <ul class="list-unstyled{% if collection.tags.size > 5 %} facet-hasscroll{% endif %}">
+                    {% if block.settings.filter_size == true %}
+                      {% assign data_sizes = block.settings.filter_size_value | split: ', ' %}
+                    {% else %}
+                         {% assign data_sizes = "X,XL,M,L,S" | split: ',' %}
+                    {% endif %}
+                    {% if block.settings.filter_color == true %}
+                      {% assign data_colors = block.settings.filter_color_value | split: ', ' %}
+                    {% else %}
+                      {% assign data_colors = "White,Black,Blue,Red,Green" | split: ',' %}
+                    {% endif %}
+                    {% assign excluded_tags = data_sizes | concat:data_colors %}
+                    {% for tag in collection.tags %}
+                    {% unless excluded_tags contains tag %}
+                      {% assign tagCount = 0 %}
+                      {% for product in collection.products %}
+                        {% for productTag in product.tags %}
+                          {% if productTag == tag %}
+                             {% assign tagCount = tagCount | plus: 1 %}
+                          {% endif %}
+                        {% endfor %}
+                      {% endfor %}
+                      <li data-tag="{{ tag | handleize }}">
+                        <span class="custom-checkbox"></span>
+                        <span class="filter-option-value">{{ tag }}</span>
+                        <span class="filter-option-amount">({{ tagCount }})</span>
+                      </li>
+                    {% endunless %}
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+              {% endif %}
+    
+              {% if block.settings.filter_price == true %}
+                <div class="filter-item filter-price">
+                  <div class="filter-item_title dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span>{{ 'collections.filters.filter_price' | t }}</span>
+                  </div>
+                  <div class="filter-item_content dropdown-menu">
+                    <div id="nov_slider_price" data-min="{{ block.settings.price_min }}" data-max="{{ block.settings.price_max }}"></div>
+                    <div class="price-input">
+                      <input class="input-text text-price-filter d-none" id="price-filter-min-text" type="text" value="{{ block.settings.price_min }}">
+                      <input class="input-text text-price-filter d-none" id="price-filter-max-text" type="text" value="{{ block.settings.price_max }}">
+                      <span>{{ 'collections.filters.filter_price_range' | t }}</span>
+                      <span class="input-text text-price-filter" id="text-price-filter-min-text">{{ block.settings.price_min }}</span> -
+                      <span class="input-text text-price-filter" id="text-price-filter-max-text">{{ block.settings.price_max }}</span>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+    
+              {% if block.settings.filter_color == true %}
+                <div class="filter-item filter-color">
+                  <div class="filter-item_title dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span>{{ 'collections.filters.filter_color' | t }}</span>
+                  </div>
+                  {% assign colors = block.settings.filter_color_value | split: ', ' %}
+                  <div class="filter-item_content dropdown-menu">
+                    <ul class="list-inline">
+                      {% for color in colors %}
+                      <li class="list-inline-item" data-value="{{ color | handleize }}">
+                        <span class="custom-checkbox" style="background-color: {{ color | handleize }}"></span>
+                      </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+              {% endif %}
+    
+              {% if block.settings.filter_size == true %}
+                <div class="filter-item filter-size">
+                  <div class="filter-item_title dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span>{{ 'collections.filters.filter_size' | t }}</span>
+                  </div>
+                  {% assign sizes = block.settings.filter_size_value | split: ', ' %}
+                  <div class="filter-item_content dropdown-menu">
+                    <ul class="list-inline">
+                      {% for size in sizes %}
+                      <li class="list-inline-item" data-value="{{ size | handleize }}">
+                        <span class="filter-option-value">{{ size }}</span>
+                      </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Sidebar Collection",
+    "settings": [
+        
+    ],
+    "blocks": [
+      {
+        "type": "block_categories",
+        "name": "Categories Product",
+        "settings": [
+          {
+            "type": "text",
+            "id": "sidebar_categories_title",
+            "label": "Title",
+            "default": "Categories"
+          },
+          {
+            "type": "text",
+            "id": "sidebar_categories_class",
+            "label": "Class"
+          },
+          {
+            "type": "link_list",
+            "id": "sidebar_categories_menu",
+            "label": "Choose Menu",
+            "info": "Choose menu for block. Add new menu: Admin -> Navigation"
+          }
+        ]
+      },
+      {
+        "type": "block_productlist",
+        "name": "Product list",
+        "settings": [
+          {
+            "type": "text",
+            "id": "sidebar_productlist_title",
+            "label": "Title",
+            "default": "Product List"
+          },
+          {
+            "type": "text",
+            "id": "sidebar_productlist_class",
+            "label": "Class"
+          },
+          {
+            "type": "collection",
+            "id": "sidebar_collection",
+            "label": "Choose Collection",
+            "info": "Choose Collection for block. Add new menu: Admin -> Collection"
+          },
+          {
+            "type": "range",
+            "id": "number_show",
+            "min": 2,
+            "max": 10,
+            "step": 1,
+            "label": "Number Show",
+            "default": 3,
+            "info": "Select number product show"
+          }
+        ]
+      },
+      {
+        "type": "block_html",
+        "name": "Block Custom HTML",
+        "settings": [
+          {
+            "type": "text",
+            "id": "block_title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "block_class",
+            "label": "Class"
+          },
+          {
+             "type": "textarea",
+             "id": "html_content",
+             "label": "Content",
+             "placeholder": "You can input code html for content.",
+             "info": "You can input code html for content."
+          }
+        ]
+      },
+      {
+        "type": "block_recentpost",
+        "name": "Block Recent Post",
+        "settings": [
+          {
+            "type": "text",
+            "id": "block_title",
+            "label": "Title",
+            "default": "Recent post"
+          },
+          {
+            "type": "text",
+            "id": "block_class",
+            "label": "Class"
+          },
+          {
+            "type": "range",
+            "id": "number_show",
+            "min": 2,
+            "max": 10,
+            "step": 1,
+            "label": "Number Show",
+            "default": 2,
+            "info": "Select number post show"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_date",
+            "label": "Show date",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "show_comment",
+            "label": "Show Comment",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "show_author",
+            "label": "Show Author",
+            "default": false
+          }
+        ]
+      },
+      {
+        "type": "block_producttags",
+        "name": "Block Product Tags",
+        "settings": [
+          {
+            "type": "text",
+            "id": "block_title",
+            "label": "Title",
+            "default": "Product Tags"
+          },
+          {
+            "type": "text",
+            "id": "block_class",
+            "label": "Class"
+          },
+          {
+            "type": "range",
+            "id": "number_show",
+            "min": 10,
+            "max": 20,
+            "step": 1,
+            "label": "Number Show",
+            "default": 10,
+            "info": "Select number tags show"
+          }
+        ]
+      },
+      {
+        "type": "block_banner",
+        "name": "Block Banner",
+        "settings": [
+          {
+            "type": "text",
+            "id": "banner_title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "banner_class",
+            "label": "Class"
+          },
+          {
+            "type": "image_picker",
+            "id": "banner_image",
+            "label": "Banner image"
+          },
+          {
+            "id": "banner_link",
+            "type": "url",
+            "label": "Banner button link"
+          }
+        ]
+      },
+      {
+        "type": "block_filter",
+        "name": "Block Filter",
+        "settings": [
+          {
+            "type": "text",
+            "id": "block_title",
+            "label": "Title",
+            "default": "Block Filter"
+          },
+          {
+            "type": "text",
+            "id": "block_class",
+            "label": "Class"
+          },
+          {
+            "type": "header",
+            "content": "Content Filter",
+            "info": "Content Filter"
+          },
+          {
+            "type": "checkbox",
+            "id": "filter_tags",
+            "label": "Filter Product Tags",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "filter_size",
+            "label": "Filter Product Size",
+            "default": true
+          },
+          {
+            "type": "text",
+            "id": "filter_size_value",
+            "label": "Value Size",
+            "info": "Example: S, XS, M, L, XL",
+            "default": "S, XS, M, L, XL"
+          },
+          {
+            "type": "checkbox",
+            "id": "filter_color",
+            "label": "Filter Product Color",
+            "default": true
+          },
+          {
+            "type": "text",
+            "id": "filter_color_value",
+            "label": "Value Color",
+            "info": "Example: Black, Blue, White, Red, Yellow",
+            "default": "Black, Blue, White, Red, Yellow"
+          },
+          {
+            "type": "checkbox",
+            "id": "filter_price",
+            "label": "Filter Product Price",
+            "default": true
+          },
+          {
+            "type": "text",
+            "id": "price_min",
+            "label": "Price Min",
+            "default": "0"
+          },
+          {
+            "type": "text",
+            "id": "price_max",
+            "label": "Price Max",
+            "default": "100"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

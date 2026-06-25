@@ -1,0 +1,16 @@
+<form action="/search" method="get" class="search-header-inline search" role="search">
+  <input type="hidden" name="type" value="product">
+  <input class="search-header__input"
+    type="search"
+    name="q"
+    placeholder="{{ 'general.search.placeholder' | t }}"
+    id="mobile-predictive-search-input"
+    aria-label="{{ 'general.search.title' | t }}">
+  <button class="search-header__submit text-center btn--link" type="submit" aria-label="search">
+    <span class="site-header__search-icon">
+      <i class="icon_search d-none d-md-block"></i>
+      <i class="zmdi zmdi-search d-md-none"></i>
+      <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
+    </span>
+  </button>
+</form>

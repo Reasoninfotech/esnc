@@ -1,0 +1,591 @@
+<div class="TopContent Rana">
+  <div class="container_90">
+    <div class="product_tab">
+      <div class="container_1320">
+        <div class="product-single row">
+          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <div class="product-single__photos bg_af pro_sticky">
+              <div class="proFeaturedImage FeaturedImage_slick">
+                {%- for media in product.media -%}
+                  {% case media.media_type %}
+                    {% when 'image' %}
+                      <div class="item" data-image_src="{{ media | img_url: '1120x' }}">
+                        <a class="w-100 d-flex" href="javascript:void(0)" class="product-single__thumbnail">
+                          <img class="img-fluid w-100{% if section.settings.enable_zoom == true %} image-zoom{% endif %}" src="{{ media | img_url: product_image }}" alt="{{ media.alt | escape }}"/>
+                        </a>
+                      </div>
+                    {% when 'external_video' %}
+                      <div class="item embed-responsive embed-responsive-16by9{% if forloop.first == true %} act{% endif %}">
+                        {{ media | external_video_tag }}
+                      </div>
+                    {% when 'video' %}
+                      <div class="item{% if forloop.first == true %} act{% endif %}">
+                        {{ media | video_tag: controls: true, image_size: "1024x" }}
+                      </div>
+                    {% when 'model' %}
+                      <div class="item{% if forloop.first == true %} act{% endif %}">
+                        {{ media | model_viewer_tag }}
+                      </div>
+                    {% else %}
+                      <div class="item{% if forloop.first == true %} act{% endif %}">
+                        {{ media | media_tag }}
+                      </div>
+                  {% endcase %}
+                {%- endfor -%}
+              </div>
+
+              {% if product.images.size > 0 %}
+                <div id="productThumbs" class="mt-10">
+                  <div class="thumblist thumb_slick"
+                    data-autoplay="false"
+                    data-autoplaytimeout="6000"
+                    data-loop="false"
+                    data-dots="false"
+                    data-nav="false"
+                    data-items="5"
+                    data-items_lg="4"
+                    data-items_md="5"
+                    data-items_sm="4"
+                    data-items_xs="3">
+                    {%- for media in product.media -%}
+                      <div class="item thumbItem{% if forloop.first == true %} active{% endif %}">
+                        <a href="javascript:void(0)" data-image="{{ media.preview_image | img_url: product_image }}" class="product-single__thumbnail">
+                          <img class="product-single__thumbnail-image" src="{{ media.preview_image | img_url: '130x130', crop: 'center' }}" alt="{{ media.alt | escape }}">
+                          {%- if media.media_type == 'video' or media.media_type =='external_video' -%}
+                            <div class="product-single__thumbnail-badge position-absolute">
+                              <i class="zmdi zmdi-play-circle-outline"></i>
+                            </div>
+                          {%- endif -%}
+                        </a>
+                      </div>
+                    {%- endfor -%}
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="block_information col-lg-6 col-md-12 col-sm-12 col-xs-12 mt-xs-30">
+            <div class="info_content pro_sticky">
+              <h1 itemprop="name" class="product-single__title">{{ product.title }}</h1>
+              <div class="product-single__meta bundle_single_product">
+                {% if settings.show_rating %}
+                      <div itemprop="aggregateRating" itemscope="" itemtype="https://schema.org/AggregateRating">
+                        <meta itemprop="ratingValue" content="{{ product.metafields.judgeme.average_rating }}">
+                        <meta itemprop="reviewCount" content="{{ product.metafields.judgeme.review_count }}">
+                      </div>
+                  {% endif %}
+                <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                  <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+                  <meta itemprop="priceValidUntil" content="2026-12-30">
+                  <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+                  {% if settings.show_rating %}
+                    <div class="group-reviews has-border d-flex align-items-center">
+                      <div class="detail-reviews">
+                        {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false, product: product %}
+                        <!-- <a href="#ProductSignleReview" class="btn-review__all">{{ 'products.product.review_all_btn' | t }}</a> -->
+                      </div>
+                    </div>
+                  {% endif %}
+                  <div class="gr_pr_rw d-flex align-items-center">
+                    <p class="{{ current_variant.compare_at_price }} {{ current_variant.price }} product-single__price product-single__price-{{ section.id }}{% unless current_variant.available %} product-price--sold-out{% endunless %} d-flex align-items-center">
+                      {% if current_variant.compare_at_price > current_variant.price %}
+                        <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+                        <span class="product-price__price product-price__price-{{ section.id }} product-price__sale product-price__sale--single">
+                          <span id="ProductPrice-{{ section.id }}"
+                            itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}" class="price-product-template money mr-10">
+                            {{ current_variant.price | money }}
+                          </span>
+                          <span class="money product-price__sale-label product-price__sale-label-{{ section.id }} d-none">{{ 'products.product.on_sale' | t }}</span>
+                        </span>
+                        <s id="ComparePrice-{{ section.id }}" class="compareprice-product-template">{{ current_variant.compare_at_price | money }}</s>
+                      {% else %}
+                        <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+                        <span class="product-price__price product-price__price-{{ section.id }}">
+                          <span id="ProductPrice-{{ section.id }}"
+                            itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}" class="price-product-template money mr-10">
+                            {{ current_variant.price | money }}
+                          </span>
+                          <span class="money product-price__sale-label product-price__sale-label-{{ section.id }} d-none">{{ 'products.product.on_sale' | t }}</span>
+                        </span>
+                        <s id="ComparePrice-{{ section.id }}" class="compareprice-product-template">{{ current_variant.compare_at_price | money }}</s>
+                      {% endif %}
+                    </p>
+                  </div>
+                  {% if section.settings.show_des %}
+                    <div class="product-single__shortdes" itemprop="description">
+                      {% comment %}{{ product.description | strip_html | truncatewords: 30}} {% endcomment %}
+                      {{ product.description }}
+                    </div>
+                  {% endif %}
+
+                  {% if section.settings.show_available %}
+                    {% unless product.available %}
+                      <div class="available_product d-flex align-items-center">
+                        <div class="available_name control-label">
+                          {{ "products.product.available" | t }}
+                        </div>
+                        <span class="product__available sold-out">
+                          <span>{{ "products.product.sold_out" | t }}</span>
+                          <i class="fa fa-ban" aria-hidden="true"></i>
+                        </span>
+                      </div>
+                    {% else %}
+                      <div class="available_product d-flex align-items-center">
+                        <div class="available_name control-label">
+                          {{ "products.product.available" | t }}
+                        </div>
+                        <span class="product__available in-stock">
+                          <span>{{ "products.product.in_stock" | t }}</span>
+                          <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                        </span>
+                      </div>
+                    {% endunless %}
+                  {% endif %}
+                  <div class="group-single__items has-border">
+                    {% if section.settings.show_tags %}
+                      <p itemprop="tags" class="product-single__tags d-flex">
+                        <span class="label control-label">{{ 'products.product.lable_tags' | t }}:</span>
+                        <span class="list-tags">
+                          {% for tag in product.tags %}
+                            {% if tag != 'upsell' %}
+                              {% capture url %}/collections/all/{{ tag | handle }}{% endcapture %}
+                              {% if forloop.last == true %}
+                                {{ tag | link_to: url }}
+                              {% else %}
+                                {{ tag | link_to: url }},
+                              {% endif %}
+                            {% endif %}
+                          {% endfor %}
+                        </span>
+                      </p>
+                    {% endif %}
+                    {% if section.settings.show_sku %}
+                      <p itemprop="sku" class="product-single__sku">
+                        <span class="label control-label">{{ 'products.product.lable_sku' | t }}:</span>
+                        <span class="label-sku variant-sku">{{ current_variant.sku }}</span>
+                      </p>
+                    {% endif %}
+                    {% if section.settings.show_categories %}
+                      <p itemprop="cat" class="product-single__cat d-flex">
+                        <span class="label control-label">{{ 'products.product.lable_category' | t }}:</span>
+                        <span class="label-cate">
+                          {% for collection in product.collections %}
+                            {% if forloop.last == true %}
+                              <a href="{{ collection.url }}" title="{{ collection.title }}">{{ collection.title }}</a>
+                            {% else %}
+                              <a href="{{ collection.url }}" title="{{ collection.title }}">{{ collection.title }},</a>
+                            {% endif %}
+                          {% endfor %}
+                        </span>
+                      </p>
+                    {% endif %}
+                    {% if section.settings.show_vendor %}
+                    <p itemprop="brand" class="product-single__vendor">
+                      <span class="label control-label">{{ 'products.product.lable_vendor' | t }}:</span>
+                      <span class="label-vendor">
+                      {{ product.vendor }}
+                      </span>
+                    </p>
+                  {% endif %}
+                  </div>
+                </div>
+              </div>
+              <form action="/cart/add" method="post" enctype="multipart/form-data" class="product-form product-form-{{ section.id }}" data-section="{{ section.id }}">
+                {% assign product_title = product.metafields.custom.bundle_collection %}
+                  {% assign updated_cid = product_title | replace: '["gid://shopify/Collection/', "" %}
+                  {% assign updated_cid = updated_cid | replace: '"]', "" %}
+                  {% assign updated_cid = updated_cid | strip | replace: " ", "" %}
+
+                  {% assign selected_collection = "" %}
+                  {% assign selected_collection_id = "" %}
+                  {% for collection in collections %}
+                    {% assign collection_cid = collection.id | strip | replace: " ", "" %}
+                    {% if collection_cid == updated_cid %}
+                        {% assign selected_collection = collection.title %}
+                        {% assign selected_collection_id = collection_cid %}
+                    {% endif %}
+                  {% endfor %}
+                  {% if selected_collection != "" %}
+                    <div id="simple-bundles-io-options" data-simple-bundles-variant-id="{{ selected_collection_id }}" data-selected-collection="{{ selected_collection }}">
+                        {% assign collection_handle = selected_collection %}
+                        {% assign collection = collections[collection_handle] %}
+                        {% assign choose_maximum_products = product.metafields.custom.bundle_maximum_choose_product %}
+                        {% if collection %}
+                          {% for i in (1..choose_maximum_products) %}
+                            <label for="selection-{{ i }}">Selection {{ i }}</label>
+                            <div class="product-select">
+                              <select class="selectproduct" id="selection-{{ i }}" name="properties[Selection {{ i }}]" required="" data-gtm-form-interact-field-id="{{ i }}">
+                                {% comment %}
+                                {% assign sorted_products = collection.products | sort: 'title' %}
+                                {% for nproduct in sorted_products %}
+                                  <option value="{{ nproduct.title }}" data-inventory="{{ nproduct.id }}"> {{ nproduct.title }} </option>
+                                {% endfor %}
+                                {% endcomment %}
+                              </select>
+                            </div>
+                          {% endfor %}
+                        {% else %}
+                          <p>No products found in this collection.</p>
+                        {% endif %}
+                      </div>
+                    {% endif %}
+                <div class="items_var_size d-lg-flex d-md-block variantsection">
+                  {% if variantCount > 1 %}
+                  <div class="selectorVariants prd_dtai">
+                  {% endif %}
+                    {% if section.settings.product_swatch_enable %}
+                      {% if variantCount > 1 %}
+                        {% for option in product.options %}
+                          {% include 'nov-swatch' with option %}
+                        {% endfor %}
+                      {% endif %}
+                    {% endif %}
+
+                    <select name="id" id="productSelect" data-section="{{ section.id }}" {% if section.settings.product_swatch_enable %}class="enable_swatch hide"{% endif %}>
+                      {% for variant in product.variants %}
+                        {% if variant.available %}
+                          <option value="{{ variant.id }}" data-qty="{{ variant.inventory_quantity }}"{% if variant == product.selected_or_first_available_variant %} selected="selected"{% endif %}>{{ variant.title }}</option>
+                        {% else %}
+                          <option value="{{ variant.id }}" data-qty="{{ variant.inventory_quantity }}" disabled="disabled">{{ variant.title }} - {{ 'products.product.sold_out' | t }}</option>
+                        {% endif %}
+                      {% endfor %}
+                    </select>
+                  {% if variantCount > 1 %}
+                  </div>
+                  {% endif %}
+                  {% if variantCount > 1 %}
+                    {% if settings.show_size_chart %}
+                      <div class="size_chart d-flex align-items-end" data-toggle="modal" data-target="#Size_chart">
+                        <i class="zmdi zmdi-ruler"></i>
+                        <span>{{ 'sections.product_deals.size_chart' | t }}</span>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                </div>
+                {% unless current_variant.available == false %}
+                  {% if section.settings.show_notes %}
+                    <div class="line-item-property__field">
+                      <label class="label control-label" for="notes">{{ 'products.product.notes' | t }}</label>
+                      <textarea rows="5" id="notes" name="properties[Notes]" placeholder="Write here your notes for the order" class="mb-0"></textarea>
+                    </div>
+                  {% endif %}
+                {% endunless %}
+                <div class="group-quantity">
+                  {% unless current_variant.available == false %}
+                    {% if section.settings.show_quantity_selector %}
+                      <span class="control-label">{{ 'products.product.quantity' | t }}</span>
+                    {% endif %}
+                  {% endunless %}
+                  {% unless current_variant.available == false %}
+                  <div class="product-form__item product-form__item--quantity align-items-center mb-10">
+                  {% endunless %}
+                    {% unless current_variant.available == false %}
+                      {% if section.settings.show_quantity_selector %}
+                        <label for="Quantity" class="quantity-selector"></label>
+                        <div class="quick_view_qty mr-10">
+                          <a href="javascript:void(0);" class="quick_view-qty quick_view-qty-minus">-</a>
+                          <input readonly type="number" id="Quantity" name="quantity" value="1" min="1" max="{{ current_variant.inventory_quantity }}" step="1" class="quantity-selector product-form__input" pattern="[0-9]*">
+                          <a href="javascript:void(0);" class="quick_view-qty quick_view-qty-plus">+</a>
+                        </div>
+                      {% endif %}
+                    {% endunless %}
+                    {% unless current_variant.available %}
+                      <div class="btn btnsold_out sold_out d-flex align-items-center justify-content-center" data-toggle="modal" data-target="#Form_newletter">
+                        <span class="hover_x note align-items-center w-100">
+                          <span class="d-flex align-items-center">
+                            <i class="zmdi zmdi-email"></i>
+                            <span>{{ "products.product.notify_me" | t }}</span>
+                          </span>
+                          <i class="zmdi zmdi-long-arrow-right"></i>
+                        </span>
+                        <span class="loading d-none"><i class="fa fa-spin"></i></span>
+                      </div>
+                    {% else %}
+                      <div class="product-form__item product-form__item--submit">
+                        <button data-handle="{{ product.handle }}" type="submit" name="add" id="AddToCart" {% unless current_variant.available %}disabled="disabled"{% endunless %} class="hover_x btnAddToCart btn product-form__cart-submit{% if product.options.size == 1 and product.variants[0].title == 'Default Title' %} product-form__cart-submit--small{% endif %}">
+                          {% if current_variant.inventory_policy == 'continue' and current_variant.inventory_quantity < 1 %}
+                            <span id="AddToCartText" class="position-relative">{{ 'products.product.pre_order' | t }}</span>
+                          {% else %}
+                            <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
+                          {% endif %}
+                          <i class="zmdi zmdi-long-arrow-right"></i>
+                        </button>
+                      </div>
+                    {% endunless %}
+                  {% unless current_variant.available == false %}
+                  </div>
+                  {% endunless %}
+                  {% unless current_variant.available == false %}
+                    <div class="product_option_sub">
+                      {% if settings.payment_button_enable %}
+                        <div class="product-form__item product-form__item--checkout">
+                          {% form 'product', product, class:form_classes, novalidate: 'novalidate', data-product-form: '' %}
+                          {{ form | payment_button }}
+                          {% endform %}
+                        </div>
+                      {% endif %}
+                    </div>
+                  {% endunless %}
+                  {% if section.settings.show_payments %}
+                    <div class="product-page-info__payments product-page-info__field d-flex flex-column align-items-start mt-40 mb-10">
+                      <label class="mb-6 text-uppercase" style="{% if section.settings.color_title_payments != blank %}color: {{ section.settings.color_title_payments }};{% endif %}{% if section.settings.size_title != blank %}font-size: {{ section.settings.size_title }}"{% endif %}>{{ section.settings.title_payments }}</label>
+                      <div class="payments overflow-hidden">
+                        <img class="lazyload" data-src="{{ section.settings.payments | img_url: '250x' }}" alt="Payments">
+                      </div>
+                    </div>
+                  {% endif %}
+                </div>
+              </form>
+              {% if section.settings.show_share %}
+                <div class="productbuttons d-flex align-items-center">
+                  <span class="label control-label"><i class="zmdi zmdi-share"></i>{{ 'products.product.lable_share' | t }}</span>
+                  <span class="items_share d-flex align-items-center">
+                    {% if settings.share_facebook %}
+                      <a target="_blank" href="//www.facebook.com/sharer.php?u={{ shop.url | append: product.url }}" class="btn--share share-facebook" title="{{ 'general.social.alt_text.share_on_facebook' | t }}">
+                        <i class="zmdi zmdi-facebook"></i>
+                        <span class="share-title" aria-hidden="true">{{ 'general.social.share_on_facebook' | t }}</span>
+                      </a>
+                    {% endif %}
+
+                    {% if settings.share_twitter %}
+                      <a target="_blank" href="//twitter.com/share?text={{ article.title | url_param_escape }}&amp;url={{ shop.url | append: product.url }}" class="btn--share share-twitter" title="{{ 'general.social.alt_text.share_on_twitter' | t }}">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                        <span class="share-title" aria-hidden="true">{{ 'general.social.share_on_twitter' | t }}</span>
+                      </a>
+                    {% endif %}
+
+                    {% if settings.share_pinterest %}
+                      <a target="_blank" href="//pinterest.com/pin/create/button/?url={{ shop.url | append: product.url }}&amp;media={{ product.featured_image | img_url: '1024x1024' }}" class="btn--share share-pinterest" title="{{ 'general.social.alt_text.share_on_pinterest' | t }}">
+                        <i class="fa fa-pinterest" aria-hidden="true"></i>
+                        <span class="share-title" aria-hidden="true">{{ 'general.social.share_on_pinterest' | t }}</span>
+                      </a>
+                    {% endif %}
+                </div>
+              {% endif %}
+              <div class="shiping">
+                {% if section.settings.time != blank %}
+                  <div class="shiping_time d-flex align-items-center" style="{% if section.settings.color_time != blank %}color: {{ section.settings.color_time }};{% endif %}{% if section.settings.size_time != blank %}font-size: {{ section.settings.size_time }}"{% endif %}>
+                    <i class="zmdi zmdi-time"></i>
+                    <span>{{ section.settings.time | nofilter }}</span>
+                  </div>
+                {% endif %}
+                {% if section.settings.truck != blank %}
+                  <div class="shiping_truck d-flex align-items-center" style="{% if section.settings.color_truck != blank %}color: {{ section.settings.color_truck }};{% endif %}{% if section.settings.size_truck != blank %}font-size: {{ section.settings.size_truck }}"{% endif %}>
+                    <i class="zmdi zmdi-truck"></i>
+                    <span>{{ section.settings.truck | nofilter }}</span>
+                  </div>
+                {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="single__tab" {% if section.settings.background_color != blank %}style="background-color: {{ section.settings.background_color }};"{% endif %}>
+    <div class="container_1320">
+      <div class="product-single__tabs wow fadeInUp animated">
+        <div class="block_nav">
+          <ul class="nav nav-tabs">
+            {% if section.settings.show_description %}
+              <li><a class="active" href="#proTabs1" data-toggle="tab">{{ 'products.product.tabdes' | t }}</a></li>
+            {% endif %}
+            {% if settings.show_rating %}
+              <li><a class="" href="#proTabs2" data-toggle="tab">Reviews</a></li>
+            {% endif %}
+            
+            {% for block in section.blocks %}
+              {% if block.type == 'block_text' %}
+                <li><a href="#tabCustom-{{ forloop.index }}" data-toggle="tab">{{ block.settings.custom_title }}</a></li>
+              {% endif %}
+              {% if block.type == 'block_img' %}
+                <li><a href="#tabCustom-{{ forloop.index }}" data-toggle="tab">{{ block.settings.custom_title }}</a></li>
+              {% endif %}
+              {% if block.type == 'block_video' %}
+                <li><a href="#tabCustom-{{ forloop.index }}" data-toggle="tab">{{ block.settings.custom_title }}</a></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="tab-content">
+          {% if section.settings.show_description %}
+          <div class="tab-pane active" id="proTabs1">{{ product.description }}</div>
+          {% endif %}
+
+          {% if settings.show_rating %}
+              <div id="proTabs2" class="tab-pane">
+                {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %}
+              </div>
+          {% endif %}
+
+          
+          {% if section.settings.show_review or settings.show_rating %}
+            <div class="tab-pane" id="tabreview">
+              <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+            </div>
+          {% endif %}
+          {% for block in section.blocks %}
+            {% if block.type == 'block_text' %}
+              <div class="tab-pane" id="tabCustom-{{ forloop.index }}">
+                <div class="product-description">{{ block.settings.custom_content }}</div>
+              </div>
+            {% endif %}
+            {% if block.type == 'block_img' %}
+              <div class="tab-pane" id="tabCustom-{{ forloop.index }}">
+                <div class="block_img mt-20" data-toggle="modal" data-target="#ImageModal{{ forloop.index }}">
+                  <img src="{{ block.settings.custom_content | img_url: '1290x' }}" alt="img">
+                </div>
+              </div>
+            {% endif %}
+
+            {% if block.type == 'block_video' %}
+              <div class="tab-pane" id="tabCustom-{{ forloop.index }}">
+                <div class="embed-responsive embed-responsive-16by9">
+                  <iframe class="embed-responsive-item" src="{%- if block.settings.video_url.type == 'youtube' -%}https://www.youtube.com/embed/{{ block.settings.video_url.id }}{%- else -%}https://player.vimeo.com/video/{{ block.settings.video_url.id }}{%- endif -%}" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .compareprice-product-template {
+    display:block !important;
+  }
+</style>
+<script>
+        const collectionHandle = '{{ selected_collection }}';
+        const productsPerPage = 500;
+
+        function fetchProducts(page = 1) {
+            $.ajax({
+                url: `/collections/${collectionHandle}/products.json`,
+                data: {
+                    limit: productsPerPage,
+                    page: page
+                },
+                dataType: 'json',
+                success: function(data) {
+                    const sortedProducts = data.products.sort((a, b) => {
+                      return a.title.localeCompare(b.title);
+                    });
+                    const productsContainer = $('.selectproduct');
+                    productsContainer.empty();
+                    productsContainer.append(`<option value="">Select a Product</option>`);
+                    //console.log('sortedProducts',sortedProducts);
+                    sortedProducts.forEach(product => {
+                        const hasAvailableVariant = product.variants.some(variant => variant.available);
+                        if (hasAvailableVariant) {
+                          const productElement = `<option value="${product.title} [SKU: ${product.variants[0].sku}]" data-inventory="${product.id}">${product.title}</option>`;
+                          productsContainer.append(productElement);
+                        }
+                    });
+
+                    // Handle pagination
+                    const paginationContainer = $('#pagination');
+                    paginationContainer.empty();
+                    const totalPages = Math.ceil(data.products_count / productsPerPage);
+                    if (totalPages > 1) {
+                        if (page > 1) {
+                            paginationContainer.append(`<a href="#" onclick="fetchProducts(${page - 1}); return false;">Previous</a>`);
+                        }
+                        for (let i = 1; i <= totalPages; i++) {
+                            if (i === page) {
+                                paginationContainer.append(`<span>${i}</span>`);
+                            } else {
+                                paginationContainer.append(`<a href="#" onclick="fetchProducts(${i}); return false;">${i}</a>`);
+                            }
+                        }
+                        if (page < totalPages) {
+                            paginationContainer.append(`<a href="#" onclick="fetchProducts(${page + 1}); return false;">Next</a>`);
+                        }
+                    }
+                }
+            });
+        }
+        
+
+    // Disable buttons on page load
+    setTimeout(function() {
+      $('#AddToCart').prop('disabled', true);
+      $('.shopify-payment-button button').prop('disabled', true);
+      $('.quick_view-qty-minus').prop('disabled', true);
+      $('.quick_view-qty-plus').prop('disabled', true);
+    }, 1000);
+
+    // Listen for changes in product selection
+    $(document).on('change', '.selectproduct', function () {
+        checkSelections();
+    });
+        // Fetch initial products
+        fetchProducts();
+     function checkSelections() {
+        let allSelected = true;
+        
+        $('.selectproduct').each(function () {
+            if ($(this).val() === "" || $(this).val() === null) {
+                allSelected = false;
+            }
+        });
+
+        if (allSelected) {
+            $('#AddToCart').prop('disabled', false);
+            $('.shopify-payment-button button').prop('disabled', false);
+        } else {
+            $('#AddToCart').prop('disabled', true);
+            $('.shopify-payment-button button').prop('disabled', true);
+        }
+    }
+    </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script>
+
+    $(".selectproduct").select2();
+    $('.selectproduct').select2().on('select2:open', function(e){
+        $('.select2-search__field').attr('placeholder', 'Search Here');
+    })
+  </script>
+  {% if product.variants.size <= 1 %}
+  <script>
+    // Function to remove the "variant" parameter from the URL
+    function removeVariantParameter() {
+      const url = new URL(window.location.href);
+      if (url.searchParams.has('variant')) {
+        url.searchParams.delete('variant');
+        window.history.replaceState(null, '', url.toString());
+      }
+    }
+    
+    // Call the function on page load
+    document.addEventListener('DOMContentLoaded', removeVariantParameter);
+    document.addEventListener('DOMContentLoaded', function() {
+    // Check if there is a query string in the URL
+    if (window.location.search) {
+      // Remove the query string without reloading the page
+      const url = window.location.href.split('?')[0];
+      window.history.replaceState(null, '', url);
+    }
+  });
+    /*setTimeout(function() {*/
+        var reviewrating = $('.reviewBadge').find('.jdgm-prev-badge').attr('data-average-rating');
+         if (reviewrating == "0.00"){
+           reviewrating = "5.00";
+         }
+        var reviewcount = $('.reviewBadge').find('.jdgm-prev-badge').attr('data-number-of-reviews');
+         if(reviewcount == "0"){
+           reviewcount = "1";
+         }
+        
+        /*console.log('reviewrating', reviewrating);
+        console.log('reviewcount', reviewcount);*/
+        $('meta[itemprop="ratingValue"]').attr('content', reviewrating);
+        $('meta[itemprop="reviewCount"]').attr('content', reviewcount);
+   /* }, 1000); */
+  </script>
+{% endif %}

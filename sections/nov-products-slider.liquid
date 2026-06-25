@@ -1,0 +1,303 @@
+{%- assign bg_image = section.settings.background_image -%}
+  <style>
+    #shopify-section-{{ section.id }} .distance {
+      padding-top: {{ section.settings.distance_top }};
+      padding-bottom: {{ section.settings.distance_bottom }};
+
+      {% if section.settings.background_color != blank or bg_image.src != blank %}
+        {% if section.settings.background_color != blank %}
+          background-color: {{ section.settings.background_color }};
+        {% endif %}
+        {% if bg_image.src != blank %}
+          background-image: url("{{ bg_image | img_url: '1920x' }}");
+          background-repeat: no-repeat;
+          background-position: center top;
+        {% endif %}
+      {% endif %}
+    }
+    #shopify-section-{{ section.id }} .title_block i {
+      color: {{ section.settings.color_icon }};
+      font-size: {{ section.settings.size_icon }};
+    }
+  </style>
+
+  <div class="distance{% if section.settings.has_fullwidth == true %} full_width{% endif %}{% if section.settings.class != blank %} {{ section.settings.class }}{% endif %}" data-section-id="{{ section.id }}" data-section-type="nov-slick">
+    {% if section.settings.has_fullwidth == false %}
+    <div class="container_ct">
+    {% endif %}
+      {% if section.settings.title != blank %}
+        <div class="block_title {{ section.settings.title_alignment }}">
+          <div class="title_block" {% if section.settings.color_title != blank %}style="color: {{ section.settings.color_title }};font-size: {{ section.settings.size_title }};"{% endif %}>{{ section.settings.title | nofilter }}</div>
+          {% if section.settings.subheading != blank %}
+            <div class="sub_title" {% if section.settings.color_sub != blank %}style="color: {{ section.settings.color_sub }};font-size: {{ section.settings.size_sub }};"{% endif %}>{{ section.settings.subheading | escape }}</div>
+          {% endif %}
+        </div>
+      {% endif %}
+      {%- assign collection = collections[section.settings.collection] -%}
+      {%- assign product_limit = section.settings.limit -%}
+      <div class="grid--view-items row nov-slick-carousel"
+        data-autoplay="false" 
+        data-autoplayTimeout="6000" 
+        data-loop="false"
+        data-dots="false" 
+        data-nav="{{ section.settings.show_nav }}" 
+        data-row="{{ section.settings.number_row }}"
+        data-row_mobile="{{ section.settings.row_mobile }}" 
+        data-items="{{ section.settings.grid_number }}" 
+        data-items_lg_tablet="{{ section.settings.grid_number_lg_tablet }}" 
+        data-items_tablet="{{ section.settings.items_tablet }}" 
+        data-items_mobile="{{ section.settings.items_mobile }}"
+        {% if section.settings.custombutton == true %} data-custombutton="{{ section.settings.custombutton }}"{% endif %}
+        >
+        {% for product in collection.products limit: product_limit %}
+          <div class="block">
+            <div class="item col">
+              {% include 'product-card-grid' %}
+            </div>
+          </div>
+        {% else %}
+          {% for i in (1..product_limit) %}
+            <div class="{{ grid_item_width }}">
+              <div class="item-product mb-20">
+                <div class="thumbnail-container">
+                  <a href="{{ collection.url }}">
+                    {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                    {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                  </a>
+                </div>
+                <div class="product__info">
+                  <div class="product__title"><a href="{{ collection.url }}">{{ 'homepage.onboarding.product_title' | t }}</a></div>
+                  {% if settings.show_rating %}
+                    <div class="product__review">
+                    {% render 'judgeme_widgets'
+                      , widget_type: 'judgeme_preview_badge'
+                      , jm_style: ''
+                      , concierge_install: true
+                      , product: product %}
+                    </div>
+                  {% endif %}
+                  <div class="product__price">
+                    {% include 'product-price' %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    {% if section.settings.has_fullwidth == false %}
+    </div>
+    {% endif %}
+  </div>
+{% schema %}
+  {
+    "name": "Vinova Products Slider",
+    "class": "index-section section-product-slider wow fadeInUp animated",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Best sellers"
+      },
+      {
+        "type": "text",
+        "id": "size_title",
+        "label": "Size Title",
+        "default": "2.4rem"
+      },
+      {
+        "type": "color",
+        "id": "color_title",
+        "label": "Color Title",
+        "default": "#222"
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Sub Heading",
+        "default": "Subtitle from happy customers"
+      },
+      {
+        "type": "text",
+        "id": "size_sub",
+        "label": "Size Subtitle",
+        "default": "13px"
+      },
+      {
+        "type": "color",
+        "id": "color_sub",
+        "label": "Color Sub",
+        "default": "#222"
+      },
+      {
+        "type": "select",
+        "id": "title_alignment",
+        "label": "Title alignment",
+        "default": "text-left",
+        "options": [
+          {
+            "value": "text-left",
+            "label": "Left"
+          },
+          {
+            "value": "text-center",
+            "label": "Center"
+          },
+          {
+            "value": "text-right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background colors"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background image"
+      },
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection"
+      },
+      {
+        "type": "range",
+        "id": "grid_number",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "label": "Products per row",
+        "default": 4
+      },
+      {
+        "type": "range",
+        "id": "grid_number_lg_tablet",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "label": "Products per row (Desktop)",
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "items_tablet",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "label": "Items Tablet",
+        "default": 3,
+        "info": "Select number Items Tablet for slider"
+      },
+      {
+        "type": "range",
+        "id": "items_mobile",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "label": "Items Mobile",
+        "default": 2,
+        "info": "Select number Items Mobile for slider"
+      },
+      {
+        "type": "range",
+        "id": "limit",
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "label": "Limit",
+        "default": 30,
+        "info": "Select number limit products"
+      },
+      {
+        "type": "select",
+        "id": "number_row",
+        "label": "Number row",
+        "default": "1",
+        "options": [
+          {
+            "value": "1",
+            "label": "1"
+          },
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "row_mobile",
+        "label": "Number row mobile",
+        "default": "1",
+        "options": [
+          {
+            "value": "1",
+            "label": "1"
+          },
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "show_nav",
+        "label": "Show Navigation",
+        "default": false
+      },
+      {
+        "type":  "header",
+        "content": "Design Option"
+      },
+      {
+        "type": "text",
+        "id": "class",
+        "label": "Class"
+      },
+      {
+        "type": "checkbox",
+        "id": "has_fullwidth",
+        "label": "Full Width",
+        "default":   false
+      },
+      {
+        "type": "text",
+        "id": "distance_top",
+        "label": "Top Distance Section",
+        "default": "30px"
+      },
+      {
+        "type": "text",
+        "id": "distance_bottom",
+        "label": "Bottom Distance Section",
+        "default": "30px"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Vinova Products Slider",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}
+
+{% unless product == empty %}
+  <script type="application/json" id="ProductJson-Dl">
+    {{ product | json }}
+  </script>
+{% endunless %}

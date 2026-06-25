@@ -1,0 +1,332 @@
+{%- assign grid_number = section.settings.grid_number | plus:0 -%}
+{%- assign grid_number_lg_tablet = section.settings.grid_number_lg_tablet | plus:0 -%}
+{%- assign grid_number_tablet = section.settings.grid_number_tablet | plus:0 -%}
+{%- assign grid_number_mobile = section.settings.grid_number_mobile | plus:0 -%}
+{%- assign grid_number_mobiles = section.settings.grid_number_mobiles | plus:0 -%}
+{%- assign row_number = section.settings.row_number | plus:0 -%}
+{%- assign product_limit = section.settings.limit | plus:0 -%}
+
+{%- assign ns = '<img src="https://via.placeholder.com/750x750/f5f5f5?text=+">,<img src="https://via.placeholder.com/750x750/f5f5f5?text=+">,<img src="https://via.placeholder.com/750x750/f5f5f5?text=+">,<img src="https://via.placeholder.com/750x750/f5f5f5?text=+">,<img src="https://via.placeholder.com/750x750/f5f5f5?text=+">'| split: "," -%}
+{%- assign ns_limit = section.settings.grid_number | plus:0 -%}
+
+{%- assign img_size = settings.img_size_large -%}
+{% if section.settings.grid_number == '5' %}
+	{%- assign grid_item_width = 'col-lg-cus-5' -%}
+{% else %}
+	{%- assign grid_item_width = 12 | divided_by: section.settings.grid_number | prepend: 'col-lg-' -%}
+{% endif %}
+{% if section.settings.grid_number_tablet == '5' %}
+	{%- assign col_tablet = 'col-md-cus-5' -%}
+{% else %}
+	{%- assign col_tablet = 12 | divided_by: section.settings.grid_number_tablet | prepend: 'col-md-' -%}
+{% endif %}
+{%- assign col_mobile = 12 | divided_by: section.settings.grid_number_mobile | prepend: 'col-xs-' -%}
+	
+<div data-section-id="{{ section.id }}" class="distance{% if section.settings.has_fullwidth == true %} full_width{% endif %}{% if section.settings.class != blank %} {{ section.settings.class }}{% endif %}" data-product-tabs>
+	{% if section.settings.has_fullwidth == false %}
+		<div class="container_ct">
+	{% endif %}
+		<div class="block_up">
+			{% if section.settings.title != blank %}
+				<div class="title-block" style="{% if section.settings.color_title != blank %}color: {{ section.settings.color_title }};{% endif %}{% if section.settings.size_title != blank %}font-size: {{ section.settings.size_title }};{% endif %}">
+					<span>{{ section.settings.title }}</span>
+				</div>
+			{% endif %}
+			<ul class="nav nav-tabs list-product-tabs justify-content-center" role="tablist">
+				{% for block in section.blocks %}
+					{% if block.type == 'tabitem' %}
+						<li class="nav-item">
+							<a class="nav-link tab-links {% if forloop.first %} active{% endif %}" href="#producttab{{ forloop.index }}{{ section.id }}" 
+                               data-target="#producttab{{ forloop.index }}{{ section.id }}" 
+                               data-product-tabTop 
+                               data-href="/collections/{{ block.settings.collection_handle }}?view=tab"
+                               id="tab-{{ forloop.index }}{{ section.id }}" data-id="{{ forloop.index }}{{ section.id }}"
+                               data-toggle="tab" role="tab">
+								<div class="content-nav">
+									{% if block.settings.image_icon != blank %}
+										<img class="nav-imageicon lazyload" data-src="{{ block.settings.image_icon | img_url: '150x' }}" alt="{{ block.settings.tab_title }}">
+									{% endif %}
+									<span>{{ block.settings.tab_title }}</span>
+								</div>
+							</a>
+						</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+		<div class="product_tab_content tab-content product-tabs-content">
+			{% for block in section.blocks %}
+    		<div class="tab-content {% if forloop.first %} show active{% endif %}" data-product-TabContent id="producttab{{ forloop.index }}{{ section.id }}">
+        <div class="products-grid grid--view-items row collection-carousel"
+        data-items="{{ grid_number }}"
+				data-items_lg_tablet="{{ grid_number_lg_tablet }}"
+				data-items_tablet="{{ grid_number_tablet }}"
+				data-items_mobile="{{ grid_number_mobile }}"
+				data-items_mobiles="{{ grid_number_mobile }}"
+				data-row="{{ row_number }}"
+       	data-loop="false"
+       	data-dots="{{ section.settings.show_dot }}"
+       	data-nav="{{ section.settings.show_nav }}"
+       	data-autoplay="false">
+          {% for n in ns limit: ns_limit %}
+          	<div class="col">
+          		<div class="loadding_tab"><div></div><div></div><div></div></div>
+          		{{ n }}
+          	</div>
+          {% endfor %}
+        </div>
+    </div>
+			{% endfor %}
+		</div>
+		{% if section.settings.view_all == true %}
+			<div class="view_all d-flex align-items-center justify-content-center">
+				<a class="hover_x" href="{{ section.settings.link }}" style="color: {{ section.settings.color_button }};font-size: {{ section.settings.size_button }};">
+					<span>{{ section.settings.button | escape }}</span>
+					<i class="zmdi zmdi-long-arrow-right"></i>
+				</a> 
+			</div>
+		{% endif %}
+	{% if section.settings.has_fullwidth == false %}
+		</div>
+	{% endif %}
+</div>
+
+{% schema %}
+	{
+		"name": "Vinova Collection Tabs",
+		"class": "index-section section-collection-tabs wow fadeInUp animated",
+		"settings": [
+			{
+				"type": "text",
+				"id": "title",
+				"label": "Heading",
+				"default": "Vinova Collection Tabs"
+			},
+			{
+				"type": "text",
+				"id": "size_title",
+				"label": "Size Title",
+				"default": "18px"
+			},
+			{
+				"type": "color",
+				"id": "color_title",
+				"label": "Color Title",
+				"default": "#000"
+			},
+			{
+				"type": "select",
+				"id": "title_alignment",
+				"label": "Title alignment",
+				"default": "text-left",
+				"options": [
+					{
+						"value": "text-left",
+						"label": "Left"
+					},
+					{
+						"value": "text-center",
+						"label": "Center"
+					},
+					{
+						"value": "text-right",
+						"label": "Right"
+					}
+				]
+			},
+			{
+				"type": "range",
+				"id": "grid_number",
+				"min": 1,
+				"max": 6,
+				"step": 1,
+				"label": "Products per row",
+				"default": 4
+			},
+			{
+				"type": "range",
+				"id": "grid_number_lg_tablet",
+				"min": 1,
+				"max": 6,
+				"step": 1,
+				"label": "Products Desktop",
+				"default": 4
+			},
+			{
+				"type": "range",
+				"id": "grid_number_tablet",
+				"min": 1,
+				"max": 6,
+				"step": 1,
+				"label": "Products per row (tablet)",
+				"default": 4
+			},
+			{
+				"type": "range",
+				"id": "grid_number_mobile",
+				"min": 1,
+				"max": 6,
+				"step": 1,
+				"label": "Products per row (mobile)",
+				"default": 4
+			},
+			{
+				"type": "select",
+				"id": "row_number",
+				"label": "Number row",
+				"default": "1",
+				"options": [
+					{
+						"value": "1",
+						"label": "1"
+					},
+					{
+						"value": "2",
+						"label": "2"
+					},
+					{
+						"value": "3",
+						"label": "3"
+					},
+					{
+						"value": "4",
+						"label": "4"
+					}
+				]
+			},
+			{
+        "type": "text",
+        "id": "limit",
+        "label": "Limit",
+        "default": "8"
+    	},
+			{
+				"type":  "header",
+				"content": "Design Option"
+			},
+			{
+				"type": "checkbox",
+				"id": "view_all",
+				"label": "View All",
+				"default": true
+			},
+			{
+				"type": "text",
+				"id": "button",
+				"label": "View All",
+				"default": "View all collection"
+			},
+			{
+				"type": "color",
+				"id": "color_button",
+				"label": "Color",
+				"default": "#222"
+			},
+			{
+				"type": "text",
+				"id": "size_button",
+				"label": "Size Button",
+				"default": "1.6rem"
+			},
+			{
+				"type": "url",
+				"id": "link",
+				"label": "Link"
+			},
+			{
+				"type": "text",
+				"id": "class",
+				"label": "Class"
+			},
+			{
+				"type": "checkbox",
+				"id": "show_nav",
+				"label": "Show Navigation",
+				"default": false
+			},
+			{
+				"type": "checkbox",
+				"id": "show_dot",
+				"label": "Show Dot",
+				"default": true
+			},
+			{
+				"type": "checkbox",
+				"id": "has_fullwidth",
+				"label": "Full Width",
+				"default":   false
+			},
+			{
+				"type": "text",
+				"id": "distance_top",
+				"label": "Top Distance Section",
+				"default": "30px"
+			},
+			{
+				"type": "text",
+				"id": "distance_bottom",
+				"label": "Bottom Distance Section",
+				"default": "30px"
+			}
+		],
+		"blocks": [
+			{
+				"type": "tabitem",
+				"name": "Tab Item",
+				"settings": [
+					{
+						"type": "text",
+						"id": "tab_title",
+						"label": "Tab Title"
+					},
+					{
+						"type": "image_picker",
+						"id": "image_icon",
+						"label": "Image Icon"
+					},
+					{
+						"type": "collection",
+						"id": "collection_handle",
+						"label": "Collection"
+					}
+				]
+			}
+		],
+		"presets": [
+			{
+				"name": "Vinova Collection Tabs",
+				"category": "Collection",
+				"blocks": [
+					{
+						"type":"tabitem",
+						"settings":{
+							"tab_title": "Tab one",
+							"collection_handle": "frontpage"
+						}
+					},
+					{
+						"type":"tabitem",
+						"settings":{
+							"tab_title": "Tab Two",
+							"collection_handle": "frontpage"
+						}
+					},
+					{
+						"type":"tabitem",
+						"settings":{
+							"tab_title": "Tab Three",
+							"collection_handle": "frontpage"
+						}
+					}
+				]
+			}
+		] 
+	}
+{% endschema %}
+
+<style>
+  #shopify-section-{{ section.id }} .distance {
+    padding-top: {{ section.settings.distance_top }};
+    padding-bottom: {{ section.settings.distance_bottom }};
+  }
+</style>

@@ -1,0 +1,473 @@
+{% if template == "blog.leftsidebar" %}
+  {% assign viewtype = "leftsidebar" %}
+{% elsif template == "blog.rightsidebar" %}
+  {% assign viewtype = 'rightsidebar' %}
+{% elsif template == "blog.nosidebar" %}
+  {% assign viewtype = 'nosidebar' %}
+{% else %}
+  {% if settings.type_sidebar_blog == 'sidebar_right' %}
+    {% assign viewtype = 'rightsidebar' %}
+  {% elsif settings.type_sidebar_blog == 'nosidebar' %}
+    {% assign viewtype = 'nosidebar' %}
+  {% else %}
+    {% assign viewtype = 'leftsidebar' %}
+  {% endif %}
+{% endif %}
+
+{% include 'nov-breadcrumb' %}
+
+<div class="page-width nov-blog mt-150 mt-xs-70 {% if viewtype == "leftsidebar" %}left_sidebar{% elsif viewtype == 'rightsidebar' %}right_sidebar{% else %}no_sidebar{% endif %}">
+  <div class="container_1320">
+    <div class="row{% if viewtype != 'nosidebar' %} spacing-60{% endif %}">
+      {% if viewtype != 'nosidebar' %}
+        <div class="sidebar sidebar-article col-lg-3 col-md-4{% if viewtype == 'rightsidebar' %} flex-last{% endif %}">
+          {% include 'nov-blog-sidebar' %}
+        </div>
+      {% endif %}
+      <div class="{% if viewtype != 'nosidebar' %}blog_groups col-lg-9 col-md-8 {% else %}col-lg-12 col-md-12{% endif %}">
+        {% paginate blog.articles by section.settings.page_show %}
+          {% if section.settings.layout == 'list' %}
+            <div class="blog--list blog--list-view mt-xs-30">
+              {% for article in blog.articles %}
+                <div class="article--listing media">
+                  <div class="media-image">
+                    {% if article.image %}
+                      <a href="{{ article.url }}" class="article__list-image-container">
+                        <div class="respone_image" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
+                          {% assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                          <img
+                            class="article__list-image lazyload"
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                            data-src="{{ img_url }}"
+                            data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                            data-aspectratio="{{ article.image.aspect_ratio }}"
+                            data-sizes="auto"
+                            alt="">
+                        </div>
+                      </a>
+                    {% endif %}
+                  </div>
+                  <div class="media-body">
+                    <h2 class="article__title">
+                      <a href="{{ article.url }}">{{ article.title }}</a>
+                    </h2>
+                    <div class="article__info">
+                      {% if section.settings.blog_show_date %}
+                        <span class="article__date">
+                          <i class="zmdi zmdi-calendar-note"></i>
+                          {{ article.published_at | time_tag: format: 'month_day_year' }}</span>
+                      {% endif %}
+
+                      {% if section.settings.blog_show_author %}
+                        <span class="article__author">
+                          <i class="zmdi zmdi-account"></i>
+                          {{ article.author }}</span>
+                      {% endif %}
+
+                      {% if section.settings.blog_show_comment %}
+                        {% if blog.comments_enabled? %}
+                          <span class="article__countcomment">
+                            <i class="zmdi zmdi-comments"></i>
+                            {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}</span>
+                        {% endif %}
+                      {% endif %}
+                    </div>
+
+                    <div class="article__excerpt">
+                      {% if article.excerpt.size > 0 %}
+                        {{ article.excerpt }}
+                      {% else %}
+                        {{ article.content | strip_html | truncate: 120 }}
+                      {% endif %}
+                    </div>
+                    <a href="{{ article.url }}" class="hover_x article__readmore text-uppercase d-inline-flex">
+                      <span>{{ 'blogs.article.readmore' | t }}</span>
+                      <i class="zmdi zmdi-long-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          {% elsif section.settings.layout == 'column' %}
+            <div class="blog--list blog--column-view mt-xs-30">
+              <div class="row">
+                {% for article in blog.articles %}
+                  <div class="article--listing col-xl-6 col-lg-6 mb-30">
+                    <div class="block_content">
+                      <div class="article__image mb-30">
+                        {% if article.image %}
+                          <a href="{{ article.url }}" class="article__list-image-container">
+                            <div class="respone_image" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
+                              {% assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                              <img
+                                class="article__list-image lazyload"
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                                data-src="{{ img_url }}"
+                                data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                                data-aspectratio="{{ article.image.aspect_ratio }}"
+                                data-sizes="auto"
+                                alt="">
+                            </div>
+                          </a>
+
+                        {% endif %}
+                      </div>
+                      <div class="article-body text-center">
+                        <h2 class="article__title">
+                          <a href="{{ article.url }}">{{ article.title }}</a>
+                        </h2>
+
+                        <div class="article__excerpt">
+                          {% if article.excerpt.size > 0 %}
+                            {{ article.excerpt | strip_html | truncate: 120 }}
+                          {% else %}
+                            {{ article.content | strip_html | truncate: 120 }}
+                          {% endif %}
+                        </div>
+                        <a href="{{ article.url }}" class="hover_x article__readmore text-uppercase d-inline-flex">
+                          <span>{{ 'blogs.article.readmore' | t }}</span>
+                          <i class="zmdi zmdi-long-arrow-right"></i>
+                        </a>
+                        <div class="article__info">
+                          {% if section.settings.blog_show_date %}
+                            <span class="article__date">
+                              <i class="zmdi zmdi-calendar-note"></i>
+                              {{ article.published_at | time_tag: format: 'month_day_year' }}</span>
+                          {% endif %}
+
+                          {% if section.settings.blog_show_author %}
+                            <span class="article__author">
+                              <i class="zmdi zmdi-account"></i>
+                              {{ article.author }}</span>
+                          {% endif %}
+
+                          {% if section.settings.blog_show_comment %}
+                            {% if blog.comments_enabled? %}
+                              <span class="article__countcomment">
+                                <i class="zmdi zmdi-comments"></i>
+                                {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}</span>
+                            {% endif %}
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          {% else %}
+            <div class="blog--list blog--grid-view mt-xs-30">
+              <div class="row">
+                {% for article in blog.articles %}
+                  <div class="article--listing col-lg-12 col-md-12 col-sm-12 col-xs-12 {% if forloop.last %} mb-md-0{%endif%} wow fadeInUp animated">
+                    <div class="article__image">
+                      {% if article.image %}
+                        <a href="{{ article.url }}" class="article__list-image-container">
+                          <div class="respone_image" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
+                            {% assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                            <img
+                              class="article__list-image lazyload"
+                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                              data-src="{{ img_url }}"
+                              data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                              data-aspectratio="{{ article.image.aspect_ratio }}"
+                              data-sizes="auto"
+                              alt="">
+                          </div>
+                        </a>
+                      {% endif %}
+                    </div>
+                    <div class="article-body">
+                      <h2 class="article__title">
+                        <a href="{{ article.url }}">{{ article.title }}</a>
+                      </h2>
+                      <div class="article__info">
+                        {% if section.settings.blog_show_date %}
+                          <span class="article__date">
+                            <i class="zmdi zmdi-calendar-note"></i>
+                            {{ article.published_at | time_tag: format: 'month_day_year' }}</span>
+                        {% endif %}
+
+                        {% if section.settings.blog_show_author %}
+                          <span class="article__author">
+                            <i class="zmdi zmdi-account"></i>
+                            {{ article.author }}</span>
+                        {% endif %}
+
+                        {% if section.settings.blog_show_comment %}
+                          {% if blog.comments_enabled? %}
+                            <span class="article__countcomment">
+                              <i class="zmdi zmdi-comments"></i>
+                              {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}</span>
+                          {% endif %}
+                        {% endif %}
+                      </div>
+
+                      <div class="article__excerpt">
+                        {% if article.excerpt.size > 0 %}
+                          {{ article.excerpt }}
+                        {% else %}
+                          {{ article.content | strip_html | truncate: 180 }}
+                        {% endif %}
+                      </div>
+                      <a href="{{ article.url }}" class="hover_x article__readmore d-inline-flex">
+                        <span>{{ 'blogs.article.readmore' | t }}</span>
+                        <i class="zmdi zmdi-long-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+          {% if paginate.pages > 1 %}
+            <div class="nov-pagination d-flex align-items-center justify-content-center">
+              {% include 'pagination' %}
+            </div>
+          {% endif %}
+        {% endpaginate %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Blog pages",
+    "settings": [
+      {
+        "type": "select",
+        "id": "layout",
+        "label": "Layout",
+        "default": "list",
+        "options": [
+          {
+            "value": "grid",
+            "label": "Grid"
+          }, {
+            "value": "list",
+            "label": "List"
+          }, {
+            "value": "column",
+            "label": "Column"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_author",
+        "label": "Show author",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show date",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_comment",
+        "label": "Show Comment",
+        "default": true
+      }, {
+        "type": "range",
+        "id": "page_show",
+        "min": 1,
+        "max": 15,
+        "step": 1,
+        "label": "Number of post per page",
+        "default": 3
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block_categories",
+        "name": "Categories Product",
+        "settings": [
+          {
+            "type": "text",
+            "id": "sidebar_categories_title",
+            "label": "Title",
+            "default": "Categories"
+          }, {
+            "type": "link_list",
+            "id": "sidebar_categories_menu",
+            "label": "Choose Menu",
+            "info": "Choose menu for block. Add new menu: Admin -> Navigation"
+          }, {
+            "type": "text",
+            "id": "class",
+            "label": "Class"
+          }
+        ]
+      },
+      {
+        "type": "block_search",
+        "name": "Block Search",
+        "settings": [
+          {
+            "type": "text",
+            "id": "class",
+            "label": "Class"
+          }
+        ]
+      },
+      {
+        "type": "block_html",
+        "name": "Block HTML",
+        "settings": [
+          {
+            "type": "text",
+            "id": "block_title",
+            "label": "Title"
+          }, {
+            "type": "textarea",
+            "id": "html_content",
+            "label": "Content",
+            "placeholder": "You can input code html for content.",
+            "info": "You can input code html for content."
+          }, {
+            "type": "text",
+            "id": "class",
+            "label": "Class"
+          }
+        ]
+      },
+      {
+        "type": "block_recentpost",
+        "name": "Block Recent Post",
+        "settings": [
+          {
+            "type": "text",
+            "id": "block_title",
+            "label": "Title",
+            "default": "Recent post"
+          },
+          {
+            "type": "range",
+            "id": "number_show",
+            "min": 2,
+            "max": 10,
+            "step": 1,
+            "label": "Number Show",
+            "default": 2,
+            "info": "Select number post show"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_date",
+            "label": "Show date",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "show_comment",
+            "label": "Show Comment",
+            "default": true
+          }, {
+            "type": "checkbox",
+            "id": "show_author",
+            "label": "Show Author",
+            "default": false
+          }, {
+            "type": "checkbox",
+            "id": "show_excerpt",
+            "label": "Show Excerpt",
+            "default": false
+          }, {
+            "type": "checkbox",
+            "id": "show_more",
+            "label": "Show More",
+            "default": false
+          }, {
+            "type": "text",
+            "id": "class",
+            "label": "Class"
+          }
+        ]
+      }, {
+        "type": "block_producttags",
+        "name": "Block Product Tags",
+        "settings": [
+          {
+            "type": "text",
+            "id": "block_title",
+            "label": "Title",
+            "default": "Product Tags"
+          }, {
+            "type": "range",
+            "id": "number_show",
+            "min": 2,
+            "max": 20,
+            "step": 1,
+            "label": "Number Show",
+            "default": 2,
+            "info": "Select number tags show"
+          }, {
+            "type": "text",
+            "id": "class",
+            "label": "Class"
+          }
+        ]
+      }, {
+        "type": "block_blogtags",
+        "name": "Block Blog Tags",
+        "settings": [
+          {
+            "type": "text",
+            "id": "block_title",
+            "label": "Title",
+            "default": "Blog Tags"
+          }, {
+            "type": "range",
+            "id": "number_show",
+            "min": 2,
+            "max": 20,
+            "step": 1,
+            "label": "Number Show",
+            "default": 2,
+            "info": "Select number tags show"
+          }, {
+            "type": "text",
+            "id": "class",
+            "label": "Class"
+          }
+        ]
+      }, {
+        "type": "block_banner",
+        "name": "Block Banner",
+        "settings": [
+          {
+            "type": "text",
+            "id": "banner_title",
+            "label": "Title"
+          },
+          {
+            "type": "image_picker",
+            "id": "banner_image",
+            "label": "Banner image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Text image"
+          },
+          {
+            "type": "text",
+            "id": "t_link",
+            "label": "Text link"
+          }, {
+            "type": "url",
+            "id": "banner_link",
+            "label": "Banner link"
+          }, {
+            "type": "text",
+            "id": "class",
+            "label": "Class"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

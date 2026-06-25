@@ -1,0 +1,391 @@
+<style>
+  #shopify-section-{{ section.id }}.section_banner {
+    {% if section.settings.background_color != blank %}
+      background-color: {{ section.settings.background_color }};
+    {% endif %}
+  }
+</style>
+<div class="gallery-image-custom distance{% if section.settings.class != blank %} {{ section.settings.class }}{% endif %} wow fadeInUp animated">
+  {% if section.settings.has_fullwidth == false %}
+    <div class="container_ct">
+  {% endif %}
+    <div class="block-image">
+      <div class="row spacing-gr">
+        {% for block in section.blocks %}
+          {%- assign img_size = block.settings.img_size -%}
+          <div class="item{% if block.settings.class_text != blank %} {{ block.settings.class_text }}{% endif %} {{ block.settings.width }} {{ block.settings.width_lg }} {{ block.settings.width_md }}{% if block.settings.img_p == 'right' %} d-flex flex-column-reverse{% endif %}">
+            {% if block.settings.image != blank %}
+              {% if block.settings.img_p == 'right' %}
+                <div class="rtl-right">
+                  <div class="d-inline-block">
+                    <div class="b_img hover-image d-inline-block">
+                      <img class="lazyload" data-src="{{ block.settings.image | img_url: img_size }}" alt="">
+                      {% if block.settings.title != blank %}
+                      {% endif %}
+                    </div>
+                    <div class="title title2 d-inline-block" style="{% if block.settings.color_title2 != blank %}color: {{ block.settings.color_title2 }};{% endif %}{% if block.settings.color_title2 != blank %}font-size: {{ block.settings.size_title2 }};{% endif %}">{{ block.settings.title2 }}</div>
+                  </div>
+                </div>
+              {% else %}
+                <div class="b_img hover-image">
+                  <img class="lazyload" data-src="{{ block.settings.image | img_url: img_size }}" alt="">
+                </div>
+              {% endif %}
+            {% else %}
+              <img src="https://via.placeholder.com/628x775?text=628x775">
+            {% endif %}
+            <div class="block_content {% if block.settings.img_p == 'top' %} mt-25{% endif %} mt-md-30">
+              {% if block.settings.subtitle != blank %}
+                <div class="subtitle" style="{% if block.settings.color_sub != blank %}color: {{ block.settings.color_sub }};{% endif %}{% if block.settings.color_sub != blank %}font-size: {{ block.settings.size_sub }};{% endif %}">{{ block.settings.subtitle }}</div>
+              {% endif %}
+              {% if block.settings.title != blank %}
+                <div class="title" style="{% if block.settings.color_title != blank %}color: {{ block.settings.color_title }};{% endif %}{% if block.settings.color_title != blank %}font-size: {{ block.settings.size_title }};{% endif %}">{{ block.settings.title }}</div>
+              {% endif %}
+              {% if block.settings.des != blank %}
+                <div class="des" style="{% if block.settings.color_des != blank %}color: {{ block.settings.color_des }};{% endif %}{% if block.settings.color_des != blank %}font-size: {{ block.settings.size_des }};{% endif %}">{{ block.settings.des }}</div>
+              {% endif %}
+              {% if block.settings.button_label != blank and block.settings.button_link != blank %}
+                <div class="d-flex justify-content-start">
+                  <a href="{{ block.settings.button_link }}" class="hover_x button_label d-flex align-items-center justify-content-center" {% if block.settings.bg_button != blank %}style="background: {{ block.settings.bg_button }};"{% endif %}>
+                    <span>{{ block.settings.button_label | escape }}</span>
+                    <i class="zmdi zmdi-long-arrow-right"></i>
+                  </a>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% if section.settings.has_fullwidth == false %}
+    </div>
+  {% endif %}
+</div>
+{% schema %}
+  {
+    "name": "Vinova Image Banner",
+    "class": "index-section section_banner wow fadeInUp animated",
+    "settings": [
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background colors"
+      },
+      {
+        "type": "checkbox",
+        "id": "has_fullwidth",
+        "label": "Full Width",
+        "default":   false
+      },
+      {
+        "type": "text",
+        "id": "class",
+        "label": "Class"
+      },
+      {
+        "type": "text",
+        "id": "distance_top",
+        "label": "Top Distance Section",
+        "default": "30px"
+      },
+      {
+        "type": "text",
+        "id": "distance_bottom",
+        "label": "Bottom Distance Section",
+        "default": "30px"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "text",
+        "name": "Block item",
+        "settings": [
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width (Large Desktop)",
+            "default": "col-xl-6",
+            "options": [
+              {
+                "value": "col-xl-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-xl-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-xl-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-xl-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-xl-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-xl-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-xl-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-xl-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-xl-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-xl-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_lg",
+            "label": "Container width (Desktop)",
+            "default": "col-lg-6",
+            "options": [
+              {
+                "value": "col-lg-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-lg-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-lg-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-lg-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-lg-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-lg-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-lg-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-lg-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-lg-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-lg-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_md",
+            "label": "Container width(Tablet)",
+            "default": "col-md-6",
+            "options": [
+              {
+                "value": "col-md-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-md-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-md-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-md-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-md-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-md-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-md-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-md-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-md-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-md-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "img_size",
+            "label": "Size Image",
+            "default": "628x775"
+          },
+          {
+            "type": "select",
+            "id": "img_p",
+            "label": "Image position",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "size_title",
+            "label": "Size Title",
+            "default": "4.4rem"
+          },
+          {
+            "type": "color",
+            "id": "color_title",
+            "label": "Color Title",
+            "default": "#000"
+          },
+          {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Sub Title"
+          },
+          {
+            "type": "text",
+            "id": "size_sub",
+            "label": "Size Sub",
+            "default": "1.8rem"
+          },
+          {
+            "type": "color",
+            "id": "color_sub",
+            "label": "Color Sub",
+            "default": "#000"
+          },
+          {
+            "type": "richtext",
+            "id": "des",
+            "label": "Description"
+          },
+          {
+            "type": "text",
+            "id": "size_des",
+            "label": "Size Description",
+            "default": "2.4rem"
+          },
+          {
+            "type": "color",
+            "id": "color_des",
+            "label": "Color Description",
+            "default": "#000"
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label",
+            "default": "View More"
+          },
+          {
+            "type": "text",
+            "id": "size_button",
+            "label": "Size Button",
+            "default": "12px"
+          },
+          {
+            "type": "color",
+            "id": "color_button",
+            "label": "Color Button",
+            "default": "#222"
+          },
+          {
+            "type": "color",
+            "id": "bg_button",
+            "label": "Background Button"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+          {
+            "type": "text",
+            "id": "title2",
+            "label": "Title 2"
+          },
+          {
+            "type": "text",
+            "id": "size_title2",
+            "label": "Size Title 2",
+            "default": "4.4rem"
+          },
+          {
+            "type": "color",
+            "id": "color_title2",
+            "label": "Color Title 2",
+            "default": "#000"
+          },
+          {
+            "type": "text",
+            "id": "class_text",
+            "label": "Class Text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Vinova Images Banner",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}
+<style>
+  #shopify-section-{{ section.id }} .distance {
+    padding-top: {{ section.settings.distance_top }};
+    padding-bottom: {{ section.settings.distance_bottom }};
+  }
+</style>

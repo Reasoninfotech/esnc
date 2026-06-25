@@ -1,0 +1,477 @@
+<div data-section-id="{{ section.id }}" class="distance{% if section.settings.has_fullwidth == true %} full_width{% endif %}{% if section.settings.class != blank %} {{ section.settings.class }}{% endif %}"{% if section.settings.type_option == 'slider' %} data-section-type="nov-slick"{% endif %}>
+  {% if section.settings.has_fullwidth == false %}
+  <div class="container_1320"> 
+  {% endif %}
+    <div class="block_title {{ section.settings.title_alignment }}">
+      {% if section.settings.subheading != blank %}
+        <div class="sub-title" style="{% if section.settings.color_sub != blank %}color: {{ section.settings.color_sub }};{% endif %}{% if section.settings.size_sub != blank %}font-size: {{ section.settings.size_sub }}"{% endif %}>{{ section.settings.subheading }}</div>
+      {% endif %}
+      {% if section.settings.title != blank %}
+        <div class="title_block mb-0" style="{% if section.settings.color_title != blank %}color: {{ section.settings.color_title }};{% endif %}{% if section.settings.size_title != blank %}font-size: {{ section.settings.size_title }}"{% endif %}>{{ section.settings.title }}</div>
+      {% endif %}
+    </div>
+
+    {%- assign collection_blog = blogs[section.settings.blog] -%}
+    {% case section.settings.grid_number %}
+    {% when '2' %}
+      {%- assign img_size = settings.img_size_large -%}
+    {% when '3' %}
+      {%- assign img_size = settings.img_size_large -%}
+    {% when '4' %}
+      {%- assign img_size = settings.img_size -%}
+    {% when '5' %}
+      {%- assign img_size = settings.img_size -%}
+    {% when '6' %}
+      {%- assign img_size = settings.img_size -%}
+    {% endcase %}
+    {%- assign blog_limit = section.settings.limit -%}
+
+    {% if section.settings.type_option == 'grid' %}
+      <div class="row">
+        {% case section.settings.grid_number %}
+          {% when 2 %}
+            {%- assign grid_item_width = 'col-xl-6' -%}
+          {% when 3 %}
+            {%- assign grid_item_width = 'col-xl-4' -%}
+          {% when 4 %}
+            {%- assign grid_item_width = 'col-xl-3' -%}
+          {% when 5 %}
+            {%- assign grid_item_width = 'col-xl-cus-5' -%}
+          {% when 6 %}
+            {%- assign grid_item_width = 'col-xl-2' -%}
+        {% endcase %}
+        {% case section.settings.grid_number_lg_tablet %}
+          {% when 2 %}
+            {%- assign grid_item_width_lg_tablet = 'col-lg-6' -%}
+          {% when 3 %}
+            {%- assign grid_item_width_lg_tablet = 'col-lg-4' -%}
+          {% when 4 %}
+            {%- assign grid_item_width_lg_tablet = 'col-lg-3' -%}
+          {% when 5 %}
+            {%- assign grid_item_width_lg_tablet = 'col-lg-cus-5' -%}
+          {% when 6 %}
+            {%- assign grid_item_width_lg_tablet = 'col-lg-2' -%}
+        {% endcase %}
+        {% case section.settings.items_tablet %}
+          {% when 2 %}
+            {%- assign grid_item_width_tablet = 'col-md-6' -%}
+          {% when 3 %}
+            {%- assign grid_item_width_tablet = 'col-md-4' -%}
+          {% when 4 %}
+            {%- assign grid_item_width_tablet = 'col-md-3' -%}
+          {% when 5 %}
+            {%- assign grid_item_width_tablet = 'col-md-cus-5' -%}
+          {% when 6 %}
+            {%- assign grid_item_width_tablet = 'col-md-2' -%}
+        {% endcase %}
+        {% case section.settings.items_mobile %}
+          {% when 1 %}
+            {%- assign grid_item_width_mobile = 'col-xs-12' -%}
+          {% when 2 %}
+            {%- assign grid_item_width_mobile = 'col-xs-6' -%}
+          {% when 3 %}
+            {%- assign grid_item_width_mobile = 'col-xs-4' -%}
+          {% when 4 %}
+            {%- assign grid_item_width_mobile = 'col-xs-3' -%}
+          {% when 5 %}
+            {%- assign grid_item_width_mobile = 'col-xs-cus-5' -%}
+          {% when 6 %}
+            {%- assign grid_item_width_mobile = 'col-xs-2' -%}
+        {% endcase %}
+
+        {% for article in collection_blog.articles limit: blog_limit %}
+          <div class="item {{ grid_item_width }} {{ grid_item_width_lg_tablet }} {{ grid_item_width_tablet }} {{ grid_item_width_mobile }} mb-30">
+            <div class="article--listing blog-grid-item">
+              {% if section.settings.show_image == true %}
+                {% if article.image %}
+                  <a href="{{ article.url }}" class="article__list-image-container">
+                    <img class="w-100 article__list-image lazyload" data-src="{{ article.image | img_url: '570x' }}" alt="">
+                  </a>
+                {% endif %}
+              {% endif %}
+              <div class="media-body">
+                <div class="article__title mb-10">
+                  <a href="{{ article.url }}">{{ article.title }}</a>
+                </div>
+                <div class="article__info">
+                  {% if section.settings.enable_viewmore == true %}
+                    <a href="{{ article.url }}" class="article__readmore">{{ 'blogs.article.readmore' | t }}</a>
+                  {% endif %}
+                </div>
+                {% if section.settings.blog_show_excerpt %}
+                  <div class="article__excerpt">
+                    {% if article.excerpt.size > 0 %}
+                      {{ article.excerpt | truncate: 150 }}
+                    {% else %}
+                      {{ article.content | strip_html | truncate: 150 }}
+                    {% endif %}
+                  </div>
+                {% endif %}
+                <div class="article_cs">
+                  {% if section.settings.blog_show_comments %}
+                  <span class="article__countcomment text-uppercase">
+                    <i class="zmdi zmdi-comments"></i>
+                    {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}
+                  </span>
+                  {% endif %}
+                  {% if section.settings.blog_show_date %}
+                    <span class="article__date text-uppercase">
+                      <i class="zmdi zmdi-calendar-note"></i>
+                      <span class="time">{{ article.published_at | date: "%d" }} {{ article.published_at | date: "%b" }}</span>
+                    </span>
+                  {% endif %}
+
+                  {% if section.settings.blog_show_author %}
+                  <span class="article__author">
+                    <i class="zmdi zmdi-account-o"></i>
+                    by {{ 'blogs.article.by_author' | t: author: article.author }}
+                  </span>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="slider grid--view-items row nov-slick-carousel" 
+        data-autoplay="false" 
+        data-autoplayTimeout="6000" 
+        data-loop="false"
+        data-dots="{{ section.settings.show_dots }}" 
+        data-nav="{{ section.settings.show_nav }}" 
+        data-row="{{ section.settings.number_row }}" 
+        data-items="{{ section.settings.grid_number }}" 
+        data-items_lg_tablet="{{ section.settings.grid_number_lg_tablet }}" 
+        data-items_tablet="{{ section.settings.items_tablet }}" 
+        data-items_mobile="{{ section.settings.items_mobile }}">
+        {% for article in collection_blog.articles limit: blog_limit %}
+          <div class="item col">
+            <div class="article--listing">
+              {% if section.settings.show_image == true %}
+                {% if article.image %}
+                  <a href="{{ article.url }}" class="article__list-image-container">
+                    <img class="w-100 article__list-image lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 10'%3E%3C/svg%3E" data-src="{{ article.image | img_url: '615x420' }}" alt="{{ article.image.alt | escape }}">
+                  </a>
+                {% endif %}
+              {% endif %}
+              <div class="media-body text-center">
+                <div class="article_cs">
+                  {% if section.settings.blog_show_author %}
+                    <span class="article__author">
+                      <i class="zmdi zmdi-account-o"></i>
+                      by {{ 'blogs.article.by_author' | t: author: article.author }}
+                    </span>
+                  {% endif %}
+
+                  {% if section.settings.blog_show_date %}
+                    <span class="article__date">
+                      <i class="zmdi zmdi-calendar-note"></i>
+                      <span class="time">{{ article.published_at | date: "%d" }} {{ article.published_at | date: "%b" }} {{ article.published_at | date: "%Y" }}</span>
+                    </span>
+                  {% endif %}
+                  
+                  {% if section.settings.blog_show_comments %}
+                    <span class="article__countcomment">
+                      <i class="zmdi zmdi-comments"></i>
+                      {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}
+                    </span>
+                  {% endif %}
+                </div>
+                <div class="article__title">
+                  <a href="{{ article.url }}">{{ article.title }}</a>
+                </div>
+                {% if section.settings.blog_show_excerpt %}
+                  <div class="article__excerpt">
+                    {% if article.excerpt.size > 0 %}
+                      {{ article.excerpt | truncate: 156 }}
+                    {% else %}
+                      {{ article.content | strip_html | truncate: 156 }}
+                    {% endif %}
+                  </div>
+                {% endif %}
+                
+              </div>
+              {% if section.settings.show_view_all %}
+                <div class="view_all">
+                  <a href="{{ article.url }}" class="btn hover_x d-inline-flex">
+                    <span>{{ 'blogs.article.readmore' | t }}</span>
+                    <i class="zmdi zmdi-long-arrow-right"></i>
+                  </a>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% if section.settings.has_fullwidth == false %}
+  </div>
+  {% endif %}
+</div>
+{% schema %}
+  {
+    "name": "Vinova Blog Slider",
+    "class": "index-section nov-section-blog wow fadeInUp animated",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Blog Slider"
+      },
+      {
+        "type": "text",
+        "id": "size_title",
+        "label": "Size Title",
+        "default": "24px"
+      },
+      {
+        "type": "color",
+        "id": "color_title",
+        "label": "Color Title Video",
+        "default": "#222"
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "SubHeading",
+        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
+      {
+        "type": "text",
+        "id": "size_sub",
+        "label": "Size Sub",
+        "default": "13px"
+      },
+      {
+        "type": "color",
+        "id": "color_sub",
+        "label": "Color SubHeading",
+        "default": "#6e6e6e"
+      },
+      {
+        "type": "select",
+        "id": "title_alignment",
+        "label": "Heading alignment",
+        "default": "text-left",
+        "options": [
+          {
+            "value": "text-left",
+            "label": "Left"
+          },
+          {
+            "value": "text-center",
+            "label": "Center"
+          },
+          {
+            "value": "text-right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "blog",
+        "id": "blog",
+        "label": "Blog"
+      },
+      {
+        "type": "select",
+        "id": "type_option",
+        "label": "Type Blog",
+        "options": [
+          {
+            "value": "grid",
+            "label": "Grid View"
+          },
+          {
+            "value": "slider",
+            "label": "Slider View"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "grid_number",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "label": "Post per row (Large Desktop)",
+        "default": 3,
+        "info": "Select number Items Large Desktop for slider"
+      },
+      {
+        "type": "range",
+        "id": "grid_number_lg_tablet",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "label": "Items Desktop",
+        "default": 3,
+        "info": "Select number Items Desktop for slider"
+      },
+      {
+        "type": "range",
+        "id": "items_tablet",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "label": "Items Tablet",
+        "default": 3,
+        "info": "Select number Items Tablet for slider"
+      },
+      {
+        "type": "range",
+        "id": "items_mobile",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "label": "Items Mobile",
+        "default": 2,
+        "info": "Select number Items Mobile for slider"
+      },
+      {
+        "type": "select",
+        "id": "number_row",
+        "label": "Number Row",
+        "options": [
+          {
+            "value": "1",
+            "label": "1"
+          },
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "limit",
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "label": "Limit",
+        "default": 8,
+        "info": "Select number limit post"
+      },
+      {
+        "type":  "header",
+        "content": "Slider Option"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_image",
+        "label": "Show Image",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_dots",
+        "label": "Show dots",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_nav",
+        "label": "Show Navigation",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_comments",
+        "label": "Show Comments",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_author",
+        "label": "Show author",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show Date",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_excerpt",
+        "label": "Show Excerpt",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_view_all",
+        "label": "Show 'View all' button",
+        "default": false
+      },
+      {
+        "type":  "header",
+        "content": "Design Option"
+      },
+      {
+        "type": "text",
+        "id": "class",
+        "label": "Class"
+      },
+      {
+        "type": "checkbox",
+        "id": "has_fullwidth",
+        "label": "Full Width",
+        "default":   false
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background colors"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background image"
+      },
+      {
+        "type": "text",
+        "id": "distance_top",
+        "label": "Top Distance Section",
+        "default": "30px"
+      },
+      {
+        "type": "text",
+        "id": "distance_bottom",
+        "label": "Bottom Distance Section",
+        "default": "30px"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Vinova Blog Slider",
+        "category": "Blog"
+      }
+    ]
+  }
+{% endschema %}
+<style>
+  {%- assign bg_image = section.settings.background_image -%}
+  {% if section.settings.background_color != blank or bg_image.src != blank %}
+    #shopify-section-{{ section.id }} .distance {
+      {% if section.settings.background_color != blank %}
+        background-color: {{ section.settings.background_color }};
+      {% endif %}
+      {% if bg_image.src != blank %}
+        background-image: url("{{ bg_image | img_url: '1920x' }}");
+        background-repeat: no-repeat;
+      {% endif %}
+    }
+  {% endif %}
+  #shopify-section-{{ section.id }} .distance {
+    padding-top: {{ section.settings.distance_top }};
+    padding-bottom: {{ section.settings.distance_bottom }};
+  }
+</style>

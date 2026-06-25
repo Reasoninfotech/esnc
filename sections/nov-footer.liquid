@@ -1,0 +1,1243 @@
+{% if section.settings.background_color != blank %}
+  <style>
+    .footer-layout , .footer_copyright {
+      background-color: {{ section.settings.background_color }};
+    }
+  </style>
+{% endif %}
+<footer>
+  <div class="footer-layout">
+    <div class="container_ct">
+      <div class="row">
+        {% for block in section.blocks %}
+          {% if block.type == 'block_menu' %}
+            {%- assign footer_linklist = block.settings.menu_handle -%}
+            <div class="footer_menu footer-block footer-block__{{ forloop.index }} {{ block.settings.width_xl_desktop }} {{ block.settings.width_lg_desktop }} {{ block.settings.width_md_tablet }} {{ block.settings.width_sm_mobile }} col-xs-12 {{ block.settings.block_class }}">
+              {% if block.settings.block_title != blank %}
+                <div class="title-block d-xs-flex align-items-center justify-content-between "  style="{% if block.settings.color_title != blank %}color: {{ block.settings.color_title }};{% endif %}{% if block.settings.size_title != blank %}font-size: {{ block.settings.size_title }}{% endif %}">
+                  <span>{{ block.settings.block_title }}</span>
+                  <span class="show_footer d-sm-none"><i class="zmdi zmdi-plus"></i></span>
+                </div>
+              {% endif %}
+              <div class="block-content{% if block.settings.block_title != blank %} adc{% endif %}">
+                {% if linklists[footer_linklist].links.size > 0 %}
+                  <ul class="site-footer__linklist list-unstyled">
+                    {% for link in linklists[footer_linklist].links %}
+                      <li class="site-footer__linklist-item">
+                        <a href="{{ link.url }}" style="{% if block.settings.color_menu != blank %}color: {{ block.settings.color_menu }};{% endif %}{% if block.settings.size_menu != blank %}font-size: {{ block.settings.size_menu }}{% endif %}">{{ link.title }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+          {% if block.type == 'block_html' %}
+            <div class="footer_html footer-block footer-block__{{ forloop.index }} {{ block.settings.width_xl_desktop }} {{ block.settings.width_lg_desktop }} {{ block.settings.width_md_tablet }} {{ block.settings.width_sm_mobile }} col-xs-12 {{ block.settings.block_class }}">
+              {% if block.settings.block_title != blank %}
+                <div class="title-block d-xs-flex align-items-center justify-content-between "  style="{% if block.settings.color_title != blank %}color: {{ block.settings.color_title }};{% endif %}{% if block.settings.size_title != blank %}font-size: {{ block.settings.size_title }}{% endif %}">
+                  <span>{{ block.settings.block_title }}</span>
+                  <span class="show_footer d-sm-none"><i class="zmdi zmdi-plus"></i></span>
+                </div>
+              {% endif %}
+              {% if block.settings.html_content != blank %}
+                <div class="block-content{% if block.settings.block_title != blank %} adc{% endif %}">{{ block.settings.html_content }}</div>
+              {% endif %}
+            </div>
+          {% endif %}
+          {% if block.type == 'block_newsletter' %}
+            <div class="footer_newsletter footer-block footer-block__{{ forloop.index }} {{ block.settings.width_xl_desktop }} {{ block.settings.width_lg_desktop }} {{ block.settings.width_md_tablet }} {{ block.settings.width_sm_mobile }} col-xs-12 {{ block.settings.block_class }}">
+              {% if block.settings.block_title != blank %}
+                <div class="title-block d-xs-flex align-items-center justify-content-between " style="{% if block.settings.color_title != blank %}color: {{ block.settings.color_title }};{% endif %}{% if block.settings.size_title != blank %}font-size: {{ block.settings.size_title }}{% endif %}">
+                  <span>{{ block.settings.block_title }}</span>
+                  <span class="show_footer d-sm-none"><i class="zmdi zmdi-plus"></i></span>
+                </div>
+              {% endif %}
+              {% if block.settings.newsletter_des != blank %}
+                <div class="des" style="{% if block.settings.color_des != blank %}color: {{ block.settings.color_des }};{% endif %}{% if block.settings.size_des != blank %}font-size: {{ block.settings.size_des }}{% endif %}">{{ block.settings.newsletter_des | nofilter }}</div>
+              {% endif %}
+              <div class="block-content{% if block.settings.block_title != blank %} adc{% endif %}">
+                {% form 'customer' %}
+                  {{ form.errors | default_errors }}
+                  {% if form.posted_successfully? %}
+                    <p class="form--success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+                  {% else %}
+                    <div class="input-group">
+                      <input type="hidden" name="contact[tags]" value="newsletter">
+                      <input type="email"
+                        name="contact[email]"
+                        id="Email_Footer"
+                        class="input-group__field newsletter__input form-control"
+                        value="{% if customer %}{{ customer.email }}{% endif %}"
+                        placeholder="{{ 'general.newsletter_form.placeholder_footer' | t }}">
+                    </div>
+                    <div class="input-group__btn">
+                      <button type="submit" class="btn newsletter__submit" name="commit" id="Subscribe_footer">
+                        <span class="hover_x newsletter__submit-text--large">
+                          <span>{{ 'general.newsletter_form.submit_footer' | t }}</span>
+                          <i class="zmdi zmdi-long-arrow-right"></i>
+                        </span>
+                      </button>
+                    </div>
+                  {% endif %}
+                {% endform %}
+              </div>
+              <div class="social_footer">
+                {% include 'nov-social' %}
+              </div>
+            </div>     
+          {% endif %}
+          {% if block.settings.logo_footer != blank %}
+                <div class="logo_footer">
+                  <img class="lazyload" data-src="{{ block.settings.logo_footer | img_url: '134x27' }}" alt="">
+                </div>
+              {% endif %}
+          {% if block.type == 'block_contact' %}
+            <div class="footer_contact footer-block footer-block__{{ forloop.index }} {{ block.settings.width_xl_desktop }} {{ block.settings.width_lg_desktop }} {{ block.settings.width_md_tablet }} {{ block.settings.width_sm_mobile }} col-xs-12 {{ block.settings.block_class }}">
+              {% if block.settings.block_title != blank %}
+                <div class="title-block d-xs-flex align-items-center justify-content-between "  style="{% if block.settings.color_title != blank %}color: {{ block.settings.color_title }};{% endif %}{% if block.settings.size_title != blank %}font-size: {{ block.settings.size_title }}{% endif %}">
+                  <span>{{ block.settings.block_title }}</span>
+                  <span class="show_footer d-sm-none"><i class="zmdi zmdi-plus"></i></span>
+                </div>
+              {% endif %}
+              
+              <div class="block-content">
+                {% if block.settings.contact_address != blank %}
+                  <div class="contact address" style="{% if block.settings.color_address != blank %}color: {{ block.settings.color_address }};{% endif %}{% if block.settings.size_address != blank %}font-size: {{ block.settings.size_address }}{% endif %}">{{ block.settings.contact_address }}</div>
+                {% endif %}
+                {% if block.settings.contact_phone != blank %}
+                  <div class="contact phone" style="{% if block.settings.color_phone != blank %}color: {{ block.settings.color_phone }};{% endif %}{% if block.settings.size_phone != blank %}font-size: {{ block.settings.size_phone }}{% endif %}">{{ block.settings.contact_phone }}</div>
+                {% endif %}
+                {% if block.settings.contact_email != blank %}
+                  <div class="contact email" style="{% if block.settings.color_email != blank %}color: {{ block.settings.color_email }};{% endif %}{% if block.settings.size_email != blank %}font-size: {{ block.settings.size_email }}{% endif %}">{{ block.settings.contact_email }}</div>
+                {% endif %}
+                {% if block.settings.contact_hours != blank %}
+                  <div class="contact open" style="{% if block.settings.color_hours != blank %}color: {{ block.settings.color_hours }};{% endif %}{% if block.settings.size_hours != blank %}font-size: {{ block.settings.size_hours }}{% endif %}">{{ block.settings.contact_hours }}</div>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %} 
+      </div>
+    </div>
+  </div>
+
+  <div class="footer_copyright">
+    <div class="container_ct">
+      <div class="d-lg-flex align-items-center {% if section.settings.menu_copyright != blank %}justify-content-between{% else %}justify-content-between{% endif %} d-xs-block text-xs-center d-sm-block text-sm-center">
+        <div class="socialicons">
+            <div class="social text-center">
+              {% include 'nov-social' %}
+            </div>
+      </div>
+        {% if section.settings.menu_copyright != blank %}
+          <div class="copyright_right d-flex align-items-center justify-content-sm-center justify-content-xs-center mb-xs-30">
+            {%- assign footer_linklist = section.settings.menu_copyright -%}
+            {% if linklists[footer_linklist].links.size > 0 %}
+              <ul class="site-footer__linklist list-unstyled d-flex align-items-center">
+                {% for link in linklists[footer_linklist].links %}
+                  <li class="site-footer__linklist-item">
+                    <a href="{{ link.url }}" style="{% if section.settings.color_menu != blank %}color: {{ section.settings.color_menu }};{% endif %}{% if section.settings.size_menu != blank %}font-size: {{ section.settings.size_menu }}{% endif %}">{{ link.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        {% endif %}
+        <div class="copyright" style="{% if section.settings.color_menu != blank %}color: {{ section.settings.color_menu }};{% endif %}{% if section.settings.size_menu != blank %}font-size: {{ section.settings.size_menu }}{% endif %}">{{ section.settings.copyright }}</div>
+        {% comment %}
+          {% if section.settings.payment != blank %}
+            <div class="payment_icons mb-xs-30">
+              <img class="lazyload" data-src="{{ section.settings.payment | img_url: '240x25' }}" alt="">
+            </div>
+          {% else %}
+            <div class="payment_icons"><img src="https://via.placeholder.com/240x25"></div>
+          {% endif %}
+        {% endcomment %}
+        <div class="payment_icons_main">
+          {% for block in section.blocks %}
+            {% if block.type == 'image' %}
+              {% if block.settings.paymentlogo != blank %}
+                <div class="payment_icons">
+                  <img class="lazyload" data-src="{{ block.settings.paymentlogo | img_url: '240x25' }}" alt="{{ block.settings.paymentlogo.alt }}">
+                </div>
+              {% endif %}
+            {%endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "class": "nov-footer wow fadeInUp animated",
+    "settings": [
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background colors"
+      },
+      {
+        "type": "header",
+        "content": "Copyright"
+      },
+      {
+        "type": "text",
+        "id": "copyright",
+        "label": "Copyright"
+      },
+      {
+        "type": "text",
+        "id": "size_copyright",
+        "label": "Size Copyright",
+        "default": "1.6rem"
+      },
+      {
+        "type": "color",
+        "id": "color_copyright",
+        "label": "Color Copyright",
+        "default": "#000"
+      },
+      {
+        "type": "image_picker",
+        "id": "payment",
+        "label": "Payment"
+      },
+      {
+        "type": "link_list",
+        "id": "menu_copyright",
+        "label": "Choose Menu",
+        "info": "Choose menu for block. Add new menu: Admin -> Navigation"
+      },
+      {
+        "type": "text",
+        "id": "size_menu",
+        "label": "Size Menu",
+        "default": "1.6rem"
+      },
+      {
+        "type": "color",
+        "id": "color_menu",
+        "label": "Color Menu",
+        "default": "#000"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block_menu",
+        "name": "Block Menu",
+        "settings": [
+          {
+            "type": "select",
+            "id": "width_xl_desktop",
+            "label": "Width Large Desktop (in unit 1200px ↑)",
+            "options": [
+              {
+                "value": "col-xl-1",
+                "label": "1/12"
+              },
+              {
+                "value": "col-xl-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-xl-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-xl-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-xl-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-xl-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-xl-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-xl-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-xl-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-xl-10",
+                "label": "10/12"
+              },                  
+              {
+                "value": "col-xl-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_lg_desktop",
+            "label": "Width Desktop (in unit 1199px ↓)",
+            "options": [
+              {
+                "value": "col-lg-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-lg-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-lg-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-lg-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-lg-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-lg-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-lg-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-lg-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-lg-10",
+                "label": "10/12"
+              },                  
+              {
+                "value": "col-lg-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_md_tablet",
+            "label": "Width Tablet (in unit 991px ↓)",
+            "options": [
+              {
+                "value": "col-md-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-md-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-md-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-md-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-md-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-md-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-md-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-md-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-md-10",
+                "label": "10/12"
+              },                  
+              {
+                "value": "col-md-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_sm_mobile",
+            "label": "Width Large Mobile (in unit 767px ↓)",
+            "options": [
+              {
+                "value": "col-sm-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-sm-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-sm-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-sm-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-sm-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-sm-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-sm-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-sm-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-sm-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-sm-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "block_title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "size_title",
+            "label": "Size Title",
+            "default": "1.8rem"
+          },
+          {
+            "type": "color",
+            "id": "color_title",
+            "label": "Color Title",
+            "default": "#000"
+          },
+          {
+            "type": "link_list",
+            "id": "menu_handle",
+            "label": "Choose Menu",
+            "info": "Choose menu for block. Add new menu: Admin -> Navigation"
+          },
+          {
+            "type": "text",
+            "id": "size_menu",
+            "label": "Size Menu",
+            "default": "1.6rem"
+          },
+          {
+            "type": "color",
+            "id": "color_menu",
+            "label": "Color Menu",
+            "default": "#000"
+          },
+          {
+            "type": "text",
+            "id": "block_class",
+            "label": "Class"
+          }
+        ]
+      },
+      {
+        "type": "block_html",
+        "name": "Block HTML",
+        "settings": [
+          {
+            "type": "select",
+            "id": "width_xl_desktop",
+            "label": "Width Large Desktop (in unit 1200px ↑)",
+            "options": [
+              {
+                "value": "col-xl-1",
+                "label": "1/12"
+              },
+              {
+                "value": "col-xl-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-xl-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-xl-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-xl-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-xl-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-xl-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-xl-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-xl-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-xl-10",
+                "label": "10/12"
+              },                  
+              {
+                "value": "col-xl-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_lg_desktop",
+            "label": "Width Desktop (in unit 1199px ↓)",
+            "options": [
+              {
+                "value": "col-lg-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-lg-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-lg-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-lg-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-lg-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-lg-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-lg-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-lg-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-lg-10",
+                "label": "10/12"
+              },                  
+              {
+                "value": "col-lg-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_md_tablet",
+            "label": "Width Tablet (in unit 991px ↓)",
+            "options": [
+              {
+                "value": "col-md-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-md-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-md-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-md-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-md-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-md-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-md-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-md-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-md-10",
+                "label": "10/12"
+              },                  
+              {
+                "value": "col-md-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_sm_mobile",
+            "label": "Width Large Mobile (in unit 767px ↓)",
+            "options": [
+              {
+                "value": "col-sm-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-sm-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-sm-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-sm-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-sm-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-sm-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-sm-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-sm-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-sm-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-sm-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "block_title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "size_title",
+            "label": "Size Title",
+            "default": "1.8rem"
+          },
+          {
+            "type": "color",
+            "id": "color_title",
+            "label": "Color Title",
+            "default": "#000"
+          },
+          {
+            "type": "textarea",
+            "id": "html_content",
+            "label": "Content",
+            "placeholder": "You can input code html for content.",
+            "info": "You can input code html for content."
+          },
+          {
+            "type": "text",
+            "id": "block_class",
+            "label": "Class"
+          }
+        ]
+      },
+      {
+        "type": "block_contact",
+        "name": "Contact Infomation",
+        "settings": [
+          {
+            "type": "select",
+            "id": "width_xl_desktop",
+            "label": "Width Large Desktop (in unit 1200px ↑)",
+            "options": [
+              {
+                "value": "col-xl-1",
+                "label": "1/12"
+              },
+              {
+                "value": "col-xl-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-xl-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-xl-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-xl-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-xl-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-xl-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-xl-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-xl-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-xl-10",
+                "label": "10/12"
+              },                  
+              {
+                "value": "col-xl-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_lg_desktop",
+            "label": "Width Desktop (in unit 1199px ↓)",
+            "options": [
+              {
+                "value": "col-lg-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-lg-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-lg-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-lg-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-lg-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-lg-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-lg-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-lg-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-lg-10",
+                "label": "10/12"
+              },                  
+              {
+                "value": "col-lg-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_md_tablet",
+            "label": "Width Tablet (in unit 991px ↓)",
+            "options": [
+              {
+                "value": "col-md-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-md-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-md-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-md-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-md-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-md-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-md-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-md-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-md-10",
+                "label": "10/12"
+              },                  
+              {
+                "value": "col-md-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_sm_mobile",
+            "label": "Width Large Mobile (in unit 767px ↓)",
+            "options": [
+              {
+                "value": "col-sm-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-sm-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-sm-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-sm-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-sm-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-sm-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-sm-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-sm-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-sm-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-sm-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "block_title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "size_title",
+            "label": "Size Title",
+            "default": "1.8rem"
+          },
+          {
+            "type": "color",
+            "id": "color_title",
+            "label": "Color Title",
+            "default": "#000"
+          },
+          {
+            "type": "image_picker",
+            "id": "logo_footer",
+            "label": "Logo Footer"
+          },
+          {
+            "type": "text",
+            "id": "contact_phone",
+            "label": "Phone",
+            "placeholder": "Examle: (+84) 123456789"
+          },
+          {
+            "type": "text",
+            "id": "size_phone",
+            "label": "Size Phone",
+            "default": "1.8rem"
+          },
+          {
+            "type": "color",
+            "id": "color_phone",
+            "label": "Color Phone",
+            "default": "#000"
+          },
+          {
+            "type": "text",
+            "id": "contact_email",
+            "label": "Email",
+            "placeholder": "info@vinovathemes.com"
+          },
+          {
+            "type": "text",
+            "id": "size_email",
+            "label": "Size Email",
+            "default": "1.8rem"
+          },
+          {
+            "type": "color",
+            "id": "color_email",
+            "label": "Color Email",
+            "default": "#000"
+          },
+          {
+            "type": "text",
+            "id": "contact_address",
+            "label": "Address",
+            "placeholder": "Examle: 123 Suspendis matti, Vinova Building VST  District NY Accums"
+          },
+          {
+            "type": "text",
+            "id": "size_address",
+            "label": "Size Address",
+            "default": "1.8rem"
+          },
+          {
+            "type": "color",
+            "id": "color_address",
+            "label": "Color Address",
+            "default": "#000"
+          },
+          {
+            "type": "text",
+            "id": "contact_hours",
+            "label": "Hours",
+            "placeholder": "Examle: 08.00AM - 19.00"
+          },
+          {
+            "type": "text",
+            "id": "size_hours",
+            "label": "Size Hours",
+            "default": "1.8rem"
+          },
+          {
+            "type": "color",
+            "id": "color_hours",
+            "label": "Color Hours",
+            "default": "#000"
+          },
+          {
+            "type": "text",
+            "id": "block_class",
+            "label": "Class"
+          }
+        ]
+      },
+      {
+        "type": "block_newsletter",
+        "name": "Block Newsletter",
+        "settings": [
+          {
+            "type": "select",
+            "id": "width_xl_desktop",
+            "label": "Width Large Desktop (in unit 1200px ↑)",
+            "options": [
+              {
+                "value": "col-xl-1",
+                "label": "1/12"
+              },
+              {
+                "value": "col-xl-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-xl-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-xl-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-xl-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-xl-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-xl-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-xl-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-xl-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-xl-10",
+                "label": "10/12"
+              },                  
+              {
+                "value": "col-xl-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_lg_desktop",
+            "label": "Width Desktop (in unit 1199px ↓)",
+            "options": [
+              {
+                "value": "col-lg-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-lg-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-lg-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-lg-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-lg-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-lg-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-lg-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-lg-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-lg-10",
+                "label": "10/12"
+              },                  
+              {
+                "value": "col-lg-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_md_tablet",
+            "label": "Width Tablet (in unit 991px ↓)",
+            "options": [
+              {
+                "value": "col-md-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-md-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-md-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-md-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-md-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-md-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-md-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-md-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-md-10",
+                "label": "10/12"
+              },                  
+              {
+                "value": "col-md-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_sm_mobile",
+            "label": "Width Large Mobile (in unit 767px ↓)",
+            "options": [
+              {
+                "value": "col-sm-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-sm-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-sm-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-sm-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-sm-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-sm-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-sm-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-sm-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-sm-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-sm-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "block_title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "size_title",
+            "label": "Size Title",
+            "default": "1.8rem"
+          },
+          {
+            "type": "color",
+            "id": "color_title",
+            "label": "Color Title",
+            "default": "#000"
+          },
+          {
+            "type": "textarea",
+            "id": "newsletter_des",
+            "label": "Newsletter Description",
+            "placeholder": "You can input code html for content.",
+            "info": "You can input code html for description."
+          },
+          {
+            "type": "text",
+            "id": "size_des",
+            "label": "Size Description",
+            "default": "1.8rem"
+          },
+          {
+            "type": "color",
+            "id": "color_des",
+            "label": "Color Description",
+            "default": "#000"
+          },
+          {
+            "type": "text",
+            "id": "block_class",
+            "label": "Class"
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "name": "paymentlogo",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "paymentlogo",
+            "label": "Payment Logo"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

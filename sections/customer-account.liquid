@@ -1,0 +1,75 @@
+{% assign name = 'customer.account.title' | t %}
+{% include 'nov-breadcrumb', custom_pagetitle : name %}
+<div class="page-width account_customers">
+  <div class="container">
+    <div class="section-header text-center">
+      <h1 class="title_block text-left"><span class="text-bold">{{ 'customer.account.title' | t }}</span></h1>
+    </div>
+
+    <div class="row">
+
+      <div class="col-12 mt-40">
+        <ul class="list-unstyled list_address mb-40">
+          <li class="d-flex">
+            <span class="title_info">{{ 'customer.addresses.my_name' | t }}:</span>
+            <span class="text_info">{{ customer.name }}</span>
+          </li>
+          <li class="d-flex">
+            <span class="title_info">{{ 'customer.addresses.company' | t }}:</span>
+            <span class="text_info">{{ customer.email }}</span>
+          </li>
+        </ul>
+        <div class="d-flex align-items-center">
+          <a href="/account/addresses" class="btn hover_x mr-30">
+            <span>{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</span>
+            <i class="zmdi zmdi-long-arrow-right"></i>
+          </a>
+          <a href="/account/logout" class="btn hover_x" id="customer_logout_link">
+            <span>{{ 'layout.customer.log_out' | t }}</span>
+            <i class="zmdi zmdi-long-arrow-right"></i>
+          </a>
+        </div>
+        <div class="mt-60">
+          <h2 class="title_block text-left mb-20"><span class="text-bold">{{ 'customer.orders.title' | t }}</span></h2>
+        {% paginate customer.orders by 20 %}
+          {% if customer.orders.size != 0 %}
+
+            <table class="responsive-table">
+              <thead>
+                <tr>
+                  <th>{{ 'customer.orders.order_number' | t }}</th>
+                  <th>{{ 'customer.orders.date' | t }}</th>
+                  <th>{{ 'customer.orders.payment_status' | t }}</th>
+                  <th>{{ 'customer.orders.fulfillment_status' | t }}</th>
+                  <th>{{ 'customer.orders.total' | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for order in customer.orders %}
+                  <tr>
+                    <td data-label="{{ 'customer.orders.order_number' | t }}">
+                      <a href="{{ order.customer_url }}" class="btn btn--secondary">{{ order.name }}</a>
+                    </td>
+                    <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: format: 'month_day_year' }}</td>
+                    <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+                    <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+                    <td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
+          {% else %}
+
+            <p>{{ 'customer.orders.none' | t }}</p>
+
+          {% endif %}
+          {% if paginate.pages > 1 %}
+            {% include 'pagination' %}
+          {% endif %}
+        {% endpaginate %}
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

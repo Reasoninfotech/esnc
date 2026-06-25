@@ -1,0 +1,1881 @@
+{%- assign logo_tabbar = section.settings.logo_tabbar -%}
+<div data-section-id="{{ section.id }}" data-section-type="header-section">
+  <header
+    class="site-header {% if section.settings.stickymenu == true %}sticky-menu{% endif %}"
+    {% if section.settings.background_color != blank and template.name == 'index' %}
+      style="background-color: {{ section.settings.background_color }};"
+    {% endif -%}
+    {% if section.settings.background_color_inner != blank and template.name != 'index' %}
+      style="background-color: {{ section.settings.background_color_inner }};"
+    {% endif %}
+  >
+    {% if section.settings.announcement_on_off and section.settings.announcement != blank %}
+      <div class="header-top" style="background-color: {{ section.settings.announcement_bg }}">
+        <div class="container_90">
+          <div class="row align-items-center">
+            {% if section.settings.social %}
+              <div class="col-md-3 d-none d-md-block">{% include 'nov-social' %}</div>
+            {% endif %}
+            <div class="{% if section.settings.social %}col-lg-6 col-md-9{% else %}col-12{% endif %}">
+              {% if section.settings.announcement != blank %}
+                <div
+                  class="announcement text-center text-md-right text-lg-center pt-15 pb-15"
+                  style="color: {{ section.settings.announcement_c }};"
+                >
+                  {{ section.settings.announcement }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+    <div class="header-mobile d-xl-none" style="background-color: {{ section.settings.background_color_mobile }};">
+      <div class="d-flex align-items-center">
+        <div class="mobile_logo text-center">
+          {% if section.settings.logo_mobile %}
+            <a href="/" class="site-header__logo-image" style="display: block;z-index: 9;" aria-label="ESNC Perfumery">
+              <img
+                class="lazypreload lazyloaded"
+                src="{{ section.settings.logo_mobile | img_url: '500x' }}"
+                alt="ESNC Perfumery"
+                style="max-width: {{ section.settings.width_lg_mb }}px!important;"
+              >
+            </a>
+          {% else %}
+            <a class="site-header__logo-link" href="/" itemprop="url">{{ shop.name }}</a>
+          {% endif %}
+        </div>
+
+        <div id="mobile_search">
+          {% include 'nov-formsearch-inline' %}
+        </div>
+
+        <div class="d-flex justify-content-end">
+          <div id="show-megamenu" class="item-mobile-top">
+            <i class="zmdi zmdi-view-headline" style="color: {{ section.settings.color_mobile }};"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container_90">
+      <div class="header-center d-none d-xl-block">
+        <div class="row d-flex align-items-center" style="position: relative;">
+          <div class="col-md-6 col-xl-4 order-2 order-xl-1">
+            <div class="search-bar">
+              <form action="/search" method="get" class="search-header-inline search" role="search">
+                <div class="search-container-inner">
+                  <input
+                    class="search-header__input"
+                    id="predictive-search-input"
+                    type="search"
+                    name="q"
+                    placeholder="Notes, Scent family, Style, Code"
+                    aria-label="Search"
+                    autocomplete="off"
+                  >
+                  <button class="search-header__submit text-center btn--link" type="submit" aria-label="Search">
+                    <span class="site-header__search-icon">
+                      <i class="zmdi zmdi-search"></i>
+                    </span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="contentsticky_logo col-md-3 col-xl-4 text-center order-1 order-xl-2">
+            <div class="h2 site-header__logo m-0" itemscope itemtype="http://schema.org/Organization">
+              {% if section.settings.logo %}
+                <a href="/" itemprop="url" class="site-header__logo-image" aria-label="ESNC Perfumery">
+                  <img
+                    class="lazypreload lazyloaded"
+                    src="{{ section.settings.logo | img_url: '500x' }}"
+                    alt="ESNC Perfumery"
+                    style="max-width: {{ section.settings.width_lg }}px!important;"
+                  >
+                </a>
+              {% else %}
+                <a class="site-header__logo-link" href="/" itemprop="url">{{ shop.name }}</a>
+              {% endif %}
+            </div>
+            <p class="hdtext">INSPIRED BY THE ONES YOU LOVE</p>
+          </div>
+          <div class="nav2 storelocator col-md-3 col-xl-4 text-right order-1 order-xl-2">
+            <a href="/pages/locations">Store Locator</a>
+          </div>
+          <!-- ===================== CSS ===================== -->
+          <!-- Live Search Results Dropdown -->
+          <div
+            id="predictive-search-results"
+            style="
+              display: block;
+              position: absolute;
+              top: 80px;
+              left: 0px;
+              right: 0px;
+              border-top: none;
+              z-index: 9999;
+              border-radius: 8px;
+              overflow: hidden;
+              width: calc(100% - 40px);
+              margin: 0 auto;
+            "
+          >
+            <div class="predictive-header-block"></div>
+          </div>
+
+          <style>
+            #predictive-search-results {
+              box-shadow: rgba(0, 0, 0, 0.13) 0px 4px 16px;
+            }
+            .predictive-item img {
+                max-height: 90px;
+                max-width: 70px;
+            }
+            .predictive-group {
+              overflow: hidden;
+              max-height: 475px;
+              background: #ffff;
+              position: relative;
+            }
+            .predictive-items {
+              gap: 20px;
+              padding: 5px 20px 20px;
+              width: 100%;
+              margin: 0 auto;
+            }
+            .predictive-items .predictive-item {
+              width: calc(20% - 16px);
+              padding: 10px;
+              border-radius: 5px;
+              border: 1px solid #8080804a;
+              gap: 10px;
+              display: flex;
+            }
+            .predictive-item-info {
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+              gap: 5px;
+            }
+            .predictive-item-title {
+              font-size: 14px;
+              line-height: normal;
+              color: #000 !important;
+              font-weight: 500 !important;
+            }
+            .predictive-item-price {
+              font-size: 20px;
+              font-weight: 600;
+              color: #000;
+              line-height: 22px;
+              margin-right: 20px;
+              font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif,
+                'Apple Color Emoji', 'Segoe UI Emoji', Segoe UI Symbol, 'Noto Color Emoji';
+            }
+            .predictive-header {
+              color: var(--color-heading);
+              font-size: 2.8rem;
+              font-weight: 700;
+              line-height: 35px;
+              text-transform: capitalize;
+              font-family: var(--font-family-default);
+              padding: 0 20px;
+              border-bottom: 1px solid;
+              margin: 10px 0;
+              padding-bottom: 10px;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            }
+            .predictive-header svg {
+              cursor: pointer;
+              position: absolute;
+              top: 17px;
+              right: 20px;
+            }
+            .predictive-view-all {
+              padding: 10px 40px;
+              margin: 0 auto;
+              width: fit-content;
+              display: flex;
+              height: 50px;
+              line-height: 50px;
+              background: #2abab0;
+              position: relative;
+              border-radius: 100px;
+              align-items: center;
+              color: #fff;
+            }
+            .predictive-view-all:hover {
+              background: #000;
+              color: #ffff;
+            }
+            .predictive-no-results {
+              background: #fff;
+              border-radius: 8px;
+              padding: 10px;
+              min-height: 200px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            .predictive-view-all-wrapper {
+              background-color: #fff;
+              border-radius: 0 0 8px 8px;
+              padding: 10px 0;
+            }
+            #mobile-predictive-search-results {
+              border-radius: 8px !important;
+              overflow: hidden !important;
+              top: 50px !important;
+            }
+
+            /* ===== LOADING ===== */
+            .predictive-loading {
+              background: #fff;
+              border-radius: 8px;
+              padding: 10px;
+              min-height: 200px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              gap: 14px;
+            }
+            .predictive-spinner {
+              width: 42px;
+              height: 42px;
+              border: 4px solid #e0e0e0;
+              border-top-color: #2abab0;
+              border-radius: 50%;
+              animation: predictive-spin 0.75s linear infinite;
+            }
+            .predictive-loading-text {
+              font-size: 14px;
+              color: #555;
+              font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+            }
+            @keyframes predictive-spin {
+              to {
+                transform: rotate(360deg);
+              }
+            }
+            /* ===== END LOADING ===== */
+            @media screen and (max-width: 1440px) {
+              .predictive-items .predictive-item {
+                 width: calc(25% - 15px);
+              }
+            }
+            @media screen and (max-width: 1140px) {
+              .predictive-items .predictive-item {
+                width: calc(33.33% - 13.33px);
+              }
+            }
+            @media screen and (max-width: 991px) {
+              .predictive-items .predictive-item {
+                width: calc(33.33% - 13.33px);
+              }
+              .predictive-item-title {
+                font-size: 12px;
+              }
+              .predictive-item-price {
+                  font-size: 18px;
+              }
+              .predictive-item img {
+    max-height: 55px;
+    max-width: 60px;
+}
+            }
+            @media screen and (max-width: 767px) {
+              .predictive-items .predictive-item {
+                width: calc(50% - 10px);
+              }
+              .predictive-group {
+                max-height: 60vh;
+              }
+              
+            }
+            @media screen and (max-width: 575px) {
+              .predictive-items {
+                gap: 15px;
+              }
+              #mobile-predictive-search-results {
+                top: 100px !important;
+                left: 10px !important;
+                width: calc(100% - 20px) !important;
+                right: 10px !important;
+                position: fixed !important;
+              }
+              .predictive-item-title {
+                font-size: 12px;
+              }
+            }
+              @media screen and (max-width: 500px) {
+              .predictive-items .predictive-item {
+                width: calc(100% - 10px);
+              }
+            }
+          </style>
+          <!-- ===================== JAVASCRIPT ===================== -->
+<script>
+(function () {
+    function initPredictiveSearch(inputId, resultsId) {
+      const input = document.getElementById(inputId);
+      if (!input) return;
+
+      let resultsBox = document.getElementById(resultsId);
+      if (!resultsBox) {
+        resultsBox = document.createElement('div');
+        resultsBox.id = resultsId;
+        resultsBox.className = 'predictive-search-results';
+        resultsBox.style.cssText =
+          'display:none; position:absolute; z-index:9999; width:100%; left:0; top:100%; background:#fff; box-shadow:0 4px 16px rgba(0,0,0,0.13); border-radius:0 0 8px 8px;';
+        const parent = input.closest('form') || input.parentElement;
+        parent.style.position = 'relative';
+        parent.appendChild(resultsBox);
+      }
+
+      function setBodyScroll(lock) {
+        if (inputId === 'mobile-predictive-search-input') {
+          document.body.style.overflow = lock ? 'hidden' : '';
+        }
+      }
+
+      let debounceTimer;
+      let lastQuery = '';
+      let currentPage = 1;
+      let totalCount = 0;
+      let isFetching = false;
+      let hasMore = true;
+      let itemsWrapper = null;
+      let abortController = null;
+
+      input.addEventListener('input', function () {
+        const query = this.value.trim();
+        clearTimeout(debounceTimer);
+        if (query.length < 3) {
+          hideResults();
+          return;
+        }
+        if (query === lastQuery) return;
+        showLoading();
+        debounceTimer = setTimeout(() => {
+          lastQuery = query;
+          currentPage = 1;
+          hasMore = true;
+          isFetching = false;
+          if (abortController) abortController.abort();
+          fetchResults(query, 1, true);
+        }, 350);
+      });
+
+      input.addEventListener('focus', function () {
+        const query = this.value.trim();
+        if (query.length >= 3) {
+          if (resultsBox.innerHTML !== '') {
+            resultsBox.style.display = 'block';
+            setBodyScroll(true);
+          } else {
+            showLoading();
+            lastQuery = query;
+            currentPage = 1;
+            hasMore = true;
+            isFetching = false;
+            if (abortController) abortController.abort();
+            fetchResults(query, 1, true);
+          }
+        }
+      });
+
+      function fetchResults(query, page, reset) {
+        if (isFetching || !hasMore) return;
+        isFetching = true;
+
+        abortController = new AbortController();
+        const signal = abortController.signal;
+
+        const searchUrl = '/search?q=' + encodeURIComponent(query) + '&type=product&page=' + page;
+
+        fetch(searchUrl, { signal })
+          .then((res) => res.text())
+          .then((html) => {
+            if (query !== lastQuery) {
+              isFetching = false;
+              return;
+            }
+
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+
+            if (page === 1) {
+              const allText = doc.body.innerText || doc.body.textContent || '';
+              const match = allText.match(/(\d+)\s+results?\s+for/i);
+              if (match) totalCount = parseInt(match[1]);
+            }
+
+            const productCards = doc.querySelectorAll('.search_product_grid_item');
+            const products = [];
+
+            productCards.forEach((card) => {
+              const imgEl = card.querySelector('img');
+              const linkEl = card.querySelector('a');
+              const priceEl =
+                card.querySelector('[class*="price"]') ||
+                card.querySelector('[class*="Price"]') ||
+                card.querySelector('.money') ||
+                card.querySelector('[class*="money"]');
+
+              const title = imgEl ? (imgEl.getAttribute('alt') || '').trim() : '';
+              const url = linkEl ? (linkEl.getAttribute('href') || '') : '';
+              const image = imgEl
+                ? (imgEl.getAttribute('data-src') || imgEl.getAttribute('src') || '')
+                : '';
+              const price = priceEl ? priceEl.textContent.trim() : '';
+
+              if (!title || !url) return;
+              products.push({ title, url, image, price });
+            });
+
+            if (page === 1 && products.length === 0) {
+              fetchFallback(query);
+              return;
+            }
+
+            if (products.length === 0) {
+              hasMore = false;
+              removeLoadingSpinner();
+              isFetching = false;
+              return;
+            }
+
+            const nextPageLink =
+              doc.querySelector('a[href*="page=' + (page + 1) + '"]') ||
+              doc.querySelector('.pagination__next') ||
+              doc.querySelector('[aria-label="Next"]') ||
+              doc.querySelector('.next a');
+
+            if (!nextPageLink) hasMore = false;
+
+            renderResults(products, query, reset);
+            isFetching = false;
+          })
+          .catch((err) => {
+            if (err.name === 'AbortError') {
+              isFetching = false;
+              return;
+            }
+            if (query !== lastQuery) {
+              isFetching = false;
+              return;
+            }
+            if (page === 1) fetchFallback(query);
+            else isFetching = false;
+          });
+      }
+
+      function fetchFallback(query) {
+        const url =
+          '/search/suggest.json?q=' +
+          encodeURIComponent(query) +
+          '&resources[type]=product' +
+          '&resources[options][fields]=title,product_type,variants.title,tag,body';
+
+        fetch(url)
+          .then((res) => res.json())
+          .then((data) => {
+            if (query !== lastQuery) {
+              isFetching = false;
+              return;
+            }
+            const products =
+              (data.resources && data.resources.results && data.resources.results.products) || [];
+            const mapped = products.map((p) => ({
+              title: p.title,
+              url: p.url,
+              image:
+                p.featured_image && p.featured_image.url
+                  ? p.featured_image.url.replace(/(\.[a-z]+)(\?.*)?$/, '_500x500$1')
+                  : '',
+              price: p.price ? '$' + Number(p.price).toFixed(2) : ''
+            }));
+            totalCount = mapped.length;
+            hasMore = false;
+            renderResults(mapped, query, true);
+            isFetching = false;
+          })
+          .catch(() => {
+            resultsBox.innerHTML =
+              '<div class="predictive-no-results">Something went wrong.</div>';
+            resultsBox.style.display = 'block';
+            isFetching = false;
+          });
+      }
+
+      function renderResults(products, query, reset) {
+        if (reset) {
+          resultsBox.innerHTML = '';
+
+          const groupWrapper = document.createElement('div');
+          groupWrapper.className = 'predictive-group';
+
+          const header = document.createElement('div');
+          header.className = 'predictive-header';
+          header.innerHTML = `
+            <span>Products</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z"
+                fill="#0F1729"/>
+            </svg>
+          `;
+          groupWrapper.appendChild(header);
+
+          const closeBtn = header.querySelector('svg');
+          closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            hideResults();
+            input.blur();
+          });
+
+          itemsWrapper = document.createElement('div');
+          itemsWrapper.className = 'predictive-items row grid grid--view-items';
+          itemsWrapper.style.cssText = 'max-height: calc(420px - 100px); overflow-y:auto;';
+          groupWrapper.appendChild(itemsWrapper);
+
+          resultsBox.appendChild(groupWrapper);
+
+          const viewAllWrapper = document.createElement('div');
+          viewAllWrapper.className = 'predictive-view-all-wrapper';
+          const viewAll = document.createElement('a');
+          viewAll.href = '/search?q=' + encodeURIComponent(query) + '&type=product';
+          viewAll.className = 'predictive-view-all';
+          viewAll.textContent = 'View all';
+          viewAllWrapper.appendChild(viewAll);
+          resultsBox.appendChild(viewAllWrapper);
+
+          itemsWrapper.addEventListener('scroll', () => {
+            const nearBottom =
+              itemsWrapper.scrollTop + itemsWrapper.clientHeight >=
+              itemsWrapper.scrollHeight - 80;
+            if (nearBottom && !isFetching && hasMore) {
+              currentPage++;
+              addLoadingSpinner();
+              fetchResults(lastQuery, currentPage, false);
+            }
+          });
+        }
+
+        removeLoadingSpinner();
+
+        products.forEach((product) => {
+          const a = document.createElement('a');
+          a.href = product.url;
+          a.className = 'predictive-item';
+
+          const imgSrc = product.image || 'https://placehold.co/52x52?text=No+Image';
+
+          const priceHtml = product.price
+            ? '<span class="predictive-item-price">' + escHtml(product.price) + '</span>'
+            : '';
+
+          a.innerHTML =
+            '<img src="' +
+            escAttr(imgSrc) +
+            '" alt="' +
+            escAttr(product.title) +
+            '" loading="lazy">' +
+            '<div class="predictive-item-info">' +
+            '<span class="predictive-item-title">' +
+            highlightMatch(product.title, query) +
+            '</span>' +
+            priceHtml +
+            '</div>';
+
+          itemsWrapper.appendChild(a);
+        });
+
+        resultsBox.style.display = 'block';
+        setBodyScroll(true);
+      }
+
+      function addLoadingSpinner() {
+        if (!itemsWrapper) return;
+        const spinner = document.createElement('div');
+        spinner.className = 'predictive-loading predictive-scroll-spinner';
+        spinner.style.cssText = 'display:flex; justify-content:center; align-items:center; width:100%; padding:12px 0;';
+        spinner.innerHTML = `<div class="predictive-spinner"></div><span class="predictive-loading-text">Loading…</span>`;
+        itemsWrapper.appendChild(spinner);
+      }
+
+      function removeLoadingSpinner() {
+        if (!itemsWrapper) return;
+        const spinner = itemsWrapper.querySelector('.predictive-scroll-spinner');
+        if (spinner) spinner.remove();
+      }
+
+      function showLoading() {
+        resultsBox.innerHTML = `
+          <div class="predictive-loading">
+            <div class="predictive-spinner"></div>
+            <span class="predictive-loading-text">Searching…</span>
+          </div>
+        `;
+        resultsBox.style.display = 'block';
+        setBodyScroll(true);
+      }
+
+      function hideResults() {
+        if (abortController) {
+          abortController.abort();
+          abortController = null;
+        }
+        resultsBox.style.display = 'none';
+        resultsBox.innerHTML = '';
+        lastQuery = '';
+        currentPage = 1;
+        hasMore = true;
+        isFetching = false;
+        itemsWrapper = null;
+        setBodyScroll(false);
+      }
+
+      function highlightMatch(text, query) {
+        const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const regex = new RegExp('(' + escaped + ')', 'gi');
+        return escHtml(text).replace(
+          regex,
+          '<mark style="background:#fff3b0;padding:0 2px;border-radius:2px;">$1</mark>'
+        );
+      }
+
+      function escHtml(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function escAttr(str) {
+        return String(str).replace(/"/g, '&quot;');
+      }
+
+      document.addEventListener('click', (e) => {
+        if (!input.contains(e.target) && !resultsBox.contains(e.target)) {
+          hideResults();
+        }
+      });
+
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          hideResults();
+          input.blur();
+        }
+      });
+    }
+
+    initPredictiveSearch('predictive-search-input', 'predictive-search-results');
+    initPredictiveSearch('mobile-predictive-search-input', 'mobile-predictive-search-results');
+  })();
+</script>
+          <!-- ===================== JAVASCRIPT ===================== -->
+
+          <div class="contentsticky_menu col-md-3 col-xl-12 mt-lg-4 order-3 order-xl-4" id="contentsticky_menu">
+            <div class="header-social text-center">
+              {% include 'nov-social' %}
+            </div>
+            <div class="menu-nav-wrapper">
+              <div class="vertical_dropdown justify-content-end d-xl-none">
+                <i class="zmdi zmdi-sort-amount-desc"></i>
+              </div>
+              <nav id="AccessibleNav" class="ver_menu text-center">
+                {% include 'site-nav' %}
+              </nav>
+            </div>
+            <div class="contentsticky_item d-none order-3 d-xl-flex justify-content-end align-items-center content_right">
+              {% if settings.wishlist_enable %}
+                <div class="site_wishlist pt-3">
+                  <a href="/pages/wishlist" class="d-flex align-items-center" aria-label="View Wishlist">
+                    <i class="icon-wishlist"></i>
+                  </a>
+                </div>
+              {% endif %}
+              {% if settings.mini_cart_type == 'canvas' %}
+                <div class="cart_canvas">
+                  <div
+                    class="open_header_cart_canvas d-none d-md-flex"
+                    data-img-cart="{{ settings.img_nocart | img_url: '200x'}}"
+                  ></div>
+                  <div id="cart_block">
+                    <div class="header-cart d-flex align-items-center">
+                      <div class="site-header__cart pt-3">
+                        <span class="icon-cart"></span>
+                      </div>
+                      <span id="_desktop_cart_count" class="site-header__cart-count">
+                        <span id="CartCount">{{ cart.item_count }}</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              {% else %}
+                <div class="cart_dropdown">
+                  <div id="cart_block">
+                    <div class="header-cart d-flex align-items-center">
+                      <div class="site-header__cart">
+                        <span class="icon-cart"></span>
+                      </div>
+                      <span id="_desktop_cart_count" class="site-header__cart-count">
+                        <span id="CartCount">{{ cart.item_count }}</span>
+                      </span>
+                    </div>
+                    <div id="_desktop_cart"><div id="cart-info"></div></div>
+                  </div>
+                </div>
+              {% endif %}
+              {% if shop.customer_accounts_enabled %}
+                {% if customer %}
+                  <div class="user_account">
+                    <a
+                      class="myaccount"
+                      href="{{ shop.secure_url }}/account"
+                      rel="nofollow"
+                      title="{{ 'layout.customer.account' | t }}"
+                    >
+                      <span class="icon-myaccount"></span>
+                    </a>
+                  </div>
+                {% else %}
+                  <a
+                    class="login"
+                    href="{{ shop.secure_url }}/account/login"
+                    rel="nofollow"
+                    title="{{ 'layout.customer.log_in' | t }}"
+                  >
+                    <span class="icon-myaccount"></span>
+                  </a>
+                {% endif %}
+              {% endif %}
+
+              <div class="myaccount-title d-flex align-items-center">
+                <i class="icon-account"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  {% comment %}
+    {% if section.settings.stickymenu == true %}
+      <!-- <div id="header-sticky" {% if section.settings.background_color_sticky != blank %}style="background: {{ section.settings.background_color_sticky }};"{% endif %}>
+        <div class="container_90">
+          <div class="row align-items-center justify-content-between">
+            <div class="contentstickynew_menu_icon col-xl-3 col-lg-4 d-xl-none d-md-block"></div>
+            <div class="contentstickynew_logo col-xl-2 col-lg-4 text-xl-left text-md-center"></div>
+            <div class="contentstickynew_menu col-xl-8 col-lg-4 d-xl-flex align-items-center justify-content-center d-md-none d-block"></div>
+            <div class="contentstickynew_item col-xl-2 col-lg-4 d-flex align-items-center justify-content-end"></div>
+          </div>
+        </div>
+      </div> -->
+    {% endif %}
+  {% endcomment %}
+</div>
+<div class="d-xl-none d-md-block d-none">
+  <nav id="AccessibleNav" class="ver_menu">
+    {% include 'site-nav' %}
+  </nav>
+</div>
+
+<!-- The Modal -->
+
+<div class="popup-wrap">
+  <div class="popup">
+    <a href="hhttps://esnc.com.au/collections/top-sellers" target="_self"
+      ><img src="https://cdn.shopify.com/s/files/1/0648/4167/9013/files/Boxing_Day_Sale_25_off_pop_up.webp?v=1766622015"
+    ></a>
+    {% comment %}
+      <div class="popup-subheading">Online and Instore</div>
+      <div class="popup-heading"><h2>SALE</h2></div>
+      <div class="popup-dateheading"><h3>Start on 14-08-25</h3></div>
+      <div class="popup-dateheading"><h3>Ends on 17-08-25</h3></div>
+      <div class="popup-brand"><h4>Esnc Love Members Only</h4></div>
+    {% endcomment %}
+    <!--
+      <div class="promobanner"><a href="https://esnc.com.au/collections/top-sellers" target= "_self">Open Sale Offer</a></div>
+    -->
+    <div class="btn-close">x</div>
+  </div>
+</div>
+
+<style>
+  .popup-wrap {
+      position: absolute;
+      width: 100%;
+      background-color: rgba(0,0,0,0.5);
+      display: none; /* Hide by default */
+  }
+
+  .popup {
+      position: relative;
+      width: 600px;
+      height: 500px;
+      background-color: #e7dced;
+      margin: 20px auto;
+  }
+
+  .popup img{width:100%;}
+
+  @media only screen and (max-width: 768px) {
+
+
+  	.popup-wrap{
+        top: 340%;
+      }
+
+  	.popup{
+  		position: relative;
+  		width: 90%;
+  		height: 100%;
+  		background-color: #e7dced;
+  		margin: 20px auto;
+        display:block;
+  	}
+
+  }
+
+
+
+  .promobanner{
+  width:230px;  margin: 20px auto 0px auto;
+  }
+  .promobanner a{
+  background-color: #e54ead; color:#fff !important; font-size: 20px !important; padding:10px; text-align: center; margin: 0px auto;
+  }
+  .promobanner a:hover{
+   color:#fff !important;
+  }
+  	.popup-subheading{
+  		width: auto;
+  		color: #453738 !important;
+          font-size: 26px !important;
+        font-weight:900px !important;
+        text-align: center;
+        font-family: var(--font-family-default);
+  	}
+
+  .popup-heading h2{
+          width: auto;
+  		color: #453738 !important;
+          font-size: 128px !important;
+          font-weight:900px;
+          text-align: center;
+          font-family: var(--font-family-default);
+  	}
+  .popup-dateheading h3{
+          width: auto;
+  		color: #dd3d3d !important;
+          font-size: 40px !important;
+          font-weight:900px;
+          text-align: center;
+          font-family: var(--font-family-default);
+  	}
+  .popup-brand h4{
+          width: auto;
+  		color: #e54ead !important;
+          font-size: 35px !important;
+          font-weight:900px;
+          text-align: center;
+          font-family: var(--font-family-default);
+  	}
+
+
+  	.btn-close{
+  		background-color: #fff;
+  		width: 25px;
+  		height: 25px;
+  		text-align: center;
+  		line-height: 22px;
+  		position: absolute;
+  		right: -10px;
+  		top: -10px;
+  		cursor: pointer;
+  		transition: all 0.5s ease;
+  		border-radius: 50%;
+  	}
+  	.btn-close:hover{
+  		transform: rotate(360deg);
+  	}
+</style>
+
+{% comment %}
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const popup = document.querySelector('.popup-wrap');
+    const closeBtn = document.querySelector('.btn-close');
+
+    if (!popup || !closeBtn) {
+      console.error('Popup elements not found in DOM');
+      return;
+    }
+
+    // Set your popup open and close dates
+    const openDate = new Date('2025-11-20T23:59:00');
+    const closeDate = new Date('2025-12-01T23:59:00');
+    const now = new Date();
+
+    // Show popup only if current date is within range
+    if (now >= openDate && now <= closeDate) {
+      popup.style.display = 'block';
+    } else {
+      popup.style.display = 'none'; // Hide if outside range
+    }
+
+    // Close popup on click
+    closeBtn.addEventListener('click', function () {
+      popup.style.display = 'none';
+    });
+  });
+  </script>
+{% endcomment %}
+
+{% comment %}
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const popup = document.querySelector('.popup-wrap');
+    const closeBtn = document.querySelector('.btn-close');
+
+    if (!popup || !closeBtn) {
+      console.error('Popup elements not found in DOM');
+      return;
+    }
+
+    // Set your popup open and close dates using the AEDT (UTC+11:00) offset
+    // Note: November 2025 and December 2025 fall within Daylight Saving Time.
+    const openDate = new Date('2025-11-20T23:59:00+11:00');
+    const closeDate = new Date('2025-12-01T23:59:00+11:00');
+    const now = new Date();
+
+
+    if (now >= openDate && now <= closeDate) {
+      popup.style.display = 'block';
+    } else {
+      popup.style.display = 'none';
+    }
+
+    // Close popup on click
+    closeBtn.addEventListener('click', function () {
+      popup.style.display = 'none';
+    });
+  });
+  </script>
+{% endcomment %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const popup = document.querySelector('.popup-wrap');
+    const closeBtn = document.querySelector('.btn-close');
+
+    if (!popup || !closeBtn) {
+      console.error('Popup elements not found in DOM');
+      return;
+    }
+
+    // --- Frequency Capping Check ---
+    const HAS_SEEN_POPUP = localStorage.getItem('popupDisplayed');
+
+    // Set your popup open and close dates (Melbourne/AEDT: UTC+11:00)
+    const openDate = new Date('2025-12-03T23:59:00+11:00');
+    const closeDate = new Date('2025-12-25T23:59:00+11:00');
+    const now = new Date();
+
+    // Check if current date is within the range AND the user hasn't seen it before
+    if (now >= openDate && now <= closeDate && !HAS_SEEN_POPUP) {
+      // 1. Show the popup
+      popup.style.display = 'block';
+
+      // 2. Set the localStorage flag so it doesn't show up again
+      localStorage.setItem('popupDisplayed', 'true');
+    } else {
+      // Hide if outside range OR if the flag is set
+      popup.style.display = 'none';
+    }
+
+    // Close popup on click (This is just an extra way to close it)
+    closeBtn.addEventListener('click', function () {
+      popup.style.display = 'none';
+      // NOTE: The flag is already set above, so we don't need to set it again here.
+    });
+  });
+</script>
+
+<script>
+  $('.search-toggle1').click(function () {
+    $('.search-bar').toggle();
+  });
+</script>
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "paragraph",
+      "content": "Please enter your logo size ↓."
+    },
+    {
+      "type": "number",
+      "id": "width_lg",
+      "label": "Width Logo desktop",
+      "default": 100
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_mobile",
+      "label": "Logo Mobile Image"
+    },
+    {
+      "type": "paragraph",
+      "content": "Please enter your logo size ↓."
+    },
+    {
+      "type": "number",
+      "id": "width_lg_mb",
+      "label": "Width Logo Mobile",
+      "default": 62
+    },
+    {
+      "type": "header",
+      "content": "Announcement"
+    },
+    {
+      "type": "checkbox",
+      "id": "announcement_on_off",
+      "label": "Show Announcement Bar",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "social",
+      "label": "Show social",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "announcement",
+      "label": "Announcement text"
+    },
+    {
+      "type": "color",
+      "id": "announcement_c",
+      "label": "Announcement color"
+    },
+    {
+      "type": "color",
+      "id": "announcement_bg",
+      "label": "Announcement background"
+    },
+    {
+      "type": "header",
+      "content": "Vinova Menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "stickymenu",
+      "label": "Enable Sticky"
+    },
+    {
+      "type": "link_list",
+      "id": "main_linklist",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "text",
+      "id": "size_menu",
+      "label": "Font Size Menu ( > 14 = rem (1rem = 10px) , < 14 = px )",
+      "default": "1.8rem"
+    },
+    {
+      "type": "color",
+      "id": "color_menu",
+      "label": "Color Menu",
+      "default": "#222"
+    },
+    {
+      "type": "checkbox",
+      "id": "novmenu_enable",
+      "label": "Enable Megamenu",
+      "info": "Acitve Vinova Menu"
+    },
+    {
+      "type": "header",
+      "content": "Header Color"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Header"
+    },
+    {
+      "type": "color",
+      "id": "background_color_mobile",
+      "label": "Background Header Mobile"
+    },
+    {
+      "type": "color",
+      "id": "color_mobile",
+      "label": "Color Header Icon Mobile"
+    },
+    {
+      "type": "color",
+      "id": "background_color_sticky",
+      "label": "Background Header Sticky"
+    },
+    {
+      "type": "color",
+      "id": "background_color_inner",
+      "label": "Background Header Pages Inner"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Megamenu Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "novmenu_item",
+          "label": "Menu item name",
+          "info": "Menu item of main-menu. Menu item has dropdown megamenu."
+        },
+        {
+          "type": "text",
+          "id": "submenu_width",
+          "label": "Submenu Width (px)"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_menu",
+          "label": "Icon Menu"
+        },
+        {
+          "type": "image_picker",
+          "id": "img_bg",
+          "label": "background image for block"
+        },
+        {
+          "type": "header",
+          "content": "Block Collection List"
+        },
+        {
+          "type": "checkbox",
+          "id": "collection_enable",
+          "label": "Enable Collection"
+        },
+        {
+          "type": "select",
+          "id": "novmenu_collection_col_lg",
+          "label": "Width on megamenu large desktop",
+          "default": "col-xl-3",
+          "options": [
+            {
+              "value": "col-xl-2",
+              "label": "2/12"
+            },
+            {
+              "value": "col-xl-3",
+              "label": "3/12"
+            },
+            {
+              "value": "col-xl-4",
+              "label": "4/12"
+            },
+            {
+              "value": "col-xl-5",
+              "label": "5/12"
+            },
+            {
+              "value": "col-xl-6",
+              "label": "6/12"
+            },
+            {
+              "value": "col-xl-7",
+              "label": "7/12"
+            },
+            {
+              "value": "col-xl-8",
+              "label": "8/12"
+            },
+            {
+              "value": "col-xl-9",
+              "label": "9/12"
+            },
+            {
+              "value": "col-xl-10",
+              "label": "10/12"
+            },
+            {
+              "value": "col-xl-12",
+              "label": "12/12"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "novmenu_collection_col",
+          "label": "Width on megamenu desktop",
+          "default": "col-lg-3",
+          "options": [
+            {
+              "value": "col-lg-2",
+              "label": "2/12"
+            },
+            {
+              "value": "col-lg-3",
+              "label": "3/12"
+            },
+            {
+              "value": "col-lg-4",
+              "label": "4/12"
+            },
+            {
+              "value": "col-lg-5",
+              "label": "5/12"
+            },
+            {
+              "value": "col-lg-6",
+              "label": "6/12"
+            },
+            {
+              "value": "col-lg-7",
+              "label": "7/12"
+            },
+            {
+              "value": "col-lg-8",
+              "label": "8/12"
+            },
+            {
+              "value": "col-lg-9",
+              "label": "9/12"
+            },
+            {
+              "value": "col-lg-10",
+              "label": "10/12"
+            },
+            {
+              "value": "col-lg-12",
+              "label": "12/12"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "name_collec_1",
+          "label": "Title Collection 1",
+          "default": "Best Sellers"
+        },
+        {
+          "type": "text",
+          "id": "size_title_1",
+          "label": "Size Title 1",
+          "default": "14px"
+        },
+        {
+          "type": "color",
+          "id": "color_title_1",
+          "label": "Color Title 1",
+          "default": "#1a1a1a"
+        },
+        {
+          "type": "url",
+          "id": "link_1",
+          "label": "Link Collection 1",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "name_collec_2",
+          "label": "Title Collection 2",
+          "default": "New Arrival"
+        },
+        {
+          "type": "text",
+          "id": "size_title_2",
+          "label": "Size Title 2",
+          "default": "14px"
+        },
+        {
+          "type": "color",
+          "id": "color_title_2",
+          "label": "Color Title 2",
+          "default": "#1a1a1a"
+        },
+        {
+          "type": "url",
+          "id": "link_2",
+          "label": "Link Collection 2",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "name_collec_3",
+          "label": "Title Collection 3",
+          "default": "Top Trending"
+        },
+        {
+          "type": "text",
+          "id": "size_title_3",
+          "label": "Size Title 3",
+          "default": "14px"
+        },
+        {
+          "type": "color",
+          "id": "color_title_3",
+          "label": "Color Title 3",
+          "default": "#1a1a1a"
+        },
+        {
+          "type": "url",
+          "id": "link_3",
+          "label": "Link Collection 3",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "name_collec_4",
+          "label": "Title Collection 4",
+          "default": "Top Trending"
+        },
+        {
+          "type": "text",
+          "id": "size_title_4",
+          "label": "Size Title 4",
+          "default": "14px"
+        },
+        {
+          "type": "color",
+          "id": "color_title_4",
+          "label": "Color Title 4",
+          "default": "#1a1a1a"
+        },
+        {
+          "type": "url",
+          "id": "link_4",
+          "label": "Link Collection 4",
+          "info": "Optional"
+        },
+        {
+          "type": "text",
+          "id": "name_collec_5",
+          "label": "Title Collection 5",
+          "default": "Denim Collection"
+        },
+        {
+          "type": "text",
+          "id": "size_title_5",
+          "label": "Size Title 5",
+          "default": "14px"
+        },
+        {
+          "type": "color",
+          "id": "color_title_5",
+          "label": "Color Title 5",
+          "default": "#1a1a1a"
+        },
+        {
+          "type": "url",
+          "id": "link_5",
+          "label": "Link Collection 5",
+          "info": "Optional"
+        },
+        {
+          "type": "header",
+          "content": "Block navigation",
+          "info": "Admin -> Navigation -> Menu. Position:1"
+        },
+        {
+          "type": "checkbox",
+          "id": "novmenu_menu_enable",
+          "label": "Enable navigation"
+        },
+        {
+          "type": "select",
+          "id": "novmenu_menu_col_lg",
+          "label": "Width on megamenu large desktop",
+          "default": "col-xl-3",
+          "options": [
+            {
+              "value": "col-xl-2",
+              "label": "2/12"
+            },
+            {
+              "value": "col-xl-3",
+              "label": "3/12"
+            },
+            {
+              "value": "col-xl-4",
+              "label": "4/12"
+            },
+            {
+              "value": "col-xl-5",
+              "label": "5/12"
+            },
+            {
+              "value": "col-xl-6",
+              "label": "6/12"
+            },
+            {
+              "value": "col-xl-7",
+              "label": "7/12"
+            },
+            {
+              "value": "col-xl-8",
+              "label": "8/12"
+            },
+            {
+              "value": "col-xl-9",
+              "label": "9/12"
+            },
+            {
+              "value": "col-xl-10",
+              "label": "10/12"
+            },
+            {
+              "value": "col-xl-12",
+              "label": "12/12"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "novmenu_menu_col",
+          "label": "Width on megamenu desktop",
+          "default": "col-lg-3",
+          "options": [
+            {
+              "value": "col-lg-2",
+              "label": "2/12"
+            },
+            {
+              "value": "col-lg-3",
+              "label": "3/12"
+            },
+            {
+              "value": "col-lg-4",
+              "label": "4/12"
+            },
+            {
+              "value": "col-lg-5",
+              "label": "5/12"
+            },
+            {
+              "value": "col-lg-6",
+              "label": "6/12"
+            },
+            {
+              "value": "col-lg-7",
+              "label": "7/12"
+            },
+            {
+              "value": "col-lg-8",
+              "label": "8/12"
+            },
+            {
+              "value": "col-lg-9",
+              "label": "9/12"
+            },
+            {
+              "value": "col-lg-10",
+              "label": "10/12"
+            },
+            {
+              "value": "col-lg-12",
+              "label": "12/12"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "novmenu_menu_menucol_lg",
+          "label": "Width Fisrt Children Menu On Megamenu Large Desktop",
+          "default": "col-xl-3",
+          "options": [
+            {
+              "value": "col-xl-2",
+              "label": "2/12"
+            },
+            {
+              "value": "col-xl-3",
+              "label": "3/12"
+            },
+            {
+              "value": "col-xl-4",
+              "label": "4/12"
+            },
+            {
+              "value": "col-xl-5",
+              "label": "5/12"
+            },
+            {
+              "value": "col-xl-6",
+              "label": "6/12"
+            },
+            {
+              "value": "col-xl-8",
+              "label": "8/12"
+            },
+            {
+              "value": "col-xl-9",
+              "label": "9/12"
+            },
+            {
+              "value": "col-xl-10",
+              "label": "10/12"
+            },
+            {
+              "value": "col-xl-12",
+              "label": "12/12"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "novmenu_menu_menucol",
+          "label": "Width Fisrt Children Menu On Megamenu Desktop",
+          "default": "col-lg-3",
+          "options": [
+            {
+              "value": "col-lg-2",
+              "label": "2/12"
+            },
+            {
+              "value": "col-lg-3",
+              "label": "3/12"
+            },
+            {
+              "value": "col-lg-4",
+              "label": "4/12"
+            },
+            {
+              "value": "col-lg-5",
+              "label": "5/12"
+            },
+            {
+              "value": "col-lg-6",
+              "label": "6/12"
+            },
+            {
+              "value": "col-lg-8",
+              "label": "8/12"
+            },
+            {
+              "value": "col-lg-9",
+              "label": "9/12"
+            },
+            {
+              "value": "col-lg-10",
+              "label": "10/12"
+            },
+            {
+              "value": "col-lg-12",
+              "label": "12/12"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "Block Banner"
+        },
+        {
+          "type": "checkbox",
+          "id": "banner_enable",
+          "label": "Banner Enable",
+          "default": false
+        },
+        {
+          "type": "select",
+          "id": "novmenu_banner_col_lg",
+          "label": "Width on megamenu large desktop",
+          "default": "col-xl-4",
+          "options": [
+            {
+              "value": "col-xl-2",
+              "label": "2/12"
+            },
+            {
+              "value": "col-xl-3",
+              "label": "3/12"
+            },
+            {
+              "value": "col-xl-4",
+              "label": "4/12"
+            },
+            {
+              "value": "col-xl-5",
+              "label": "5/12"
+            },
+            {
+              "value": "col-xl-6",
+              "label": "6/12"
+            },
+            {
+              "value": "col-xl-8",
+              "label": "8/12"
+            },
+            {
+              "value": "col-xl-9",
+              "label": "9/12"
+            },
+            {
+              "value": "col-xl-10",
+              "label": "10/12"
+            },
+            {
+              "value": "col-xl-12",
+              "label": "12/12"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "novmenu_banner_col",
+          "label": "Width on megamenu desktop",
+          "default": "col-lg-4",
+          "options": [
+            {
+              "value": "col-lg-2",
+              "label": "2/12"
+            },
+            {
+              "value": "col-lg-3",
+              "label": "3/12"
+            },
+            {
+              "value": "col-lg-4",
+              "label": "4/12"
+            },
+            {
+              "value": "col-lg-5",
+              "label": "5/12"
+            },
+            {
+              "value": "col-lg-6",
+              "label": "6/12"
+            },
+            {
+              "value": "col-lg-8",
+              "label": "8/12"
+            },
+            {
+              "value": "col-lg-9",
+              "label": "9/12"
+            },
+            {
+              "value": "col-lg-10",
+              "label": "10/12"
+            },
+            {
+              "value": "col-lg-12",
+              "label": "12/12"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "Block Banner"
+        },
+        {
+          "type": "checkbox",
+          "id": "novmenu_banner_enable",
+          "label": "Enable Banner"
+        },
+        {
+          "type": "text",
+          "id": "image_size",
+          "label": "Image Size Banner",
+          "default": "255x300",
+          "info": "[Size parameters](https://help.shopify.com/themes/liquid/filters/url-filters#size-parameters)"
+        },
+        {
+          "type": "image_picker",
+          "id": "novmenu_banner",
+          "label": "Banner image"
+        },
+        {
+          "type": "url",
+          "id": "novmenu_banner_link",
+          "label": "Link",
+          "info": "Optional"
+        },
+        {
+          "type": "header",
+          "content": "Block Product",
+          "info": "Product Megamenu"
+        },
+        {
+          "type": "checkbox",
+          "id": "product_enable",
+          "label": "Enable product"
+        },
+        {
+          "type": "select",
+          "id": "novmenu_product_col_lg",
+          "label": "Width on megamenu large desktop",
+          "default": "col-xl-4",
+          "options": [
+            {
+              "value": "col-xl-2",
+              "label": "2/12"
+            },
+            {
+              "value": "col-xl-3",
+              "label": "3/12"
+            },
+            {
+              "value": "col-xl-4",
+              "label": "4/12"
+            },
+            {
+              "value": "col-xl-6",
+              "label": "6/12"
+            },
+            {
+              "value": "col-xl-8",
+              "label": "8/12"
+            },
+            {
+              "value": "col-xl-9",
+              "label": "9/12"
+            },
+            {
+              "value": "col-xl-10",
+              "label": "10/12"
+            },
+            {
+              "value": "col-xl-12",
+              "label": "12/12"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "novmenu_product_col",
+          "label": "Width on megamenu desktop",
+          "default": "col-lg-4",
+          "options": [
+            {
+              "value": "col-lg-2",
+              "label": "2/12"
+            },
+            {
+              "value": "col-lg-3",
+              "label": "3/12"
+            },
+            {
+              "value": "col-lg-4",
+              "label": "4/12"
+            },
+            {
+              "value": "col-lg-6",
+              "label": "6/12"
+            },
+            {
+              "value": "col-lg-8",
+              "label": "8/12"
+            },
+            {
+              "value": "col-lg-9",
+              "label": "9/12"
+            },
+            {
+              "value": "col-lg-10",
+              "label": "10/12"
+            },
+            {
+              "value": "col-lg-12",
+              "label": "12/12"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title_product",
+          "label": "Title Product",
+          "default": "Featured Product"
+        },
+        {
+          "type": "text",
+          "id": "size_title",
+          "label": "Size Title",
+          "default": "14px"
+        },
+        {
+          "type": "color",
+          "id": "color_title",
+          "label": "Color Title",
+          "default": "#1a1a1a"
+        },
+        {
+          "type": "product",
+          "id": "product_1",
+          "label": "Product 1"
+        },
+        {
+          "type": "product",
+          "id": "product_2",
+          "label": "Product 2"
+        },
+        {
+          "type": "product",
+          "id": "product_3",
+          "label": "Product 3"
+        },
+        {
+          "type": "checkbox",
+          "id": "autoplay",
+          "label": "Auto Play",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_dots",
+          "label": "Enable dots",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "class",
+          "label": "Class"
+        }
+      ]
+    },
+    {
+      "type": "icon_menu",
+      "name": "Icon Menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name_item",
+          "label": "Menu item name",
+          "info": "Menu item of main-menu. Menu item has dropdown megamenu."
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_menus",
+          "label": "Icon Menu"
+        },
+        {
+          "type": "text",
+          "id": "sub_title_menu_2",
+          "label": "Sub title menu"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

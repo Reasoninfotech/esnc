@@ -1,0 +1,359 @@
+<style>
+  #shopify-section-{{ section.id }} .distance {
+    padding-top: {{ section.settings.distance_top }};
+    padding-bottom: {{ section.settings.distance_bottom }};
+  }
+</style>
+<div class="block_deal distance" data-section-id="{{ section.id }}">
+  <div class="container_1320">
+    <div class="block_title {{ section.settings.title_alignment }}">
+      {% if section.settings.title != blank %}
+        <div class="title_block" style="{% if section.settings.color_title != blank %}color: {{ section.settings.color_title }};{% endif %}{% if section.settings.size_title != blank %}font-size: {{ section.settings.size_title }}{% endif %}">{{ section.settings.title | nofilter }}</div>
+      {% endif %}
+      {% if section.settings.subheading != blank %}
+        <div class="sub_title" style="{% if section.settings.color_sub != blank %}color: {{ section.settings.color_sub }};{% endif %}{% if section.settings.size_sub != blank %}font-size: {{ section.settings.size_sub }}{% endif %}">{{ section.settings.subheading | escape }}</div>
+      {% endif %}
+    </div>
+
+    <div class="block_content">
+      {% assign product = all_products[section.settings.product_handle] %}
+      {% assign collection = product.collections.first %}
+      <div class="item-product product-template__container row" itemscope itemtype="http://schema.org/Product" id="ProductSection-Dl" data-enable-history-state="true" data-type="product-template" data-wishlist-product>
+        {% assign variantCount = product.variants | size %}
+        {%- assign current_variant = product.selected_or_first_available_variant -%}
+        {%- assign product_image = '1200x' -%} 
+
+        <div class="product-single__photos thumbnail-container col-lg-6 col-md-12 mb-md-30">
+          {% if section.settings.product_handle != blank %}
+            {% if product.images.size > 0 %}
+              <div id="productThumbs">
+                <div class="thumblist" data-pswp-uid="1">
+                  <div class="owl-carousel owl-theme" data-autoplay="false" data-autoplayTimeout="6000" data-items="1" data-margin="0" data-nav="false" data-dots="false" data-loop="false" data-items_tablet="1" data-items_mobile="1">
+                    {% for image in product.images %}
+                      <div class="thumbItem" data-image-id="{{ image.id }}" data-position="{{ forloop.index | minus: 1 }}">
+                        <a href="javascript:void(0)" data-image="{{ image.src | img_url: product_image }}" data-zoom-image="{{ image.src | img_url: product_image_zoom_size }}" class="product-single__thumbnail">
+                          <img class="img-fluid img-responsive image-zoom lazyload" data-img="{{ image.src }}" data-src="{{ image.src | img_url: product_image }}" alt="">
+                        </a>
+                      </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% else %}
+            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+            {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+        </div>
+        <div class="product-single__info product__info col-lg-6 col-md-12">
+          <div class="block_info">
+            <div class="product__title">
+              <a href="{{ product.url | within: collection }}">{{ product.title | truncatewords: 12 }}</a>
+            </div>
+            {% if settings.show_rating %}
+                  <div class="product__review">
+                  {% render 'judgeme_widgets'
+                    , widget_type: 'judgeme_preview_badge'
+                    , jm_style: ''
+                    , concierge_install: true
+                    , product: product %}
+                  </div>
+                {% endif %}
+            <div class="product-single__meta">
+              <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                <p class="product-single__price-dl{% unless current_variant.available %} product-price--sold-out{% endunless %} d-flex align-items-center">
+                  {% if current_variant.compare_at_price > current_variant.price %}
+                    <span class="product-price__price product-price__price-dl product-price__sale product-price__sale--single">
+                      <span id="ProductPrice-deal"
+                        itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}" class="money">
+                        {{ current_variant.price | money }}
+                      </span>
+                      <span class="money product-price__sale-label product-price__sale-label-dl d-none">{{ 'products.product.on_sale' | t }}</span>
+                    </span>
+                    <s id="ComparePrice-deal" class="ml-25">{{ current_variant.compare_at_price | money }}</s>
+                  {% else %}
+                    <span class="product-price__price product-price__price-dl">
+                      <span id="ProductPrice-deal"
+                        itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}" class="money">
+                        {{ current_variant.price | money }}
+                      </span>
+                      <span class="money product-price__sale-label product-price__sale-label-dl d-none">{{ 'products.product.on_sale' | t }}</span>
+                    </span>
+                    <s id="ComparePrice-deal" class="ml-25">{{ current_variant.compare_at_price | money }}</s>
+                  {% endif %}
+                </p>
+                {% if section.settings.show_description %}
+                  <div class="description mb-20">{{ product.description | strip_html | truncate: 130 }}</div>
+                {% endif %}
+                <form action="/cart/add" method="post" enctype="multipart/form-data" class="product-form product-form-dl product-form--hide-variant-labels">
+                  <div class="selectorVariants {% if product.variants.size > 1 %} has-border{% endif %}">
+                      {% if variantCount > 1 %}
+                        {% for option in product.options %}
+                          {% include 'nov-swatch' with option %}
+                        {% endfor %}
+                      {% endif %}
+                    
+                    <select name="id" id="productSelect" class="enable_swatch hide">
+                      {% for variant in product.variants %}
+                        {% if variant.available %}
+                          <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">
+                            {{ variant.title }}
+                          </option>
+                        {% else %}
+                          <option disabled="disabled">{{ variant.title }} - {{ 'products.product.notify_me' | t }}</option>
+                        {% endif %}
+                      {% endfor %}
+                    </select>
+                  </div>
+
+                  <div class="product-form__item product-form__item--submit">
+                    <button data-handle="{{ product.handle }}" type="submit" name="add" id="AddToCart" class="hover_x btn product-form__cart-submit{% if product.options.size == 1 and product.variants[0].title == 'Default Title' %} product-form__cart-submit--small{% endif %}">
+                      <span id="AddToCartText">
+                        {% unless current_variant.available %}
+                          {{ 'products.product.notify_me' | t }}
+                        {% else %}
+                          {{ 'products.product.add_to_cart' | t }}
+                        {% endunless %}
+                      </span>
+                      <i class="zmdi zmdi-long-arrow-right"></i>
+                    </button>
+                  </div>
+                  {% if settings.payment_button_enable %}
+                    <div class="product-form__item product-form__item--checkout">
+                      {% form 'product', product, class:form_classes, novalidate: 'novalidate', data-product-form: '' %}
+                        {{ form | payment_button }}
+                      {% endform %}
+                    </div>
+                  {% endif %}
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Vinova products",
+    "class": "index-section section-product position-relative",
+    "settings":[
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Vinova Products"
+      },
+      {
+        "type": "text",
+        "id": "size_title",
+        "label": "Size Title"
+      },
+      {
+        "type": "color",
+        "id": "color_title",
+        "label": "Color Title",
+        "default": "#222"
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Sub Heading",
+        "default": "Subtitle from happy customers"
+      },
+      {
+        "type": "text",
+        "id": "size_sub",
+        "label": "Size Sub Heading"
+      },
+      {
+        "type": "color",
+        "id": "color_sub",
+        "label": "Color Sub Heading",
+        "default": "#222"
+      },
+      {
+        "type": "select",
+        "id": "title_alignment",
+        "label": "Heading alignment",
+        "default": "text-left",
+        "options": [
+          {
+            "value": "text-left",
+            "label": "Left"
+          },
+          {
+            "value": "text-center",
+            "label": "Center"
+          },
+          {
+            "value": "text-right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "class",
+        "label": "Class"
+      },
+      {
+        "type": "header",
+        "content": "Product"
+      },
+      {
+        "type": "product",
+        "id": "product_handle",
+        "label": "Product"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_description",
+        "label": "Show Description",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "distance_top",
+        "label": "Top Distance Section",
+        "default": "30px"
+      },
+      {
+        "type": "text",
+        "id": "distance_bottom",
+        "label": "Bottom Distance Section",
+        "default": "30px"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Vinova Products",
+        "category": "Product"
+      }
+    ]
+  }
+{% endschema %}
+
+{% unless product == empty %}
+  <script type="application/json" id="ProductJson-Dl">
+    {{ product | json }}
+  </script>
+{% endunless %}
+
+<script>
+  {% if product.available %} 
+  function updatePrice() {
+    var regex = /([0-9]+[.|,][0-9]+[.|,][0-9]+)/g;
+    var unitPriceTextMatch = jQuery('#ProductPrice-deal').text().match(regex);
+    
+    if (!unitPriceTextMatch) {
+      regex = /([0-9]+[.|,][0-9]+)/g;
+      unitPriceTextMatch = jQuery('#ProductPrice-deal').text().match(regex);     
+    }
+    
+    if (unitPriceTextMatch) {
+      var unitPriceText = unitPriceTextMatch[0];
+      var unitPrice = unitPriceText.replace(/[.|,]/g,'');
+      var quantity = parseInt(jQuery('#Quantity').val());
+      var totalPrice = unitPrice * quantity;
+
+      var totalPriceText = Shopify.formatMoney(totalPrice, theme.money_format);
+      regex = /([0-9]+[.|,][0-9]+[.|,][0-9]+)/g;     
+      if (!totalPriceText.match(regex)) {
+        regex = /([0-9]+[.|,][0-9]+)/g;
+      } 
+      totalPriceText = totalPriceText.match(regex)[0];
+
+      var regInput = new RegExp(unitPriceText, "g"); 
+      var totalPriceHtml = jQuery('#ProductPrice-deal').html().replace(regInput , totalPriceText);
+
+      jQuery('.total-price span').html(totalPriceHtml);     
+    }
+  }
+  jQuery('#Quantity').on('change', updatePrice);
+  {% endif %}
+  
+  var selectCallbackProduct = function(variant, selector) {
+    var moneyFormat = theme.moneyFormat,
+        variant = variant,
+        selector = selector;
+    var $productImage = $('#ProductSection-Dl #productThumbs .active img'),
+        $addToCart = $('#ProductSection-Dl #AddToCart'),
+        $productPrice = $('#ProductSection-Dl .product-price__price'),
+        $comparePrice = $('#ProductSection-Dl #ComparePrice-deal'),
+        $quantityElements = $('#ProductSection-Dl .quantity-selector, #ProductSection-Dl label + .js-qty'),
+        $quantity = $('.product-form__item--quantity'),
+        $addToCartText = $('#ProductSection-Dl #AddToCartText');
+    if (variant) {
+        if (window.swatch_enable) {
+            var form = $('#' + selector.domIdPrefix).closest('form');
+            for (var i = 0, length = variant.options.length; i < length; i++) {
+                var radioButton = form.find('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] + '"]');
+                if (radioButton.size()) {
+                    radioButton.get(0).checked = true;
+                }
+            }
+        }
+        if (variant.featured_image) {
+            var newImage = variant.featured_image;
+            var element = $productImage[0];
+            Shopify.Image.switchImage(newImage, element, function(src, imgObject, el) {
+              
+              $('.thumbItem').parent().removeClass('active');
+              $('.thumbItem[data-image-id="'+imgObject.id+'"]').parent().addClass('active');
+              $('.thumbItem[data-image-id="'+imgObject.id+'"]').find('.image-zoom').attr('src', src);
+              $("#productThumbs .owl-carousel").trigger("to.owl.carousel", [$('.thumbItem[data-image-id="'+imgObject.id+'"]').attr('data-position'), 1]);
+            });
+        }
+        if (variant.available) {
+        $quantity.show();
+        $addToCart.removeClass('disabled').prop('disabled', false);
+        $addToCartText.html("{{ 'products.product.add_to_cart' | t }}");
+        $quantityElements.show();
+      } else {
+        $addToCart.addClass('disabled').prop('disabled', true);
+        $addToCartText.html("{{ 'products.product.notify_me' | t }}");
+        $quantity.hide();
+        $quantityElements.hide();
+        }
+        $productPrice.html(theme.Currency.formatMoney(variant.price, moneyFormat));
+        if (variant.compare_at_price > variant.price) {
+            $comparePrice.html(theme.Currency.formatMoney(variant.compare_at_price, moneyFormat)).show();
+        } else {
+            $comparePrice.hide();
+        }
+        if ($('#currencies').length != 0) {
+            Currency.convertAll(shopCurrency, $('#currencies span.selected').attr('data-currency'));
+        }
+    } else {
+      $addToCart.addClass('disabled').prop('disabled', true);
+      $addToCartText.html("{{ 'products.product.unavailable' | t }}");
+      $quantityElements.hide();
+      $quantity.hide();
+    }
+  };
+
+  $(document).ready(function() {
+    new Shopify.OptionSelectors('productSelect', {
+      product: {{ product | json }},
+      onVariantSelected: selectCallbackProduct,
+      enableHistoryState: false
+    });
+
+    {% if product.available and product.options.size > 0 %}
+      Shopify.linkOptionSelectors({{ product | json }});
+    {% endif %}
+
+    // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
+    {% if product.options.size == 1 and product.options.first != 'Title' %}
+      $('.selector-wrapper:eq(0)').prepend('<label for="productSelect-option-0">{{ product.options.first | escape }}</label>');
+    {% endif %}
+
+    // Hide selectors if we only have 1 variant and its title contains 'Default'.
+    {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+      $('.selector-wrapper').hide();
+    {% endif %}
+  });
+</script>

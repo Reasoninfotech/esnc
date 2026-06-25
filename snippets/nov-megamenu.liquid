@@ -1,0 +1,148 @@
+<li class="site-nav--has-dropdown hasMegaMenu center menu_mb{% if link.active %} site-nav--active{% endif %}{{ class_hidden }}{% if block.settings.class != blank %} {{ block.settings.class }}{% endif %}">
+  <a class="d-flex" href="{{ link.url }}" title="{{ link.title }}" style="{% if section.settings.color_menu != blank %}color: {{ section.settings.color_menu }};{% endif %}{% if section.settings.size_menu != blank %}font-size: {{ section.settings.size_menu }};{% endif %}">
+    {% if block.settings.icon_menu != blank %}
+      <div class="icon_nav">
+        <img class="img-fluid" src="{{ block.settings.icon_menu | img_url: '50x' }}" />
+      </div>
+    {% endif %}
+    <div class="group_title d-flex align-items-center">{{ link.title }}</div>
+    <span class="d-xl-none d-md-block d-sm-none d-xs-none show_mor"><i class="zmdi zmdi-caret-right"></i></span>
+  </a>
+  <div class="dropdown_menu w-100">
+    <div class="site-nav__dropdown megaMenu" aria-expanded="false" style="{% if block.settings.img_bg != blank %}background-image: url({{ block.settings.img_bg | img_url: "master" }});background-repeat: no-repeat;{% endif %}{% if block.settings.submenu_width != blank %}width:{{ block.settings.submenu_width }};{% endif %}" role="main">
+      <div class="container_90">
+        <div class="menuGroup row spacing-30">
+          {% if block.settings.collection_enable %}
+            <div class="{{ block.settings.novmenu_collection_col_lg }} {{ block.settings.novmenu_collection_col }} col-md-12 d-collection">
+              <div class="list_collection">
+                {% if block.settings.name_collec_1 != blank %}
+                  <div class="cltion collection_1">
+                    <a href="{{ block.settings.link_1 }}" style="{% if block.settings.color_title_1 != blank %}color: {{ block.settings.color_title_1 }};{% endif %}{% if block.settings.size_title_1 != blank %}font-size: {{ block.settings.size_title_1 }}{% endif %}">
+                      <span>{{ block.settings.name_collec_1 }}</span>
+                    </a>
+                  </div>
+                {% endif %}
+                {% if block.settings.name_collec_2 != blank %}
+                  <div class="cltion collection_2">
+                    <a href="{{ block.settings.link_2 }}" style="{% if block.settings.color_title_2 != blank %}color: {{ block.settings.color_title_2 }};{% endif %}{% if block.settings.size_title_2 != blank %}font-size: {{ block.settings.size_title_2 }}{% endif %}">
+                      <span>{{ block.settings.name_collec_2 }}</span>
+                    </a>
+                  </div>
+                {% endif %}
+                {% if block.settings.name_collec_3 != blank %}
+                  <div class="cltion collection_3">
+                    <a href="{{ block.settings.link_3 }}" style="{% if block.settings.color_title_3 != blank %}color: {{ block.settings.color_title_3 }};{% endif %}{% if block.settings.size_title_3 != blank %}font-size: {{ block.settings.size_title_3 }}{% endif %}">
+                      <span>{{ block.settings.name_collec_3 }}</span>
+                    </a>
+                  </div>
+                {% endif %}
+                {% if block.settings.name_collec_4 != blank %}
+                  <div class="cltion collection_4">
+                    <a href="{{ block.settings.link_4 }}" style="{% if block.settings.color_title_4 != blank %}color: {{ block.settings.color_title_4 }};{% endif %}{% if block.settings.size_title_4 != blank %}font-size: {{ block.settings.size_title_4 }}{% endif %}">
+                      <span>{{ block.settings.name_collec_4 }}</span>
+                    </a>
+                  </div>
+                {% endif %}
+                {% if block.settings.name_collec_5 != blank %}
+                  <div class="cltion collection_5">
+                    <a href="{{ block.settings.link_5 }}" style="{% if block.settings.color_title_5 != blank %}color: {{ block.settings.color_title_5 }};{% endif %}{% if block.settings.size_title_5 != blank %}font-size: {{ block.settings.size_title_5 }}{% endif %}">
+                      <span>{{ block.settings.name_collec_5 }}</span>
+                    </a>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+          {% if block.settings.novmenu_menu_enable %}
+            <div class="{{ block.settings.novmenu_menu_col_lg }} {{ block.settings.novmenu_menu_col }} col-md-12">
+              <div class="row">
+                {% for novLink1 in linklists[child_list_handle].links %}
+                  {% assign linkHandle = novLink1.title | handleize %}
+                  <div class="menuCol {{ block.settings.novmenu_menu_menucol_lg }} {{ block.settings.novmenu_menu_menucol }} col-md-12">
+                    <ul class="novMenuLinks">
+                      <li class="menuTitle{% if novLink1.active %} site-nav--active{% endif %}{% if three_level_nav %} has_child{% endif %}">
+                        <a href="{{ novLink1.url }}" title="">{{ novLink1.title }}</a>
+                      </li>
+                      {% for novLink2 in linklists[linkHandle].links %}
+                        <li class="{% if novLink2.active %}site-nav--active{% endif %}">
+                          <a href="{{ novLink2.url }}" title="">{{ novLink2.title }}</a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+          {% if block.settings.banner_enable %}
+            <div class="{{ block.settings.novmenu_banner_col_lg }} {{ block.settings.novmenu_banner_col }} col-md-12 d-banner">
+              {% if block.settings.novmenu_banner_enable %}
+                <div class="novMenuBanner hover-image">
+                  {% if block.settings.novmenu_banner_link != blank %}<a href="{{ block.settings.novmenu_banner_link }}">{% endif %}
+                    {% if block.settings.novmenu_banner != blank %}
+                      <img class="img-fluid" alt="Banner menu" src="{{ block.settings.novmenu_banner | img_url: block.settings.image_size }}" />
+                    {% else %}
+                      <img class="img-fluid" alt="Banner menu" src="https://placehold.it/255x300" />
+                    {% endif %}
+                  {% if block.settings.novmenu_banner_link != blank %}</a>{% endif %}
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+          {% if block.settings.product_enable %}
+            <div class="{{ block.settings.novmenu_product_col_lg }} {{ block.settings.novmenu_product_col }} col-md-12 d-product">
+              <div class="menu_pr">
+                {% if block.settings.title_product != blank %}
+                  <div class="title-product text-uppercase" style="{% if block.settings.color_title != blank %}color: {{ block.settings.color_title }};{% endif %}{% if block.settings.size_title != blank %}font-size: {{ block.settings.size_title }}{% endif %}">{{ block.settings.title_product }}</div>
+                {% endif %}
+                <div class="novmenu_product grid--view-items nov-slick-carousel row spacing-0"
+                  data-autoplay= "{{ block.settings.autoplay }}"
+                  data-autoplayTimeout= "5000"
+                  data-dots= "{{ block.settings.show_dots }}"
+                  data-nav= "false">
+                  {%- assign img_size = '242x242' -%}
+                  {% if block.settings.product_1 != blank %}
+                    {% assign product = all_products[block.settings.product_1] %}
+                    <div class="item col item1">
+                      <div class="item-product">
+                        <div class="thumbnail-container">
+                          <a href="{{ product.url | within: collection }}">
+                            <img class="img-fluid product__thumbnail lazyload" data-src="{{ product.featured_image | product_img_url: img_size }}" alt="">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                  {% if block.settings.product_2 != blank %}
+                    {% assign product = all_products[block.settings.product_2] %}
+                    <div class="item col item2">
+                      <div class="item-product">
+                        <div class="thumbnail-container">
+                          <a href="{{ product.url | within: collection }}">
+                            <img class="img-fluid product__thumbnail lazyload" data-src="{{ product.featured_image | product_img_url: img_size }}" alt="">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                  {% if block.settings.product_3 != blank %}
+                    {% assign product = all_products[block.settings.product_3] %}
+                    <div class="item col item3">
+                      <div class="item-product">
+                        <div class="thumbnail-container">
+                          <a href="{{ product.url | within: collection }}">
+                            <img class="img-fluid product__thumbnail lazyload" data-src="{{ product.featured_image | product_img_url: img_size }}" alt="">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</li>

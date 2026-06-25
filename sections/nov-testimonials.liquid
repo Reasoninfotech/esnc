@@ -1,0 +1,285 @@
+{%- assign bg_image = section.settings.background_image -%}
+<div data-section-id="{{ section.id }}" class="distance {{ section.settings.class }}" data-section-type="nov-slick">
+  {% if section.settings.full_width == false %}
+    <div class="container_ct">
+  {% endif %}
+    <div class="block_title {{ section.settings.title_alignment }} mb-0">
+      {% if section.settings.title != blank %}
+        <div class="title-block text-uppercase mb-0" style="{% if section.settings.color_title != blank %}color: {{ section.settings.color_title }};{% endif %}{% if section.settings.size_title != blank %}font-size: {{ section.settings.size_title }};{% endif %}">{{ section.settings.title | nofilter }}</div>
+      {% endif %}
+    </div>
+    <div class="testimonial_block">
+      {% if section.blocks.size > 0 %}
+        <div class="testimonials-slider{% if section.settings.spacing != blank %} spacing-{{ section.settings.spacing }}{% endif %} nov-slick-carousel"
+          data-dots="{{ section.settings.show_dots }}"
+          data-nav="{{ section.settings.show_nav }}"
+          data-items="1"
+          data-items_tablet="1"
+          data-items_mobile="1"
+          data-loop="false"
+          data-fade="false">
+          {% for block in section.blocks %}
+            {% case block.settings.star %}
+            {% when 1 %}
+              {%- assign ns = '<i class="fa fa-ac fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>' -%}
+            {% when 2 %}
+              {%- assign ns = '<i class="fa fa-ac fa-star-o"></i><i class="fa fa-ac fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>' -%}
+            {% when 3 %}
+              {%- assign ns = '<i class="fa fa-ac fa-star-o"></i><i class="fa fa-ac fa-star-o"></i><i class="fa fa-ac fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>' -%}
+            {% when 4 %}
+              {%- assign ns = '<i class="fa fa-ac fa-star-o"></i><i class="fa fa-ac fa-star-o"></i><i class="fa fa-ac fa-star-o"></i><i class="fa fa-ac fa-star-o"></i><i class="fa fa-star-o"></i>' -%}
+            {% when 5 %}
+              {%- assign ns = '<i class="fa fa-ac fa-star-o"></i><i class="fa fa-ac fa-star-o"></i><i class="fa fa-ac fa-star-o"></i><i class="fa fa-ac fa-star-o"></i><i class="fa fa-ac fa-star-o"></i>' -%}
+            {% endcase %}
+            <div class="testimonial-item item-{{ forloop.index }}">
+              <div class="block_content row">
+                <div class="content-info {% if section.settings.avatar %}col-md-7{% else %}col-md-12{% endif %}">
+                  {% if section.settings.s_star == true %}
+                    <div class="testimonial-rating mb-25">{{ ns }}</div>
+                  {% endif %}
+                  <div class="b_info d-flex wow fadeInUp animated">
+                    {% if block.settings.des != blank %}
+                      <div class="testimonial-item__text mb-35" style="{% if section.settings.color_text != blank %}color: {{ section.settings.color_text }};{% endif %}">{{ block.settings.des }}</div>
+                    {% endif %}
+                  </div>
+                  {% if block.settings.author != blank or block.settings.info_other != blank %}
+                    <div class="testimonial-info wow fadeInUp animated" style="{% if section.settings.color_name != blank %}color: {{ section.settings.color_name }};{% endif %}{% if section.settings.size_name != blank %}font-size: {{ section.settings.size_name }};{% endif %}"><span class="name">{{ block.settings.author | nofilter }}</span>&nbsp;<span class="info">{{ block.settings.info_other | nofilter }}</span></div>
+                  {% endif %}
+                </div>
+                {% if section.settings.avatar %}
+                  <div class="img_content col-md-5 text-center text-lg-right mt-md-40">
+                    <img class="d-inline-block" src="{{ block.settings.avatar | img_url: '450x' }}">
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if section.blocks.size == 0 %}
+        {% include 'no-blocks' %}
+      {% endif %}
+    </div>
+  {% if section.settings.full_width == false %}
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+  {
+    "name": "Testimonials",
+    "class": "index-section section-testimonials",
+    "max_blocks": 9,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "from our customers"
+      },
+      {
+        "type": "text",
+        "id": "size_title",
+        "label": "Size Title",
+        "default": "2.4rem"
+      },
+      {
+        "type": "color",
+        "id": "color_title",
+        "label": "Color Title",
+        "default": "#222"
+      },
+      {
+        "type": "select",
+        "id": "title_alignment",
+        "label": "Title alignment",
+        "default": "text-left",
+        "options": [
+          {
+            "value": "text-left",
+            "label": "Left"
+          },
+          {
+            "value": "text-center",
+            "label": "Center"
+          },
+          {
+            "value": "text-right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type":  "header",
+        "content": "Design item"
+      },
+      {
+        "type": "checkbox",
+        "id": "avatar",
+        "label": "Show avatar",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "size_name",
+        "label": "Size name and info",
+        "default": "13px"
+      },
+      {
+        "type": "color",
+        "id": "color_name",
+        "label": "Color name and info",
+        "default": "#222"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Color Text",
+        "default": "#222"
+      },
+      {
+        "type":  "header",
+        "content": "Slider options"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_dots",
+        "label": "Show dots",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_nav",
+        "label": "Show navigation",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "spacing",
+        "label": "Spacing"
+      },
+      {
+        "type":  "header",
+        "content": "Design Section"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background colors"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background image"
+      },
+      {
+        "type": "checkbox",
+        "id": "s_star",
+        "label": "Show rating"
+      },
+      {
+        "type": "checkbox",
+        "id": "full_width",
+        "label": "Full Width",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "class",
+        "label": "Class"
+      },
+      {
+        "type": "text",
+        "id": "distance_top",
+        "label": "Top Distance Section",
+        "default": "30px"
+      },
+      {
+        "type": "text",
+        "id": "distance_bottom",
+        "label": "Bottom Distance Section",
+        "default": "30px"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "item",
+        "name": "Testimonial",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "avatar",
+            "label": "Avatar"
+          },
+          {
+            "type": "range",
+            "id": "star",
+            "min": 1,
+            "max": 5,
+            "step": 1,
+            "label": "Rating",
+            "default": 5
+          },
+          {
+            "type": "text",
+            "id": "author",
+            "label": "Author",
+            "default": "Author's name"
+          },
+          {
+            "type": "text",
+            "id": "info_other",
+            "label": "Info other",
+            "default": "Australia"
+          },
+          {
+            "type": "textarea",
+            "id": "des",
+            "label": "Description",
+            "default": "Add customer reviews and testimonials to showcase your store’s happy customers."
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Testimonials",
+        "category": "Text",
+        "blocks": [
+          {
+            "type": "item"
+          },
+          {
+            "type": "item"
+          },
+          {
+            "type": "item"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+<style>
+  #shopify-section-{{ section.id }} .distance {
+    padding-top: {{ section.settings.distance_top }};
+    padding-bottom: {{ section.settings.distance_bottom }};
+    {% if section.settings.background_color != blank %}
+      background-color: {{ section.settings.background_color }};
+    {% endif %}
+    {% if bg_image.src != blank %}
+      background-image: url("{{ bg_image | img_url: '1920x1920' }}");
+      background-position: center;
+      background-repeat: no-repeat;
+    {% endif %}
+  }
+  @media (max-width: 575px) {
+    {% for block in section.blocks %}
+      .section-testimonials .testimonials-slider .item-{{ forloop.index }} .testimonial-item__text {
+        font-size: {{ block.settings.size_title_mb }} !important;
+        line-height: 40px;
+      }
+    {% endfor %}
+  }
+</style>

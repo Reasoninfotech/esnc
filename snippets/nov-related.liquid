@@ -1,0 +1,29 @@
+{% assign novLimit = 100 %}
+{% assign currentProduct = product %}
+{% if collection == null or collection.handle == 'all' %}
+    {% assign foundCollection = false %}
+    {% for item in product.collections %}
+        {% if foundCollection == false and item.handle != 'all' and item.all_products_count > 1 %}
+            {% assign foundCollection = true %}
+            {% assign collection = item %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+{% if collection and collection.products_count > 1 %}
+    <div class="ProductRelated mt-80" data-wishlist-related>
+        <div class="title_block text-center wow fadeInUp animated" style="{% if settings.color_title != blank %}color: {{ settings.color_title }};{% endif %}{% if settings.size_title != blank %}font-size: {{ settings.size_title }}"{% endif %}>{{ settings.title_related }}</div>
+        <div class="block__content wow fadeInUp animated">
+            <div class="grid grid--view-items">
+                <div class="owl-relatedproduct owl-carousel owl-drag" data-autoplay="{{ settings.autoplay }}" data-autoplayTimeout="6000" data-items="{{ settings.col_desktop }}" data-items_tablet="{{ settings.col_tablet }}" data-items_mobile="{{ settings.col_mobile }}" data-nav="{{ settings.nav }}" data-dots="{{ settings.dots }}" data-loop="false" data-margin="{{ settings.spacing }}">
+                    {% for product in collection.products limit:novLimit %}
+                        {% unless product.handle == currentProduct.handle %}
+                            <div class="item">
+                                {% include 'product-card-grid' %}
+                            </div>
+                        {% endunless %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

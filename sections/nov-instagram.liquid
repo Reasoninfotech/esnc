@@ -1,0 +1,221 @@
+{% if section.settings.background_color != blank %}
+  <style>
+    #shopify-section-{{ section.id }}.section-instagram {
+      background-color: {{ section.settings.background_color }};
+    }
+  </style>
+{% endif %}
+<div class="distance" style="padding-top: {{ section.settings.distance_top }}; padding-bottom: {{ section.settings.distance_bottom }}">
+  <div data-section-id="{{ section.id }}">
+    {% if section.settings.has_fullwidth == false %}
+      <div class="container_90">
+    {% endif %}
+        <div class="block row spacing-0">
+          <div class=" d-flex align-items-center justify-content-center col-xl-6 col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-xs-30">
+            <div class="block_title">
+              {% if section.settings.title != blank %}
+                <div class="title-block" style="{% if section.settings.color_title != blank %}color: {{ section.settings.color_title }};{% endif %}{% if section.settings.size_title != blank %}font-size: {{ section.settings.size_title }};{% endif %}">{{ section.settings.title | nofilter }}</div>
+              {% endif %}
+              {% if section.settings.subheading != blank %}
+                <div class="sub_title" style="{% if section.settings.color_sub != blank %}color: {{ section.settings.color_sub }};{% endif %}{% if section.settings.size_sub != blank %}font-size: {{ section.settings.size_sub }};{% endif %}">{{ section.settings.subheading | nofilter }}</div>
+              {% endif %}
+              {% if section.settings.newsletter_des != blank %}
+                <div class="des" style="{% if section.settings.color_des != blank %}color: {{ section.settings.color_des }};{% endif %}{% if section.settings.size_des != blank %}font-size: {{ section.settings.size_des }};{% endif %}">{{ section.settings.newsletter_des | nofilter }}</div>
+              {% endif %}
+              {% if section.settings.show_button %}
+                <div class="button_label d-inline-flex justify-content-center">
+                  <a href="{{ section.settings.button_link }}" class="hover_x d-flex align-items-center justify-content-center">
+                    <span>{{ section.settings.button_label | escape }}</span>
+                    <i class="zmdi zmdi-long-arrow-right"></i>
+                  </a>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex justify-content-xl-end justify-content-md-center mt-lg-60">
+            <div class="nov-image-centered aos-init d-flex align-items-center" data-aos="collection-callout" data-aos-duration="2000">
+              <div class="w-8">
+                <div class="d-flex align-items-end">
+                <div><img class="img_ins img-2 lazyload" data-src="{{ section.settings.image_insta_2 | img_url: '161x246', crop: 'center' }}" alt=""></div>
+                <div><img class="img_ins img-1 lazyload" data-src="{{ section.settings.image_insta_1 | img_url: '230x316', crop: 'center' }}" alt=""></div>
+                </div>
+                <div class="d-flex justify-content-end">
+                  <div><img class="img_ins img-4 lazyload" data-src="{{ section.settings.image_insta_4 | img_url: '193x142', crop: 'center' }}" alt=""></div>
+                  <div><img class="img_ins img-5 lazyload" data-src="{{ section.settings.image_insta_5 | img_url: '197x230', crop: 'center' }}" alt=""></div>
+                </div>
+              </div>
+              <div class="w-4">
+                <img class="img_ins img-3 lazyload" data-src="{{ section.settings.image_insta_3 | img_url: '190x153', crop: 'center' }}" alt="">
+                <img class="img_ins img-6 lazyload" data-src="{{ section.settings.image_insta_6 | img_url: '190x239', crop: 'center' }}" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+    {% if section.settings.has_fullwidth == false %} 
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% schema %}
+    {
+      "name": "Vinova Instagram",
+      "class": "index-section section-instagram wow fadeInUp animated",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Follow us on Instagram"
+        },
+        {
+          "type": "text",
+          "id": "size_title",
+          "label": "Size Title",
+          "default": "4.4rem"
+        },
+        {
+          "type": "color",
+          "id": "color_title",
+          "label": "Color Title",
+          "default": "#000"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Sub Heading",
+          "default": "@vinovatheme"
+        },
+        {
+          "type": "text",
+          "id": "size_sub",
+          "label": "Size Sub",
+          "default": "2.4rem"
+        },
+        {
+          "type": "color",
+          "id": "color_sub",
+          "label": "Color Sub",
+          "default": "#494949"
+        },
+        {
+          "type": "richtext",
+          "id": "newsletter_des",
+          "label": "Description",
+          "default": "<p>Contemporary wardrobe staples and authentic style for the modern man and women. Follow us for the latest trends. Tag us and get featured @vinovatheme</p>"
+        },
+        {
+          "type": "text",
+          "id": "size_des",
+          "label": "Size Description",
+          "default": "16px"
+        },
+        {
+          "type": "color",
+          "id": "color_des",
+          "label": "Color Description",
+          "default": "#494949"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_button",
+          "label": "Show Button",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Visit Our Blog"
+        },
+        {
+          "type": "text",
+          "id": "size_button",
+          "label": "Size Button",
+          "default": "12px"
+        },
+        {
+          "type": "color",
+          "id": "color_button",
+          "label": "Color Button",
+          "default": "#222"
+        },
+        {
+          "type": "color",
+          "id": "bg_title_link",
+          "label": "Background Title Link"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "header",
+          "content": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_insta_1",
+          "label": "Image Instagram 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_insta_2",
+          "label": "Image Instagram 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_insta_3",
+          "label": "Image Instagram 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_insta_4",
+          "label": "Image Instagram 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_insta_5",
+          "label": "Image Instagram 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_insta_6",
+          "label": "Image Instagram 6"
+        },
+        {
+          "type": "header",
+          "content": "Design option"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background colors"
+        },
+        {
+          "type": "checkbox",
+          "id": "has_fullwidth",
+          "label": "Full Width",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "distance_top",
+          "label": "Top Distance Section",
+          "default": "30px"
+        },
+        {
+          "type": "text",
+          "id": "distance_bottom",
+          "label": "Bottom Distance Section",
+          "default": "30px"
+        }
+      ],
+      "presets": [
+        {
+          "name": "Vinova Instagram",
+          "category": "Promotional"
+        }
+      ]
+    }
+{% endschema %}

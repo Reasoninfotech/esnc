@@ -1,0 +1,23 @@
+<div id="popup-Wishlist" class="loading-modal modal">
+    <div class="overlay"></div>
+    <div class="modal-header d-flex align-items-center">
+        <div class="message_title">
+            <i class="zmdi zmdi-notifications-active"></i>
+            {{ 'general.popup_wishlist.message_title' | t }}
+        </div>
+        <button type="button" class="close-modal popupwishlistClose">
+            <i class="zmdi zmdi-hc-fw zmdi-close"></i>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="wishlistprimary d-flex align-items-center">
+            <div class="wishlistimage">
+                <img class="product-image" alt="" src="" style="max-width: 50px; max-height:50px"/>
+            </div>
+            <div class="product-title"></div>
+            <div class="actions">
+                <a class="btn btn-wishlist" href="/pages/wishlist">{{ 'general.popup_wishlist.go_to_wishlist' | t }}</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+{% if linklists[child_list_handle].links != blank %}
+  <li class="site-nav--has-dropdown icon_menu{% if link.active %} site-nav--active{% endif %}{{ class_hidden }}" aria-controls="SiteNavLabel-{{ child_list_handle }}">
+    <a class="d-flex align-items-center" href="{{ link.url }}" class="site-nav__link site-nav__link--main" aria-label="ESNC Perfumery menus">
+      {% if block.settings.icon_menus != blank %}
+        <div class="icon_nav">
+          <img class="img-fluid lazyload" data-src="{{ block.settings.icon_menus | img_url: '50x' }}" alt="" />
+        </div>
+      {% endif %}
+      <div class="group_title">
+        {{ link.title }}
+        {% if block.settings.sub_title_menu_2 != blank %}
+          <div class="sub_title_nav">{{ block.settings.sub_title_menu_2 }}</div>
+        {% endif %}
+      </div>
+    </a>
+    <span class="d-xl-none show_sub"><i class="zmdi zmdi-plus-square"></i></span>
+    <div class="dropdown_menu">
+      <div class="site-nav__dropdown" id="SiteNavLabel-{{ child_list_handle }}" aria-expanded="false" role="main">
+        {% if three_level_nav %}
+          <div class="site-nav__childlist">
+            <div class="site-nav__childlist-grid">
+              {% if linklists[child_list_handle].links != blank %}
+                {% for childlink in linklists[child_list_handle].links %}
+                  {% assign grand_child_list_handle = childlink.title | handle %}
+
+                  <div class="site-nav__childlist-item">
+                    <a href="{{ childlink.url }}" class="site-nav__link site-nav__child-link site-nav__child-link--parent" aria-label="ESNC Perfumery menus">{{ childlink.title | escape }}</a>
+                    {% for grandchildlink in linklists[grand_child_list_handle].links %}
+                      <ul>
+                        <li>
+                          <a href="{{ grandchildlink.url }}" class="site-nav__link site-nav__child-link">{{ grandchildlink.title | escape }}</a>
+                        </li>
+                      </ul>
+                    {% endfor %}
+                  </div>
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+        {% else %}
+          <ul>
+            {% for childlink in linklists[child_list_handle].links %}
+              <li {% if childlink.active %}class="site-nav--active"{% endif %}>
+                <a href="{{ childlink.url }}" class="site-nav__link site-nav__child-link{% if forloop.last %} site-nav__link--last{% endif %}" aria-label="ESNC Perfumery menus">{{ childlink.title | escape }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+  </li>
+{% else %}
+  <li class="icon_menu{% if link.active %} site-nav--active {% endif %}" {{ class_hidden }}>
+    <a href="{{ link.url }}" class="site-nav__link site-nav__link--main d-flex align-items-start" aria-label="ESNC Perfumery menus">
+      {% if block.settings.icon_menus != blank %}
+        <div class="icon_nav">
+          <img class="img-fluid lazyload" data-src="{{ block.settings.icon_menus | img_url: '50x' }}" alt="" />
+        </div>
+      {% endif %}
+      <div class="group_title">
+        {{ link.title }}
+        {% if block.settings.sub_title_menu_2 != blank %}
+          <div class="sub_title_nav">{{ block.settings.sub_title_menu_2 }}</div>
+        {% endif %}
+      </div>
+    </a>
+  </li>
+{% endif %}

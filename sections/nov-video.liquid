@@ -1,0 +1,206 @@
+{%- assign bg_image = section.settings.background_image -%}
+<style>
+  #shopify-section-{{ section.id }}.section-video {
+    {% if section.settings.background_color != blank %}
+      background-color: {{ section.settings.background_color }};
+    {% endif %}
+    {% if bg_image.src != blank %}
+      background-image: url("{{ bg_image | img_url: '1920x1920' }}");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    {% endif %}
+  }
+  #shopify-section-{{ section.id }} .youtube::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, {{ section.settings.image_overlay_opacity }}%);
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  @media (max-width: 575px) {
+    .section-video .block_title .title-block {font-size: {{ section.settings.size_title_mb }} !important;}
+  }
+</style>
+<div data-section-id="{{ section.id }}" class="wow fadeInUp animated">
+  <div class="distance {% if section.settings.class != blank %} {{ section.settings.class }}{% endif %}" style="padding-top: {{ section.settings.distance_top }}; padding-bottom: {{ section.settings.distance_bottom }}">
+    <div class="block">
+      <div class="item youtube position-relative">
+        <video playsinline autoplay loop muted height="640" style="width: 100%;max-width: 100%; height: auto;">
+          <source src="{{ section.settings.video_url }}" type="video/mp4" />
+        </video>
+        <div class="block_title {{ section.settings.title_alignment }}"> 
+          {% if section.settings.subheading != blank %}
+            <div class="sub-title text-uppercase" style="{% if section.settings.color_sub != blank %}color: {{ section.settings.color_sub }};{% endif %}{% if section.settings.size_sub != blank %}font-size: {{ section.settings.size_sub }}{% endif %}">{{ section.settings.subheading }}</div>
+          {% endif %}
+          {% if section.settings.title_video != blank %}
+            <div class="title-block" style="{% if section.settings.color_title != blank %}color: {{ section.settings.color_title }};{% endif %}{% if section.settings.size_title != blank %}font-size: {{ section.settings.size_title }}{% endif %}">{{ section.settings.title_video }}</div>
+          {% endif %}
+          {% if section.settings.button_enable == true %}
+            <div class="button-play position-relative">
+              <div class="video-overlay" data-toggle="modal" data-src="https://www.youtube.com/embed/{{ section.settings.video_youtube.id }}" data-target="#myModal">
+                <i class="zmdi zmdi-play" style="{% if section.settings.color_title != blank %}color: {{ section.settings.color_title }};{% endif %}{% if section.settings.size_title != blank %}font-size: {{ section.settings.size_title }}{% endif %}"></i>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="video_modal modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <i class="zmdi zmdi-close"></i>
+        </button>        
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ section.settings.video_youtube.id }}" id="video" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Vinova Video",
+    "class": "index-section section-video",
+    "settings": [
+      {
+        "type": "url",
+        "id": "video_url",
+        "label": "Video link",
+        "info": "Online Video Link"
+      },
+      {
+        "type": "paragraph",
+        "content": "You can update the file here. [View customers](https://help.shopify.com/en/manual/shopify-admin/productivity-tools/file-uploads)"
+      },
+      {
+        "type": "text",
+        "id": "title_video",
+        "label": "Title Video",
+        "default": "Autumn is Coming"
+      },
+      {
+        "type": "text",
+        "id": "size_title",
+        "label": "Size Title",
+        "default": "4.4rem"
+      },
+      {
+        "type": "text",
+        "id": "size_title_mb",
+        "label": "Size Title Mobile",
+        "default": "3rem"
+      },
+      {
+        "type": "color",
+        "id": "color_title",
+        "label": "Color Title Video",
+        "default": "#222"
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "SubHeading Video",
+        "default": "New arrivals"
+      },
+      {
+        "type": "text",
+        "id": "size_sub",
+        "label": "Size Sub",
+        "default": "1.8rem"
+      },
+      {
+        "type": "color",
+        "id": "color_sub",
+        "label": "Color SubHeading Video",
+        "default": "#6e6e6e"
+      },
+      {
+        "type": "checkbox",
+        "id": "button_enable",
+        "label": "Show Button",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "color_button",
+        "label": "Color Button",
+        "default": "#6e6e6e"
+      },
+      {
+        "type": "text",
+        "id": "size_button",
+        "label": "Size Button",
+        "default": "1.6rem"
+      },
+      {
+        "type": "video_url",
+        "id": "video_youtube",
+        "label": "Video Link",
+        "accept": ["youtube", "vimeo"],
+        "info": "Only For Youtube And Vimeo"
+      },
+      {
+        "type": "select",
+        "id": "title_alignment",
+        "label": "Heading alignment",
+        "default": "text-left",
+        "options": [
+          {
+            "value": "text-left",
+            "label": "Left"
+          },
+          {
+            "value": "text-center",
+            "label": "Center"
+          },
+          {
+            "value": "text-right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "image_overlay_opacity",
+        "label": "Image Overlay Opacity",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 25
+      },
+      {
+        "type": "text",
+        "id": "class",
+        "label": "Class"
+      },
+      {
+        "type": "text",
+        "id": "distance_top",
+        "label": "Top Distance Section",
+        "default": "30px"
+      },
+      {
+        "type": "text",
+        "id": "distance_bottom",
+        "label": "Bottom Distance Section",
+        "default": "30px"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Vinova Video",
+        "category": "Video"
+      }
+    ]
+  }
+{% endschema %}

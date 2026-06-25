@@ -1,0 +1,63 @@
+<div class="item-product{% unless product.available %} product-price--sold-out{% endunless %}">
+  {% assign variantCount = product.variants | size %}
+  {%- assign img_size = '300x360' -%}
+  <div class="thumbnail-container{% if product.images.size > 2 %} has-multiimage{% endif %}{% if variantCount > 1 %} has_variants{% endif %}">
+    <a href="{{ product.url | within: collection }}">
+      <img class="img-fluid product__thumbnail lazyload" data-src="{{ product.featured_image | product_img_url: '600x' }}" alt="{{ product.featured_image.alt | escape }}">
+      {% for image in product.images %}
+        {% if forloop.first != true %}
+            <img class="img-fluid product__thumbnail-second lazyload" data-src="{{ image.src | product_img_url: '600x' }}" alt="{{ product.featured_image.alt | escape }}">
+            {% break %}
+        {% endif %}
+      {% endfor %}
+    </a>
+    <div class="group-buttons d-flex">
+      {% if settings.wishlist_enable %}
+        {% include 'nov-wishlist' %}
+      {% endif %}
+      {% if settings.quickview_enable %}
+        {% include 'nov-quickview' %}
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="product__info">
+    <div class="product__title">
+      <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+    </div>
+
+    {% if settings.show_rating %}
+    <div class="product__review">
+      {% render 'judgeme_widgets'
+          , widget_type: 'judgeme_preview_badge'
+          , jm_style: ''
+          , concierge_install: true
+          , product: product %}
+    </div>
+    {% endif %}
+
+    <div class="product__price">
+      {% include 'product-price' %}
+    </div>
+
+    <form class="formAddToCart" action="/cart/add" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="id" value="{{ product.variants.first.id }}"/>
+      {% if sold_out %}
+      <button class="btn btnAddToCart disabled" type="submit" value="Submit" data-handle="{{ product.handle }}" {% if settings.tooltip_enable %} data-toggle="tooltip" data-placement="top" {% endif %} title="" tabindex="0" disabled >
+        {{ 'products.product.notify_me' | t }}
+      </button>
+      {% else %}
+      {% if variantCount > 1 %}
+      <a class="btn btnAddToCart btnChooseVariant" href="javascript:void(0);" data-url="/products/{{ product.handle }}?view=json"
+      {% if settings.tooltip_enable %} data-toggle="tooltip" data-placement="top" {% endif %} title="" tabindex="0">
+      <span>{{ 'products.product.select_options' | t }}</span>
+    </a>
+    {% else %}
+    <button class="btn btnAddToCart" type="submit" value="Submit" data-handle="{{ product.handle }}" data-pid="{{ product.variants.first.id }}"{% if settings.tooltip_enable %} data-toggle="tooltip" data-placement="top"{% endif %} title="" tabindex="0">
+      <span>{{ 'products.product.add_to_cart' | t }}</span>
+    </button>
+    {% endif %}
+    {% endif %}
+  </form>
+</div>
+</div>

@@ -1,0 +1,215 @@
+{%- assign fks = section.settings -%}
+<div class="page-width">
+  	{% include 'nov-breadcrumb' %}
+  	<div class="nov__page mt-50 contactus-page">
+	  	<div class="container_ct">
+	  		{% if page.content.size > 0 %}
+		  		<div class="rte">
+		  			{{ page.content }}
+		  		</div>
+	  		{% endif %}
+            <div class="contact_message">
+                {% if section.settings.title_contact_message != blank %}
+                  <div class="title_block">
+                    <h1>{{ section.settings.title_contact_message }}</h1>
+                  </div>
+                {% endif %}
+          
+                {% if section.settings.sub_contact_message != blank %}
+                  <div class="sub_title">{{ section.settings.sub_contact_message }}</div>
+                {% endif %}
+              </div>
+            <div class="grid-wrapper">
+              {% if fks.boxInfor == true %}
+              <div class="boxInformationImage">
+                <div class="row">
+                  <div class="col-md-12 d-flex align-items-lg-center">
+                    {% if section.settings.contact_address != blank %}
+                      <div class="icon-contact">
+                        <img class="lazyload" data-src="{{ section.settings.contact_address | img_url: '100x' }}" alt="address_contact">
+                      </div>
+                    {% endif %}
+                    <div class="content">
+                      <div class="tt_i_contact">{{ 'sections.page-contact.address' | t }}</div>
+                      <div class="sub_i_contact">{{ section.settings.addr }}</div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 d-flex">
+                    {% if section.settings.contact_hotline != blank %}
+                      <div class="icon-contact">
+                        <img class="lazyload" data-src="{{ section.settings.contact_hotline | img_url: '100x' }}" alt="hotline_contact">
+                      </div>
+                    {% endif %}
+                    <div class="content">
+                      <div class="tt_i_contact">{{ 'sections.page-contact.hotline' | t }}</div>
+                      <div class="sub_i_contact sub_bold">{{ section.settings.hotline }}</div>
+                    </div> 
+                  </div>                
+                  <div class="col-md-12 d-flex align-items-lg-center">
+                    {% if section.settings.contact_email != blank %}
+                      <div class="icon-contact">
+                        <img class="lazyload" data-src="{{ section.settings.contact_email | img_url: '100x' }}" alt="email_contact">
+                      </div>
+                    {% endif %}
+                    <div class="content">
+                      <div class="tt_i_contact">{{ 'sections.page-contact.email' | t }}</div>
+                      <div class="sub_i_contact">{{ section.settings.email }}</div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="contact-social">
+                      {% if settings.show_social == true %}
+                        {% include 'nov-social' %}
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              {% if fks.form == true %}
+              <div class="formContactUs">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="contact-form form-vertical">
+                      {% form 'contact' %}
+                    
+                        {% if form.posted_successfully? %}
+                          <p class="note form-success">
+                            {{ 'contact.form.post_success' | t }}
+                          </p>
+                        {% endif %}
+                    
+                        {{ form.errors | default_errors }}
+                    
+                        <div class="form-group row">
+                          <div class="col-md-6 mb-sm-10">
+                            <input type="text" id="ContactFormName" name="contact[name]" value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}" class="{% if form.errors contains 'name' %}input--error{% endif %}" placeholder="{{ 'contact.form.name' | t }}" required>
+                          </div>
+                          <div class="col-md-6">
+                            <input type="email" id="ContactFormEmail" name="contact[email]" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" class="{% if form.errors contains 'email' %}input--error{% endif %}" placeholder="{{ 'contact.form.email' | t }}" required>
+                          </div>
+                        </div>
+                    
+                        <div class="form-group row">
+                          <div class="col-md-12">
+                            <input type="tel" id="ContactFormPhone" name="contact[phone]" pattern="[0-9\-]*" value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}" class="{% if form.errors contains 'phone' %}input--error{% endif %}" placeholder="{{ 'contact.form.phone' | t }}">
+                          </div>
+                        </div>
+                    
+                        <div class="form-group row">
+                          <div class="col-md-12">
+                            <textarea rows="15" cols="50" id="ContactFormMessage" name="contact[body]" placeholder="{{ 'contact.form.message' | t }}">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+                          </div>
+                        </div>
+                    
+                        <button class="btn btn_message" type="submit">
+                          <i class="icon-message"></i><span>{{ 'contact.form.submit' | t }}</span>
+                        </button>
+                    
+                      {% endform %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+            </div>
+	  	</div>
+        {% if fks.map == true %}
+            <div id="MapSection--{{ section.id }}"
+              class="map-section {% if display_map %}map-section--display-map{% endif %} {% if onboarding == true %}map-section--onboarding{% endif %}"
+              data-section-id="{{ section.id }}"
+              data-section-type="map">
+              <div class="page-width map-section__wrapper">
+                <div class="map-section__content-wrapper"><div class="map-section__content"></div></div>
+                <div class="map-section__background-wrapper">
+                  <div class="map-section__container">
+                    <iframe src="{{ section.settings.iframe_map }}" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+  	</div>
+</div>
+
+{% schema %}
+  {
+    "name": "Page Contact",
+    "class": "index-section page-contact",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "boxInfor",
+        "label": "Show BoxInfor",
+        "default": true
+      }, 
+      {
+        "type": "checkbox",
+        "id": "map",
+        "label": "Show Map",
+        "default": true
+      }, 
+      {
+        "type": "checkbox",
+        "id": "form",
+        "label": "Show Form",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Maps"
+      },
+      {
+        "type": "text",
+        "id": "iframe_map",
+        "label": "Google Maps Iframe",
+        "info": "You’ll need to embed the code on google map",
+        "default": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4082.7742465747338!2d-79.38287617561478!3d43.64905556573276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b34d2a57d767f%3A0x935ab2eb9fd5fb31!2sFirst%20Canadian%20Place!5e0!3m2!1svi!2s!4v1591603052999!5m2!1svi!2s"
+      },
+      {
+        "type": "header",
+        "content": "Info"
+      },
+      {
+        "type": "image_picker",
+        "id": "contact_email",
+        "label": "Contact Email"
+      },
+      {
+        "type": "text",
+        "id": "email",
+        "label": "Email"
+      },
+      {
+        "type": "image_picker",
+        "id": "contact_address",
+        "label": "contact Address"
+      },
+      {
+        "type": "text",
+        "id": "addr",
+        "label": "Address"
+      },
+      {
+        "type": "image_picker",
+        "id": "contact_hotline",
+        "label": "Contact Hotline"
+      },
+      {
+        "type": "text",
+        "id": "hotline",
+        "label": "Hotline"
+      },
+      {
+        "type": "text",
+        "id": "title_contact_message",
+        "label": "Title Contact Message"
+      },
+      {
+        "type": "text",
+        "id": "sub_contact_message",
+        "label": "Sub Contact Message"
+      }
+    ]
+  }
+{% endschema %}

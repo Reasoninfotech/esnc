@@ -1,0 +1,52 @@
+<!-- snippet/product-price.liquid -->
+{% if product.title %}
+  {%- assign compare_at_price = product.compare_at_price -%}
+  {%- assign price = product.price -%}
+  {%- assign price_varies = product.price_varies -%}
+  {%- assign available = product.available -%}
+{% else %}
+  {%- assign compare_at_price = 1999 -%}
+  {%- assign price = 1999 -%}
+  {%- assign price_varies = false -%}
+  {%- assign available = true -%}
+{% endif %}
+
+{%- assign money_price = price | money -%}
+
+{% if compare_at_price > price %}
+  {% if price_varies %}
+    {% comment %}<span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>{% endcomment %}
+    <span class="product-price__price product-price__sale">
+      {{ money_price }}
+      {% comment %}<span class="product-price__sale-label">{{ 'products.product.on_sale' | t }}</span>{% endcomment %}
+    </span>
+    <s class="product-price__price">{{ compare_at_price | money }}</s>
+  {% else %}
+    {% comment %}<span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>{% endcomment %}
+    <span class="product-price__price product-price__sale">
+      {{ money_price }}
+    </span>
+    <s class="product-price__price">{{ compare_at_price | money }}</s>
+  {% endif %}
+{% else %}
+
+  {% if price_varies %}
+    <span class="product-price__price">{{ money_price }}</span>
+  {% else %}
+    {% comment %}<span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>{% endcomment %}
+    <span class="product-price__price">{{ money_price }}</span>
+  {% endif %}
+{% endif %}
+{% assign variantCount = product.variants | size %}
+{% if product.available %}
+  <form class="formAddToCart1" action="/cart/add" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="{{ product.variants.first.id }}"/>
+    <button aria-label="search" class="btn1 btnAddToCart" type="submit" value="Submit" data-handle="{{ product.handle }}" data-pid="{{ product.variants.first.id }}"{% if settings.tooltip_enable %} data-toggle="tooltip" data-placement="top"{% endif %} title="" tabindex="0">
+        
+      </button>
+  </form>
+{% else %}
+    <a class="psold-out" data-toggle="tooltip" data-placement="top" title="Sold Out" tabindex="0">
+      <img src="https://cdn.shopify.com/s/files/1/0648/4167/9013/files/batgmsm4apbm3e19kyd.svg?v=1731390679" alt="Sold Out" width="20" height="20">
+    </a>          
+{% endif %}

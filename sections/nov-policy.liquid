@@ -1,0 +1,294 @@
+{%- assign bg_image = section.settings.background_image -%}
+{% if section.settings.background_color != blank or bg_image.src != blank %}
+  <style>
+    #shopify-section-{{ section.id }}.section-policy {
+      {% if section.settings.background_color != blank %}
+        background-color: {{ section.settings.background_color }};
+      {% endif %}
+      {% if bg_image.src != blank %}
+        background-image: url("{{ bg_image | img_url: '1920x' }}");
+        background-repeat: no-repeat;
+      {% endif %}
+    }
+  </style>
+{% endif %}
+<div id="section-policy-{{ section.id }}" class="distance{% if section.settings.class != blank %} {{ section.settings.class }}{% endif %}">
+  {% if section.settings.has_fullwidth == false %}
+    <div class="container_ct">
+  {% endif %}
+    {% if section.blocks.size > 0 %}
+      <div class="nov-policy">
+        <div class="row">
+          {% for block in section.blocks %}
+            <div class="nov-policy-item text-center {% if block.settings.class != blank %} {{ block.settings.class }} {% endif %}{{ section.settings.width }} {{ section.settings.width_tablet }} {{ section.settings.width_sm_mobile }} {{ section.settings.width_xs_mobile }}">
+              <div class="policy-icon">
+                {% if section.settings.enable_image %}
+                  {% if block.settings.policy_icon != blank %}
+                    <img class="lazyload" data-src="{{ block.settings.policy_icon | img_url: '120x' }}" alt="">
+                  {% else %}
+                    <img src="https://via.placeholder.com/100x100">
+                  {% endif %}
+                {% endif %}
+              </div>
+              <div class="policy-ct">
+                <div class="title-policy" style="{% if block.settings.color_title != blank %}color: {{ block.settings.color_title }};{% endif %}{% if block.settings.size_title != blank %}font-size: {{ block.settings.size_title }}{% endif %}">{{ block.settings.title_policy }}</div>
+                <div class="sub-policy" style="{% if block.settings.color_sub != blank %}color: {{ block.settings.color_sub }};{% endif %}{% if block.settings.size_sub != blank %}font-size: {{ block.settings.size_sub }}{% endif %}">{{ block.settings.sub_policy }}</div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  {% if section.settings.has_fullwidth == false %}
+    </div>
+  {% endif %}
+</div>
+{% schema %}
+  {
+    "name": "Vinova Policy",
+    "class": "index-section section-policy wow fadeInUp animated",
+    "max_blocks": 6,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_image",
+        "label": "Enable Image",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "width",
+        "label": "Width Policy (Desktop)",
+        "options": [
+          {
+            "value": "col-lg-2",
+            "label": "2/12"
+          },
+          {
+            "value": "col-lg-3",
+            "label": "3/12"
+          },
+          {
+            "value": "col-lg-4",
+            "label": "4/12"
+          },
+          {
+            "value": "col-lg-6",
+            "label": "6/12"
+          },
+          {
+            "value": "col-lg-8",
+            "label": "8/12"
+          },
+          {
+            "value": "col-lg-9",
+            "label": "9/12"
+          },
+          {
+            "value": "col-lg-10",
+            "label": "10/12"
+          },                  
+          {
+            "value": "col-lg-12",
+            "label": "12/12"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "width_tablet",
+        "label": "Width Policy (Tablet)",
+        "options": [
+          {
+            "value": "col-md-2",
+            "label": "2/12"
+          },
+          {
+            "value": "col-md-3",
+            "label": "3/12"
+          },
+          {
+            "value": "col-md-4",
+            "label": "4/12"
+          },
+          {
+            "value": "col-md-6",
+            "label": "6/12"
+          },
+          {
+            "value": "col-md-8",
+            "label": "8/12"
+          },
+          {
+            "value": "col-md-9",
+            "label": "9/12"
+          },
+          {
+            "value": "col-md-10",
+            "label": "10/12"
+          },                  
+          {
+            "value": "col-md-12",
+            "label": "12/12"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "width_sm_mobile",
+        "label": "Width Policy(Mobile Large)",
+        "options": [
+          {
+            "value": "col-sm-3",
+            "label": "3/12"
+          },
+          {
+            "value": "col-sm-4",
+            "label": "4/12"
+          },
+          {
+            "value": "col-sm-6",
+            "label": "6/12"
+          },                
+          {
+            "value": "col-sm-12",
+            "label": "12/12"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "width_xs_mobile",
+        "label": "Width Policy(Mobile)",
+        "options": [
+          {
+            "value": "col-xs-3",
+            "label": "3/12"
+          },
+          {
+            "value": "col-xs-4",
+            "label": "4/12"
+          },
+          {
+            "value": "col-xs-6",
+            "label": "6/12"
+          },                
+          {
+            "value": "col-xs-12",
+            "label": "12/12"
+          }
+        ]
+      },
+      {
+        "type":  "header",
+        "content": "Design Option"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background colors"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background image"
+      },
+      {
+        "type": "checkbox",
+        "id": "has_fullwidth",
+        "label": "Full Width",
+        "default":   false
+      },
+      {
+        "type": "text",
+        "id": "distance_top",
+        "label": "Top Distance Section",
+        "default": "30px"
+      },
+      {
+        "type": "text",
+        "id": "distance_bottom",
+        "label": "Bottom Distance Section",
+        "default": "30px"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "item_policy",
+        "name": "Policy Item",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "policy_icon",
+            "label": "Policy Icon"
+          },
+          {
+            "type": "text",
+            "id": "title_policy",
+            "label": "Title Policy",
+            "default": "Free Delivery From $ 250"
+          },
+          {
+            "type": "text",
+            "id": "size_title",
+            "label": "Size Title",
+            "default": "11px"
+          },
+          {
+            "type": "color",
+            "id": "color_title",
+            "label": "Color Title",
+            "default": "#000"
+          },
+          {
+            "type": "text",
+            "id": "sub_policy",
+            "label": "Sub Policy",
+            "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit eiusmod tempor"
+          },
+          {
+            "type": "text",
+            "id": "size_sub",
+            "label": "Size Sub",
+            "default": "11px"
+          },
+          {
+            "type": "color",
+            "id": "color_sub",
+            "label": "Color Sub",
+            "default": "#000"
+          },
+          {
+            "type": "text",
+            "id": "class",
+            "label": "Class"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Vinova Policy",
+        "category": "Text",
+        "blocks": [
+          {
+            "type": "item_policy"
+          },
+          {
+            "type": "item_policy"
+          },
+          {
+            "type": "item_policy"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+  #shopify-section-{{ section.id }} .distance {
+    padding-top: {{ section.settings.distance_top }};
+    padding-bottom: {{ section.settings.distance_bottom }};
+  }
+</style>

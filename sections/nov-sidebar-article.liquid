@@ -1,0 +1,357 @@
+{% for block in section.blocks %}
+  {% if block.type == 'block_categories' %}
+    <div class="categories__sidebar sidebar-block">
+      {% if block.settings.sidebar_categories_title != blank %}
+      <div class="filter-item_title title-block text-uppercase">
+        <i class="zmdi zmdi-format-subject"></i>
+        <span>{{ block.settings.sidebar_categories_title }}</span>
+      </div>
+      {% endif %}
+      <ul class="filter-item_content list-unstyled">
+        {% for collection in collections %}
+          {% if collection.title != 'Home page' %}
+            <li>
+              <a href="{{ collection.url }}" title="{{ collection.title }}">{{ collection.title }}</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+  {% if block.type == 'block_search' %}
+    <div class="sidebar-block search__sidebar{% if block.settings.class !=blank %} {{ block.settings.class }}{% endif %}">
+      <form action="/search" method="get" class="search-header-inline search" role="search">
+        <input type="hidden" name="type" value="article">
+        <input class="search-header__input"
+          type="search"
+          name="q"
+          placeholder="{{ 'general.search.submit' | t }}"
+          aria-label="{{ 'general.search.title' | t }}">
+        <button class="search-header__submit btn--link" type="submit">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+    </div>
+  {% endif %}
+  {% if block.type == 'block_recentpost' %}
+    <div class="sidebar-block recentpost__sidebar sidebar-block__{{ forloop.index }} {{ block.settings.block_class }}">
+      {% if block.settings.block_title != blank %}
+        <div class="filter-item_title title-block">
+          <i class="zmdi zmdi-format-subject"></i>
+          <span>{{ block.settings.block_title }}</span>
+        </div>
+      {% endif %}
+      {% if block.settings.number_show != blank %}
+        {% assign numberLimit = block.settings.number_show %}
+        <div class="filter-item_content block__content">
+          <div>
+          {% for article in blogs.news.articles limit: numberLimit %}
+            <div class="post_groups d-flex">
+                <div class="post__image hover-image">
+              {% if article.image %}
+                  <a href="{{ article.url }}" class="article__list-image-container">
+                    <img class="article__list-image lazyload" data-src="{{ article.image | img_url: '250x' }}" alt="">
+                  </a>
+              {% endif %}
+                </div>
+              <div class="post-item">
+                <div class="post__title">{{ article.title | link_to: article.url }}</div>
+                <div class="post__info">
+                  {% if block.settings.show_comment %}
+                    {% if blog.comments_enabled? %}
+                      <span class="post__countcomment d-block">
+                        <i class="zmdi zmdi-comments"></i>{{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}
+                      </span>
+                    {% endif %}
+                  {% endif %}
+
+                  {% if block.settings.show_date %}
+                    <span class="post__date">
+                      <i class="zmdi zmdi-calendar-note"></i>{{ article.published_at | time_tag: '%d %b, %Y' }}
+                    </span>
+                  {% endif %}
+              
+                  {% if block.settings.show_author %}
+                    <span class="article__author"><i class="zmdi zmdi-account"></i>{{ 'blogs.article.by_author' | t: author: article.author }}</span>
+                  {% endif %}
+                </div>
+
+                {% if block.settings.show_excerpt %}
+                  <div class="post__excerpt">
+                    {% if article.excerpt.size > 0 %}
+                      {{ article.excerpt | truncate: 100 }}
+                    {% else %}
+                      {{ article.content | strip_html | truncate: 100 }}
+                    {% endif %}
+                  </div>
+                {% endif %}
+                
+                {% if block.settings.show_more %}
+                  <div class="read_more">{{ 'blogs.article.readmore' | t | link_to: article.url }}</div>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+  {% if block.type == 'block_blogtags' %}
+    <div class="sidebar-block blogtags__sidebar{% if block.settings.class !=blank %} {{ block.settings.class }}{% endif %}">
+        {% if block.settings.block_title != blank %}
+        <div class="filter-item_title title-block">
+          <i class="zmdi zmdi-label"></i>
+          <span>{{ block.settings.block_title }}</span>
+        </div>
+        {% endif %}
+        {% if block.settings.number_show != blank %}
+          <div class="filter-item_content block__content">
+            {% assign numberLimit = block.settings.number_show %}
+            <ul class="listSidebarBlog list-unstyled">
+              {% for tag in blog.all_tags limit:numberLimit %}
+                  {% if current_tags contains tag %}
+                    <li>{{ tag }}</li>
+                  {% else %}
+                    <li>{{ tag | link_to_tag: tag }}</li>
+                  {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+    </div>
+  {% endif %}
+
+  {% if block.type == 'block_banner' %}
+    <div class="sidebar-block banner__sidebar{% if block.settings.class !=blank %} {{ block.settings.class }}{% endif %}">
+        {% if block.settings.banner_title != blank %}
+        <div class="filter-item_title title-block">
+          <span>{{ block.settings.banner_title }}</span>
+        </div>
+        {% endif %}
+        {% if block.settings.banner_image != blank %}
+          <div class="filter-item_content block__content">
+            <img class="lazyload w-100" data-src="{{ block.settings.banner_image | img_url: '500x' }}" alt="{% if block.settings.banner_title != blank %}{{ block.settings.banner_title }}{% else %}banner sidebar{% endif %}">
+            {% if block.settings.title != blank %}
+              <div class="title text-uppercase text-center">{{ block.settings.title }}</div>
+            {% endif %}
+            {% if block.settings.banner_link != blank %}
+              <a class="text-uppercase" href="{{ block.settings.banner_link }}">{{ block.settings.t_link }}</a>
+            {% endif %}
+          </div>
+        {% endif %}
+    </div>
+  {% endif %}
+{% endfor %}
+
+{% schema %}
+  {
+    "name": "Sidebar Blog",
+    "blocks": [
+      {
+        "type": "block_categories",
+        "name": "Categories Product",
+        "settings": [
+          {
+            "type": "text",
+            "id": "sidebar_categories_title",
+            "label": "Title",
+            "default": "Categories"
+          },
+          {
+            "type": "link_list",
+            "id": "sidebar_categories_menu",
+            "label": "Choose Menu",
+            "info": "Choose menu for block. Add new menu: Admin -> Navigation"
+          },
+          {
+            "type": "text",
+            "id": "class",
+            "label": "Class"
+          }
+        ]
+      },
+      {
+        "type": "block_search",
+        "name": "Block Search",
+        "settings": [
+          {
+            "type": "text",
+            "id": "class",
+            "label": "Class"
+          }
+        ]
+      },
+      {
+        "type": "block_html",
+        "name": "Block HTML",
+        "settings": [
+          {
+            "type": "text",
+            "id": "block_title",
+            "label": "Title"
+          },
+          {
+            "type": "textarea",
+            "id": "html_content",
+            "label": "Content",
+            "placeholder": "You can input code html for content.",
+            "info": "You can input code html for content."
+          },
+          {
+            "type": "text",
+            "id": "class",
+            "label": "Class"
+          }
+        ]
+      },
+      {
+        "type": "block_recentpost",
+        "name": "Block Recent Post",
+        "settings": [
+          {
+            "type": "text",
+            "id": "block_title",
+            "label": "Title",
+            "default": "Recent post"
+          },
+          {
+            "type": "range",
+            "id": "number_show",
+            "min": 2,
+            "max": 10,
+            "step": 1,
+            "label": "Number Show",
+            "default": 2,
+            "info": "Select number post show"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_date",
+            "label": "Show date",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "show_comment",
+            "label": "Show Comment",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "show_author",
+            "label": "Show Author",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "show_excerpt",
+            "label": "Show Excerpt",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "show_more",
+            "label": "Show More",
+            "default": false
+          },
+          {
+            "type": "text",
+            "id": "class",
+            "label": "Class"
+          }
+        ]
+      },
+      {
+        "type": "block_producttags",
+        "name": "Block Product Tags",
+        "settings": [
+          {
+            "type": "text",
+            "id": "block_title",
+            "label": "Title",
+            "default": "Product Tags"
+          },
+          {
+            "type": "range",
+            "id": "number_show",
+            "min": 2,
+            "max": 20,
+            "step": 1,
+            "label": "Number Show",
+            "default": 2,
+            "info": "Select number tags show"
+          },
+          {
+            "type": "text",
+            "id": "class",
+            "label": "Class"
+          }
+        ]
+      },
+      {
+        "type": "block_blogtags",
+        "name": "Block Blog Tags",
+        "settings": [
+          {
+            "type": "text",
+            "id": "block_title",
+            "label": "Title",
+            "default": "Blog Tags"
+          },
+          {
+            "type": "range",
+            "id": "number_show",
+            "min": 2,
+            "max": 20,
+            "step": 1,
+            "label": "Number Show",
+            "default": 2,
+            "info": "Select number tags show"
+          },
+          {
+            "type": "text",
+            "id": "class",
+            "label": "Class"
+          }
+        ]
+      },
+      {
+        "type": "block_banner",
+        "name": "Block Banner",
+        "settings": [
+          {
+            "type": "text",
+            "id": "banner_title",
+            "label": "Title"
+          },
+          {
+            "type": "image_picker",
+            "id": "banner_image",
+            "label": "Banner image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Text image"
+          },
+          {
+            "type": "text",
+            "id": "t_link",
+            "label": "Text link"
+          },
+          {
+            "type": "url",
+            "id": "banner_link",
+            "label": "Banner link"
+          },
+          {
+            "type": "text",
+            "id": "class",
+            "label": "Class"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

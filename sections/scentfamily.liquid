@@ -1,0 +1,192 @@
+<style>
+  #shopify-section-{{ section.id }}.section_img_text {
+    {% if section.settings.background_color != blank %}
+      background-color: {{ section.settings.background_color }};
+    {% endif %}
+  }
+  #shopify-section-{{ section.id }} .distance {
+    padding-top: {{ section.settings.distance_top }};
+    padding-bottom: {{ section.settings.distance_bottom }};
+  }
+</style>
+<div class="distance{% if section.settings.has_fullwidth == true %} full_width{% endif %}{% if section.settings.class != blank %} {{ section.settings.class }}{% endif %}">
+  {% if section.settings.has_fullwidth == false %}
+    <div class="container_ct">
+  {% endif %}
+    <div class="block">
+      <div class="row align-items-center">
+        <div class="col-lg-12 col-md-12 wow">
+          <div class="block_text-content">
+            {% if section.settings.subheading != blank %}
+            <div class="block_title {{ section.settings.title_alignment }}">
+              {% if section.settings.subheading != blank %}
+                <div class="sub-title" style="color: {{ section.settings.st_color }}">{{ section.settings.subheading }}</div>
+              {% endif %}
+              {% if section.settings.title != blank %}
+                <div class="title_block font-weight-bold wow" style="color: {{ section.settings.t_color }}">{{ section.settings.title }}</div>
+              {% endif %}
+              {% if section.settings.desc != blank %}
+                <div class="desc_title wow" style="color: {{ section.settings.desc_color }}">{{ section.settings.desc }}</div>
+              {% endif %}
+            </div>
+            {% endif %}
+            <div class="row">
+              {% for block in section.blocks %}
+                <div class="col-md-6 col-xs-12 item_text">
+                  <div class="grid-item-column">
+                    {% if  block.settings.icon != blank %}
+                      <div class="scentimage"><img src="{{ block.settings.icon | img_url: '600x600' }}" alt="{{ block.settings.icon.alt }}"></div>
+                    {% endif %}
+                    <div class="text-part">
+                      {% if block.settings.title != blank %}
+                        <div class="title">{{ block.settings.title }}</div>
+                      {% endif %}
+                      {% if block.settings.subtitle != blank %}
+                        <div class="subtitle">{{ block.settings.subtitle }}</div>
+                      {% endif %}
+                      {% if block.settings.description != blank %}
+                        <div class="description">{{ block.settings.description }}</div>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% if section.settings.has_fullwidth == false %}
+    </div>
+  {% endif %}
+</div>
+{% schema %}
+  {
+    "name": "Scent Family",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Vinova Image With Text"
+      },
+      {
+        "type": "color",
+        "id": "t_color",
+        "label": "Heading color",
+        "default": "#000"
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Sub Heading",
+        "default": "Subtitle from happy customers"
+      },
+      {
+        "type": "color",
+        "id": "st_color",
+        "label": "Sub heading color",
+        "default": "#000"
+      },
+      {
+        "type": "richtext",
+        "id": "desc",
+        "label": "Description"
+      },
+      {
+        "type": "color",
+        "id": "desc_color",
+        "label": "Description color",
+        "default": "#000"
+      },
+      {
+        "type": "select",
+        "id": "title_alignment",
+        "label": "Heading alignment",
+        "default": "text-left",
+        "options": [
+          {
+            "value": "text-left",
+            "label": "Left"
+          },
+          {
+            "value": "text-center",
+            "label": "Center"
+          },
+          {
+            "value": "text-right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background colors"
+      },
+      {
+        "type": "checkbox",
+        "id": "has_fullwidth",
+        "label": "Full Width",
+        "default":   false
+      },
+      {
+        "type": "text",
+        "id": "class",
+        "label": "Class"
+      },
+      {
+        "type": "text",
+        "id": "distance_top",
+        "label": "Top Distance Section",
+        "default": "30px"
+      },
+      {
+        "type": "text",
+        "id": "distance_bottom",
+        "label": "Bottom Distance Section",
+        "default": "30px"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block_left",
+        "name": "Block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Icon"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Sub Title"
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": "description"
+          },
+          {
+            "type": "text",
+            "id": "class_text",
+            "label": "Class Text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Scent Family",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

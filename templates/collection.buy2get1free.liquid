@@ -1,0 +1,343 @@
+<style>
+    #simple-bundles-io-options .select2-container {
+        display: block;
+        width: 100% !important;
+        margin-bottom: 20px;
+    }
+    #simple-bundles-io-options  #buy-now-button {
+        padding: 0 5px;
+        height: 50px;
+        line-height: 50px;
+        width: 100%;
+        background: #2abab0;
+        position: relative;
+        border-radius: 100px;
+    }
+      #simple-bundles-io-options  #buy-now-button:hover {
+        color: #fff;
+        background: #000;
+    }
+      p.form-error {
+        color: red;
+        display: none;
+        margin-bottom: 15px;
+    }
+    .unbox-img {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .unbox-img p {
+        font-weight: 600;
+        color: #ff904e;
+        font-size: 17px;
+    }
+    .opengift {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+  </style>
+  <!--<div style="padding:50px 0;" id="simple-bundles-io-options">
+        <div class="container">
+          <div class="product-single row">
+            <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+              <div class="nicheimage" style="display:none;">
+                <img src="https://cdn.shopify.com/s/files/1/0648/4167/9013/files/Niche_Buy_2_Get_1_Free_Story.webp?v=1737087094" alt="Niche">
+              </div>
+              <div class="selectiveimage" style="display:none;">
+                <img src="https://cdn.shopify.com/s/files/1/0648/4167/9013/files/BUY_2_GET_1_FREE_STORY.webp?v=1737087094" alt="Selective">
+              </div>
+            </div>
+            <div class="pt-20 block_information col-lg-7 col-md-12 col-sm-12 col-xs-12">
+              <h1 class="fa-2x">Buy Two And Get One Free</h1>
+              <p class="mb-20 font-italic">Select two fragrances and get one free – exclusively for ESNC Love Members!</p>
+              <div class="himproduct">
+                <label for="buyhim">Choose Your First Preferred Fragrance:</label>
+                <select id="buyhim" class="buyhim selectproduct" required=""></select>
+              </div>
+              <div class="herproduct">
+                <label for="buyher">Choose Your Second Preferred Fragrance:</label>
+                <select id="buyher" class="buyher selectproduct" required=""></select>
+              </div>
+              <div class="freeroduct" style="display:none;">
+                <label for="buyfree">Pick Any Free Fragrance:</label>
+                <select id="buyfree" class="buyfree selectproduct" required=""></select>
+              </div>
+              <div class="unbox-img">
+                <p>Select First And Second Preferred Fragnance To Unbox Your Free Gift</p>
+                <img id="selectedimg" width="150" height="150" src="https://cdn.shopify.com/s/files/1/0648/4167/9013/files/closebox.png?v=1736401855" style="height: 100px;object-fit:cover;">
+              </div>
+              <div class="opengift" style="display:none;">
+                <img width="150" height="150" src="https://cdn.shopify.com/s/files/1/0648/4167/9013/files/unboxgif.gif?v=1736315204" alt="" style="height: 100px;object-fit:cover;">
+              </div>
+              <div class="product-form__item product-form__item--submit">
+                <p class="form-error">Please select a product.</p>
+                <button type="submit" id="buy-now-button" class="hover_x btn ">                          
+                    <span id="AddToCartText">Buy Now</span>                          
+                  <i class="zmdi zmdi-long-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>-->
+  <script>
+    $('#buyhim').change( function(){
+      $('.form-error').hide();
+      var buyhimproduct = $('#buyhim').val();
+      var buyherproduct = $('#buyher').val();
+      if(buyhimproduct != "" && buyherproduct != ""){
+        $('.unbox-img').hide();
+        $('.opengift').show();
+        /*setTimeout(function() {
+            $('.freeroduct').fadeIn(3000).css('display', 'block');
+        }, 2000);*/
+        setTimeout(function() {
+           $('.opengift').hide();
+           $('.freeroduct').show();
+        }, 2000);
+      }else{
+        $('.unbox-img').show();
+        $('.freeroduct').hide();
+      }
+    });
+  
+    $('#buyher').change( function(){
+      var buyhimproduct = $('#buyhim').val();
+      var buyherproduct = $('#buyher').val();
+      if(buyhimproduct != "" && buyherproduct != ""){
+        $('.unbox-img').hide();
+        $('.opengift').show();
+        setTimeout(function() {
+           $('.opengift').hide();
+           $('.freeroduct').show();
+        }, 2000);
+        /*setTimeout(function() {
+            //$('.opengift').hide();
+          // $('.opengift').fadeOut(2001);
+        }, 2000);
+          setTimeout(function() {
+            //$('.freeroduct').show();
+            $('.freeroduct').fadeIn(2000);
+        }, 2001);*/
+      }else{
+        $('.unbox-img').show();
+        $('.freeroduct').hide();
+      }    
+      $('.form-error').hide();
+    });
+  
+    $('#buyfree').change( function(){
+      var buyfreeproduct = $(this).val();
+      if(buyfreeproduct != ""){
+        $('.opengift').fadeOut(1000);
+      }
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+  
+      $(".selectproduct").select2();
+      $('.selectproduct').select2().on('select2:open', function(e){
+          $('.select2-search__field').attr('placeholder', 'Search Here');
+      })
+    </script>
+    <script>
+       const productsPerPage = 500;
+       function fetchProducts(page, filterTag, selectClass, collectionHandle, excludeCollectionHandle) {
+
+      const fetchCollectionProducts = (collection, page) =>
+          $.ajax({
+              url: `/collections/${collection}/products.json`,
+              data: {
+                  limit: productsPerPage,
+                  page: page
+              },
+              dataType: 'json'
+          });
+  
+      // Fetch products from both collections
+      $.when(fetchCollectionProducts(collectionHandle, page), fetchCollectionProducts(excludeCollectionHandle, 1))
+          .done(function (productresponse, freeproductresponse) {
+              const allProducts = productresponse[0].products;
+              const freeProducts = freeproductresponse[0].products;
+  
+              // Log the raw data for debugging
+              console.log("All Products:", allProducts);
+              console.log("Free Products:", freeProducts);
+  
+              // Get IDs of products in the Free Niche collection
+              const freeNicheProductIds = new Set(freeProducts.map(product => product.id));
+  
+              // Filter out Free-Niche products from Niche products
+              let filteredProducts = allProducts.filter(product => !freeNicheProductIds.has(product.id));
+  
+              // Log the filtered products before applying the tag filter
+              console.log("Filtered Products (Excluding Free products):", filteredProducts);
+  
+              // Apply the tag filter if provided
+              if (filterTag) {
+                  filteredProducts = filteredProducts.filter(product => product.tags.includes(filterTag));
+              }
+  
+              // Log the filtered products after applying the tag filter
+              console.log("Filtered Products (After Applying Tag Filter):", filteredProducts);
+  
+              // Sort products by title
+              const sortedProducts = filteredProducts.sort((a, b) => a.title.localeCompare(b.title));
+  
+              // Populate the product dropdown
+              const productsContainer = $('.' + selectClass);
+              productsContainer.empty();
+              let productElement = '<option value="">-- Select a Product --</option>';
+              sortedProducts.forEach(product => {
+                  const hasAvailableVariant = product.variants.some(variant => variant.available);
+                  if (hasAvailableVariant) {
+                      productElement += `<option value="${product.variants[0].id}">${product.title}</option>`;
+                  }
+              });
+              productsContainer.append(productElement);
+  
+              // Handle pagination
+              const paginationContainer = $('#pagination');
+              paginationContainer.empty();
+              const totalPages = Math.ceil(productresponse[0].products_count / productsPerPage);
+              if (totalPages > 1) {
+                  if (page > 1) {
+                      paginationContainer.append(`<a href="#" onclick="fetchProducts(${page - 1}, '${filterTag}', '${selectClass}', '${collectionHandle}', '${excludeCollectionHandle}'); return false;">Previous</a>`);
+                  }
+                  for (let i = 1; i <= totalPages; i++) {
+                      if (i === page) {
+                          paginationContainer.append(`<span>${i}</span>`);
+                      } else {
+                          paginationContainer.append(`<a href="#" onclick="fetchProducts(${i}, '${filterTag}', '${selectClass}', '${collectionHandle}', '${excludeCollectionHandle}'); return false;">${i}</a>`);
+                      }
+                  }
+                  if (page < totalPages) {
+                      paginationContainer.append(`<a href="#" onclick="fetchProducts(${page + 1}, '${filterTag}', '${selectClass}', '${collectionHandle}', '${excludeCollectionHandle}'); return false;">Next</a>`);
+                  }
+              }
+          })
+          .fail(function () {
+              console.error("Failed to fetch products from one or both collections.");
+          });
+  }
+  
+        var gender = "";
+        const queryString = new URL(window.location.href).searchParams.get('q');
+        const queryStringgender = new URL(window.location.href).searchParams.get('g');
+        if(queryStringgender){
+          if(queryStringgender == 'male'){
+               gender = 'Male';
+          }else if(queryStringgender == 'female'){
+            gender = 'Female';
+          }
+        }
+        if(queryString){
+          var collectionHandle = queryString;
+          var freecollection = 'free-niche';
+          if(collectionHandle == 'selective'){
+            $('.selectiveimage').show();
+            var collectionHandle = 'selective';
+                freecollection = 'free-selective';
+          }else{
+            $('.nicheimage').show();
+            var collectionHandle = 'Niche';
+            freecollection = 'free-niche';
+          }
+        }else{
+          var collectionHandle = 'Niche';
+          freecollection = 'free-niche';
+          $('.nicheimage').show();
+        }
+
+
+        if(gender == 'Male'){
+          fetchProducts(1, 'Male', 'buyhim', collectionHandle, freecollection);
+        }else if(gender == 'Female'){
+          fetchProducts(1, 'Female', 'buyhim', collectionHandle, freecollection);
+        }else{
+          fetchProducts(1, '', 'buyhim', collectionHandle, freecollection);
+        }
+      
+        if(gender == 'Male'){
+          fetchProducts(1, 'Male', 'buyher', collectionHandle, freecollection);
+        }else if(gender == 'Female'){
+          fetchProducts(1, 'Female', 'buyher', collectionHandle, freecollection);
+        }else{
+          fetchProducts(1, '', 'buyher', collectionHandle, freecollection);
+        }
+
+        if(gender == 'Male'){
+          fetchProducts(1, 'Male', 'buyfree', freecollection, 'no');
+        }else if(gender == 'Female'){
+          fetchProducts(1, 'Female', 'buyfree', freecollection, 'no');
+        }else{
+          fetchProducts(1, '', 'buyfree', freecollection, 'no');
+        }
+      
+        /*fetchProducts(1, 'Male', 'buyhim', collectionHandle, freecollection);
+        fetchProducts(1, 'Female', 'buyher', collectionHandle, freecollection);
+        fetchProducts(1, '', 'buyfree', freecollection, 'no');*/
+    </script>
+    
+    <script>
+      document.getElementById('buy-now-button').addEventListener('click', function () {
+          const buyhim = document.getElementById('buyhim').value;
+          const buyher = document.getElementById('buyher').value;
+          const buyfree = document.getElementById('buyfree').value;
+          $('.form-error').hide();
+          if (!buyhim || !buyher || !buyfree) {
+            $('.form-error').show();
+            return false;
+          }
+          const cartItems = [
+            { id: parseInt(buyhim), quantity: 1 },
+            { id: parseInt(buyher), quantity: 1 },
+            { id: parseInt(buyfree), quantity: 1 },
+          ];
+          fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ items: cartItems }),
+          })
+            .then(response => {
+              if (response.ok) {
+                /*window.location.href = '/cart';*/
+              } else {
+                return response.json().then(errorData => {
+                  console.error('Error details:', errorData);
+                  alert('Failed to add items to cart. Please check your selections.');
+                });
+              }
+            })
+            .catch(error => console.error('Error:', error));
+      });
+    </script>
+    <script>
+      /*document.getElementById('buy-now-button').addEventListener('click', function () {
+        const buyhim = document.getElementById('buyhim').value;
+        const buyher = document.getElementById('buyher').value;
+        const buyfree = document.getElementById('buyfree').value;  
+        $('.form-error').hide(); // Hide error message
+        if (!buyhim || !buyher || !buyfree) {
+            $('.form-error').show(); // Show error message if any selection is missing
+            return false;
+        }
+        const checkoutBaseUrl = '/checkout';
+        const cartItems = [
+            { id: buyhim, quantity: 1 },
+            { id: buyher, quantity: 1 },
+            { id: buyfree, quantity: 1 },
+        ];
+        const queryString = cartItems
+            .map(item => `updates[${item.id}]=${item.quantity}`)
+            .join('&');
+    
+        const checkoutUrl = `${checkoutBaseUrl}?${queryString}`;
+        window.location.href = checkoutUrl;
+    });*/
+  </script>
+    

@@ -1,0 +1,193 @@
+<style>
+  #shopify-section-{{ section.id }}.section_img_text {
+    {% if section.settings.background_color != blank %}
+      background-color: {{ section.settings.background_color }};
+    {% endif %}
+  }
+  #shopify-section-{{ section.id }} .distance {
+    padding-top: {{ section.settings.distance_top }};
+    padding-bottom: {{ section.settings.distance_bottom }};
+  }
+</style>
+<div class="distance{% if section.settings.has_fullwidth == true %} full_width{% endif %}{% if section.settings.class != blank %} {{ section.settings.class }}{% endif %}">
+  {% if section.settings.has_fullwidth == false %}
+    <div class="container_ct">
+  {% endif %}
+    <div class="block">
+      <div class="row align-items-center">
+        <div class="block_img col-lg-6 col-md-12 mb-md-40 wow fadeInLeft animated">
+          <div class="block_img-content">
+            {% if section.settings.image != blank %}
+              <div class="respone_image" style="padding-top:{{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100}}%;">
+                {% assign img_url = section.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                <img class="gallery_image lazyload"
+                  src="{{ section.settings.image | img_url: '600x' }}"
+                  data-src="{{ img_url }}"
+                  data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                  data-aspectratio="{{ section.settings.image.aspect_ratio }}"
+                  data-sizes="auto"
+                  alt="{{ section.settings.image.alt | escape }}">
+              </div>
+            {% else %}
+              <img src="https://via.placeholder.com/700x">
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12 wow fadeInRight animated">
+          <div class="block_text-content">
+            <div class="block_title {{ section.settings.title_alignment }} mb-70 mb-md-40">
+              {% if section.settings.subheading != blank %}
+                <div class="sub-title" style="color: {{ section.settings.st_color }}">{{ section.settings.subheading }}</div>
+              {% endif %}
+              {% if section.settings.title != blank %}
+                <div class="title_block font-weight-bold wow fadeInUp animated" style="color: {{ section.settings.t_color }}">{{ section.settings.title }}</div>
+              {% endif %}
+              {% if section.settings.desc != blank %}
+                <div class="desc_title wow fadeInUp animated" style="color: {{ section.settings.desc_color }}">{{ section.settings.desc }}</div>
+              {% endif %}
+            </div>
+            <div class="row">
+              {% for block in section.blocks %}
+                <div class="col-sm-6 col-xs-12 item_text d-flex align-items-center mb-md-30">
+                  {% if  block.settings.icon != blank %}
+                    <div class="icon"><img src="{{ block.settings.icon | img_url: '30x' }}"></div>
+                  {% endif %}
+                  {% if block.settings.title != blank %}
+                    <div class="title">{{ block.settings.title }}</div>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% if section.settings.has_fullwidth == false %}
+    </div>
+  {% endif %}
+</div>
+{% schema %}
+  {
+    "name": "Vinova Image Width Text",
+    "class": "index-section section_img_text",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Vinova Image With Text"
+      },
+      {
+        "type": "color",
+        "id": "t_color",
+        "label": "Heading color",
+        "default": "#000"
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Sub Heading",
+        "default": "Subtitle from happy customers"
+      },
+      {
+        "type": "color",
+        "id": "st_color",
+        "label": "Sub heading color",
+        "default": "#000"
+      },
+      {
+        "type": "richtext",
+        "id": "desc",
+        "label": "Description"
+      },
+      {
+        "type": "color",
+        "id": "desc_color",
+        "label": "Description color",
+        "default": "#000"
+      },
+      {
+        "type": "select",
+        "id": "title_alignment",
+        "label": "Heading alignment",
+        "default": "text-left",
+        "options": [
+          {
+            "value": "text-left",
+            "label": "Left"
+          },
+          {
+            "value": "text-center",
+            "label": "Center"
+          },
+          {
+            "value": "text-right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background colors"
+      },
+      {
+        "type": "checkbox",
+        "id": "has_fullwidth",
+        "label": "Full Width",
+        "default":   false
+      },
+      {
+        "type": "text",
+        "id": "class",
+        "label": "Class"
+      },
+      {
+        "type": "text",
+        "id": "distance_top",
+        "label": "Top Distance Section",
+        "default": "30px"
+      },
+      {
+        "type": "text",
+        "id": "distance_bottom",
+        "label": "Bottom Distance Section",
+        "default": "30px"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block_left",
+        "name": "Block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Icon"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "class_text",
+            "label": "Class Text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Vinova Images With Text",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

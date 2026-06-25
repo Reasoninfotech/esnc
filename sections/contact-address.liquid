@@ -1,0 +1,121 @@
+{% if section.settings.background_color != blank %}
+  <style>
+    #shopify-section-{{ section.id }} .page-width {
+      background-color: {{ section.settings.background_color }};
+    }
+  </style>
+{% endif %}
+
+<div class="distance" data-section-id="{{ section.id }}" data-section-type="nov-slick">
+  <div class="page-width{% if section.settings.class %} {{ section.settings.class }}{% endif %}">
+      <div class="container_90">
+      <div class="block_customs">
+        <div class="custom-content row">
+          <h1>LOCATIONS</h1>
+          <!-- Start Stockist.co widget -->
+            <div data-stockist-widget-tag="u17832">Loading store locator
+            from <a href="https://stockist.co" rel="nofollow">Stockist store locator</a>...</div>
+            <script>
+              (function(s,t,o,c,k){c=s.createElement(t);c.src=o;c.async=1;
+              k=s.getElementsByTagName(t)[0];k.parentNode.insertBefore(c,k);
+              })(document,'script','//stockist.co/embed/v1/widget.min.js');
+            </script>
+          <!-- End Stockist.co widget -->
+        </div>
+      </div>
+      {% if section.blocks.size == 0 %}
+        {% include 'no-blocks' %}
+      {% endif %}
+      </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Custom locations",
+    "class": "index-section section-custom wow fadeIn animated",
+    "settings": [
+      {
+        "type": "text",
+        "id": "class",
+        "label": "Class"
+      },
+      {
+        "type": "checkbox",
+        "id": "has_fullwidth",
+        "label": "Full Width",
+        "default":   false
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background colors"
+      },
+      {
+        "type": "text",
+        "id": "distance_top",
+        "label": "Top Distance Section",
+        "default": "30px"
+      },
+      {
+        "type": "text",
+        "id": "distance_bottom",
+        "label": "Bottom Distance Section",
+        "default": "30px"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "text",
+        "name": "Text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Location Name"
+          },
+          {
+            "type": "text",
+            "id": "sub",
+            "label": "Location Address"
+          },
+          {
+            "type": "text",
+            "id": "phone",
+            "label": "Phone Number"
+          },
+          {
+            "type": "text",
+            "id": "email",
+            "label": "Email"
+          },
+          {
+            "type": "text",
+            "id": "siteurl",
+            "label": "Site Url"
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": "Map Url"
+          },
+          {
+            "type": "text",
+            "id": "class",
+            "label": "Class"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom locations",
+        "category": "Content",
+        "blocks": [
+          {
+            "type": "text"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

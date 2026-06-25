@@ -1,0 +1,349 @@
+<style>
+  {% if section.settings.background_color != blank %}
+    #shopify-section-{{ section.id }}.section-product-banner {
+      background-color: {{ section.settings.background_color }};
+    }
+  {% endif %}
+  #shopify-section-{{ section.id }} .distance {
+    padding-top: {{ section.settings.distance_top }};
+    padding-bottom: {{ section.settings.distance_bottom }};
+  }
+</style>
+
+{%- assign collection = collections[section.settings.collection] -%}
+{%- assign product_limit = section.settings.limit | plus:0 -%}
+{%- assign product_menu = section.settings.menu_handle -%}
+{%- assign img_size = settings.img_size -%}
+
+<div class="distance{% if section.settings.has_fullwidth == true %} full_width{% endif %}{% if section.settings.class != blank %} {{ section.settings.class }}{% endif %}" data-section-id="{{ section.id }}" data-section-type="nov-slick">
+  {% if section.settings.has_fullwidth == false %}
+  <div class="container_90">
+  {% endif %}
+    <div class="block product-banner-categories">
+      <div class="row spacing-20">
+        <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
+          <div class="d-md-flex d-block">
+            <div class="block_title footer-block">
+              {% if section.settings.title != blank %}
+                <div class="title_block" style="{% if section.settings.color_title != blank %}color: {{ section.settings.color_title }};font-size: {{ section.settings.size_title }}{% endif %}">
+                  <span>{{ section.settings.title }}</span>
+                  <span class="show_footer d-md-none"><i class="zmdi zmdi-plus"></i></span>
+                </div>
+              {% endif %}
+              <div class="list-menu block-content adc">
+                <ul class="link-collection">
+                  {% for product_menu in linklists[product_menu].links %}
+                    <li class="nav-link-collection">
+                      <a href="{{ product_menu.url }}" style="{% if section.settings.color_menu != blank %}color: {{ section.settings.color_menu }};{% endif %}{% if section.settings.size_menu != blank %}font-size: {{ section.settings.size_menu }}{% endif %}">{{ product_menu.title }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+                {% if section.settings.show_view_all %}
+                  <div class="view_all">
+                    <a href="{{ collection.url }}" style="{% if section.settings.color_view_all != blank %}color: {{ section.settings.color_view_all }};{% endif %}{% if section.settings.size_view_all != blank %}font-size: {{ section.settings.size_view_all }}{% endif %}">
+                      <span>{{ section.settings.view_all }}</span>
+                      <i class="zmdi zmdi-long-arrow-right"></i>
+                    </a>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="banner_product overflow-hidden mb-xs-20 {% if section.settings.class_banner != blank %} {{ section.settings.class_banner }}{% endif %}">
+              {% if section.settings.image_banner != blank %}
+                <a href="{{ section.settings.link_banner }}" class="banner__link">
+                  <div class="hover-image respone_image" style="padding-top:{{ 1 | divided_by: section.settings.image_banner.aspect_ratio | times: 100}}%;">
+                    {% assign img_url = section.settings.image_banner | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                    <img class="banner__image lazyload"
+                      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 10'%3E%3C/svg%3E"
+                      data-src="{{ img_url }}"
+                      data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                      data-aspectratio="{{ section.settings.image_banner.aspect_ratio }}"
+                      data-sizes="auto"
+                      alt="">
+                  </div>
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 position-initial">
+          <div class="grid--view-items row nov-slick-carousel"
+            data-autoplay="false" 
+            data-autoplayTimeout="6000" 
+            data-loop="false"
+            data-dots="false" 
+            data-nav="{{ section.settings.show_nav }}" 
+            data-row="{{ section.settings.number_row }}"
+            data-row_mobile="{{ section.settings.row_mobile }}" 
+            data-items="{{ section.settings.grid_number }}" 
+            data-items_lg_tablet="{{ section.settings.grid_number_lg_tablet }}" 
+            data-items_tablet="{{ section.settings.items_tablet }}" 
+            data-items_mobile="{{ section.settings.items_mobile }}"
+            {% if section.settings.custombutton == true %} data-custombutton="{{ section.settings.custombutton }}"{% endif %}
+            >
+            {% for product in collection.products limit: product_limit %}
+              <div class="item col">
+                {% include 'product-card-grid' %}
+              </div>
+            {% else %}
+              {% for i in (1..product_limit) %}
+                <div class="{{ grid_item_width }}">
+                  <div class="item-product mb-20">
+                    <div class="thumbnail-container">
+                      <a href="{{ collection.url }}">
+                        {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                        {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                      </a>
+                    </div>
+                    <div class="product__info">
+                      <div class="product__title"><a href="{{ collection.url }}">{{ 'homepage.onboarding.product_title' | t }}</a></div>
+                      <div class="product__price">
+                        {% include 'product-price' %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% if section.settings.has_fullwidth == false %}
+  </div>
+  {% endif %}
+</div>
+
+{% schema %}
+  {
+    "name": "Vinova Products Banner",
+    "class": "index-section section-product-banner wow fadeInUp animated",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Best sellers"
+      },
+      {
+        "type": "text",
+        "id": "size_title",
+        "label": "Size Title",
+        "default": "2.4rem"
+      },
+      {
+        "type": "color",
+        "id": "color_title",
+        "label": "Color Title",
+        "default": "#222"
+      },
+      {
+        "type":  "header",
+        "content": "Design Option"
+      },
+      {
+        "type": "link_list",
+        "id": "menu_handle",
+        "label": "Choose Menu",
+        "info": "Choose menu for block. Add new menu: Admin -> Navigation"
+      },
+      {
+        "type": "text",
+        "id": "size_menu",
+        "label": "Size Menu",
+        "default": "1.6rem"
+      },
+      {
+        "type": "color",
+        "id": "color_menu",
+        "label": "Color Menu",
+        "default": "#000"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_view_all",
+        "label": "View All",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "view_all",
+        "label": "View All",
+        "default": "View all products"
+      },
+      {
+        "type": "text",
+        "id": "size_view_all",
+        "label": "Size View All",
+        "default": "1.6rem"
+      },
+      {
+        "type": "color",
+        "id": "color_view_all",
+        "label": "Color View All",
+        "default": "#000"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_banner",
+        "label": "Image Banner"
+      },
+      {
+        "type": "url",
+        "id": "link_banner",
+        "label": "Link Banner",
+        "info": "Optional"
+      },
+      {
+        "type": "text",
+        "id": "class_banner",
+        "label": "Class Banner"
+      },
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection"
+      },
+      {
+        "type": "range",
+        "id": "grid_number",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "label": "Products per row",
+        "default": 4
+      },
+      {
+        "type": "range",
+        "id": "grid_number_lg_tablet",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "label": "Products per row (Desktop)",
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "items_tablet",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "label": "Items Tablet",
+        "default": 3,
+        "info": "Select number Items Tablet for slider"
+      },
+      {
+        "type": "range",
+        "id": "items_mobile",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "label": "Items Mobile",
+        "default": 2,
+        "info": "Select number Items Mobile for slider"
+      },
+      {
+        "type": "range",
+        "id": "limit",
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "label": "Limit",
+        "default": 30,
+        "info": "Select number limit products"
+      },
+      {
+        "type": "select",
+        "id": "number_row",
+        "label": "Number row",
+        "default": "1",
+        "options": [
+          {
+            "value": "1",
+            "label": "1"
+          },
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "row_mobile",
+        "label": "Number row mobile",
+        "default": "1",
+        "options": [
+          {
+            "value": "1",
+            "label": "1"
+          },
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "show_nav",
+        "label": "Show Navigation",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "custombutton",
+        "label": "Navigation Custom",
+        "default": false 
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background colors"
+      },
+      {
+        "type": "text",
+        "id": "class",
+        "label": "Class"
+      },
+      {
+        "type": "checkbox",
+        "id": "has_fullwidth",
+        "label": "Full Width",
+        "default":   false
+      },
+      {
+        "type": "text",
+        "id": "distance_top",
+        "label": "Top Distance Section",
+        "default": "30px"
+      },
+      {
+        "type": "text",
+        "id": "distance_bottom",
+        "label": "Bottom Distance Section",
+        "default": "30px"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Vinova Products Banner",
+        "category": "Products"
+      }
+    ]
+  }
+{% endschema %}
+
+{% unless product == empty %}
+  <script type="application/json" id="ProductJson-Dl">
+    {{ product | json }}
+  </script>
+{% endunless %}

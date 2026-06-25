@@ -1,0 +1,38 @@
+<div class="group-buttons d-flex">
+  {% if settings.wishlist_enable %}
+    {% include 'nov-wishlist' %}
+  {% endif %}
+  {% assign variantCount = product.variants | size %}
+  {% if product.available %}
+    <form class="formAddToCart" action="/cart/add" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="id" value="{{ product.variants.first.id }}"/>
+      {% comment %}
+      {% if variantCount > 1 %}
+        <a class="btn btnAddToCart btnChooseVariant dfhfhfg" href="javascript:void(0);" data-url="/products/{{ product.handle }}?view=json"
+          {% if settings.tooltip_enable %} data-toggle="tooltip" data-placement="top" {% endif %} title="" tabindex="0">
+          <i class="icon_sellect"></i>
+        </a> 
+      {% else %}
+        <button class="btn btnAddToCart" type="submit" value="Submit" data-handle="{{ product.handle }}" data-pid="{{ product.variants.first.id }}"{% if settings.tooltip_enable %} data-toggle="tooltip" data-placement="top"{% endif %} title="" tabindex="0">
+          <i class="icon_addcart d-md-block d-none"></i>
+          <i class="fa fa-shopping-cart d-md-none d-block" aria-hidden="true"></i>
+        </button>
+      {% endif %}
+      {% endcomment %}
+      <button class="btn btnAddToCart" type="submit" value="Submit" data-handle="{{ product.handle }}" data-pid="{{ product.variants.first.id }}"{% if settings.tooltip_enable %} data-toggle="tooltip" data-placement="top"{% endif %} title="" tabindex="0">
+          <i class="icon_addcart d-md-block d-none"></i>
+          <i class="fa fa-shopping-cart d-md-none d-block" aria-hidden="true"></i>
+        </button>
+    </form>
+  {% else %}
+    <div class="pro_Sold_Out">
+      <button class="btn btnsold_out sold_out d-flex align-items-center justify-content-center" data-toggle="modal" data-target="#Form_newletter">
+          <i class="zmdi zmdi-email"></i>
+        <i class="fa fa-spin loading"></i>
+      </button>
+    </div>
+  {% endif %}
+  {% if settings.quickview_enable %}
+    {% include 'nov-quickview' %}
+  {% endif %}
+</div>

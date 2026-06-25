@@ -1,0 +1,265 @@
+<style>
+  #shopify-section-{{ section.id }}.section_img_text {
+    {% if section.settings.background_color != blank %}
+      background-color: {{ section.settings.background_color }};
+    {% endif %}
+  }
+  #shopify-section-{{ section.id }} .distance {
+    padding-top: {{ section.settings.distance_top }};
+    padding-bottom: {{ section.settings.distance_bottom }};
+  }
+</style>
+<div class="distance{% if section.settings.has_fullwidth == true %} full_width{% endif %}{% if section.settings.class != blank %} {{ section.settings.class }}{% endif %}">
+  {% if section.settings.has_fullwidth == false %}
+    <div class="container_ct">
+  {% endif %}
+    <div class="block">
+      <div class="row align-items-center">
+        <div class="col-lg-12 col-md-12 wow ">
+          <div class="block_text-content">
+            {% if section.settings.subheading != blank %}
+            <div class="block_title {{ section.settings.title_alignment }}">
+              {% if section.settings.subheading != blank %}
+                <div class="sub-title" style="color: {{ section.settings.st_color }}">{{ section.settings.subheading }}</div>
+              {% endif %}
+              {% if section.settings.title != blank %}
+                <div class="title_block font-weight-bold wow" style="color: {{ section.settings.t_color }}">{{ section.settings.title }}</div>
+              {% endif %}
+              {% if section.settings.desc != blank %}
+                <div class="desc_title wow" style="color: {{ section.settings.desc_color }}">{{ section.settings.desc }}</div>
+              {% endif %}
+            </div>
+            {% endif %}
+            <div class="row">
+              {% for block in section.blocks %}
+                {% if block.settings.textorimage == 'showtext' %}
+                  <div class="col-md-4 col-xs-12 item_text d-flex align-items-center">
+                    {% if  block.settings.icon != blank %}
+                      <div class="icons"><img src="{{ block.settings.icon | img_url: '220x' }}" height="48" width="48" alt="{{ block.settings.icon.alt }}"></div>
+                    {% endif %}
+                    {% if block.settings.title != blank %}
+                      <div class="title">{{ block.settings.title }}</div>
+                    {% endif %}
+                  </div>
+                {% else %}
+                  <div class="col-md-4 col-xs-12 item_text d-flex align-items-center textimages">
+                    {% if  block.settings.image1 != blank %}
+                      <div class="icons">                        
+                        <img 
+                          src="{{ block.settings.image1 | img_url: '75x' }}" 
+                          srcset="
+                              {{ block.settings.image1 | img_url: '75x' }} 75w,
+                              {{ block.settings.image1 | img_url: '150x' }} 150w" 
+                          sizes="75px" 
+                          height="75" 
+                          width="75" 
+                          alt="{{ block.settings.image1.alt }}"> 
+                      </div>
+                    {% endif %}
+                    {% if  block.settings.image2 != blank %}
+                      <div class="icons">
+                        <img 
+                          src="{{ block.settings.image2 | img_url: '75x' }}" 
+                          srcset="
+                              {{ block.settings.image2 | img_url: '75x' }} 75w,
+                              {{ block.settings.image2 | img_url: '150x' }} 150w" 
+                          sizes="75px" 
+                          height="75" 
+                          width="75" 
+                          alt="{{ block.settings.image2.alt }}">
+                      </div>
+                    {% endif %}
+                    {% if  block.settings.image3 != blank %}
+                      <div class="icons">
+                      <img 
+                          src="{{ block.settings.image3 | img_url: '75x' }}" 
+                          srcset="
+                              {{ block.settings.image3 | img_url: '75x' }} 75w,
+                              {{ block.settings.image3 | img_url: '150x' }} 150w" 
+                          sizes="75px" 
+                          height="75" 
+                          width="75" 
+                          alt="{{ block.settings.image3.alt }}">
+                      </div>
+                    {% endif %}
+                    {% if  block.settings.image4 != blank %}
+                      <div class="icons">
+                      <img 
+                          src="{{ block.settings.image4 | img_url: '75x' }}" 
+                          srcset="
+                              {{ block.settings.image4 | img_url: '75x' }} 75w,
+                              {{ block.settings.image4 | img_url: '150x' }} 150w" 
+                          sizes="75px" 
+                          height="75" 
+                          width="75" 
+                          alt="{{ block.settings.image4.alt }}">
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% if section.settings.has_fullwidth == false %}
+    </div>
+  {% endif %}
+</div>
+{% schema %}
+  {
+    "name": "Image With Text",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Vinova Image With Text"
+      },
+      {
+        "type": "color",
+        "id": "t_color",
+        "label": "Heading color",
+        "default": "#000"
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Sub Heading",
+        "default": "Subtitle from happy customers"
+      },
+      {
+        "type": "color",
+        "id": "st_color",
+        "label": "Sub heading color",
+        "default": "#000"
+      },
+      {
+        "type": "richtext",
+        "id": "desc",
+        "label": "Description"
+      },
+      {
+        "type": "color",
+        "id": "desc_color",
+        "label": "Description color",
+        "default": "#000"
+      },
+      {
+        "type": "select",
+        "id": "title_alignment",
+        "label": "Heading alignment",
+        "default": "text-left",
+        "options": [
+          {
+            "value": "text-left",
+            "label": "Left"
+          },
+          {
+            "value": "text-center",
+            "label": "Center"
+          },
+          {
+            "value": "text-right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background colors"
+      },
+      {
+        "type": "checkbox",
+        "id": "has_fullwidth",
+        "label": "Full Width",
+        "default":   false
+      },
+      {
+        "type": "text",
+        "id": "class",
+        "label": "Class"
+      },
+      {
+        "type": "text",
+        "id": "distance_top",
+        "label": "Top Distance Section",
+        "default": "30px"
+      },
+      {
+        "type": "text",
+        "id": "distance_bottom",
+        "label": "Bottom Distance Section",
+        "default": "30px"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block_left",
+        "name": "Block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Icon"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "class_text",
+            "label": "Class Text"
+          },
+          {
+            "type": "select",
+            "id": "textorimage",
+            "label": "Text or Images",
+            "default": "showtext",
+            "options": [
+              {
+                "value": "showtext",
+                "label": "Text"
+              },
+              {
+                "value": "showimage",
+                "label": "Images"
+              }
+            ]
+          },
+          {
+            "type": "image_picker",
+            "id": "image1",
+            "label": "Image 1"
+          },
+          {
+            "type": "image_picker",
+            "id": "image2",
+            "label": "Image 2"
+          },
+          {
+            "type": "image_picker",
+            "id": "image3",
+            "label": "Image 3"
+          },
+          {
+            "type": "image_picker",
+            "id": "image4",
+            "label": "Image 4"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image With Text",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

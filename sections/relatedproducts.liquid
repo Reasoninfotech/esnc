@@ -1,0 +1,27 @@
+{% if settings.show_related %}
+      <div class="BottomContent">
+        <div class="container_90">
+          {% include 'nov-related' %}
+        </div>
+      </div>
+    {% endif %}
+{% schema %}
+  {
+    "name": "Related Products",
+    "class": "index-section section-rproducts",
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Heading",
+        "default": "Related Products"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Related Product",
+        "category": "Promotional"
+      }
+    ]
+  }
+{% endschema %}
