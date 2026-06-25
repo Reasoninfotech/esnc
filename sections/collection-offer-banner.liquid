@@ -376,13 +376,28 @@
           
           let imgSrc = '';
           if (imgEl) {
-             imgSrc = imgEl.getAttribute('data-src') || imgEl.getAttribute('src');
-             if (imgSrc) imgSrc = imgSrc.replace('{width}', '180');
+             let dSrc = imgEl.getAttribute('data-src');
+             if (dSrc && dSrc.indexOf('{width}') !== -1) {
+                imgSrc = dSrc.replace('{width}', '180');
+             } else if (imgEl.currentSrc && imgEl.currentSrc.indexOf('data:image') === -1) {
+                imgSrc = imgEl.currentSrc;
+             } else if (imgEl.src && imgEl.src.indexOf('data:image') === -1) {
+                imgSrc = imgEl.src;
+             } else if (dSrc) {
+                imgSrc = dSrc;
+             }
           }
+
           if (!imgSrc || imgSrc.indexOf('data:image') === 0) {
-            const noscriptImg = productCard.querySelector('noscript img');
-            if (noscriptImg) {
-              imgSrc = noscriptImg.getAttribute('data-src') || noscriptImg.getAttribute('src');
+            const noscript = productCard.querySelector('noscript');
+            if (noscript) {
+              const match = (noscript.innerHTML || noscript.textContent).match(/(?:data-)?src=["']([^"']+)["']/);
+              if (match && match[1]) {
+                imgSrc = match[1];
+                if (imgSrc.indexOf('{width}') !== -1) {
+                  imgSrc = imgSrc.replace('{width}', '180');
+                }
+              }
             }
           }
 
