@@ -377,30 +377,70 @@
              if (imgSrc) imgSrc = imgSrc.replace('{width}', '180');
           }
 
+          const priceEl = productCard.querySelector('.product__price, .price');
+          const price = priceEl ? priceEl.textContent.trim() : '';
+
           // Add to selected array
           selectedProducts.push({
             id: productId,
             title: title,
-            image: imgSrc
+            image: imgSrc,
+            price: price
           });
 
-          updateUI();
-          
-          // Show a nice feedback that item was added
-          const originalHTML = btn.innerHTML;
-          btn.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i>';
+          // Change button to green checkmark
+          if (!btn.hasAttribute('data-original-html')) {
+            btn.setAttribute('data-original-html', btn.innerHTML);
+          }
+          btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto; display: block;"><polyline points="20 6 9 17 4 12"></polyline></svg>';
           btn.style.backgroundColor = '#4caf50';
-          btn.style.borderColor = '#4caf50';
           btn.style.color = '#fff';
-          setTimeout(() => {
-            btn.innerHTML = originalHTML;
-            btn.style.backgroundColor = '';
-            btn.style.borderColor = '';
-            btn.style.color = '';
-          }, 1000);
+          btn.style.borderColor = '#4caf50';
+
+          updateUI();
         }
-      }, true); // Use capture phase to intercept before form submits
+      });
     }
+
+    function restoreButton(productId) {
+      const gridItems = document.querySelectorAll('.item-product, .product-item');
+      gridItems.forEach(item => {
+        const idInput = item.querySelector('input[name="id"]');
+        if (idInput && idInput.value === productId) {
+          const btn = item.querySelector('.btnAddToCart');
+          if (btn && btn.hasAttribute('data-original-html')) {
+            btn.innerHTML = btn.getAttribute('data-original-html');
+            btn.style.backgroundColor = '';
+            btn.style.color = '';
+            btn.style.borderColor = '';
+          }
+        }
+      });
+    }
+
+    function setupRemoveButtons(container) {
+      if (!container) return;
+      const slots = container.querySelectorAll('.offer-slot, .sticky-slot');
+      slots.forEach((slot, index) => {
+        const removeBtn = slot.querySelector('.slot-remove-btn');
+        if (removeBtn) {
+          removeBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (index < selectedProducts.length) {
+              const removedProduct = selectedProducts[index];
+              selectedProducts.splice(index, 1);
+              if (removedProduct && removedProduct.id) {
+                restoreButton(removedProduct.id);
+              }
+              updateUI();
+            }
+          });
+        }
+      });
+    }
+
+    setupRemoveButtons(bannerSection);
+    setupRemoveButtons(stickyBar);
 
     function updateUI() {
       // Update slots in main banner
