@@ -26,11 +26,24 @@
     {% if viewtype != 'full_width' %}
       <div class="container_1320">
     {% endif %}
-      <div class="d-flex align-items-center pt-40 pb-20 pt-lg-40 pb-lg-30 pt-xs-30">
+      <div class="d-flex align-items-center pt-40 pb-20 pt-lg-40 pb-lg-30 pt-xs-30 justify-content-between w-100">
         <div class="filter_button{% if viewtype != 'canvas' %} d-lg-none{% endif %}">
           <i class="zmdi zmdi-tune"></i>
           <span class="d-none d-md-inline-block">{{ 'collections.filters.button' | t }}</span>
         </div>
+
+        {% if template == 'collection.offer-collection' %}
+        <div class="offer-search-container flex-grow-1 mx-3" style="max-width: 500px;">
+          <form action="/search" method="get" class="search-header-offer" style="position:relative; width: 100%; border: 1px solid #ccc; border-radius: 30px; overflow:hidden; display:flex; background: #fff;">
+            <input type="hidden" name="type" value="product">
+            <input type="text" name="q" placeholder="Notes, Scent family, Style, Code" style="width: 100%; border: none; padding: 10px 20px; outline: none; background: transparent;">
+            <button type="submit" style="background: transparent; border: none; padding: 0 15px; cursor: pointer; color: #bca07e; font-size: 20px;">
+              <i class="zmdi zmdi-search"></i>
+            </button>
+          </form>
+        </div>
+        {% endif %}
+
         <div class="bl_right d-flex align-items-center">
           <div class="gridlist-toggle order-2 order-md-0">
             {% comment %}
@@ -63,7 +76,9 @@
           {% endif %}
         </div>
       </div>
+      {% unless template == 'collection.offer-collection' %}
       <div class="pageTitle pb-20"><h1>{{ collection.title }}</h1></div>
+      {% endunless %}
       <div class="row">
         {% if section.settings.banner != blank %}
           <div class="col-12 mb-60">
