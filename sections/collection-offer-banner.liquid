@@ -399,7 +399,7 @@
 
           updateUI();
         }
-      });
+      }, true); // Use capture phase to intercept before form submits
     }
 
     function restoreButton(productId) {

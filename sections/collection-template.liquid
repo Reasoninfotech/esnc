@@ -83,8 +83,8 @@
         <div class="{% if viewtype == 'canvas' %}col-lg-12 col-md-12{% else %}col-lg-9{% endif %}">
           
           {% if template == 'collection.offer-collection' %}
-          <div class="d-flex align-items-center pb-30 pt-lg-0 pt-30 justify-content-between w-100 offer-top-bar" style="flex-wrap: wrap; gap: 15px;">
-            <div class="offer-search-container flex-grow-1" style="max-width: 500px; min-width: 250px;">
+          <div class="d-flex align-items-center pb-30 pt-lg-0 pt-30 justify-content-between w-100 offer-top-bar" style="gap: 15px;">
+            <div class="offer-search-container flex-grow-1" style="min-width: 250px;">
               <form action="/search" method="get" class="search-header-offer" style="position:relative; width: 100%; border: 1px solid #dcdcdc; border-radius: 30px; overflow:hidden; display:flex; background: #fff; align-items: center; padding: 2px 2px 2px 20px;">
                 <input type="hidden" name="type" value="product">
                 <input type="text" name="q" placeholder="Notes, Scent family, Style, Code" style="flex: 1; border: none; padding: 8px 0; outline: none; background: transparent; font-size: 13px; color: #555;">
@@ -94,7 +94,7 @@
               </form>
             </div>
 
-            <div class="bl_right d-flex align-items-center justify-content-end" style="gap: 15px;">
+            <div class="bl_right d-flex align-items-center justify-content-end" style="gap: 15px; flex-shrink: 0;">
               <div class="gridlist-toggle d-flex">
                   <a href="#" id="grid-4" title="Grid View 4" data-type="grid-4" class="active d-none d-lg-block"><i class="zmdi zmdi-view-comfy"></i></a>
                   <a href="#" id="grid-3" title="Grid View 3" data-type="grid-3" class="{% if viewtype != 'canvas' %}active{% endif %}"><i class="zmdi zmdi-view-week"></i></a>
