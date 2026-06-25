@@ -16,39 +16,43 @@
         <p class="offer-subtitle" style="font-size: 15px; color: #555; margin-bottom: 30px;">{{ section.settings.subtitle }}</p>
       {% endif %}
 
-      <div class="offer-slots-container">
+      <div class="offer-bundle-wrapper">
         {% for i in (1..section.settings.num_slots) %}
-          <div class="offer-slot empty" data-slot-index="{{ i }}">
-            <div class="slot-inner">
-              <div class="slot-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2C10.8954 2 10 2.89543 10 4V5H7C5.89543 5 5 5.89543 5 7V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V7C19 5.89543 18.1046 5 17 5H14V4C14 2.89543 13.1046 2 12 2ZM12 4C12.5523 4 13 4.44772 13 5H11C11 4.44772 11.4477 4 12 4ZM7 7H17V19H7V7Z" fill="#bca07e"/>
-                </svg>
-              </div>
-              <div class="slot-number">{{ i }}</div>
-              <div class="slot-product-info" style="display: none;">
-                <img src="" alt="" class="slot-product-image" />
-                <span class="slot-product-title"></span>
-                <button type="button" class="slot-remove-btn" aria-label="Remove">&times;</button>
-                <input type="hidden" class="slot-product-id" value="" />
+          <div class="slot-wrapper">
+            <div class="offer-slot empty" data-slot-index="{{ i }}">
+              <div class="slot-inner">
+                <div class="slot-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C10.8954 2 10 2.89543 10 4V5H7C5.89543 5 5 5.89543 5 7V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V7C19 5.89543 18.1046 5 17 5H14V4C14 2.89543 13.1046 2 12 2ZM12 4C12.5523 4 13 4.44772 13 5H11C11 4.44772 11.4477 4 12 4ZM7 7H17V19H7V7Z" fill="#bca07e"/>
+                  </svg>
+                </div>
+                <div class="slot-number">{{ i }}</div>
+                <div class="slot-product-info" style="display: none;">
+                  <img src="" alt="" class="slot-product-image" />
+                  <button type="button" class="slot-remove-btn" aria-label="Remove">
+                    <svg width="10" height="10" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 1L1 13M1 1L13 13" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <input type="hidden" class="slot-product-id" value="" />
+                </div>
               </div>
             </div>
+            <div class="slot-product-title"></div>
           </div>
         {% endfor %}
-      </div>
 
-      <div class="offer-action-area">
-        <div class="offer-initial-price">
-          <span style="font-size: 13px; color: #555;">Initial Price</span>
-          <strong style="font-size: 15px; font-weight: 700;">{{ section.settings.initial_price }}</strong>
+        <div class="offer-action-box">
+          <div class="price-row">
+            <span>Initial Price</span>
+            <strong>{{ section.settings.initial_price }}</strong>
+          </div>
+          <button type="button" id="offer-checkout-btn" class="btn btn-checkout disabled" disabled>
+            {% if section.settings.use_checkout_btn %}
+              Checkout
+            {% else %}
+              Add to Cart
+            {% endif %}
+          </button>
         </div>
-        <button type="button" id="offer-checkout-btn" class="btn btn-checkout disabled" disabled>
-          {% if section.settings.use_checkout_btn %}
-            Checkout
-          {% else %}
-            Add to Cart
-          {% endif %}
-        </button>
       </div>
 
     </div>
@@ -93,27 +97,29 @@
 </div>
 
 <style>
-  .offer-slots-container {
-    display: flex;
+  .offer-bundle-wrapper {
+    background: #fff;
+    display: inline-flex;
+    align-items: flex-start;
     justify-content: center;
+    padding: 20px;
     gap: 15px;
-    margin-bottom: 25px;
-    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+  .slot-wrapper {
+    width: 140px;
+    text-align: left;
   }
   .offer-slot {
     width: 140px;
     height: 140px;
-    background: rgba(0,0,0,0.04);
-    border: 1px dotted #bca07e;
+    background: #f4f1ec;
+    border: 1px dashed #bca07e;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-  }
-  .offer-slot.filled {
-    background: #fff;
-    border: 1px solid #e0e0e0;
   }
   .offer-slot .slot-inner {
     width: 100%;
@@ -137,7 +143,6 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -145,16 +150,17 @@
   }
   .slot-product-image {
     width: 100%;
-    height: 100px;
-    object-fit: contain;
-    margin-bottom: 0px;
+    height: 100%;
+    object-fit: cover;
   }
   .slot-product-title {
-    font-size: 10px;
-    line-height: 1.2;
-    text-align: center;
-    padding: 0 5px;
+    font-size: 12px;
+    line-height: 1.4;
     color: #555;
+    margin-top: 10px;
+    display: none;
+  }
+  .slot-wrapper.has-product .slot-product-title {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -162,51 +168,56 @@
   }
   .slot-remove-btn {
     position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 20px;
-    height: 20px;
-    background: rgba(0,0,0,0.4);
-    color: #fff;
+    top: 6px;
+    right: 6px;
+    width: 22px;
+    height: 22px;
+    background: #fff;
     border-radius: 50%;
-    border: none;
-    font-size: 14px;
-    line-height: 1;
+    border: 1px solid #ddd;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
   .slot-remove-btn:hover {
-    background: #000;
+    background: #f0f0f0;
   }
 
-  .offer-action-area {
+  .offer-action-box {
+    background: #f2f2f2;
+    width: 240px;
+    height: 140px;
+    padding: 20px;
     display: flex;
-    align-items: stretch;
+    flex-direction: column;
     justify-content: center;
-    max-width: 320px;
-    margin: 0 auto;
   }
-  .offer-initial-price {
+  .price-row {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background: #e8e8e8;
-    padding: 12px 10px;
-    flex: 1;
+    margin-bottom: 25px;
+  }
+  .price-row span {
+    font-size: 14px;
+    color: #555;
+  }
+  .price-row strong {
+    font-size: 15px;
+    color: #000;
   }
   .btn-checkout {
     background: #000;
     color: #fff;
     border: none;
-    padding: 12px 10px;
+    padding: 14px 20px;
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
-    flex: 1;
+    width: 100%;
     text-transform: capitalize;
   }
   .btn-checkout:hover {
@@ -392,14 +403,43 @@
     }
 
     function updateUI() {
-      // Update slots in main banner and sticky bar
-      const containers = [bannerSection, stickyBar];
-      
-      containers.forEach(container => {
-        if (!container) return;
-        const slots = container.querySelectorAll('.offer-slot, .sticky-slot');
-        
-        slots.forEach((slot, index) => {
+      // Update slots in main banner
+      if (bannerSection) {
+        const wrappers = bannerSection.querySelectorAll('.slot-wrapper');
+        wrappers.forEach((wrapper, index) => {
+          const product = selectedProducts[index];
+          const slot = wrapper.querySelector('.offer-slot');
+          const infoDiv = slot.querySelector('.slot-product-info');
+          const iconDiv = slot.querySelector('.slot-icon');
+          const title = wrapper.querySelector('.slot-product-title');
+          
+          if (product) {
+            slot.classList.add('filled');
+            slot.classList.remove('empty');
+            wrapper.classList.add('has-product');
+            
+            const img = infoDiv.querySelector('.slot-product-image');
+            if (img) img.src = product.image;
+            
+            if (title) title.textContent = product.title;
+            
+            infoDiv.style.display = 'flex';
+            if (iconDiv) iconDiv.style.display = 'none';
+          } else {
+            slot.classList.remove('filled');
+            slot.classList.add('empty');
+            wrapper.classList.remove('has-product');
+            
+            infoDiv.style.display = 'none';
+            if (iconDiv) iconDiv.style.display = 'block';
+          }
+        });
+      }
+
+      // Update sticky bar separately
+      if (stickyBar) {
+        const stickySlots = stickyBar.querySelectorAll('.sticky-slot');
+        stickySlots.forEach((slot, index) => {
           const product = selectedProducts[index];
           const infoDiv = slot.querySelector('.slot-product-info');
           const iconDiv = slot.querySelector('.slot-icon');
@@ -411,9 +451,6 @@
             const img = infoDiv.querySelector('.slot-product-image');
             if (img) img.src = product.image;
             
-            const title = infoDiv.querySelector('.slot-product-title');
-            if (title) title.textContent = product.title;
-            
             infoDiv.style.display = 'flex';
             if (iconDiv) iconDiv.style.display = 'none';
           } else {
@@ -424,7 +461,7 @@
             if (iconDiv) iconDiv.style.display = 'block';
           }
         });
-      });
+      }
 
       // Update button state
       checkoutBtns.forEach(btn => {

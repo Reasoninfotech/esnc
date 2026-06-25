@@ -33,11 +33,11 @@
         </div>
 
         {% if template == 'collection.offer-collection' %}
-        <div class="offer-search-container flex-grow-1 mx-3" style="max-width: 500px;">
-          <form action="/search" method="get" class="search-header-offer" style="position:relative; width: 100%; border: 1px solid #ccc; border-radius: 30px; overflow:hidden; display:flex; background: #fff;">
+        <div class="offer-search-container flex-grow-1 mr-3" style="max-width: 400px;">
+          <form action="/search" method="get" class="search-header-offer" style="position:relative; width: 100%; border: 1px solid #dcdcdc; border-radius: 30px; overflow:hidden; display:flex; background: #fff; align-items: center; padding: 2px 2px 2px 15px;">
             <input type="hidden" name="type" value="product">
-            <input type="text" name="q" placeholder="Notes, Scent family, Style, Code" style="width: 100%; border: none; padding: 10px 20px; outline: none; background: transparent;">
-            <button type="submit" style="background: transparent; border: none; padding: 0 15px; cursor: pointer; color: #bca07e; font-size: 20px;">
+            <input type="text" name="q" placeholder="Notes, Scent family, Style, Code" style="flex: 1; border: none; padding: 8px 0; outline: none; background: transparent; font-size: 13px; color: #555;">
+            <button type="submit" style="background: #c3a887; border: none; padding: 0; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; font-size: 16px; margin-left: 5px;">
               <i class="zmdi zmdi-search"></i>
             </button>
           </form>
@@ -45,6 +45,7 @@
         {% endif %}
 
         <div class="bl_right d-flex align-items-center">
+          {% unless template == 'collection.offer-collection' %}
           <div class="gridlist-toggle order-2 order-md-0">
             {% comment %}
             {% if viewtype == 'canvas' %}
@@ -56,11 +57,12 @@
               <a href="#" id="grid-2" title="Grid View 2" data-type="grid-2"><i class="zmdi zmdi-pause"></i></a>
               <a href="#" id="list" title="List View" data-type="list"><i class="zmdi zmdi-view-headline"></i></a>
           </div>
+          {% endunless %}
           {% if section.settings.sort_enable %}
             <div class="" data-sortby-filter>
-              <div class="dropdown-toggle d-flex align-items-center pb-5 pb-xs-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="dropdown-toggle d-flex align-items-center pb-5 pb-xs-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" {% if template == 'collection.offer-collection' %}style="border: 1px solid #ccc; padding: 5px 15px; border-radius: 4px; background: #fff;"{% endif %}>
                 <span class="sort-by__label"></span>
-                <i class="zmdi zmdi-caret-down"></i>
+                <i class="zmdi zmdi-caret-down" {% if template == 'collection.offer-collection' %}style="margin-left: 10px;"{% endif %}></i>
               </div>
               <div class="dropdown-menu dropdown-menu-right text-right">
                 {%- for option in collection.sort_options -%}
