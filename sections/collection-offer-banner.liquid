@@ -370,11 +370,20 @@
           const titleEl = productCard.querySelector('.product__title a');
           const title = titleEl ? titleEl.textContent.trim() : 'Sample Product';
           
-          const imgEl = productCard.querySelector('img.product__thumbnail-second') || productCard.querySelector('img.product__thumbnail');
+          const imgEls = Array.from(productCard.querySelectorAll('img')).filter(img => !img.closest('noscript'));
+          let imgEl = imgEls.find(img => img.classList.contains('product__thumbnail'));
+          if (!imgEl) imgEl = imgEls[0];
+          
           let imgSrc = '';
           if (imgEl) {
              imgSrc = imgEl.getAttribute('data-src') || imgEl.getAttribute('src');
              if (imgSrc) imgSrc = imgSrc.replace('{width}', '180');
+          }
+          if (!imgSrc || imgSrc.indexOf('data:image') === 0) {
+            const noscriptImg = productCard.querySelector('noscript img');
+            if (noscriptImg) {
+              imgSrc = noscriptImg.getAttribute('data-src') || noscriptImg.getAttribute('src');
+            }
           }
 
           const priceEl = productCard.querySelector('.product__price, .price');
@@ -388,16 +397,25 @@
             price: price
           });
 
-          // Change button to green checkmark
-          if (!btn.hasAttribute('data-original-html')) {
-            btn.setAttribute('data-original-html', btn.innerHTML);
-          }
-          btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto; display: block;"><polyline points="20 6 9 17 4 12"></polyline></svg>';
-          btn.style.backgroundColor = '#4caf50';
-          btn.style.color = '#fff';
-          btn.style.borderColor = '#4caf50';
-
           updateUI();
+
+          // Flash success checkmark
+          const originalHTML = btn.innerHTML;
+          const originalBg = btn.style.backgroundColor;
+          const originalColor = btn.style.color;
+          const originalBorder = btn.style.borderColor;
+          
+          btn.innerHTML = '<i class="zmdi zmdi-check" style="font-size: 18px; margin: 0 auto; display: block;"></i>';
+          btn.style.backgroundColor = '#4caf50';
+          btn.style.borderColor = '#4caf50';
+          btn.style.color = '#fff';
+          
+          setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.style.backgroundColor = originalBg;
+            btn.style.borderColor = originalBorder;
+            btn.style.color = originalColor;
+          }, 1000);
         }
       }, true); // Use capture phase to intercept before form submits
     }
