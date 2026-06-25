@@ -108,11 +108,8 @@
               {% if section.settings.sort_enable %}
                 <div class="" data-sortby-filter>
                   <div class="dropdown-toggle d-flex align-items-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border: 1px solid #222; border-radius: 4px; background: #f4f4f4; cursor: pointer; height: 38px; padding: 0;">
-                    <span class="sort-by__label ddd" style="font-size: 12px; font-weight: 500; text-transform: uppercase; color: #101010; padding: 0 15px 0 15px; line-height: 38px;"></span>
-                    <div style="height: 20px; width: 1px; background-color: #222; margin: 0;"></div>
-                    <div style="padding: 0 10px; height: 100%; display: flex; align-items: center; justify-content: center;">
-                      <i class="zmdi zmdi-caret-down" style="font-size: 16px; color: #101010;"></i>
-                    </div>
+                    <span class="sort-by__label ddd"></span>
+                    <i class="zmdi zmdi-caret-down"></i>
                   </div>
                   <div class="dropdown-menu dropdown-menu-right text-right">
                     {%- for option in collection.sort_options -%}
