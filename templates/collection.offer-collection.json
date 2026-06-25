@@ -1,8 +1,24 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "offer_banner": {
       "type": "collection-offer-banner",
       "settings": {
+        "bg_color": "#f3f1ed",
+        "title": "Get 3 x 2ml Samples for Only $3, Limited Time Only",
+        "subtitle": "Complete Your Set To Enjoy All 3 Samples For Only $3.",
+        "num_slots": 3,
+        "initial_price": "$3",
+        "main_product": "get-3-x-2ml-samples-for-only-5",
+        "use_checkout_btn": true
       }
     },
     "main": {
