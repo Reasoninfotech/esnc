@@ -1,1 +1,2294 @@
-{"current":{"purchase_action":"active","license":"5b16625a-507d-46a2-a631-a1e8315be678","theme_color_default":"#000000","theme_color_primary":"#f69679","theme_color_success":"#494949","theme_color_hover":"#f69679","color_input":"#cbcbcb","color_default":"#000000","heading_text":"#222222","second_heading_text":"#444444","sub_heading_text":"#666666","color_title_product":"#000000","color_text":"#909090","color_body_text":"#000000","color_borders":"#e0e0e0","color_button":"#000000","color_button_hover":"#f69679","color_button_text":"#f7f7f7","type_base_family":"raleway_n4","type_base_size":"1.6rem","share_pinterest":false,"social_twitter_link":"","social_facebook_link":"https:\/\/www.facebook.com\/esncperfumery\/","social_pinterest_link":"","social_instagram_link":"https:\/\/www.instagram.com\/esncperfumery","social_dribbble_link":"","social_google_link":"","social_linkedin_link":"","social_tumblr_link":"","social_snapchat_link":"","social_youtube_link":"","social_vimeo_link":"","social_tiktok_link":"https:\/\/www.tiktok.com\/@esncperfumery","type_sidebar_blog":"sidebar_left","type_sidebar_article":"article_leftsidebar","type_sidebar":"sidebar_left","type_sidebar_product":"tab_desc","show_newsletter_popup":false,"title_newsletter":"15% OFF ON YOUR FIRST ORDER. Enter Code <span class=\"poptext\">UNLOCK15%<\/span> NOT AVAILABLE ON BUNDLE AND SAVE OPTIONS","desc_newsletter":"","button_newsletter":"UNLOCK 15% BACK","notify_newsletter":"DON’T SHOW THIS POPUP AGAIN","bg_newsletter":"shopify:\/\/shop_images\/New_unlock_pop_up_image.png","enable_rtl":false,"show_multiple_currencies":false,"title_currency":"Currency:","supported_currencies":"USD | EUR | GBP","show_key_trend":false,"key_trend_1":"Shop Skincare","link_1":"shopify:\/\/collections\/shop-skincare","key_trend_2":"Shop Makeup","link_2":"shopify:\/\/collections\/shop-makeup","key_trend_3":"Face Serums","link_3":"shopify:\/\/collections\/face-serums","key_trend_4":"New Arrivals","link_4":"shopify:\/\/collections\/new-arrival","breadcrumbs_enable":false,"background_image":"shopify:\/\/shop_images\/breadcrumb.webp","overlay_opacity":true,"image_overlay_opacity":0,"color_text_head":"#000000","color_text_head_hover":"#f69679","title_alignment":"justify-content-center","distance_top":"153px","distance_bottom":"146px","ticket_enable":true,"show_rating":true,"quickview_enable":false,"wishlist_enable":false,"payment_button_enable":true,"variant_color_image":true,"color_swatch_style":"variant","free_shipping":99,"show_size_chart":false,"show_related":false,"title_related":"You may also like","autoplay":false,"nav":true,"dots":false,"col_desktop":5,"spacing":"60","mini_cart_type":"canvas","logo_tabbar":"shopify:\/\/shop_images\/logo_account.png","collec_1_name":"BUY 2 GET 1 FREE","collec_1":"shopify:\/\/collections\/buy-2-get-1-free","collec_2_name":"HER","collec_2":"shopify:\/\/collections\/womens-perfumes","collec_3_name":"HIM","collec_3":"shopify:\/\/collections\/mens-perfumes","collec_4_name":"UNISEX","collec_4":"shopify:\/\/collections\/unisex-perfumes","collec_5_name":"BODY CARE","collec_5":"shopify:\/\/collections\/body-care","favicon":"shopify:\/\/shop_images\/logo.svg","checkout_header_image":"","checkout_logo_image":"shopify:\/\/shop_images\/logo.svg","checkout_logo_position":"left","checkout_logo_size":"large","checkout_body_background_image":"","checkout_body_background_color":"#ffffff","checkout_input_background_color_mode":"white","checkout_sidebar_background_image":"","checkout_sidebar_background_color":"#e8f3f6","checkout_heading_font":"Roboto","checkout_body_font":"Source Sans Pro","checkout_accent_color":"#1990c6","checkout_button_color":"#23314e","checkout_error_color":"#ff6d6d","cart_notes_enable":true,"img_nocart":"shopify:\/\/shop_images\/no-cart_200x_a221cc42-776e-4b89-9fba-c18945ec4dda.png","size_women":"shopify:\/\/shop_images\/women.png","size_men":"shopify:\/\/shop_images\/men.png","crop_product":false,"color_menu":"#222222","type_header_family":"Google_Poppins_400_sans","type_header_base_size":"2.6rem","type_bold_product_titles":false,"vendor_enable":false,"cart_vendor_enable":false,"ajax_cart_method":"pop_up","h_bg_color":"#ffffff","h_top":"#000000","h_social":"#ffffff","h_annou_color":"#ffffff","h_link_annou_color":"#ff0000","h_currency":"#ffffff","h_currency_content":"#222222","h_btn_menu":"#000000","h_btn_menutext":"#ffffff","h_btn_search":"#f4f4f4","h_btn_searchtext":"#222222","h_btn_search_border":"#eaeaea","h_btn_searchsm":"#000000","h_btn_searchtextsm":"#ffffff","h_label":"#909090","h_wishlist":"#222222","h_bg_sticky":"#ffffff","sub_heading_menu":"#222222","tooltip_enable":"true","color_body_bg":"#ffffff","mobile_mainmenu_type":"canvas","color_sale_text":"#000000","heading_hover":"#fd6666","color_small_button":"#878787","color_small_button_text":"#ffffff","color_text_field":"#fff","color_text_field_text":"#000000","color_icon_font":"#383838","color_image_overlay_text":"#fff","color_image_overlay":"#3d4246","menu_link":"#444444","show_multiple_language":false,"title_language":"Language:","color_bg_product":"#f5f5f5","social_twitter_image":"shopify:\/\/shop_images\/tw_40x_bdf1b78a-35a0-4799-916c-f1d53e9e92b8.png","social_facebook_image":"shopify:\/\/shop_images\/facebook.png","social_dribbble_image":"shopify:\/\/shop_images\/dribbble_40x_b118f5e7-4fc5-4827-9b2a-eeabd2a86eb1.png","social_pinterest_image":"","social_instagram_image":"shopify:\/\/shop_images\/instagram.png","social_tumblr_image":"","social_snapchat_image":"","social_youtube_image":"","social_vimeo_image":"","enable_iconmenumain":false,"icon_menumain_1":"","icon_menumain_2":"","icon_menumain_3":"","icon_menumain_4":"","icon_menumain_5":"","icon_menumain_6":"","icon_menumain_7":"","icon_menumain_8":"","icon_menumain_9":"","icon_menumain_10":"","sections":{"nov-sidebar":{"type":"nov-sidebar","blocks":{"1523617300550":{"type":"block_filter","settings":{"block_class":"","filter_type":true,"filter_vendor":true,"filter_tags":true,"filter_size":true,"filter_size_value":"50ml, 100ml, 150ml, 200ml, 250ml","filter_color":true,"filter_color_value":"Lightslategray, Linen, Plum, Hotpink, Black, Lightblue, Midnightblue, Seashell, Grey, Gray, Lightgrey, Darkolivegreen, Lightcoral, Brown, Indianred","filter_price":true,"filter_price_value":"$10 - $100, $101 - $200, $201 - $300, $301 - $400"}}},"block_order":["1523617300550"],"settings":{}},"collection-template":{"type":"collection-template","settings":{"products_per_page":12}},"nov-sidebar-article":{"type":"nov-sidebar-article","blocks":{"2fbb9130-51df-4ad0-8282-1e54a212cd6e":{"type":"block_search","settings":{"class":""}},"1522144034842":{"type":"block_categories","settings":{"sidebar_categories_title":"Categories","sidebar_categories_menu":"","class":""}},"1522144043288":{"type":"block_recentpost","settings":{"block_title":"Recent post","number_show":4,"show_date":true,"show_comment":false,"show_author":false,"show_excerpt":false,"show_more":false,"class":""}}},"block_order":["2fbb9130-51df-4ad0-8282-1e54a212cd6e","1522144034842","1522144043288"],"settings":{}},"blog-template":{"type":"blog-template","settings":{"layout":"grid","blog_show_author":true,"blog_show_date":true,"blog_show_comment":true}},"nov-sidebar-detail":{"type":"nov-sidebar-detail","blocks":{"1522994949788":{"type":"block_categories","settings":{"sidebar_categories_title":"Categories","sidebar_categories_class":"","sidebar_categories_menu":""}},"1522994844112":{"type":"block_productlist","settings":{"sidebar_productlist_title":"Best sellers","sidebar_productlist_class":"","sidebar_collection":"","number_show":3}},"1522994963120":{"type":"block_producttags","settings":{"block_title":"Product Tags","block_class":"","number_show":20}}},"block_order":["1522994949788","1522994844112","1522994963120"],"settings":{}},"nov-product-template":{"type":"nov-product-template","blocks":{"1600059348586":{"type":"block_text","settings":{"custom_title":"Delivery policy","custom_content":"<h6><strong>Lorem ipsum dolor sit amet<\/strong><\/h6>\n<p>Vivamus a placerat dolor. Proin ut vehicula mauris. Etiam sagittis augue ipsum. Aliquam vestibulum massa nulla, ullamcorper aliquam diam feugiat vel. Fusce porttitor ultrices ante, posuere vehicula lacus tempor eu. Sed et purus et massa mattis aliquet ac vel dolor. Pellentesque eros lectus, placerat nec finibus ac, lobortis eu risus.<\/p>\n<p class=\"mb-20\">Donec fringilla metus ligula, sit amet fermentum ex laoreet non<\/p>\n<p>- Ribbed and double stitched collar and armholes<\/p>\n<p>- High-density fabric for vivid print clarity<\/p>\n<p>- Machine-wash safeSingle right rear button flap pocket<\/p>\n<p class=\"mb-20\">- Products are proudly printed in the United States<\/p>\n<p>Curabitur egestas suscipit odio. Nam vitae aliquam dui<\/p>\n<p>in laoreet elit. In posuere augue id velit placerat, vitae porttitor leo aliquet. Aenean non ligula sed lorem eleifend aliquam. Morbi posuere faucibus viverra. Proin ullamcorper, lorem lacinia cursus finibus.<\/p>"}},"1600059475832":{"type":"block_text","settings":{"custom_title":"Returns & Exchanges Policy","custom_content":"<h6><em><strong>Nullam at mi accumsan, fermentum turpis at, hendrerit tortor<\/strong><\/em><\/h6>\n<p class=\"mb-20\">Vivamus commodo magna rutrum ipsum convallis luctus. Maecenas sollicitudin tincidunt sem at consectetur. Sed ligula elit, sodales feugiat porttitor non, commodo in ipsum. Donec vehicula orci et pharetra laoreet. Donec feugiat, nibh ac ornare hendrerit, dui augue semper felis, a finibus dui felis quis magna. Curabitur a ligula purus. Suspendisse vestibulum lorem non tellus aliquet blandit.<\/p>\n<p class=\"mb-20\">Proin cursus sollicitudin scelerisque. Donec ultrices elit quis magna lobortis porttitor. Quisque et consectetur mauris. Sed facilisis malesuada ante eget blandit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque rutrum mattis ex ac sagittis. Nulla convallis euismod ipsum, a mollis sapien fringilla eget. Nam dignissim ornare nisi, in bibendum nibh auctor id.<\/p>\n<p>Quisque dictum justo id velit dapibus, id mollis diam tincidunt. Donec luctus tincidunt ultrices. Sed condimentum ante accumsan, sagittis lorem quis, dictum enim. Nam et facilisis odio. Ut iaculis dui non interdum accumsan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lacus sem, molestie non convallis nec, tristique a lacus. Proin eget lacus semper dui imperdiet accumsan. Morbi sagittis erat ac justo congue, a ornare tortor mollis. Aenean eu vulputate diam. Praesent suscipit ex non elit finibus ultricies.<\/p>"}}},"block_order":["1600059348586","1600059475832"],"settings":{"show_notes":true,"show_quantity_selector":true,"product_swatch_enable":true,"show_share":true,"show_vendor":false,"show_sku":true,"show_categories":true,"show_tags":true,"show_available":false,"show_des":true,"enable_zoom":true,"show_description":true,"show_payments":true,"title_payments":"Guaranteed safe checkout:","size_title":"12px","color_title_payments":"#222222","payments":"shopify:\/\/shop_images\/payment.png","time":"Orders ship within 5 to 10 business days.","size_time":"14px","color_time":"#494949","truck":"<strong>Hoorey <\/strong>! This item ships free to the US","size_truck":"14px","color_truck":"#494949","background_color":"#f5f5f5"}},"list-collections-template":{"type":"list-collections-template","blocks":{"1523246702524":{"type":"collection","settings":{"collection":""}},"1523246716784":{"type":"collection","settings":{"collection":""}}},"block_order":["1523246702524","1523246716784"],"settings":{"display_type":"all","sort":"alphabetical","grid":"4"}},"cart-template":{"type":"cart-template","settings":{}},"nov-page404":{"type":"nov-page404","settings":{"title":"Page Not found","subheading":"We’re sorry — something has gone wrong on our end.","desc":"If difficulties persist, please contact the System Administrator of this site and report the error below..","background_color":"#00426f","image":"shopify:\/\/shop_images\/404-1.png"}},"nov-slideshow":{"type":"nov-slideshow","blocks":{"1528274241275":{"type":"image","settings":{"caption_1":"<i>Headlight & Tire<\/i>","color_cap1":"#ffffff","fz_cap1":"l","fz_cap1t":"","fz_cap1m":"","fz_cap1mb":"","cap_animate_1":"fadeInLeft","caption_2":"Only $300","color_cap2":"#ffffff","fz_cap2":"m","fz_cap2t":"","fz_cap2m":"","fz_cap2mb":"","cap_animate_2":"fadeInRight","caption_3":"Lorem ipsum dolor sit amet, consectetur adipiscing \nelit integer pellentesque ut velit","color_cap3":"#ffffff","fz_cap3":"s","fz_cap3t":"","fz_cap3m":"","fz_cap3mb":"","cap_animate_3":"fadeInRight","title_link":"","color_cap_link":"#fff","background_cap_link":"#000","cap_link_animate":"bounce","text_align":"left","width_position":"55","width_position_desktop":"75","width_position_tablet":"100","width_position_mobile":"100","left_position":"8","left_position_desktop":"8","left_position_tablet":"8","left_position_mobile":"8","top_position":"25.7","top_position_desktop":"20","top_position_t":"50","top_position_m":"50","slider_link":"#"}},"1528433230156":{"type":"image","settings":{"caption_1":"<i>Brake Systems<\/i>","color_cap1":"#ffffff","fz_cap1":"l","fz_cap1t":"","fz_cap1m":"","fz_cap1mb":"","cap_animate_1":"fadeInDown","caption_2":"Best Choice","color_cap2":"#ffffff","fz_cap2":"l","fz_cap2t":"","fz_cap2m":"","fz_cap2mb":"","cap_animate_2":"fadeInLeft","caption_3":"Lorem ipsum dolor sit amet, consectetur adipiscing \nelit integer pellentesque ut velit","color_cap3":"#ffffff","fz_cap3":"s","fz_cap3t":"","fz_cap3m":"","fz_cap3mb":"","cap_animate_3":"fadeInUp","title_link":"","color_cap_link":"#fff","background_cap_link":"#000","cap_link_animate":"bounce","text_align":"left","width_position":"55","width_position_desktop":"75","width_position_tablet":"100","width_position_mobile":"100","left_position":"10","left_position_desktop":"10","left_position_tablet":"10","left_position_mobile":"10","top_position":"25.7","top_position_desktop":"20","top_position_t":"50","top_position_m":"50","slider_link":"#"}},"1528433236151":{"type":"image","settings":{"caption_1":"<i>Headlights<\/i>","color_cap1":"#ff1e1e","fz_cap1":"xl","fz_cap1t":"","fz_cap1m":"","fz_cap1mb":"","cap_animate_1":"fadeInLeft","caption_2":"Best Choice","color_cap2":"#ffffff","fz_cap2":"l","fz_cap2t":"","fz_cap2m":"","fz_cap2mb":"","cap_animate_2":"fadeInDown","caption_3":"Lorem ipsum dolor sit amet, consectetur adipiscing \nelit integer pellentesque ut velit","color_cap3":"#ffffff","fz_cap3":"s","fz_cap3t":"","fz_cap3m":"","fz_cap3mb":"","cap_animate_3":"zoomIn","title_link":"","color_cap_link":"#fff","background_cap_link":"#000","cap_link_animate":"bounce","text_align":"left","width_position":"55","width_position_desktop":"75","width_position_tablet":"100","width_position_mobile":"100","left_position":"10","left_position_desktop":"10","left_position_tablet":"10","left_position_mobile":"10","top_position":"25.7","top_position_desktop":"20","top_position_t":"50","top_position_m":"50","slider_link":"#"}}},"block_order":["1528274241275","1528433230156","1528433236151"],"settings":{"autoplay":false,"arrows":false,"dots":true,"has_fullwidth":true,"distance_top":"0","distance_bottom":"40px"}},"nov-gallery-image":{"type":"nov-gallery-image","blocks":{"1529143775247":{"type":"image","settings":{"image":"","cta_label":"","link":"","class":""}}},"block_order":["1529143775247"],"settings":{"title":"Vinova Products Slider","title_alignment":"text-left","spacing":"0","has_fullwidth":true,"background_color":"","class_section":"","distance_top":"30px","distance_bottom":"30px"}},"nov-blog":{"type":"nov-blog","settings":{"title":"Latest posts","subheading":"","title_alignment":"text-left","blog":"news","type_option":"slider","grid_number":1,"grid_number_lg_tablet":1,"items_tablet":2,"items_mobile":2,"number_row":"1","limit":8,"show_image":true,"show_dots":true,"show_nav":false,"blog_show_comments":false,"blog_show_author":false,"blog_show_date":true,"blog_show_excerpt":false,"show_view_all":false,"class":"","has_fullwidth":true,"background_color":"","background_image":"","distance_top":"0","distance_bottom":"80px"}},"nov-testimonials":{"type":"nov-testimonials","settings":{"title":"","title_alignment":"text-left","show_dots":true,"background_color":"#f1efe8","background_image":"","full_width":true,"class":"","distance_top":"30px","distance_bottom":"30px"}},"nov-manufacture":{"type":"nov-manufacture","blocks":{"1528360735012":{"type":"logo_image","settings":{"image":"","link":""}},"1528361007518":{"type":"logo_image","settings":{"image":"","link":""}},"1528361022544":{"type":"logo_image","settings":{"image":"","link":""}},"1528361033903":{"type":"logo_image","settings":{"image":"","link":""}},"1528361042661":{"type":"logo_image","settings":{"image":"","link":""}},"1528361050747":{"type":"logo_image","settings":{"image":"","link":""}}},"block_order":["1528360735012","1528361007518","1528361022544","1528361033903","1528361042661","1528361050747"],"settings":{"class":"","show_number":"6","number_tablet":"4","number_mobile":"2","limit":8,"spacing":"10","background_color":"","background_image":"","has_fullwidth":true,"distance_top":"30px","distance_bottom":"30px"}},"nov-newsletter":{"type":"nov-newsletter","settings":{"section_title":"Newsletter","color_title":"","subheading":"Sign up for newsletter to receive special offers","color_subheading":"","background_color":"","background_image":"","full_width":false,"distance_top":"30px","distance_bottom":"30px"}},"article-template":{"type":"article-template","settings":{"blog_show_image_feature":true,"blog_show_author":true,"blog_show_date":true,"show_share_buttons":true}},"nov-page-contact":{"type":"nov-page-contact","settings":{"iframe_map":"https:\/\/www.google.com\/maps\/embed?pb=!1m18!1m12!1m3!1d4082.7742465747338!2d-79.38287617561478!3d43.64905556573276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b34d2a57d767f%3A0x935ab2eb9fd5fb31!2sFirst%20Canadian%20Place!5e0!3m2!1svi!2s!4v1591603052999!5m2!1svi!2s","contact_email":"shopify:\/\/shop_images\/icon-contact-3.png","email":"Support@domain.com","contact_address":"shopify:\/\/shop_images\/icon-contact-2.png","addr":"PO Box 1622 Vissaosang Street West","contact_hotline":"shopify:\/\/shop_images\/icon-contact-1.png","hotline":"84-0123-456-789","title_contact_message":"","sub_contact_message":""}},"nov-header":{"type":"nov-header","blocks":{"2904b8c8-d026-4aaa-99f0-cafe3076aad1":{"type":"text","disabled":true,"settings":{"novmenu_item":"Pages","submenu_width":"100%","collection_enable":false,"novmenu_collection_col_lg":"col-xl-3","novmenu_collection_col":"col-lg-12","name_collec_1":"Best Sellers","size_title_1":"14px","color_title_1":"#1a1a1a","link_1":"","name_collec_2":"New Arrival","size_title_2":"14px","color_title_2":"#1a1a1a","link_2":"","name_collec_3":"Top Trending","size_title_3":"14px","color_title_3":"#1a1a1a","link_3":"","name_collec_4":"Top Trending","size_title_4":"14px","color_title_4":"#1a1a1a","link_4":"","name_collec_5":"Denim Collection","size_title_5":"14px","color_title_5":"#1a1a1a","link_5":"","novmenu_menu_enable":true,"novmenu_menu_col_lg":"col-xl-12","novmenu_menu_col":"col-lg-12","novmenu_menu_menucol_lg":"col-xl-4","novmenu_menu_menucol":"col-lg-12","banner_enable":false,"novmenu_banner_col_lg":"col-xl-4","novmenu_banner_col":"col-lg-4","novmenu_banner_enable":false,"image_size":"255x300","novmenu_banner_link":"","product_enable":false,"novmenu_product_col_lg":"col-xl-4","novmenu_product_col":"col-lg-4","title_product":"Featured Product","size_title":"14px","color_title":"#1a1a1a","product_1":"","product_2":"","product_3":"","autoplay":true,"show_dots":true,"class":""}},"cc78428e-b884-4783-a505-816c7a9a7046":{"type":"text","disabled":true,"settings":{"novmenu_item":"Makeup","submenu_width":"100%","collection_enable":false,"novmenu_collection_col_lg":"col-xl-3","novmenu_collection_col":"col-lg-3","name_collec_1":"Best Sellers","size_title_1":"14px","color_title_1":"#1a1a1a","link_1":"shopify:\/\/collections\/best-sellers","name_collec_2":"New Arrival","size_title_2":"14px","color_title_2":"#1a1a1a","link_2":"shopify:\/\/collections\/new-arrivals","name_collec_3":"Top Trending","size_title_3":"14px","color_title_3":"#1a1a1a","link_3":"shopify:\/\/collections\/mens-perfumes","name_collec_4":"Top Trending","size_title_4":"14px","color_title_4":"#1a1a1a","link_4":"shopify:\/\/collections\/wonmen","name_collec_5":"Denim Collection","size_title_5":"14px","color_title_5":"#1a1a1a","link_5":"shopify:\/\/collections\/featured-products","novmenu_menu_enable":true,"novmenu_menu_col_lg":"col-xl-8","novmenu_menu_col":"col-lg-12","novmenu_menu_menucol_lg":"col-xl-4","novmenu_menu_menucol":"col-lg-12","banner_enable":true,"novmenu_banner_col_lg":"col-xl-4","novmenu_banner_col":"col-lg-12","novmenu_banner_enable":true,"image_size":"454x245","novmenu_banner_link":"","product_enable":false,"novmenu_product_col_lg":"col-xl-4","novmenu_product_col":"col-lg-4","title_product":"Featured Product","size_title":"14px","color_title":"#1a1a1a","product_1":"","product_2":"","product_3":"","autoplay":true,"show_dots":true,"class":""}},"95e5ed53-592a-471f-9b5a-afafad302575":{"type":"text","disabled":true,"settings":{"novmenu_item":"Skincare","submenu_width":"100%","collection_enable":false,"novmenu_collection_col_lg":"col-xl-3","novmenu_collection_col":"col-lg-3","name_collec_1":"Best Sellers","size_title_1":"14px","color_title_1":"#1a1a1a","link_1":"shopify:\/\/collections\/best-sellers","name_collec_2":"New Arrival","size_title_2":"14px","color_title_2":"#1a1a1a","link_2":"shopify:\/\/collections\/new-arrivals","name_collec_3":"Top Trending","size_title_3":"14px","color_title_3":"#1a1a1a","link_3":"shopify:\/\/collections\/mens-perfumes","name_collec_4":"Top Trending","size_title_4":"14px","color_title_4":"#1a1a1a","link_4":"shopify:\/\/collections\/wonmen","name_collec_5":"Denim Collection","size_title_5":"14px","color_title_5":"#1a1a1a","link_5":"shopify:\/\/collections\/featured-products","novmenu_menu_enable":true,"novmenu_menu_col_lg":"col-xl-8","novmenu_menu_col":"col-lg-12","novmenu_menu_menucol_lg":"col-xl-4","novmenu_menu_menucol":"col-lg-12","banner_enable":false,"novmenu_banner_col_lg":"col-xl-4","novmenu_banner_col":"col-lg-4","novmenu_banner_enable":false,"image_size":"255x300","novmenu_banner_link":"","product_enable":true,"novmenu_product_col_lg":"col-xl-4","novmenu_product_col":"col-lg-12","title_product":"","size_title":"14px","color_title":"#1a1a1a","product_1":"biker-jacket-with-pockets","product_2":"bomber-jacket","product_3":"classic-shirt-with-pocket","autoplay":true,"show_dots":true,"class":""}},"22027ec9-aee5-48a3-aed3-ae3cb3dc4bd0":{"type":"text","disabled":true,"settings":{"novmenu_item":"Body","submenu_width":"100%","collection_enable":true,"novmenu_collection_col_lg":"col-xl-3","novmenu_collection_col":"col-lg-12","name_collec_1":"Best Sellers","size_title_1":"14px","color_title_1":"#1a1a1a","link_1":"#","name_collec_2":"New Arrival","size_title_2":"14px","color_title_2":"#1a1a1a","link_2":"#","name_collec_3":"Trending now","size_title_3":"14px","color_title_3":"#1a1a1a","link_3":"#","name_collec_4":"On Sale <span>(Up To 70 %)<\/span>","size_title_4":"14px","color_title_4":"#1a1a1a","link_4":"#","name_collec_5":"","size_title_5":"14px","color_title_5":"#1a1a1a","link_5":"","novmenu_menu_enable":true,"novmenu_menu_col_lg":"col-xl-9","novmenu_menu_col":"col-lg-12","novmenu_menu_menucol_lg":"col-xl-4","novmenu_menu_menucol":"col-lg-12","banner_enable":false,"novmenu_banner_col_lg":"col-xl-4","novmenu_banner_col":"col-lg-4","novmenu_banner_enable":false,"image_size":"255x300","novmenu_banner_link":"","product_enable":false,"novmenu_product_col_lg":"col-xl-4","novmenu_product_col":"col-lg-4","title_product":"Featured Product","size_title":"14px","color_title":"#1a1a1a","product_1":"","product_2":"","product_3":"","autoplay":true,"show_dots":true,"class":"menu_x"}}},"block_order":["2904b8c8-d026-4aaa-99f0-cafe3076aad1","cc78428e-b884-4783-a505-816c7a9a7046","95e5ed53-592a-471f-9b5a-afafad302575","22027ec9-aee5-48a3-aed3-ae3cb3dc4bd0"],"settings":{"logo":"shopify:\/\/shop_images\/dark-logo.png","width_lg":150,"logo_mobile":"shopify:\/\/shop_images\/dark-logo.png","width_lg_mb":62,"announcement_on_off":true,"social":false,"announcement":"<p>FREE & FAST SHIPPING ON ORDERS OVER $99 →   <a href=\"\/collections\/top-sellers\" title=\"Top Sellers\"><span style=\"text-decoration:underline\">SHOP NOW<\/span><\/a><\/p>","announcement_c":"#000000","announcement_bg":"#f7f7f7","stickymenu":true,"main_linklist":"main-menu","size_menu":"1.5rem","color_menu":"#ffffff","novmenu_enable":true,"background_color":"#000000","background_color_mobile":"#000000","color_mobile":"#f7f7f7","background_color_sticky":"#000000","background_color_inner":"#000000"}},"nov-footer":{"type":"nov-footer","blocks":{"60142640-4a89-4928-bd2f-0900dc2c1e57":{"type":"block_contact","settings":{"width_xl_desktop":"col-xl-4","width_lg_desktop":"col-lg-4","width_md_tablet":"col-md-12","width_sm_mobile":"col-sm-12","block_title":"About Us","size_title":"1.8rem","color_title":"#ffffff","logo_footer":"shopify:\/\/shop_images\/logo.svg","contact_phone":"","size_phone":"1.8rem","color_phone":"#ffffff","contact_email":"","size_email":"1.8rem","color_email":"#ffffff","contact_address":"Established in 2022, ESNC perfumery is a progressive perfumery born of the idea and motto that ‘smelling good was never this affordable’. Using high quality essences sourced from France, our perfumes are manufactured in Turkey.","size_address":"1.8rem","color_address":"#ffffff","contact_hours":"","size_hours":"1.8rem","color_hours":"#ffffff","block_class":""}},"146745b7-0a81-4eed-a0cd-f0d3be20a867":{"type":"block_menu","settings":{"width_xl_desktop":"col-xl-3","width_lg_desktop":"col-lg-3","width_md_tablet":"col-md-5","width_sm_mobile":"col-sm-5","block_title":"Products","size_title":"1.8rem","color_title":"#ffffff","menu_handle":"product-menu","size_menu":"1.6rem","color_menu":"#ffffff","block_class":"mb-md-60 mb-xs-0"}},"3ea721f0-020d-4c11-b929-ef1ce5c19ff3":{"type":"block_menu","settings":{"width_xl_desktop":"col-xl-3","width_lg_desktop":"col-lg-3","width_md_tablet":"col-md-7","width_sm_mobile":"col-sm-7","block_title":"Customer Services","size_title":"1.8rem","color_title":"#ffffff","menu_handle":"customer-services","size_menu":"1.6rem","color_menu":"#ffffff","block_class":""}},"a212aea3-b44e-42fc-9899-22e993fc92f9":{"type":"block_menu","settings":{"width_xl_desktop":"col-xl-2","width_lg_desktop":"col-lg-2","width_md_tablet":"col-md-5","width_sm_mobile":"col-sm-5","block_title":"Account","size_title":"1.8rem","color_title":"#ffffff","menu_handle":"account","size_menu":"1.6rem","color_menu":"#ffffff","block_class":""}},"image_aQKFLf":{"type":"image","settings":{"paymentlogo":"shopify:\/\/shop_images\/afterpay-icon.png"}},"image_KBy7GH":{"type":"image","settings":{"paymentlogo":"shopify:\/\/shop_images\/klarna_logo_icon_4215f877-4eab-4a0e-b5c4-237c8176c015.png"}},"image_F3hPL9":{"type":"image","settings":{"paymentlogo":"shopify:\/\/shop_images\/shippingzip-pay-icon.png"}},"image_znfbHh":{"type":"image","settings":{"paymentlogo":"shopify:\/\/shop_images\/logo-paypal.png"}},"image_cJcjBQ":{"type":"image","disabled":true,"settings":{"paymentlogo":"shopify:\/\/shop_images\/paypal.png"}},"image_iYbDwb":{"type":"image","disabled":true,"settings":{"paymentlogo":"shopify:\/\/shop_images\/Afterpay_364881cc-c7ba-43f3-8d65-1f9f966aa5a0.png"}},"image_KHU7rh":{"type":"image","disabled":true,"settings":{"paymentlogo":"shopify:\/\/shop_images\/zip-au.png"}},"image_tRTwcw":{"type":"image","settings":{"paymentlogo":"shopify:\/\/shop_images\/visa-logo.webp"}},"image_qwghXF":{"type":"image","settings":{"paymentlogo":"shopify:\/\/shop_images\/Mastercard-Logo.webp"}},"image_VFBUR3":{"type":"image","settings":{"paymentlogo":"shopify:\/\/shop_images\/amex.png"}},"image_Cqhmgj":{"type":"image","settings":{"paymentlogo":"shopify:\/\/shop_images\/Apple_Pay_logo.webp"}},"image_Db87Fi":{"type":"image","disabled":true,"settings":{"paymentlogo":"shopify:\/\/shop_images\/eftpos_logo.webp"}},"image_tiPeGp":{"type":"image","settings":{"paymentlogo":"shopify:\/\/shop_images\/google-pay.png"}},"image_96F6ih":{"type":"image","settings":{"paymentlogo":"shopify:\/\/shop_images\/shop-logo.png"}},"image_AaNtDV":{"type":"image","settings":{"paymentlogo":"shopify:\/\/shop_images\/UnionPay_logo_svg.webp"}}},"block_order":["60142640-4a89-4928-bd2f-0900dc2c1e57","146745b7-0a81-4eed-a0cd-f0d3be20a867","3ea721f0-020d-4c11-b929-ef1ce5c19ff3","a212aea3-b44e-42fc-9899-22e993fc92f9","image_aQKFLf","image_KBy7GH","image_F3hPL9","image_znfbHh","image_cJcjBQ","image_iYbDwb","image_KHU7rh","image_tRTwcw","image_qwghXF","image_VFBUR3","image_Cqhmgj","image_Db87Fi","image_tiPeGp","image_96F6ih","image_AaNtDV"],"settings":{"background_color":"#000000","copyright":"©2024 - ESNC. All Rights Reserved.","size_copyright":"1.6rem","color_copyright":"#ffffff","menu_copyright":"","size_menu":"1.6rem","color_menu":"#ffffff"}},"nov-sidebar-dropdown":{"type":"nov-sidebar-dropdown","blocks":{"1572337623840":{"type":"block_filter","settings":{"block_title":"","block_class":"","filter_tags":false,"filter_size":true,"filter_size_value":"M, L, X, XL","filter_color":true,"filter_color_value":"Black, Blue, White, Red, Yellow","filter_price":true,"price_min":"0","price_max":"1000"}}},"block_order":["1572337623840"],"settings":{}},"nov-policy":{"type":"nov-policy","blocks":{"1577775924282":{"type":"item_policy","settings":{"policy_icon":"","title_policy":"Free Delivery From over order $ 250"}},"1577775930456":{"type":"item_policy","settings":{"policy_icon":"","title_policy":"Money back GUARANTEED"}},"1577775933242":{"type":"item_policy","settings":{"policy_icon":"","title_policy":"cash on delivery From $ 50"}}},"block_order":["1577775924282","1577775930456","1577775933242"],"settings":{"width":"col-lg-4","width_tablet":"col-md-4","width_xs_mobile":"col-xs-12","background_color":"","background_image":"","has_fullwidth":true,"distance_top":"18px","distance_bottom":"16px"}},"password-header":{"type":"password-header","settings":{"logo":"","logo_max_width":"300","header":"Coming Soon"}},"password-content":{"type":"password-content","settings":{"newsletter_enable":true,"newsletter_form_heading":"Be the first to know when we launch.","newsletter_placeholder":"Email address","newsletter_button_text":"Notify me"}},"password-footer":{"type":"password-footer","settings":{"show_share_buttons":true,"social_message":"Spread the word"}},"nov-page-faqs":{"type":"nov-page-faqs","blocks":{"1600049089505":{"type":"faq","settings":{"item_title":"Sed est elit posuere ac semper at hendrerit a neque?","item_content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac pretium metus. Curabitur velit sem, egestas sit amet dolor nec, tristique vulputate enim. Etiam a lorem libero. In egestas ultricies convallis. Sed iaculis arcu id justo dapibus pharetra. Maecenas et aliquam eros, sit amet volutpat nisi. Duis feugiat mattis maximus. Nulla sollicitudin lorem vitae neque ultricies efficitur. Sed pulvinar tellus enim, non tincidunt nisl imperdiet quis. Maecenas maximus lorem eu justo tincidunt mollis"}},"1600049113929":{"type":"faq","settings":{"item_title":"Why Lorem ipsum dolor sit amet ?","item_content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac pretium metus. Curabitur velit sem, egestas sit amet dolor nec, tristique vulputate enim. Etiam a lorem libero. In egestas ultricies convallis. Sed iaculis arcu id justo dapibus pharetra. Maecenas et aliquam eros, sit amet volutpat nisi. Duis feugiat mattis maximus. Nulla sollicitudin lorem vitae neque ultricies efficitur. Sed pulvinar tellus enim, non tincidunt nisl imperdiet quis. Maecenas maximus lorem eu justo tincidunt mollis"}},"1600049126585":{"type":"faq","settings":{"item_title":"What maecenas commodo mi urna, quis accumsan ligula gravida at ?","item_content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac pretium metus. Curabitur velit sem, egestas sit amet dolor nec, tristique vulputate enim. Etiam a lorem libero. In egestas ultricies convallis. Sed iaculis arcu id justo dapibus pharetra. Maecenas et aliquam eros, sit amet volutpat nisi. Duis feugiat mattis maximus. Nulla sollicitudin lorem vitae neque ultricies efficitur. Sed pulvinar tellus enim, non tincidunt nisl imperdiet quis. Maecenas maximus lorem eu justo tincidunt mollis"}},"1600049137018":{"type":"faq","settings":{"item_title":"Integer venenatis suscipit urna id imperdiet. In et mi quis sapien tristique sodales sit amet nec justo ?","item_content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac pretium metus. Curabitur velit sem, egestas sit amet dolor nec, tristique vulputate enim. Etiam a lorem libero. In egestas ultricies convallis. Sed iaculis arcu id justo dapibus pharetra. Maecenas et aliquam eros, sit amet volutpat nisi. Duis feugiat mattis maximus. Nulla sollicitudin lorem vitae neque ultricies efficitur. Sed pulvinar tellus enim, non tincidunt nisl imperdiet quis. Maecenas maximus lorem eu justo tincidunt mollis"}},"1600049150025":{"type":"faq","settings":{"item_title":"Donec lobortis dolor a arcu auctor tincidunt ac fermentum enim ?","item_content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac pretium metus. Curabitur velit sem, egestas sit amet dolor nec, tristique vulputate enim. Etiam a lorem libero. In egestas ultricies convallis. Sed iaculis arcu id justo dapibus pharetra. Maecenas et aliquam eros, sit amet volutpat nisi. Duis feugiat mattis maximus. Nulla sollicitudin lorem vitae neque ultricies efficitur. Sed pulvinar tellus enim, non tincidunt nisl imperdiet quis. Maecenas maximus lorem eu justo tincidunt mollis"}},"1600049160417":{"type":"faq","settings":{"item_title":"Maecenas vitae placerat metus ?","item_content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac pretium metus. Curabitur velit sem, egestas sit amet dolor nec, tristique vulputate enim. Etiam a lorem libero. In egestas ultricies convallis. Sed iaculis arcu id justo dapibus pharetra. Maecenas et aliquam eros, sit amet volutpat nisi. Duis feugiat mattis maximus. Nulla sollicitudin lorem vitae neque ultricies efficitur. Sed pulvinar tellus enim, non tincidunt nisl imperdiet quis. Maecenas maximus lorem eu justo tincidunt mollis"}},"1600049170281":{"type":"faq","settings":{"item_title":"Vestibulum nulla velit, tincidunt id neque sed ?","item_content":"volutpat nisi. Duis feugiat mattis maximus. Nulla sollicitudin lorem vitae neque ultricies efficitur. Sed pulvinar tellus enim, non tincidunt nisl imperdiet quis. Maecenas maximus lorem eu justo tincidunt mollis"}},"1600049181962":{"type":"faq","settings":{"item_title":"Sed est elit posuere ac semper at hendrerit a neque?","item_content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac pretium metus. Curabitur velit sem, egestas sit amet dolor nec, tristique vulputate enim. Etiam a lorem libero. In egestas ultricies convallis. Sed iaculis arcu id justo dapibus pharetra. Maecenas et aliquam eros, sit amet volutpat nisi. Duis feugiat mattis maximus. Nulla sollicitudin lorem vitae neque ultricies efficitur. Sed pulvinar tellus enim, non tincidunt nisl imperdiet quis. Maecenas maximus lorem eu justo tincidunt mollis"}}},"block_order":["1600049089505","1600049113929","1600049126585","1600049137018","1600049150025","1600049160417","1600049170281","1600049181962"],"settings":{"title":"Frequently asked question","subheading":""}},"nov-page-about-us":{"type":"nov-page-about-us","blocks":{"1600139275347":{"type":"image","settings":{"img":"shopify:\/\/shop_images\/about.jpg"}},"1600141333789":{"type":"text","settings":{"title":"Our company","text_content":"<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac ligula et mi semper viverra nec a tellus. Curabitur sed diam quis elit tempus venenatis sit amet a tellus. Sed id lectus laoreet, elementum metus at, sagittis sem. Sed ante velit, eleifend sit amet eros lacinia, lobortis vehicula dui. Vivamus fringilla mauris mauris. Aliquam lectus ligula, porta a rhoncus sit amet, consequat vel nibh. Sed in est venenatis, dictum dui a, consequat quam.<br><\/p>\n<p><br><\/p>\n<p>Etiam consectetur accumsan odio sit amet sagittis. Aliquam erat volutpat. Maecenas eros lacus, commodo id leo ut, ullamcorper varius elit. Proin auctor quam convallis, iaculis odio non, iaculis tortor. In felis tortor, tristique at magna nec, pharetra posuere leo. Praesent ut felis ante. Pellentesque rutrum sed turpis at ornare. Nulla tincidunt enim vitae purus rhoncus pellentesque ut ac ligula. Vivamus vel gravida nulla, quis aliquam est. Proin ultrices semper tortor, at suscipit nibh imperdiet vel. Etiam quis velit viverra nisl lobortis imperdiet quis mollis metus. Integer nec felis at ligula finibus consequat at ut magna. Duis fermentum dignissim metus in pellentesque. Integer viverra iaculis quam vel convallis. Donec et leo non velit pharetra placerat. Donec condimentum enim vitae felis vulputate, non rhoncus leo fringilla.<\/p>","class":"mt-35"}},"1600139586443":{"type":"quote","settings":{"text_content":"<p>I am quote block text, consectetur adipiscing elit. Ut ac ligula et mi semper viverra nec a tellus. Curabitur sed diam quis elit tempus venenatis sit amet a tellus. Sed id lectus laoreet, elementum metus at, sagittis sem. Sed ante velit, eleifend sit amet eros lacinia, lobortis vehicula dui. Vivamus fringilla mauris mauris. Aliquam lectus ligula porta a rhoncus sit amet consequat vel nibh. <\/p>","class":"mt-25 mb-25"}},"1600141399342":{"type":"text","settings":{"title":"Our team","text_content":"<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac ligula et mi semper viverra nec a tellus. Curabitur sed diam quis elit tempus venenatis sit amet a tellus. Sed id lectus laoreet, elementum metus at, sagittis sem. Sed ante velit, eleifend sit amet eros lacinia, lobortis vehicula dui. Vivamus fringilla mauris mauris. Aliquam lectus ligula, porta a rhoncus sit amet, consequat vel nibh. Sed in est venenatis, dictum dui a, consequat quam.<br><\/p>\n<p><br><\/p>\n<p>Etiam consectetur accumsan odio sit amet sagittis. Aliquam erat volutpat. Maecenas eros lacus, commodo id leo ut, ullamcorper varius elit. Proin auctor quam convallis, iaculis odio non, iaculis tortor. In felis tortor, tristique at magna nec, pharetra posuere leo. Praesent ut felis ante. Pellentesque rutrum sed turpis at ornare. Nulla tincidunt enim vitae purus rhoncus pellentesque ut ac ligula. Vivamus vel gravida nulla, quis aliquam est. Proin ultrices semper tortor, at suscipit nibh imperdiet vel. Etiam quis velit viverra nisl lobortis imperdiet quis mollis metus. Integer nec felis at ligula finibus consequat at ut magna. Duis fermentum dignissim metus in pellentesque. Integer viverra iaculis quam vel convallis. Donec et leo non velit pharetra placerat. Donec condimentum enim vitae felis vulputate, non rhoncus leo fringilla.<\/p>","class":"mb-55"}},"1600139715583":{"type":"our_team","settings":{"avatar":"shopify:\/\/shop_images\/testirmonial-1.jpg","author":"KwangSang","job":"CEO- Vinova","decs":"<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac pretium metus. Curabi tur velit sem, egestas sit amet dolor nec, tris tique vulputate enim.<\/p>","hotline":"(+612) 2531 5600","email":"sonata@domain.com","show_label":false,"social_twitter_link":"#","social_facebook_link":"#","social_pinterest_link":"#","social_instagram_link":"#","social_dribbble_link":"","social_google_link":"","social_linkedin_link":"","social_tumblr_link":"","social_snapchat_link":"","social_youtube_link":"","social_vimeo_link":"","class":"col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-xs-30"}},"1600139764692":{"type":"our_team","settings":{"avatar":"shopify:\/\/shop_images\/testirmonial-2.jpg","author":"Rebecca Jenkins","job":"Developer","decs":"<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac pretium metus. Curabi tur velit sem, egestas sit amet dolor nec, tris tique vulputate enim.<\/p>","hotline":"(+612) 2531 5600","email":"sonata@domain.com","show_label":false,"social_twitter_link":"#","social_facebook_link":"#","social_pinterest_link":"#","social_instagram_link":"#","social_dribbble_link":"","social_google_link":"","social_linkedin_link":"","social_tumblr_link":"","social_snapchat_link":"","social_youtube_link":"","social_vimeo_link":"","class":"col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-xs-30"}},"1600139797724":{"type":"our_team","settings":{"avatar":"shopify:\/\/shop_images\/testirmonial-3.jpg","author":"Alex Nguyen","job":"Designer","decs":"<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac pretium metus. Curabi tur velit sem, egestas sit amet dolor nec, tris tique vulputate enim.<\/p>","hotline":"(+612) 2531 5600","email":"sonata@domain.com","show_label":false,"social_twitter_link":"#","social_facebook_link":"#","social_pinterest_link":"#","social_instagram_link":"#","social_dribbble_link":"","social_google_link":"","social_linkedin_link":"","social_tumblr_link":"","social_snapchat_link":"","social_youtube_link":"","social_vimeo_link":"","class":"col-lg-3 col-md-4 col-sm-6 col-xs-12"}},"1600139823748":{"type":"our_team","settings":{"avatar":"shopify:\/\/shop_images\/testirmonial-4.jpg","author":"Lucy Watson","job":"Developer","decs":"<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac pretium metus. Curabi tur velit sem, egestas sit amet dolor nec, tris tique vulputate enim.<\/p>","hotline":"(+612) 2531 5600","email":"sonata@domain.com","show_label":false,"social_twitter_link":"#","social_facebook_link":"#","social_pinterest_link":"#","social_instagram_link":"#","social_dribbble_link":"","social_google_link":"","social_linkedin_link":"","social_tumblr_link":"","social_snapchat_link":"","social_youtube_link":"","social_vimeo_link":"","class":"col-lg-3 col-md-4 col-sm-6 col-xs-12 mt-md-30"}}},"block_order":["1600139275347","1600141333789","1600139586443","1600141399342","1600139715583","1600139764692","1600139797724","1600139823748"],"settings":{"title":"","subheading":""}},"16181993638d9f1738":{"type":"nov-slideshow","blocks":{"16181993638d9f1738-0":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/s-1.jpg","caption_1":"Not only was it an good <br>price,it looks elegant","color_cap1":"#000000","fz_cap1":"6.4rem","fz_cap1lg":"4.5rem","fz_cap1t":"3.5rem","fz_cap1m":"3rem","fz_cap1mb":"2.5rem","cap_animate_1":"fadeInLeft","caption_2":"Excepteur sint occaecat cupidatat non proident","color_cap2":"#000000","fz_cap2":"1.6rem","fz_cap2lg":"","fz_cap2t":"1.6rem","fz_cap2m":"1.6rem","fz_cap2mb":"1.6rem","cap_animate_2":"fadeInLeft","caption_3":"","color_cap3":"#000000","fz_cap3":"","fz_cap3lg":"","fz_cap3t":"","fz_cap3m":"","fz_cap3mb":"","cap_animate_3":"fadeInLeft","caption_4":"","color_cap4":"#000000","fz_cap4":"","fz_cap4lg":"","fz_cap4t":"","fz_cap4m":"","fz_cap4mb":"","cap_animate_4":"bounce","title_link":"Shop The Essentials","color_cap_link":"#000000","background_cap_link":"rgba(0,0,0,0)","cap_link":"#","cap_link_animate":"fadeInLeft","text_align":"center","width_position":"60","width_position_desktop":"60","width_position_tablet":"60","width_position_mobile":"70","left_position":"0","left_position_desktop":"0","left_position_tablet":"0","left_position_mobile":"0","top_position":"36","top_position_desktop":"25","top_position_t":"35","top_position_m":"24","top_position_xs":"30","slider_link":""}},"16181993638d9f1738-1":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/s-2.jpg","caption_1":"Flawless Lumière<br> Foundation","color_cap1":"#000000","fz_cap1":"6.4rem","fz_cap1lg":"4.5rem","fz_cap1t":"3.5rem","fz_cap1m":"3rem","fz_cap1mb":"2.5rem","cap_animate_1":"fadeInUp","caption_2":"Excepteur sint occaecat cupidatat non proident","color_cap2":"#000000","fz_cap2":"1.6rem","fz_cap2lg":"","fz_cap2t":"1.6rem","fz_cap2m":"1.6rem","fz_cap2mb":"1.6rem","cap_animate_2":"fadeInUp","caption_3":"","color_cap3":"#000000","fz_cap3":"","fz_cap3lg":"","fz_cap3t":"","fz_cap3m":"","fz_cap3mb":"","cap_animate_3":"fadeInUp","caption_4":"","color_cap4":"#000000","fz_cap4":"","fz_cap4lg":"","fz_cap4t":"","fz_cap4m":"","fz_cap4mb":"","cap_animate_4":"bounce","title_link":"Shop The Essentials","color_cap_link":"#000000","background_cap_link":"rgba(0,0,0,0)","cap_link":"#","cap_link_animate":"fadeInUp","text_align":"center","width_position":"50","width_position_desktop":"60","width_position_tablet":"60","width_position_mobile":"55","left_position":"47","left_position_desktop":"47","left_position_tablet":"47","left_position_mobile":"40","top_position":"36","top_position_desktop":"25","top_position_t":"35","top_position_m":"24","top_position_xs":"30","slider_link":""}},"16181993638d9f1738-2":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/s-3.jpg","caption_1":"Spring Clean<br> Your Beauty Routine","color_cap1":"#000000","fz_cap1":"6.4rem","fz_cap1lg":"4.5rem","fz_cap1t":"3.5rem","fz_cap1m":"3rem","fz_cap1mb":"2.5rem","cap_animate_1":"fadeInDown","caption_2":"Excepteur sint occaecat cupidatat non proident","color_cap2":"#000000","fz_cap2":"1.6rem","fz_cap2lg":"","fz_cap2t":"1.6rem","fz_cap2m":"1.6rem","fz_cap2mb":"1.6rem","cap_animate_2":"fadeInDown","caption_3":"","color_cap3":"#ffffff","fz_cap3":"10rem","fz_cap3lg":"","fz_cap3t":"","fz_cap3m":"","fz_cap3mb":"6rem","cap_animate_3":"fadeInDown","caption_4":"","color_cap4":"#ffffff","fz_cap4":"1.8rem","fz_cap4lg":"","fz_cap4t":"","fz_cap4m":"","fz_cap4mb":"","cap_animate_4":"fadeInDown","title_link":"Shop The Essentials","color_cap_link":"#000000","background_cap_link":"rgba(0,0,0,0)","cap_link":"#","cap_link_animate":"fadeInDown","text_align":"center","width_position":"52","width_position_desktop":"60","width_position_tablet":"60","width_position_mobile":"60","left_position":"5","left_position_desktop":"0","left_position_tablet":"0","left_position_mobile":"0","top_position":"36","top_position_desktop":"25","top_position_t":"35","top_position_m":"24","top_position_xs":"30","slider_link":""}}},"block_order":["16181993638d9f1738-0","16181993638d9f1738-1","16181993638d9f1738-2"],"settings":{"height_slideshow_larges_desktop":"900px","height_slideshow_large_desktop":"700px","height_slideshow_desktop":"500px","height_slideshow_tablet":"450px","height_slideshow_mobile":"400px","height_slideshow_mobile_small":"340px","autoplay":false,"arrows":true,"dots":true,"has_fullwidth":true,"distance_top":"0","distance_bottom":"0"}},"16214764952c69fa96":{"type":"nov-products-slider","settings":{"title":"","size_title":"4.4rem","color_title":"#000000","subheading":"","size_sub":"13px","color_sub":"#222222","title_alignment":"text-center","background_color":"","collection":"frontpage","grid_number":6,"grid_number_lg_tablet":4,"items_tablet":3,"items_mobile":2,"limit":14,"number_row":"1","row_mobile":"1","show_nav":false,"class":"p_lr_20 pb-lg-80 pb-md-0","has_fullwidth":true,"distance_top":"0px","distance_bottom":"120px"}},"f50256a7-8055-426c-8cbc-b8c585c5e813":{"type":"nov-collection-tabs","blocks":{"f50256a7-8055-426c-8cbc-b8c585c5e813-166571076185fcdd1a-0":{"type":"tabitem","settings":{"tab_title":"New","collection_handle":"face-serums"}},"f50256a7-8055-426c-8cbc-b8c585c5e813-166571076185fcdd1a-1":{"type":"tabitem","settings":{"tab_title":"Trending","collection_handle":"shop-makeup"}},"f50256a7-8055-426c-8cbc-b8c585c5e813-166571076185fcdd1a-2":{"type":"tabitem","settings":{"tab_title":"Sale","collection_handle":"shop-skincare"}}},"block_order":["f50256a7-8055-426c-8cbc-b8c585c5e813-166571076185fcdd1a-0","f50256a7-8055-426c-8cbc-b8c585c5e813-166571076185fcdd1a-1","f50256a7-8055-426c-8cbc-b8c585c5e813-166571076185fcdd1a-2"],"settings":{"title":"Gotta Have It","size_title":"44px","color_title":"#000000","title_alignment":"text-left","grid_number":4,"grid_number_lg_tablet":4,"grid_number_tablet":3,"grid_number_mobile":2,"row_number":"1","limit":"30","view_all":false,"button":"View all collection","color_button":"#222222","size_button":"1.6rem","link":"","class":"p_lr_20","show_nav":false,"show_dot":false,"has_fullwidth":true,"distance_top":"60px","distance_bottom":"85px"}},"5abbc140-56cc-4ccd-9904-3d9da64108e6":{"type":"nov-blog","settings":{"title":"Lastest News","size_title":"4.4rem","color_title":"#222222","subheading":"From Our Blog","size_sub":"18px","color_sub":"#82ca9c","title_alignment":"text-center","blog":"news","type_option":"slider","grid_number":3,"grid_number_lg_tablet":3,"items_tablet":2,"items_mobile":1,"number_row":"1","limit":8,"show_image":true,"show_dots":false,"show_nav":false,"blog_show_comments":false,"blog_show_author":false,"blog_show_date":true,"blog_show_excerpt":false,"show_view_all":true,"class":"","has_fullwidth":false,"background_color":"","distance_top":"95px","distance_bottom":"100px"}},"af6ad9da-a81d-44c8-8225-0ef1bf9a9299":{"type":"nov-policy","blocks":{"af6ad9da-a81d-44c8-8225-0ef1bf9a9299-166573107526d18425-0":{"type":"item_policy","settings":{"policy_icon":"shopify:\/\/shop_images\/i-7.png","title_policy":"Free Shipping","size_title":"1.8rem","color_title":"#000000","sub_policy":"Free shipping on all US order or order above $200","size_sub":"1.6rem","color_sub":"#000000","class":"mb-md-30 mb-xs-0"}},"af6ad9da-a81d-44c8-8225-0ef1bf9a9299-166573107526d18425-1":{"type":"item_policy","settings":{"policy_icon":"shopify:\/\/shop_images\/i-8.png","title_policy":"Support 24\/7","size_title":"1.8rem","color_title":"#000000","sub_policy":"Contact us 24 hours a day, 7 days a week","size_sub":"1.6rem","color_sub":"#000000","class":""}},"af6ad9da-a81d-44c8-8225-0ef1bf9a9299-166573107526d18425-2":{"type":"item_policy","settings":{"policy_icon":"shopify:\/\/shop_images\/i-9.png","title_policy":"7 Days Return","size_title":"1.8rem","color_title":"#000000","sub_policy":"Simply return it within 7 days for an exchange.","size_sub":"1.6rem","color_sub":"#000000","class":""}},"49541360-c5a1-4c5a-a5bc-dda2994b3e53":{"type":"item_policy","settings":{"policy_icon":"shopify:\/\/shop_images\/i-10.png","title_policy":"Payment Secure","size_title":"1.8rem","color_title":"#000000","sub_policy":"We ensure secure payment with PEV","size_sub":"1.6rem","color_sub":"#000000","class":""}}},"block_order":["af6ad9da-a81d-44c8-8225-0ef1bf9a9299-166573107526d18425-0","af6ad9da-a81d-44c8-8225-0ef1bf9a9299-166573107526d18425-1","af6ad9da-a81d-44c8-8225-0ef1bf9a9299-166573107526d18425-2","49541360-c5a1-4c5a-a5bc-dda2994b3e53"],"settings":{"enable_image":true,"width":"col-lg-3","width_tablet":"col-md-6","width_sm_mobile":"col-sm-6","width_xs_mobile":"col-xs-12","background_color":"","has_fullwidth":false,"distance_top":"100px","distance_bottom":"80px"}},"c028bb4b-d328-4a2f-9eb7-66de32bc84b0":{"type":"nov-gallery-image","blocks":{"c028bb4b-d328-4a2f-9eb7-66de32bc84b0-1665820007ef10257b-0":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/img-1.jpg","cta_label":"Lips","size_link":"18px","color_link":"#000000","link":"#","background_button":"#ffffff","class":""}},"c028bb4b-d328-4a2f-9eb7-66de32bc84b0-1665820007ef10257b-1":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/img-2.jpg","cta_label":"Body","size_link":"18px","color_link":"#000000","link":"#","background_button":"#ffffff","class":""}},"be1dcc83-7d38-47dd-ad3c-807f63e83ad9":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/img-3.jpg","cta_label":"Face","size_link":"18px","color_link":"#000000","link":"#","background_button":"#ffffff","class":""}},"a0705958-fe3b-433f-b1ed-a73f48af80cf":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/img-4.jpg","cta_label":"Eyes","size_link":"18px","color_link":"#000000","link":"#","background_button":"#ffffff","class":""}}},"block_order":["c028bb4b-d328-4a2f-9eb7-66de32bc84b0-1665820007ef10257b-0","c028bb4b-d328-4a2f-9eb7-66de32bc84b0-1665820007ef10257b-1","be1dcc83-7d38-47dd-ad3c-807f63e83ad9","a0705958-fe3b-433f-b1ed-a73f48af80cf"],"settings":{"title":"","size_title":"14px","color_title":"#222222","title_alignment":"text-left","spacing":"20","has_fullwidth":true,"background_color":"","class_section":"p_lr_20","distance_top":"20px","distance_bottom":"30px"}},"646819b0-e070-43cb-8a09-a3c04c5c096f":{"type":"nov-img-text","blocks":{"92c28541-a740-4428-8648-6a4447739637":{"type":"block_left","settings":{"icon":"shopify:\/\/shop_images\/i-1.png","title":"100% Pure natural hemp seed oil","class_text":""}},"c1774f82-0f34-4725-aaed-75ee5cd0712f":{"type":"block_left","settings":{"icon":"shopify:\/\/shop_images\/i-4.png","title":"Protect your skin from the sun light","class_text":""}},"113129a8-acf9-4af2-b917-e68a861af52b":{"type":"block_left","settings":{"icon":"shopify:\/\/shop_images\/i-2.png","title":"Provides a deep cleasing","class_text":""}},"9d545f6d-c62d-4816-9f48-3bcccdfd1405":{"type":"block_left","settings":{"icon":"shopify:\/\/shop_images\/i-5.png","title":"Avoid direct heat exposure","class_text":""}},"ab19a1b4-fd13-43d8-b58f-97d06ab71cf6":{"type":"block_left","settings":{"icon":"shopify:\/\/shop_images\/i-3.png","title":"Skin is restored with radiance","class_text":""}},"83988030-487f-4c77-93c3-d3d9d96b2dfa":{"type":"block_left","settings":{"icon":"shopify:\/\/shop_images\/i-6.png","title":"Keep irritants off your skin","class_text":""}}},"block_order":["92c28541-a740-4428-8648-6a4447739637","c1774f82-0f34-4725-aaed-75ee5cd0712f","113129a8-acf9-4af2-b917-e68a861af52b","9d545f6d-c62d-4816-9f48-3bcccdfd1405","ab19a1b4-fd13-43d8-b58f-97d06ab71cf6","83988030-487f-4c77-93c3-d3d9d96b2dfa"],"settings":{"title":"Safe and effective","t_color":"#000000","subheading":"Benefit","st_color":"#82ca9c","desc":"<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <\/p>","desc_color":"#000000","title_alignment":"text-left","image":"shopify:\/\/shop_images\/img-5.png","background_color":"#ebeff0","has_fullwidth":true,"class":"","distance_top":"95px","distance_bottom":"40px"}},"baa6f8cb-c79c-4bd3-982c-0fd24c3c6426":{"type":"nov-productdeal","settings":{"title":"","size_title":"","color_title":"#222222","subheading":"","size_sub":"","color_sub":"#222222","title_alignment":"text-left","class":"","product_handle":"faux-suede-biker-jacket","show_description":true,"distance_top":"50px","distance_bottom":"30px"}},"9f660423-a7ab-4f03-a0a8-98eec7becb74":{"type":"nov-video","settings":{"video_url":"https:\/\/cdn.shopify.com\/s\/files\/1\/0560\/8869\/0853\/files\/video.mp4?v=1618909090","title_video":"Natural and organic is the future of skincare and life as we know it.","size_title":"4.4rem","size_title_mb":"3rem","color_title":"#ffffff","subheading":"WHY KARL?","size_sub":"1.8rem","color_sub":"#e49178","button_enable":true,"color_button":"#6e6e6e","size_button":"1.6rem","video_youtube":"https:\/\/youtu.be\/-CHwHtwKIS0","title_alignment":"text-center","image_overlay_opacity":25,"class":"","distance_top":"30px","distance_bottom":"30px"}},"642f4a2d-1b40-4991-b304-72e7ea80a170":{"type":"nov-img-link-collection","blocks":{"642f4a2d-1b40-4991-b304-72e7ea80a170-16659755020bef8826-0":{"type":"block_text","settings":{"width":"col-xl-6","width_lg":"col-lg-6","width_md":"col-md-12","title":"Prep. Correct. Perfect.","size_title":"4.4rem","color_title":"#000000","subtitle":"Whether you have five minutes to get out the door or an hour to play, these bestsellers are the key to fresh, healthy-looking skin.","size_sub":"1.6rem","color_sub":"#000000","show_button":true,"button_label":"Shop The Essentials","color_button":"#222222","bg_title_link":"","button_link":"shopify:\/\/collections\/shop-skincare","class_text":""}},"642f4a2d-1b40-4991-b304-72e7ea80a170-16659755020bef8826-1":{"type":"block_image","settings":{"width":"col-xl-6","width_lg":"col-lg-6","width_md":"col-md-12","image":"shopify:\/\/shop_images\/img-6.jpg","class_image":""}}},"block_order":["642f4a2d-1b40-4991-b304-72e7ea80a170-16659755020bef8826-0","642f4a2d-1b40-4991-b304-72e7ea80a170-16659755020bef8826-1"],"settings":{"background_color":"","has_fullwidth":true,"class":"p_lr_20","distance_top":"70px","distance_bottom":"20px"}},"12199278-d4b3-4dde-a656-863bc4499b3f":{"type":"nov-img-certification","settings":{"title":"Vinova Image With Certification","t_color":"#000000","subheading":"Subtitle from happy customers","title_alignment":"text-left","image":"shopify:\/\/shop_images\/img-7.png","position":"bottom","heading":"No.1 Selling Skincare brand","size_title":"4.4rem","color_title":"#000000","subtitle":"AWARDS","size_sub":"1.8rem","color_sub":"#82ca9c","desc":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt","size_desc":"1.8rem","color_desc":"#000000","img1":"shopify:\/\/shop_images\/img-8.jpg","img2":"shopify:\/\/shop_images\/img-9.jpg","background_color":"#e5ede5","has_fullwidth":true,"class":"mt-100","distance_top":"0","distance_bottom":"0"}},"8ef294ef-d4fd-4485-83a4-f08f80af11ae":{"type":"nov-newsletter","settings":{"section_title":"Sign up now & get 10% off","size_title":"3rem","color_title":"#000000","subheading":"Be the first to know about our new arrivals and exclusive offers.","size_subheading":"1.6rem","color_subheading":"#000000","title_alignment":"text-center","background_color":"","background_image":"shopify:\/\/shop_images\/img-10.jpg","social_newsletter":false,"full_width":false,"distance_top":"90px","distance_bottom":"100px"}}},"content_for_index":["16181993638d9f1738","c028bb4b-d328-4a2f-9eb7-66de32bc84b0","f50256a7-8055-426c-8cbc-b8c585c5e813","646819b0-e070-43cb-8a09-a3c04c5c096f","baa6f8cb-c79c-4bd3-982c-0fd24c3c6426","9f660423-a7ab-4f03-a0a8-98eec7becb74","642f4a2d-1b40-4991-b304-72e7ea80a170","16214764952c69fa96","12199278-d4b3-4dde-a656-863bc4499b3f","5abbc140-56cc-4ccd-9904-3d9da64108e6","8ef294ef-d4fd-4485-83a4-f08f80af11ae","af6ad9da-a81d-44c8-8225-0ef1bf9a9299"],"blocks":{"855628211100114053":{"type":"shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507","disabled":false,"settings":{}},"14060646107696862457":{"type":"shopify:\/\/apps\/judge-me-reviews\/blocks\/judgeme_core\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8","disabled":false,"settings":{}},"12120936241911852800":{"type":"shopify:\/\/apps\/judge-me-reviews\/blocks\/reviews_tab\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8","disabled":false,"settings":{"position":"right"}},"14952540001915115444":{"type":"shopify:\/\/apps\/upcart-cart-drawer\/blocks\/app-embed\/af3da5fb-f5f7-40ec-8273-41bf50059d4b","disabled":false,"settings":{}},"8870143681839208269":{"type":"shopify:\/\/apps\/bold-discounts-the-sales-app\/blocks\/v3_cart-prices\/22ca27ee-084f-4527-b863-69a3cd4c8b2c","disabled":true,"settings":{"cart-total-value-locator":"totals__total-value","cart-item-locator":"cart-item","cart-line-item-price-locator":"price price--end","cart-item-price-locator":"product-option","cart-checkout-button-id":"checkout","check-cart-change-interval":1000}},"3973909653238217764":{"type":"shopify:\/\/apps\/bold-discounts-the-sales-app\/blocks\/v3_sales_clock\/22ca27ee-084f-4527-b863-69a3cd4c8b2c","disabled":true,"settings":{"inject-clock-in":"form[action='\/cart\/add']","enable-sales-clock-on-other-pages":false,"inject-clock-in-other":".shopify-section.section","product_id":"0","append-at-end":false}},"13951170544780599758":{"type":"shopify:\/\/apps\/tapita-seo-speed\/blocks\/app-embed\/cd37ca7a-40ad-4fdc-afd3-768701482209","disabled":false,"settings":{}},"11095253573082077043":{"type":"shopify:\/\/apps\/bold-discounts-the-sales-app\/blocks\/dup-and-hide\/22ca27ee-084f-4527-b863-69a3cd4c8b2c","disabled":false,"settings":{"product_element_locator":".grid__item","product_search_element_locator":".grid__item","predictive_search_element_locator":"#predictive-search-results-products-list","delay_pred_search":100}},"6279071938380501511":{"type":"shopify:\/\/apps\/powerful-form-builder\/blocks\/app-embed\/e4bcb1eb-35b2-42e6-bc37-bfe0e1542c9d","disabled":false,"settings":{}},"1965340868851369860":{"type":"shopify:\/\/apps\/bold-discounts-flash-sales\/blocks\/v3_price\/22ca27ee-084f-4527-b863-69a3cd4c8b2c","disabled":false,"settings":{"product-price-locator":"price-item price-item--regular","collection-item-locator":"card-wrapper","collection-item-price-locator":"price-item price-item--regular","delay-after-page-load":500,"delay-after-content-change":300,"check-variant-change-interval":1000,"enable-product-drawer":false,"listen-product-fetch":"\/products\/","drawer-locator":".quick-add-modal__content.global-settings-popup"}},"1792281811906624321":{"type":"shopify:\/\/apps\/unlimited-smart-upsell-offers\/blocks\/app-embed-block\/a5bd0e15-ca06-4f5c-9df9-a37857b468c9","disabled":true,"settings":{}},"16337957280554425121":{"type":"shopify:\/\/apps\/bold-discounts-flash-sales\/blocks\/sale-icon-product\/22ca27ee-084f-4527-b863-69a3cd4c8b2c","disabled":false,"settings":{"icon_style":"tag.svg","icon_height":56,"icon_width":56,"icon_position":"top-right","icon_style_custom":".shappify-sales-icon-product {}"}},"1602517437617170218":{"type":"shopify:\/\/apps\/bold-discounts-flash-sales\/blocks\/v3_sales_icon\/22ca27ee-084f-4527-b863-69a3cd4c8b2c","disabled":false,"settings":{"inject-icon-in":".product__media.media.media--transparent","append-at-end":false,"force_absolute":false,"inject-icon-in-collection":".card__media","icon_additional_css":"#bold_sales_icon {}"}},"2076966522491132125":{"type":"shopify:\/\/apps\/bold-discounts-flash-sales\/blocks\/sale-icon-collection\/22ca27ee-084f-4527-b863-69a3cd4c8b2c","disabled":false,"settings":{"icon_style":"banner.svg","icon_height":48,"icon_width":48,"icon_position":"top-right","custom_badge_class_selector":".card__badge { display: block !important; }","icon_style_custom":".shappify-sales-icon-product {}"}},"11760791271547246492":{"type":"shopify:\/\/apps\/bold-discounts-flash-sales\/blocks\/v3_bold_pr\/22ca27ee-084f-4527-b863-69a3cd4c8b2c","disabled":false,"settings":{"enable_compare_at":true,"skip_pr_js_load":false}},"10605408327587305396":{"type":"shopify:\/\/apps\/eg-auto-add-to-cart\/blocks\/app-embed\/0f7d4f74-1e89-4820-aec4-6564d7e535d2","disabled":false,"settings":{"version":"v3"}}}},"presets":{}}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "purchase_action": "active",
+    "license": "5b16625a-507d-46a2-a631-a1e8315be678",
+    "theme_color_default": "#000000",
+    "theme_color_primary": "#f69679",
+    "theme_color_success": "#494949",
+    "theme_color_hover": "#f69679",
+    "color_input": "#cbcbcb",
+    "color_default": "#000000",
+    "heading_text": "#222222",
+    "second_heading_text": "#444444",
+    "sub_heading_text": "#666666",
+    "color_title_product": "#000000",
+    "color_text": "#909090",
+    "color_body_text": "#000000",
+    "color_borders": "#e0e0e0",
+    "color_button": "#000000",
+    "color_button_hover": "#f69679",
+    "color_button_text": "#f7f7f7",
+    "type_base_family": "raleway_n4",
+    "type_base_size": "1.6rem",
+    "share_pinterest": false,
+    "social_twitter_link": "",
+    "social_facebook_link": "https://www.facebook.com/esncperfumery/",
+    "social_pinterest_link": "",
+    "social_instagram_link": "https://www.instagram.com/esncperfumery",
+    "social_dribbble_link": "",
+    "social_google_link": "",
+    "social_linkedin_link": "",
+    "social_tumblr_link": "",
+    "social_snapchat_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "social_tiktok_link": "https://www.tiktok.com/@esncperfumery",
+    "type_sidebar_blog": "sidebar_left",
+    "type_sidebar_article": "article_leftsidebar",
+    "type_sidebar": "sidebar_left",
+    "type_sidebar_product": "tab_desc",
+    "show_newsletter_popup": false,
+    "title_newsletter": "15% OFF ON YOUR FIRST ORDER. Enter Code <span class=\"poptext\">UNLOCK15%</span> NOT AVAILABLE ON BUNDLE AND SAVE OPTIONS",
+    "desc_newsletter": "",
+    "button_newsletter": "UNLOCK 15% BACK",
+    "notify_newsletter": "DON’T SHOW THIS POPUP AGAIN",
+    "bg_newsletter": "shopify://shop_images/New_unlock_pop_up_image.png",
+    "enable_rtl": false,
+    "show_multiple_currencies": false,
+    "title_currency": "Currency:",
+    "supported_currencies": "USD | EUR | GBP",
+    "show_key_trend": false,
+    "key_trend_1": "Shop Skincare",
+    "link_1": "shopify://collections/shop-skincare",
+    "key_trend_2": "Shop Makeup",
+    "link_2": "shopify://collections/shop-makeup",
+    "key_trend_3": "Face Serums",
+    "link_3": "shopify://collections/face-serums",
+    "key_trend_4": "New Arrivals",
+    "link_4": "shopify://collections/new-arrival",
+    "breadcrumbs_enable": false,
+    "background_image": "shopify://shop_images/breadcrumb.webp",
+    "overlay_opacity": true,
+    "image_overlay_opacity": 0,
+    "color_text_head": "#000000",
+    "color_text_head_hover": "#f69679",
+    "title_alignment": "justify-content-center",
+    "distance_top": "153px",
+    "distance_bottom": "146px",
+    "ticket_enable": true,
+    "show_rating": true,
+    "quickview_enable": false,
+    "wishlist_enable": false,
+    "payment_button_enable": true,
+    "variant_color_image": true,
+    "color_swatch_style": "variant",
+    "free_shipping": 99,
+    "show_size_chart": false,
+    "show_related": false,
+    "title_related": "You may also like",
+    "autoplay": false,
+    "nav": true,
+    "dots": false,
+    "col_desktop": 5,
+    "spacing": "60",
+    "mini_cart_type": "canvas",
+    "logo_tabbar": "shopify://shop_images/logo_account.png",
+    "collec_1_name": "BUY 2 GET 1 FREE",
+    "collec_1": "shopify://collections/buy-2-get-1-free",
+    "collec_2_name": "HER",
+    "collec_2": "shopify://collections/womens-perfumes",
+    "collec_3_name": "HIM",
+    "collec_3": "shopify://collections/mens-perfumes",
+    "collec_4_name": "UNISEX",
+    "collec_4": "shopify://collections/unisex-perfumes",
+    "collec_5_name": "BODY CARE",
+    "collec_5": "shopify://collections/body-care",
+    "favicon": "shopify://shop_images/logo.svg",
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify://shop_images/logo.svg",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "large",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#ffffff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#e8f3f6",
+    "checkout_heading_font": "Roboto",
+    "checkout_body_font": "Source Sans Pro",
+    "checkout_accent_color": "#1990c6",
+    "checkout_button_color": "#23314e",
+    "checkout_error_color": "#ff6d6d",
+    "cart_notes_enable": true,
+    "img_nocart": "shopify://shop_images/no-cart_200x_a221cc42-776e-4b89-9fba-c18945ec4dda.png",
+    "size_women": "shopify://shop_images/women.png",
+    "size_men": "shopify://shop_images/men.png",
+    "crop_product": false,
+    "color_menu": "#222222",
+    "type_header_family": "Google_Poppins_400_sans",
+    "type_header_base_size": "2.6rem",
+    "type_bold_product_titles": false,
+    "vendor_enable": false,
+    "cart_vendor_enable": false,
+    "ajax_cart_method": "pop_up",
+    "h_bg_color": "#ffffff",
+    "h_top": "#000000",
+    "h_social": "#ffffff",
+    "h_annou_color": "#ffffff",
+    "h_link_annou_color": "#ff0000",
+    "h_currency": "#ffffff",
+    "h_currency_content": "#222222",
+    "h_btn_menu": "#000000",
+    "h_btn_menutext": "#ffffff",
+    "h_btn_search": "#f4f4f4",
+    "h_btn_searchtext": "#222222",
+    "h_btn_search_border": "#eaeaea",
+    "h_btn_searchsm": "#000000",
+    "h_btn_searchtextsm": "#ffffff",
+    "h_label": "#909090",
+    "h_wishlist": "#222222",
+    "h_bg_sticky": "#ffffff",
+    "sub_heading_menu": "#222222",
+    "tooltip_enable": "true",
+    "color_body_bg": "#ffffff",
+    "mobile_mainmenu_type": "canvas",
+    "color_sale_text": "#000000",
+    "heading_hover": "#fd6666",
+    "color_small_button": "#878787",
+    "color_small_button_text": "#ffffff",
+    "color_text_field": "#fff",
+    "color_text_field_text": "#000000",
+    "color_icon_font": "#383838",
+    "color_image_overlay_text": "#fff",
+    "color_image_overlay": "#3d4246",
+    "menu_link": "#444444",
+    "show_multiple_language": false,
+    "title_language": "Language:",
+    "color_bg_product": "#f5f5f5",
+    "social_twitter_image": "shopify://shop_images/tw_40x_bdf1b78a-35a0-4799-916c-f1d53e9e92b8.png",
+    "social_facebook_image": "shopify://shop_images/facebook.png",
+    "social_dribbble_image": "shopify://shop_images/dribbble_40x_b118f5e7-4fc5-4827-9b2a-eeabd2a86eb1.png",
+    "social_pinterest_image": "",
+    "social_instagram_image": "shopify://shop_images/instagram.png",
+    "social_tumblr_image": "",
+    "social_snapchat_image": "",
+    "social_youtube_image": "",
+    "social_vimeo_image": "",
+    "enable_iconmenumain": false,
+    "icon_menumain_1": "",
+    "icon_menumain_2": "",
+    "icon_menumain_3": "",
+    "icon_menumain_4": "",
+    "icon_menumain_5": "",
+    "icon_menumain_6": "",
+    "icon_menumain_7": "",
+    "icon_menumain_8": "",
+    "icon_menumain_9": "",
+    "icon_menumain_10": "",
+    "sections": {
+      "nov-sidebar": {
+        "type": "nov-sidebar",
+        "blocks": {
+          "1523617300550": {
+            "type": "block_filter",
+            "settings": {
+              "block_class": "",
+              "filter_type": true,
+              "filter_vendor": true,
+              "filter_tags": true,
+              "filter_size": true,
+              "filter_size_value": "50ml, 100ml, 150ml, 200ml, 250ml",
+              "filter_color": true,
+              "filter_color_value": "Lightslategray, Linen, Plum, Hotpink, Black, Lightblue, Midnightblue, Seashell, Grey, Gray, Lightgrey, Darkolivegreen, Lightcoral, Brown, Indianred",
+              "filter_price": true,
+              "filter_price_value": "$10 - $100, $101 - $200, $201 - $300, $301 - $400"
+            }
+          }
+        },
+        "block_order": [
+          "1523617300550"
+        ],
+        "settings": {}
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "products_per_page": 12
+        }
+      },
+      "nov-sidebar-article": {
+        "type": "nov-sidebar-article",
+        "blocks": {
+          "2fbb9130-51df-4ad0-8282-1e54a212cd6e": {
+            "type": "block_search",
+            "settings": {
+              "class": ""
+            }
+          },
+          "1522144034842": {
+            "type": "block_categories",
+            "settings": {
+              "sidebar_categories_title": "Categories",
+              "sidebar_categories_menu": "",
+              "class": ""
+            }
+          },
+          "1522144043288": {
+            "type": "block_recentpost",
+            "settings": {
+              "block_title": "Recent post",
+              "number_show": 4,
+              "show_date": true,
+              "show_comment": false,
+              "show_author": false,
+              "show_excerpt": false,
+              "show_more": false,
+              "class": ""
+            }
+          }
+        },
+        "block_order": [
+          "2fbb9130-51df-4ad0-8282-1e54a212cd6e",
+          "1522144034842",
+          "1522144043288"
+        ],
+        "settings": {}
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "settings": {
+          "layout": "grid",
+          "blog_show_author": true,
+          "blog_show_date": true,
+          "blog_show_comment": true
+        }
+      },
+      "nov-sidebar-detail": {
+        "type": "nov-sidebar-detail",
+        "blocks": {
+          "1522994949788": {
+            "type": "block_categories",
+            "settings": {
+              "sidebar_categories_title": "Categories",
+              "sidebar_categories_class": "",
+              "sidebar_categories_menu": ""
+            }
+          },
+          "1522994844112": {
+            "type": "block_productlist",
+            "settings": {
+              "sidebar_productlist_title": "Best sellers",
+              "sidebar_productlist_class": "",
+              "sidebar_collection": "",
+              "number_show": 3
+            }
+          },
+          "1522994963120": {
+            "type": "block_producttags",
+            "settings": {
+              "block_title": "Product Tags",
+              "block_class": "",
+              "number_show": 20
+            }
+          }
+        },
+        "block_order": [
+          "1522994949788",
+          "1522994844112",
+          "1522994963120"
+        ],
+        "settings": {}
+      },
+      "nov-product-template": {
+        "type": "nov-product-template",
+        "blocks": {
+          "1600059348586": {
+            "type": "block_text",
+            "settings": {
+              "custom_title": "Delivery policy",
+              "custom_content": "<h6><strong>Lorem ipsum dolor sit amet</strong></h6>\n<p>Vivamus a placerat dolor. Proin ut vehicula mauris. Etiam sagittis augue ipsum. Aliquam vestibulum massa nulla, ullamcorper aliquam diam feugiat vel. Fusce porttitor ultrices ante, posuere vehicula lacus tempor eu. Sed et purus et massa mattis aliquet ac vel dolor. Pellentesque eros lectus, placerat nec finibus ac, lobortis eu risus.</p>\n<p class=\"mb-20\">Donec fringilla metus ligula, sit amet fermentum ex laoreet non</p>\n<p>- Ribbed and double stitched collar and armholes</p>\n<p>- High-density fabric for vivid print clarity</p>\n<p>- Machine-wash safeSingle right rear button flap pocket</p>\n<p class=\"mb-20\">- Products are proudly printed in the United States</p>\n<p>Curabitur egestas suscipit odio. Nam vitae aliquam dui</p>\n<p>in laoreet elit. In posuere augue id velit placerat, vitae porttitor leo aliquet. Aenean non ligula sed lorem eleifend aliquam. Morbi posuere faucibus viverra. Proin ullamcorper, lorem lacinia cursus finibus.</p>"
+            }
+          },
+          "1600059475832": {
+            "type": "block_text",
+            "settings": {
+              "custom_title": "Returns & Exchanges Policy",
+              "custom_content": "<h6><em><strong>Nullam at mi accumsan, fermentum turpis at, hendrerit tortor</strong></em></h6>\n<p class=\"mb-20\">Vivamus commodo magna rutrum ipsum convallis luctus. Maecenas sollicitudin tincidunt sem at consectetur. Sed ligula elit, sodales feugiat porttitor non, commodo in ipsum. Donec vehicula orci et pharetra laoreet. Donec feugiat, nibh ac ornare hendrerit, dui augue semper felis, a finibus dui felis quis magna. Curabitur a ligula purus. Suspendisse vestibulum lorem non tellus aliquet blandit.</p>\n<p class=\"mb-20\">Proin cursus sollicitudin scelerisque. Donec ultrices elit quis magna lobortis porttitor. Quisque et consectetur mauris. Sed facilisis malesuada ante eget blandit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque rutrum mattis ex ac sagittis. Nulla convallis euismod ipsum, a mollis sapien fringilla eget. Nam dignissim ornare nisi, in bibendum nibh auctor id.</p>\n<p>Quisque dictum justo id velit dapibus, id mollis diam tincidunt. Donec luctus tincidunt ultrices. Sed condimentum ante accumsan, sagittis lorem quis, dictum enim. Nam et facilisis odio. Ut iaculis dui non interdum accumsan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lacus sem, molestie non convallis nec, tristique a lacus. Proin eget lacus semper dui imperdiet accumsan. Morbi sagittis erat ac justo congue, a ornare tortor mollis. Aenean eu vulputate diam. Praesent suscipit ex non elit finibus ultricies.</p>"
+            }
+          }
+        },
+        "block_order": [
+          "1600059348586",
+          "1600059475832"
+        ],
+        "settings": {
+          "show_notes": true,
+          "show_quantity_selector": true,
+          "product_swatch_enable": true,
+          "show_share": true,
+          "show_vendor": false,
+          "show_sku": true,
+          "show_categories": true,
+          "show_tags": true,
+          "show_available": false,
+          "show_des": true,
+          "enable_zoom": true,
+          "show_description": true,
+          "show_payments": true,
+          "title_payments": "Guaranteed safe checkout:",
+          "size_title": "12px",
+          "color_title_payments": "#222222",
+          "payments": "shopify://shop_images/payment.png",
+          "time": "Orders ship within 5 to 10 business days.",
+          "size_time": "14px",
+          "color_time": "#494949",
+          "truck": "<strong>Hoorey </strong>! This item ships free to the US",
+          "size_truck": "14px",
+          "color_truck": "#494949",
+          "background_color": "#f5f5f5"
+        }
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "blocks": {
+          "1523246702524": {
+            "type": "collection",
+            "settings": {
+              "collection": ""
+            }
+          },
+          "1523246716784": {
+            "type": "collection",
+            "settings": {
+              "collection": ""
+            }
+          }
+        },
+        "block_order": [
+          "1523246702524",
+          "1523246716784"
+        ],
+        "settings": {
+          "display_type": "all",
+          "sort": "alphabetical",
+          "grid": "4"
+        }
+      },
+      "cart-template": {
+        "type": "cart-template",
+        "settings": {}
+      },
+      "nov-page404": {
+        "type": "nov-page404",
+        "settings": {
+          "title": "Page Not found",
+          "subheading": "We’re sorry — something has gone wrong on our end.",
+          "desc": "If difficulties persist, please contact the System Administrator of this site and report the error below..",
+          "background_color": "#00426f",
+          "image": "shopify://shop_images/404-1.png"
+        }
+      },
+      "nov-slideshow": {
+        "type": "nov-slideshow",
+        "blocks": {
+          "1528274241275": {
+            "type": "image",
+            "settings": {
+              "caption_1": "<i>Headlight & Tire</i>",
+              "color_cap1": "#ffffff",
+              "fz_cap1": "l",
+              "fz_cap1t": "",
+              "fz_cap1m": "",
+              "fz_cap1mb": "",
+              "cap_animate_1": "fadeInLeft",
+              "caption_2": "Only $300",
+              "color_cap2": "#ffffff",
+              "fz_cap2": "m",
+              "fz_cap2t": "",
+              "fz_cap2m": "",
+              "fz_cap2mb": "",
+              "cap_animate_2": "fadeInRight",
+              "caption_3": "Lorem ipsum dolor sit amet, consectetur adipiscing \nelit integer pellentesque ut velit",
+              "color_cap3": "#ffffff",
+              "fz_cap3": "s",
+              "fz_cap3t": "",
+              "fz_cap3m": "",
+              "fz_cap3mb": "",
+              "cap_animate_3": "fadeInRight",
+              "title_link": "",
+              "color_cap_link": "#fff",
+              "background_cap_link": "#000",
+              "cap_link_animate": "bounce",
+              "text_align": "left",
+              "width_position": "55",
+              "width_position_desktop": "75",
+              "width_position_tablet": "100",
+              "width_position_mobile": "100",
+              "left_position": "8",
+              "left_position_desktop": "8",
+              "left_position_tablet": "8",
+              "left_position_mobile": "8",
+              "top_position": "25.7",
+              "top_position_desktop": "20",
+              "top_position_t": "50",
+              "top_position_m": "50",
+              "slider_link": "#"
+            }
+          },
+          "1528433230156": {
+            "type": "image",
+            "settings": {
+              "caption_1": "<i>Brake Systems</i>",
+              "color_cap1": "#ffffff",
+              "fz_cap1": "l",
+              "fz_cap1t": "",
+              "fz_cap1m": "",
+              "fz_cap1mb": "",
+              "cap_animate_1": "fadeInDown",
+              "caption_2": "Best Choice",
+              "color_cap2": "#ffffff",
+              "fz_cap2": "l",
+              "fz_cap2t": "",
+              "fz_cap2m": "",
+              "fz_cap2mb": "",
+              "cap_animate_2": "fadeInLeft",
+              "caption_3": "Lorem ipsum dolor sit amet, consectetur adipiscing \nelit integer pellentesque ut velit",
+              "color_cap3": "#ffffff",
+              "fz_cap3": "s",
+              "fz_cap3t": "",
+              "fz_cap3m": "",
+              "fz_cap3mb": "",
+              "cap_animate_3": "fadeInUp",
+              "title_link": "",
+              "color_cap_link": "#fff",
+              "background_cap_link": "#000",
+              "cap_link_animate": "bounce",
+              "text_align": "left",
+              "width_position": "55",
+              "width_position_desktop": "75",
+              "width_position_tablet": "100",
+              "width_position_mobile": "100",
+              "left_position": "10",
+              "left_position_desktop": "10",
+              "left_position_tablet": "10",
+              "left_position_mobile": "10",
+              "top_position": "25.7",
+              "top_position_desktop": "20",
+              "top_position_t": "50",
+              "top_position_m": "50",
+              "slider_link": "#"
+            }
+          },
+          "1528433236151": {
+            "type": "image",
+            "settings": {
+              "caption_1": "<i>Headlights</i>",
+              "color_cap1": "#ff1e1e",
+              "fz_cap1": "xl",
+              "fz_cap1t": "",
+              "fz_cap1m": "",
+              "fz_cap1mb": "",
+              "cap_animate_1": "fadeInLeft",
+              "caption_2": "Best Choice",
+              "color_cap2": "#ffffff",
+              "fz_cap2": "l",
+              "fz_cap2t": "",
+              "fz_cap2m": "",
+              "fz_cap2mb": "",
+              "cap_animate_2": "fadeInDown",
+              "caption_3": "Lorem ipsum dolor sit amet, consectetur adipiscing \nelit integer pellentesque ut velit",
+              "color_cap3": "#ffffff",
+              "fz_cap3": "s",
+              "fz_cap3t": "",
+              "fz_cap3m": "",
+              "fz_cap3mb": "",
+              "cap_animate_3": "zoomIn",
+              "title_link": "",
+              "color_cap_link": "#fff",
+              "background_cap_link": "#000",
+              "cap_link_animate": "bounce",
+              "text_align": "left",
+              "width_position": "55",
+              "width_position_desktop": "75",
+              "width_position_tablet": "100",
+              "width_position_mobile": "100",
+              "left_position": "10",
+              "left_position_desktop": "10",
+              "left_position_tablet": "10",
+              "left_position_mobile": "10",
+              "top_position": "25.7",
+              "top_position_desktop": "20",
+              "top_position_t": "50",
+              "top_position_m": "50",
+              "slider_link": "#"
+            }
+          }
+        },
+        "block_order": [
+          "1528274241275",
+          "1528433230156",
+          "1528433236151"
+        ],
+        "settings": {
+          "autoplay": false,
+          "arrows": false,
+          "dots": true,
+          "has_fullwidth": true,
+          "distance_top": "0",
+          "distance_bottom": "40px"
+        }
+      },
+      "nov-gallery-image": {
+        "type": "nov-gallery-image",
+        "blocks": {
+          "1529143775247": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "cta_label": "",
+              "link": "",
+              "class": ""
+            }
+          }
+        },
+        "block_order": [
+          "1529143775247"
+        ],
+        "settings": {
+          "title": "Vinova Products Slider",
+          "title_alignment": "text-left",
+          "spacing": "0",
+          "has_fullwidth": true,
+          "background_color": "",
+          "class_section": "",
+          "distance_top": "30px",
+          "distance_bottom": "30px"
+        }
+      },
+      "nov-blog": {
+        "type": "nov-blog",
+        "settings": {
+          "title": "Latest posts",
+          "subheading": "",
+          "title_alignment": "text-left",
+          "blog": "news",
+          "type_option": "slider",
+          "grid_number": 1,
+          "grid_number_lg_tablet": 1,
+          "items_tablet": 2,
+          "items_mobile": 2,
+          "number_row": "1",
+          "limit": 8,
+          "show_image": true,
+          "show_dots": true,
+          "show_nav": false,
+          "blog_show_comments": false,
+          "blog_show_author": false,
+          "blog_show_date": true,
+          "blog_show_excerpt": false,
+          "show_view_all": false,
+          "class": "",
+          "has_fullwidth": true,
+          "background_color": "",
+          "background_image": "",
+          "distance_top": "0",
+          "distance_bottom": "80px"
+        }
+      },
+      "nov-testimonials": {
+        "type": "nov-testimonials",
+        "settings": {
+          "title": "",
+          "title_alignment": "text-left",
+          "show_dots": true,
+          "background_color": "#f1efe8",
+          "background_image": "",
+          "full_width": true,
+          "class": "",
+          "distance_top": "30px",
+          "distance_bottom": "30px"
+        }
+      },
+      "nov-manufacture": {
+        "type": "nov-manufacture",
+        "blocks": {
+          "1528360735012": {
+            "type": "logo_image",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1528361007518": {
+            "type": "logo_image",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1528361022544": {
+            "type": "logo_image",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1528361033903": {
+            "type": "logo_image",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1528361042661": {
+            "type": "logo_image",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1528361050747": {
+            "type": "logo_image",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1528360735012",
+          "1528361007518",
+          "1528361022544",
+          "1528361033903",
+          "1528361042661",
+          "1528361050747"
+        ],
+        "settings": {
+          "class": "",
+          "show_number": "6",
+          "number_tablet": "4",
+          "number_mobile": "2",
+          "limit": 8,
+          "spacing": "10",
+          "background_color": "",
+          "background_image": "",
+          "has_fullwidth": true,
+          "distance_top": "30px",
+          "distance_bottom": "30px"
+        }
+      },
+      "nov-newsletter": {
+        "type": "nov-newsletter",
+        "settings": {
+          "section_title": "Newsletter",
+          "color_title": "",
+          "subheading": "Sign up for newsletter to receive special offers",
+          "color_subheading": "",
+          "background_color": "",
+          "background_image": "",
+          "full_width": false,
+          "distance_top": "30px",
+          "distance_bottom": "30px"
+        }
+      },
+      "article-template": {
+        "type": "article-template",
+        "settings": {
+          "blog_show_image_feature": true,
+          "blog_show_author": true,
+          "blog_show_date": true,
+          "show_share_buttons": true
+        }
+      },
+      "nov-page-contact": {
+        "type": "nov-page-contact",
+        "settings": {
+          "iframe_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4082.7742465747338!2d-79.38287617561478!3d43.64905556573276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b34d2a57d767f%3A0x935ab2eb9fd5fb31!2sFirst%20Canadian%20Place!5e0!3m2!1svi!2s!4v1591603052999!5m2!1svi!2s",
+          "contact_email": "shopify://shop_images/icon-contact-3.png",
+          "email": "Support@domain.com",
+          "contact_address": "shopify://shop_images/icon-contact-2.png",
+          "addr": "PO Box 1622 Vissaosang Street West",
+          "contact_hotline": "shopify://shop_images/icon-contact-1.png",
+          "hotline": "84-0123-456-789",
+          "title_contact_message": "",
+          "sub_contact_message": ""
+        }
+      },
+      "nov-header": {
+        "type": "nov-header",
+        "blocks": {
+          "2904b8c8-d026-4aaa-99f0-cafe3076aad1": {
+            "type": "text",
+            "disabled": true,
+            "settings": {
+              "novmenu_item": "Pages",
+              "submenu_width": "100%",
+              "collection_enable": false,
+              "novmenu_collection_col_lg": "col-xl-3",
+              "novmenu_collection_col": "col-lg-12",
+              "name_collec_1": "Best Sellers",
+              "size_title_1": "14px",
+              "color_title_1": "#1a1a1a",
+              "link_1": "",
+              "name_collec_2": "New Arrival",
+              "size_title_2": "14px",
+              "color_title_2": "#1a1a1a",
+              "link_2": "",
+              "name_collec_3": "Top Trending",
+              "size_title_3": "14px",
+              "color_title_3": "#1a1a1a",
+              "link_3": "",
+              "name_collec_4": "Top Trending",
+              "size_title_4": "14px",
+              "color_title_4": "#1a1a1a",
+              "link_4": "",
+              "name_collec_5": "Denim Collection",
+              "size_title_5": "14px",
+              "color_title_5": "#1a1a1a",
+              "link_5": "",
+              "novmenu_menu_enable": true,
+              "novmenu_menu_col_lg": "col-xl-12",
+              "novmenu_menu_col": "col-lg-12",
+              "novmenu_menu_menucol_lg": "col-xl-4",
+              "novmenu_menu_menucol": "col-lg-12",
+              "banner_enable": false,
+              "novmenu_banner_col_lg": "col-xl-4",
+              "novmenu_banner_col": "col-lg-4",
+              "novmenu_banner_enable": false,
+              "image_size": "255x300",
+              "novmenu_banner_link": "",
+              "product_enable": false,
+              "novmenu_product_col_lg": "col-xl-4",
+              "novmenu_product_col": "col-lg-4",
+              "title_product": "Featured Product",
+              "size_title": "14px",
+              "color_title": "#1a1a1a",
+              "product_1": "",
+              "product_2": "",
+              "product_3": "",
+              "autoplay": true,
+              "show_dots": true,
+              "class": ""
+            }
+          },
+          "cc78428e-b884-4783-a505-816c7a9a7046": {
+            "type": "text",
+            "disabled": true,
+            "settings": {
+              "novmenu_item": "Makeup",
+              "submenu_width": "100%",
+              "collection_enable": false,
+              "novmenu_collection_col_lg": "col-xl-3",
+              "novmenu_collection_col": "col-lg-3",
+              "name_collec_1": "Best Sellers",
+              "size_title_1": "14px",
+              "color_title_1": "#1a1a1a",
+              "link_1": "shopify://collections/best-sellers",
+              "name_collec_2": "New Arrival",
+              "size_title_2": "14px",
+              "color_title_2": "#1a1a1a",
+              "link_2": "shopify://collections/new-arrivals",
+              "name_collec_3": "Top Trending",
+              "size_title_3": "14px",
+              "color_title_3": "#1a1a1a",
+              "link_3": "shopify://collections/mens-perfumes",
+              "name_collec_4": "Top Trending",
+              "size_title_4": "14px",
+              "color_title_4": "#1a1a1a",
+              "link_4": "shopify://collections/wonmen",
+              "name_collec_5": "Denim Collection",
+              "size_title_5": "14px",
+              "color_title_5": "#1a1a1a",
+              "link_5": "shopify://collections/featured-products",
+              "novmenu_menu_enable": true,
+              "novmenu_menu_col_lg": "col-xl-8",
+              "novmenu_menu_col": "col-lg-12",
+              "novmenu_menu_menucol_lg": "col-xl-4",
+              "novmenu_menu_menucol": "col-lg-12",
+              "banner_enable": true,
+              "novmenu_banner_col_lg": "col-xl-4",
+              "novmenu_banner_col": "col-lg-12",
+              "novmenu_banner_enable": true,
+              "image_size": "454x245",
+              "novmenu_banner_link": "",
+              "product_enable": false,
+              "novmenu_product_col_lg": "col-xl-4",
+              "novmenu_product_col": "col-lg-4",
+              "title_product": "Featured Product",
+              "size_title": "14px",
+              "color_title": "#1a1a1a",
+              "product_1": "",
+              "product_2": "",
+              "product_3": "",
+              "autoplay": true,
+              "show_dots": true,
+              "class": ""
+            }
+          },
+          "95e5ed53-592a-471f-9b5a-afafad302575": {
+            "type": "text",
+            "disabled": true,
+            "settings": {
+              "novmenu_item": "Skincare",
+              "submenu_width": "100%",
+              "collection_enable": false,
+              "novmenu_collection_col_lg": "col-xl-3",
+              "novmenu_collection_col": "col-lg-3",
+              "name_collec_1": "Best Sellers",
+              "size_title_1": "14px",
+              "color_title_1": "#1a1a1a",
+              "link_1": "shopify://collections/best-sellers",
+              "name_collec_2": "New Arrival",
+              "size_title_2": "14px",
+              "color_title_2": "#1a1a1a",
+              "link_2": "shopify://collections/new-arrivals",
+              "name_collec_3": "Top Trending",
+              "size_title_3": "14px",
+              "color_title_3": "#1a1a1a",
+              "link_3": "shopify://collections/mens-perfumes",
+              "name_collec_4": "Top Trending",
+              "size_title_4": "14px",
+              "color_title_4": "#1a1a1a",
+              "link_4": "shopify://collections/wonmen",
+              "name_collec_5": "Denim Collection",
+              "size_title_5": "14px",
+              "color_title_5": "#1a1a1a",
+              "link_5": "shopify://collections/featured-products",
+              "novmenu_menu_enable": true,
+              "novmenu_menu_col_lg": "col-xl-8",
+              "novmenu_menu_col": "col-lg-12",
+              "novmenu_menu_menucol_lg": "col-xl-4",
+              "novmenu_menu_menucol": "col-lg-12",
+              "banner_enable": false,
+              "novmenu_banner_col_lg": "col-xl-4",
+              "novmenu_banner_col": "col-lg-4",
+              "novmenu_banner_enable": false,
+              "image_size": "255x300",
+              "novmenu_banner_link": "",
+              "product_enable": true,
+              "novmenu_product_col_lg": "col-xl-4",
+              "novmenu_product_col": "col-lg-12",
+              "title_product": "",
+              "size_title": "14px",
+              "color_title": "#1a1a1a",
+              "product_1": "biker-jacket-with-pockets",
+              "product_2": "bomber-jacket",
+              "product_3": "classic-shirt-with-pocket",
+              "autoplay": true,
+              "show_dots": true,
+              "class": ""
+            }
+          },
+          "22027ec9-aee5-48a3-aed3-ae3cb3dc4bd0": {
+            "type": "text",
+            "disabled": true,
+            "settings": {
+              "novmenu_item": "Body",
+              "submenu_width": "100%",
+              "collection_enable": true,
+              "novmenu_collection_col_lg": "col-xl-3",
+              "novmenu_collection_col": "col-lg-12",
+              "name_collec_1": "Best Sellers",
+              "size_title_1": "14px",
+              "color_title_1": "#1a1a1a",
+              "link_1": "#",
+              "name_collec_2": "New Arrival",
+              "size_title_2": "14px",
+              "color_title_2": "#1a1a1a",
+              "link_2": "#",
+              "name_collec_3": "Trending now",
+              "size_title_3": "14px",
+              "color_title_3": "#1a1a1a",
+              "link_3": "#",
+              "name_collec_4": "On Sale <span>(Up To 70 %)</span>",
+              "size_title_4": "14px",
+              "color_title_4": "#1a1a1a",
+              "link_4": "#",
+              "name_collec_5": "",
+              "size_title_5": "14px",
+              "color_title_5": "#1a1a1a",
+              "link_5": "",
+              "novmenu_menu_enable": true,
+              "novmenu_menu_col_lg": "col-xl-9",
+              "novmenu_menu_col": "col-lg-12",
+              "novmenu_menu_menucol_lg": "col-xl-4",
+              "novmenu_menu_menucol": "col-lg-12",
+              "banner_enable": false,
+              "novmenu_banner_col_lg": "col-xl-4",
+              "novmenu_banner_col": "col-lg-4",
+              "novmenu_banner_enable": false,
+              "image_size": "255x300",
+              "novmenu_banner_link": "",
+              "product_enable": false,
+              "novmenu_product_col_lg": "col-xl-4",
+              "novmenu_product_col": "col-lg-4",
+              "title_product": "Featured Product",
+              "size_title": "14px",
+              "color_title": "#1a1a1a",
+              "product_1": "",
+              "product_2": "",
+              "product_3": "",
+              "autoplay": true,
+              "show_dots": true,
+              "class": "menu_x"
+            }
+          }
+        },
+        "block_order": [
+          "2904b8c8-d026-4aaa-99f0-cafe3076aad1",
+          "cc78428e-b884-4783-a505-816c7a9a7046",
+          "95e5ed53-592a-471f-9b5a-afafad302575",
+          "22027ec9-aee5-48a3-aed3-ae3cb3dc4bd0"
+        ],
+        "settings": {
+          "logo": "shopify://shop_images/dark-logo.png",
+          "width_lg": 150,
+          "logo_mobile": "shopify://shop_images/dark-logo.png",
+          "width_lg_mb": 62,
+          "announcement_on_off": true,
+          "social": false,
+          "announcement": "<p>FREE & FAST SHIPPING ON ORDERS OVER $99 →   <a href=\"/collections/top-sellers\" title=\"Top Sellers\"><span style=\"text-decoration:underline\">SHOP NOW</span></a></p>",
+          "announcement_c": "#000000",
+          "announcement_bg": "#f7f7f7",
+          "stickymenu": true,
+          "main_linklist": "main-menu",
+          "size_menu": "1.5rem",
+          "color_menu": "#ffffff",
+          "novmenu_enable": true,
+          "background_color": "#000000",
+          "background_color_mobile": "#000000",
+          "color_mobile": "#f7f7f7",
+          "background_color_sticky": "#000000",
+          "background_color_inner": "#000000"
+        }
+      },
+      "nov-footer": {
+        "type": "nov-footer",
+        "blocks": {
+          "60142640-4a89-4928-bd2f-0900dc2c1e57": {
+            "type": "block_contact",
+            "settings": {
+              "width_xl_desktop": "col-xl-4",
+              "width_lg_desktop": "col-lg-4",
+              "width_md_tablet": "col-md-12",
+              "width_sm_mobile": "col-sm-12",
+              "block_title": "About Us",
+              "size_title": "1.8rem",
+              "color_title": "#ffffff",
+              "logo_footer": "shopify://shop_images/logo.svg",
+              "contact_phone": "",
+              "size_phone": "1.8rem",
+              "color_phone": "#ffffff",
+              "contact_email": "",
+              "size_email": "1.8rem",
+              "color_email": "#ffffff",
+              "contact_address": "Established in 2022, ESNC perfumery is a progressive perfumery born of the idea and motto that ‘smelling good was never this affordable’. Using high quality essences sourced from France, our perfumes are manufactured in Turkey.",
+              "size_address": "1.8rem",
+              "color_address": "#ffffff",
+              "contact_hours": "",
+              "size_hours": "1.8rem",
+              "color_hours": "#ffffff",
+              "block_class": ""
+            }
+          },
+          "146745b7-0a81-4eed-a0cd-f0d3be20a867": {
+            "type": "block_menu",
+            "settings": {
+              "width_xl_desktop": "col-xl-3",
+              "width_lg_desktop": "col-lg-3",
+              "width_md_tablet": "col-md-5",
+              "width_sm_mobile": "col-sm-5",
+              "block_title": "Products",
+              "size_title": "1.8rem",
+              "color_title": "#ffffff",
+              "menu_handle": "product-menu",
+              "size_menu": "1.6rem",
+              "color_menu": "#ffffff",
+              "block_class": "mb-md-60 mb-xs-0"
+            }
+          },
+          "3ea721f0-020d-4c11-b929-ef1ce5c19ff3": {
+            "type": "block_menu",
+            "settings": {
+              "width_xl_desktop": "col-xl-3",
+              "width_lg_desktop": "col-lg-3",
+              "width_md_tablet": "col-md-7",
+              "width_sm_mobile": "col-sm-7",
+              "block_title": "Customer Services",
+              "size_title": "1.8rem",
+              "color_title": "#ffffff",
+              "menu_handle": "customer-services",
+              "size_menu": "1.6rem",
+              "color_menu": "#ffffff",
+              "block_class": ""
+            }
+          },
+          "a212aea3-b44e-42fc-9899-22e993fc92f9": {
+            "type": "block_menu",
+            "settings": {
+              "width_xl_desktop": "col-xl-2",
+              "width_lg_desktop": "col-lg-2",
+              "width_md_tablet": "col-md-5",
+              "width_sm_mobile": "col-sm-5",
+              "block_title": "Account",
+              "size_title": "1.8rem",
+              "color_title": "#ffffff",
+              "menu_handle": "account",
+              "size_menu": "1.6rem",
+              "color_menu": "#ffffff",
+              "block_class": ""
+            }
+          },
+          "image_aQKFLf": {
+            "type": "image",
+            "settings": {
+              "paymentlogo": "shopify://shop_images/afterpay-icon.png"
+            }
+          },
+          "image_KBy7GH": {
+            "type": "image",
+            "settings": {
+              "paymentlogo": "shopify://shop_images/klarna_logo_icon_4215f877-4eab-4a0e-b5c4-237c8176c015.png"
+            }
+          },
+          "image_F3hPL9": {
+            "type": "image",
+            "settings": {
+              "paymentlogo": "shopify://shop_images/shippingzip-pay-icon.png"
+            }
+          },
+          "image_znfbHh": {
+            "type": "image",
+            "settings": {
+              "paymentlogo": "shopify://shop_images/logo-paypal.png"
+            }
+          },
+          "image_cJcjBQ": {
+            "type": "image",
+            "disabled": true,
+            "settings": {
+              "paymentlogo": "shopify://shop_images/paypal.png"
+            }
+          },
+          "image_iYbDwb": {
+            "type": "image",
+            "disabled": true,
+            "settings": {
+              "paymentlogo": "shopify://shop_images/Afterpay_364881cc-c7ba-43f3-8d65-1f9f966aa5a0.png"
+            }
+          },
+          "image_KHU7rh": {
+            "type": "image",
+            "disabled": true,
+            "settings": {
+              "paymentlogo": "shopify://shop_images/zip-au.png"
+            }
+          },
+          "image_tRTwcw": {
+            "type": "image",
+            "settings": {
+              "paymentlogo": "shopify://shop_images/visa-logo.webp"
+            }
+          },
+          "image_qwghXF": {
+            "type": "image",
+            "settings": {
+              "paymentlogo": "shopify://shop_images/Mastercard-Logo.webp"
+            }
+          },
+          "image_VFBUR3": {
+            "type": "image",
+            "settings": {
+              "paymentlogo": "shopify://shop_images/amex.png"
+            }
+          },
+          "image_Cqhmgj": {
+            "type": "image",
+            "settings": {
+              "paymentlogo": "shopify://shop_images/Apple_Pay_logo.webp"
+            }
+          },
+          "image_Db87Fi": {
+            "type": "image",
+            "disabled": true,
+            "settings": {
+              "paymentlogo": "shopify://shop_images/eftpos_logo.webp"
+            }
+          },
+          "image_tiPeGp": {
+            "type": "image",
+            "settings": {
+              "paymentlogo": "shopify://shop_images/google-pay.png"
+            }
+          },
+          "image_96F6ih": {
+            "type": "image",
+            "settings": {
+              "paymentlogo": "shopify://shop_images/shop-logo.png"
+            }
+          },
+          "image_AaNtDV": {
+            "type": "image",
+            "settings": {
+              "paymentlogo": "shopify://shop_images/UnionPay_logo_svg.webp"
+            }
+          }
+        },
+        "block_order": [
+          "60142640-4a89-4928-bd2f-0900dc2c1e57",
+          "146745b7-0a81-4eed-a0cd-f0d3be20a867",
+          "3ea721f0-020d-4c11-b929-ef1ce5c19ff3",
+          "a212aea3-b44e-42fc-9899-22e993fc92f9",
+          "image_aQKFLf",
+          "image_KBy7GH",
+          "image_F3hPL9",
+          "image_znfbHh",
+          "image_cJcjBQ",
+          "image_iYbDwb",
+          "image_KHU7rh",
+          "image_tRTwcw",
+          "image_qwghXF",
+          "image_VFBUR3",
+          "image_Cqhmgj",
+          "image_Db87Fi",
+          "image_tiPeGp",
+          "image_96F6ih",
+          "image_AaNtDV"
+        ],
+        "settings": {
+          "background_color": "#000000",
+          "copyright": "©2024 - ESNC. All Rights Reserved.",
+          "size_copyright": "1.6rem",
+          "color_copyright": "#ffffff",
+          "menu_copyright": "",
+          "size_menu": "1.6rem",
+          "color_menu": "#ffffff"
+        }
+      },
+      "nov-sidebar-dropdown": {
+        "type": "nov-sidebar-dropdown",
+        "blocks": {
+          "1572337623840": {
+            "type": "block_filter",
+            "settings": {
+              "block_title": "",
+              "block_class": "",
+              "filter_tags": false,
+              "filter_size": true,
+              "filter_size_value": "M, L, X, XL",
+              "filter_color": true,
+              "filter_color_value": "Black, Blue, White, Red, Yellow",
+              "filter_price": true,
+              "price_min": "0",
+              "price_max": "1000"
+            }
+          }
+        },
+        "block_order": [
+          "1572337623840"
+        ],
+        "settings": {}
+      },
+      "nov-policy": {
+        "type": "nov-policy",
+        "blocks": {
+          "1577775924282": {
+            "type": "item_policy",
+            "settings": {
+              "policy_icon": "",
+              "title_policy": "Free Delivery From over order $ 250"
+            }
+          },
+          "1577775930456": {
+            "type": "item_policy",
+            "settings": {
+              "policy_icon": "",
+              "title_policy": "Money back GUARANTEED"
+            }
+          },
+          "1577775933242": {
+            "type": "item_policy",
+            "settings": {
+              "policy_icon": "",
+              "title_policy": "cash on delivery From $ 50"
+            }
+          }
+        },
+        "block_order": [
+          "1577775924282",
+          "1577775930456",
+          "1577775933242"
+        ],
+        "settings": {
+          "width": "col-lg-4",
+          "width_tablet": "col-md-4",
+          "width_xs_mobile": "col-xs-12",
+          "background_color": "",
+          "background_image": "",
+          "has_fullwidth": true,
+          "distance_top": "18px",
+          "distance_bottom": "16px"
+        }
+      },
+      "password-header": {
+        "type": "password-header",
+        "settings": {
+          "logo": "",
+          "logo_max_width": "300",
+          "header": "Coming Soon"
+        }
+      },
+      "password-content": {
+        "type": "password-content",
+        "settings": {
+          "newsletter_enable": true,
+          "newsletter_form_heading": "Be the first to know when we launch.",
+          "newsletter_placeholder": "Email address",
+          "newsletter_button_text": "Notify me"
+        }
+      },
+      "password-footer": {
+        "type": "password-footer",
+        "settings": {
+          "show_share_buttons": true,
+          "social_message": "Spread the word"
+        }
+      },
+      "nov-page-faqs": {
+        "type": "nov-page-faqs",
+        "blocks": {
+          "1600049089505": {
+            "type": "faq",
+            "settings": {
+              "item_title": "Sed est elit posuere ac semper at hendrerit a neque?",
+              "item_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac pretium metus. Curabitur velit sem, egestas sit amet dolor nec, tristique vulputate enim. Etiam a lorem libero. In egestas ultricies convallis. Sed iaculis arcu id justo dapibus pharetra. Maecenas et aliquam eros, sit amet volutpat nisi. Duis feugiat mattis maximus. Nulla sollicitudin lorem vitae neque ultricies efficitur. Sed pulvinar tellus enim, non tincidunt nisl imperdiet quis. Maecenas maximus lorem eu justo tincidunt mollis"
+            }
+          },
+          "1600049113929": {
+            "type": "faq",
+            "settings": {
+              "item_title": "Why Lorem ipsum dolor sit amet ?",
+              "item_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac pretium metus. Curabitur velit sem, egestas sit amet dolor nec, tristique vulputate enim. Etiam a lorem libero. In egestas ultricies convallis. Sed iaculis arcu id justo dapibus pharetra. Maecenas et aliquam eros, sit amet volutpat nisi. Duis feugiat mattis maximus. Nulla sollicitudin lorem vitae neque ultricies efficitur. Sed pulvinar tellus enim, non tincidunt nisl imperdiet quis. Maecenas maximus lorem eu justo tincidunt mollis"
+            }
+          },
+          "1600049126585": {
+            "type": "faq",
+            "settings": {
+              "item_title": "What maecenas commodo mi urna, quis accumsan ligula gravida at ?",
+              "item_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac pretium metus. Curabitur velit sem, egestas sit amet dolor nec, tristique vulputate enim. Etiam a lorem libero. In egestas ultricies convallis. Sed iaculis arcu id justo dapibus pharetra. Maecenas et aliquam eros, sit amet volutpat nisi. Duis feugiat mattis maximus. Nulla sollicitudin lorem vitae neque ultricies efficitur. Sed pulvinar tellus enim, non tincidunt nisl imperdiet quis. Maecenas maximus lorem eu justo tincidunt mollis"
+            }
+          },
+          "1600049137018": {
+            "type": "faq",
+            "settings": {
+              "item_title": "Integer venenatis suscipit urna id imperdiet. In et mi quis sapien tristique sodales sit amet nec justo ?",
+              "item_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac pretium metus. Curabitur velit sem, egestas sit amet dolor nec, tristique vulputate enim. Etiam a lorem libero. In egestas ultricies convallis. Sed iaculis arcu id justo dapibus pharetra. Maecenas et aliquam eros, sit amet volutpat nisi. Duis feugiat mattis maximus. Nulla sollicitudin lorem vitae neque ultricies efficitur. Sed pulvinar tellus enim, non tincidunt nisl imperdiet quis. Maecenas maximus lorem eu justo tincidunt mollis"
+            }
+          },
+          "1600049150025": {
+            "type": "faq",
+            "settings": {
+              "item_title": "Donec lobortis dolor a arcu auctor tincidunt ac fermentum enim ?",
+              "item_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac pretium metus. Curabitur velit sem, egestas sit amet dolor nec, tristique vulputate enim. Etiam a lorem libero. In egestas ultricies convallis. Sed iaculis arcu id justo dapibus pharetra. Maecenas et aliquam eros, sit amet volutpat nisi. Duis feugiat mattis maximus. Nulla sollicitudin lorem vitae neque ultricies efficitur. Sed pulvinar tellus enim, non tincidunt nisl imperdiet quis. Maecenas maximus lorem eu justo tincidunt mollis"
+            }
+          },
+          "1600049160417": {
+            "type": "faq",
+            "settings": {
+              "item_title": "Maecenas vitae placerat metus ?",
+              "item_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac pretium metus. Curabitur velit sem, egestas sit amet dolor nec, tristique vulputate enim. Etiam a lorem libero. In egestas ultricies convallis. Sed iaculis arcu id justo dapibus pharetra. Maecenas et aliquam eros, sit amet volutpat nisi. Duis feugiat mattis maximus. Nulla sollicitudin lorem vitae neque ultricies efficitur. Sed pulvinar tellus enim, non tincidunt nisl imperdiet quis. Maecenas maximus lorem eu justo tincidunt mollis"
+            }
+          },
+          "1600049170281": {
+            "type": "faq",
+            "settings": {
+              "item_title": "Vestibulum nulla velit, tincidunt id neque sed ?",
+              "item_content": "volutpat nisi. Duis feugiat mattis maximus. Nulla sollicitudin lorem vitae neque ultricies efficitur. Sed pulvinar tellus enim, non tincidunt nisl imperdiet quis. Maecenas maximus lorem eu justo tincidunt mollis"
+            }
+          },
+          "1600049181962": {
+            "type": "faq",
+            "settings": {
+              "item_title": "Sed est elit posuere ac semper at hendrerit a neque?",
+              "item_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac pretium metus. Curabitur velit sem, egestas sit amet dolor nec, tristique vulputate enim. Etiam a lorem libero. In egestas ultricies convallis. Sed iaculis arcu id justo dapibus pharetra. Maecenas et aliquam eros, sit amet volutpat nisi. Duis feugiat mattis maximus. Nulla sollicitudin lorem vitae neque ultricies efficitur. Sed pulvinar tellus enim, non tincidunt nisl imperdiet quis. Maecenas maximus lorem eu justo tincidunt mollis"
+            }
+          }
+        },
+        "block_order": [
+          "1600049089505",
+          "1600049113929",
+          "1600049126585",
+          "1600049137018",
+          "1600049150025",
+          "1600049160417",
+          "1600049170281",
+          "1600049181962"
+        ],
+        "settings": {
+          "title": "Frequently asked question",
+          "subheading": ""
+        }
+      },
+      "nov-page-about-us": {
+        "type": "nov-page-about-us",
+        "blocks": {
+          "1600139275347": {
+            "type": "image",
+            "settings": {
+              "img": "shopify://shop_images/about.jpg"
+            }
+          },
+          "1600141333789": {
+            "type": "text",
+            "settings": {
+              "title": "Our company",
+              "text_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac ligula et mi semper viverra nec a tellus. Curabitur sed diam quis elit tempus venenatis sit amet a tellus. Sed id lectus laoreet, elementum metus at, sagittis sem. Sed ante velit, eleifend sit amet eros lacinia, lobortis vehicula dui. Vivamus fringilla mauris mauris. Aliquam lectus ligula, porta a rhoncus sit amet, consequat vel nibh. Sed in est venenatis, dictum dui a, consequat quam.<br></p>\n<p><br></p>\n<p>Etiam consectetur accumsan odio sit amet sagittis. Aliquam erat volutpat. Maecenas eros lacus, commodo id leo ut, ullamcorper varius elit. Proin auctor quam convallis, iaculis odio non, iaculis tortor. In felis tortor, tristique at magna nec, pharetra posuere leo. Praesent ut felis ante. Pellentesque rutrum sed turpis at ornare. Nulla tincidunt enim vitae purus rhoncus pellentesque ut ac ligula. Vivamus vel gravida nulla, quis aliquam est. Proin ultrices semper tortor, at suscipit nibh imperdiet vel. Etiam quis velit viverra nisl lobortis imperdiet quis mollis metus. Integer nec felis at ligula finibus consequat at ut magna. Duis fermentum dignissim metus in pellentesque. Integer viverra iaculis quam vel convallis. Donec et leo non velit pharetra placerat. Donec condimentum enim vitae felis vulputate, non rhoncus leo fringilla.</p>",
+              "class": "mt-35"
+            }
+          },
+          "1600139586443": {
+            "type": "quote",
+            "settings": {
+              "text_content": "<p>I am quote block text, consectetur adipiscing elit. Ut ac ligula et mi semper viverra nec a tellus. Curabitur sed diam quis elit tempus venenatis sit amet a tellus. Sed id lectus laoreet, elementum metus at, sagittis sem. Sed ante velit, eleifend sit amet eros lacinia, lobortis vehicula dui. Vivamus fringilla mauris mauris. Aliquam lectus ligula porta a rhoncus sit amet consequat vel nibh. </p>",
+              "class": "mt-25 mb-25"
+            }
+          },
+          "1600141399342": {
+            "type": "text",
+            "settings": {
+              "title": "Our team",
+              "text_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac ligula et mi semper viverra nec a tellus. Curabitur sed diam quis elit tempus venenatis sit amet a tellus. Sed id lectus laoreet, elementum metus at, sagittis sem. Sed ante velit, eleifend sit amet eros lacinia, lobortis vehicula dui. Vivamus fringilla mauris mauris. Aliquam lectus ligula, porta a rhoncus sit amet, consequat vel nibh. Sed in est venenatis, dictum dui a, consequat quam.<br></p>\n<p><br></p>\n<p>Etiam consectetur accumsan odio sit amet sagittis. Aliquam erat volutpat. Maecenas eros lacus, commodo id leo ut, ullamcorper varius elit. Proin auctor quam convallis, iaculis odio non, iaculis tortor. In felis tortor, tristique at magna nec, pharetra posuere leo. Praesent ut felis ante. Pellentesque rutrum sed turpis at ornare. Nulla tincidunt enim vitae purus rhoncus pellentesque ut ac ligula. Vivamus vel gravida nulla, quis aliquam est. Proin ultrices semper tortor, at suscipit nibh imperdiet vel. Etiam quis velit viverra nisl lobortis imperdiet quis mollis metus. Integer nec felis at ligula finibus consequat at ut magna. Duis fermentum dignissim metus in pellentesque. Integer viverra iaculis quam vel convallis. Donec et leo non velit pharetra placerat. Donec condimentum enim vitae felis vulputate, non rhoncus leo fringilla.</p>",
+              "class": "mb-55"
+            }
+          },
+          "1600139715583": {
+            "type": "our_team",
+            "settings": {
+              "avatar": "shopify://shop_images/testirmonial-1.jpg",
+              "author": "KwangSang",
+              "job": "CEO- Vinova",
+              "decs": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac pretium metus. Curabi tur velit sem, egestas sit amet dolor nec, tris tique vulputate enim.</p>",
+              "hotline": "(+612) 2531 5600",
+              "email": "sonata@domain.com",
+              "show_label": false,
+              "social_twitter_link": "#",
+              "social_facebook_link": "#",
+              "social_pinterest_link": "#",
+              "social_instagram_link": "#",
+              "social_dribbble_link": "",
+              "social_google_link": "",
+              "social_linkedin_link": "",
+              "social_tumblr_link": "",
+              "social_snapchat_link": "",
+              "social_youtube_link": "",
+              "social_vimeo_link": "",
+              "class": "col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-xs-30"
+            }
+          },
+          "1600139764692": {
+            "type": "our_team",
+            "settings": {
+              "avatar": "shopify://shop_images/testirmonial-2.jpg",
+              "author": "Rebecca Jenkins",
+              "job": "Developer",
+              "decs": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac pretium metus. Curabi tur velit sem, egestas sit amet dolor nec, tris tique vulputate enim.</p>",
+              "hotline": "(+612) 2531 5600",
+              "email": "sonata@domain.com",
+              "show_label": false,
+              "social_twitter_link": "#",
+              "social_facebook_link": "#",
+              "social_pinterest_link": "#",
+              "social_instagram_link": "#",
+              "social_dribbble_link": "",
+              "social_google_link": "",
+              "social_linkedin_link": "",
+              "social_tumblr_link": "",
+              "social_snapchat_link": "",
+              "social_youtube_link": "",
+              "social_vimeo_link": "",
+              "class": "col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-xs-30"
+            }
+          },
+          "1600139797724": {
+            "type": "our_team",
+            "settings": {
+              "avatar": "shopify://shop_images/testirmonial-3.jpg",
+              "author": "Alex Nguyen",
+              "job": "Designer",
+              "decs": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac pretium metus. Curabi tur velit sem, egestas sit amet dolor nec, tris tique vulputate enim.</p>",
+              "hotline": "(+612) 2531 5600",
+              "email": "sonata@domain.com",
+              "show_label": false,
+              "social_twitter_link": "#",
+              "social_facebook_link": "#",
+              "social_pinterest_link": "#",
+              "social_instagram_link": "#",
+              "social_dribbble_link": "",
+              "social_google_link": "",
+              "social_linkedin_link": "",
+              "social_tumblr_link": "",
+              "social_snapchat_link": "",
+              "social_youtube_link": "",
+              "social_vimeo_link": "",
+              "class": "col-lg-3 col-md-4 col-sm-6 col-xs-12"
+            }
+          },
+          "1600139823748": {
+            "type": "our_team",
+            "settings": {
+              "avatar": "shopify://shop_images/testirmonial-4.jpg",
+              "author": "Lucy Watson",
+              "job": "Developer",
+              "decs": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac pretium metus. Curabi tur velit sem, egestas sit amet dolor nec, tris tique vulputate enim.</p>",
+              "hotline": "(+612) 2531 5600",
+              "email": "sonata@domain.com",
+              "show_label": false,
+              "social_twitter_link": "#",
+              "social_facebook_link": "#",
+              "social_pinterest_link": "#",
+              "social_instagram_link": "#",
+              "social_dribbble_link": "",
+              "social_google_link": "",
+              "social_linkedin_link": "",
+              "social_tumblr_link": "",
+              "social_snapchat_link": "",
+              "social_youtube_link": "",
+              "social_vimeo_link": "",
+              "class": "col-lg-3 col-md-4 col-sm-6 col-xs-12 mt-md-30"
+            }
+          }
+        },
+        "block_order": [
+          "1600139275347",
+          "1600141333789",
+          "1600139586443",
+          "1600141399342",
+          "1600139715583",
+          "1600139764692",
+          "1600139797724",
+          "1600139823748"
+        ],
+        "settings": {
+          "title": "",
+          "subheading": ""
+        }
+      },
+      "16181993638d9f1738": {
+        "type": "nov-slideshow",
+        "blocks": {
+          "16181993638d9f1738-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/s-1.jpg",
+              "caption_1": "Not only was it an good <br>price,it looks elegant",
+              "color_cap1": "#000000",
+              "fz_cap1": "6.4rem",
+              "fz_cap1lg": "4.5rem",
+              "fz_cap1t": "3.5rem",
+              "fz_cap1m": "3rem",
+              "fz_cap1mb": "2.5rem",
+              "cap_animate_1": "fadeInLeft",
+              "caption_2": "Excepteur sint occaecat cupidatat non proident",
+              "color_cap2": "#000000",
+              "fz_cap2": "1.6rem",
+              "fz_cap2lg": "",
+              "fz_cap2t": "1.6rem",
+              "fz_cap2m": "1.6rem",
+              "fz_cap2mb": "1.6rem",
+              "cap_animate_2": "fadeInLeft",
+              "caption_3": "",
+              "color_cap3": "#000000",
+              "fz_cap3": "",
+              "fz_cap3lg": "",
+              "fz_cap3t": "",
+              "fz_cap3m": "",
+              "fz_cap3mb": "",
+              "cap_animate_3": "fadeInLeft",
+              "caption_4": "",
+              "color_cap4": "#000000",
+              "fz_cap4": "",
+              "fz_cap4lg": "",
+              "fz_cap4t": "",
+              "fz_cap4m": "",
+              "fz_cap4mb": "",
+              "cap_animate_4": "bounce",
+              "title_link": "Shop The Essentials",
+              "color_cap_link": "#000000",
+              "background_cap_link": "rgba(0,0,0,0)",
+              "cap_link": "#",
+              "cap_link_animate": "fadeInLeft",
+              "text_align": "center",
+              "width_position": "60",
+              "width_position_desktop": "60",
+              "width_position_tablet": "60",
+              "width_position_mobile": "70",
+              "left_position": "0",
+              "left_position_desktop": "0",
+              "left_position_tablet": "0",
+              "left_position_mobile": "0",
+              "top_position": "36",
+              "top_position_desktop": "25",
+              "top_position_t": "35",
+              "top_position_m": "24",
+              "top_position_xs": "30",
+              "slider_link": ""
+            }
+          },
+          "16181993638d9f1738-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/s-2.jpg",
+              "caption_1": "Flawless Lumière<br> Foundation",
+              "color_cap1": "#000000",
+              "fz_cap1": "6.4rem",
+              "fz_cap1lg": "4.5rem",
+              "fz_cap1t": "3.5rem",
+              "fz_cap1m": "3rem",
+              "fz_cap1mb": "2.5rem",
+              "cap_animate_1": "fadeInUp",
+              "caption_2": "Excepteur sint occaecat cupidatat non proident",
+              "color_cap2": "#000000",
+              "fz_cap2": "1.6rem",
+              "fz_cap2lg": "",
+              "fz_cap2t": "1.6rem",
+              "fz_cap2m": "1.6rem",
+              "fz_cap2mb": "1.6rem",
+              "cap_animate_2": "fadeInUp",
+              "caption_3": "",
+              "color_cap3": "#000000",
+              "fz_cap3": "",
+              "fz_cap3lg": "",
+              "fz_cap3t": "",
+              "fz_cap3m": "",
+              "fz_cap3mb": "",
+              "cap_animate_3": "fadeInUp",
+              "caption_4": "",
+              "color_cap4": "#000000",
+              "fz_cap4": "",
+              "fz_cap4lg": "",
+              "fz_cap4t": "",
+              "fz_cap4m": "",
+              "fz_cap4mb": "",
+              "cap_animate_4": "bounce",
+              "title_link": "Shop The Essentials",
+              "color_cap_link": "#000000",
+              "background_cap_link": "rgba(0,0,0,0)",
+              "cap_link": "#",
+              "cap_link_animate": "fadeInUp",
+              "text_align": "center",
+              "width_position": "50",
+              "width_position_desktop": "60",
+              "width_position_tablet": "60",
+              "width_position_mobile": "55",
+              "left_position": "47",
+              "left_position_desktop": "47",
+              "left_position_tablet": "47",
+              "left_position_mobile": "40",
+              "top_position": "36",
+              "top_position_desktop": "25",
+              "top_position_t": "35",
+              "top_position_m": "24",
+              "top_position_xs": "30",
+              "slider_link": ""
+            }
+          },
+          "16181993638d9f1738-2": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/s-3.jpg",
+              "caption_1": "Spring Clean<br> Your Beauty Routine",
+              "color_cap1": "#000000",
+              "fz_cap1": "6.4rem",
+              "fz_cap1lg": "4.5rem",
+              "fz_cap1t": "3.5rem",
+              "fz_cap1m": "3rem",
+              "fz_cap1mb": "2.5rem",
+              "cap_animate_1": "fadeInDown",
+              "caption_2": "Excepteur sint occaecat cupidatat non proident",
+              "color_cap2": "#000000",
+              "fz_cap2": "1.6rem",
+              "fz_cap2lg": "",
+              "fz_cap2t": "1.6rem",
+              "fz_cap2m": "1.6rem",
+              "fz_cap2mb": "1.6rem",
+              "cap_animate_2": "fadeInDown",
+              "caption_3": "",
+              "color_cap3": "#ffffff",
+              "fz_cap3": "10rem",
+              "fz_cap3lg": "",
+              "fz_cap3t": "",
+              "fz_cap3m": "",
+              "fz_cap3mb": "6rem",
+              "cap_animate_3": "fadeInDown",
+              "caption_4": "",
+              "color_cap4": "#ffffff",
+              "fz_cap4": "1.8rem",
+              "fz_cap4lg": "",
+              "fz_cap4t": "",
+              "fz_cap4m": "",
+              "fz_cap4mb": "",
+              "cap_animate_4": "fadeInDown",
+              "title_link": "Shop The Essentials",
+              "color_cap_link": "#000000",
+              "background_cap_link": "rgba(0,0,0,0)",
+              "cap_link": "#",
+              "cap_link_animate": "fadeInDown",
+              "text_align": "center",
+              "width_position": "52",
+              "width_position_desktop": "60",
+              "width_position_tablet": "60",
+              "width_position_mobile": "60",
+              "left_position": "5",
+              "left_position_desktop": "0",
+              "left_position_tablet": "0",
+              "left_position_mobile": "0",
+              "top_position": "36",
+              "top_position_desktop": "25",
+              "top_position_t": "35",
+              "top_position_m": "24",
+              "top_position_xs": "30",
+              "slider_link": ""
+            }
+          }
+        },
+        "block_order": [
+          "16181993638d9f1738-0",
+          "16181993638d9f1738-1",
+          "16181993638d9f1738-2"
+        ],
+        "settings": {
+          "height_slideshow_larges_desktop": "900px",
+          "height_slideshow_large_desktop": "700px",
+          "height_slideshow_desktop": "500px",
+          "height_slideshow_tablet": "450px",
+          "height_slideshow_mobile": "400px",
+          "height_slideshow_mobile_small": "340px",
+          "autoplay": false,
+          "arrows": true,
+          "dots": true,
+          "has_fullwidth": true,
+          "distance_top": "0",
+          "distance_bottom": "0"
+        }
+      },
+      "16214764952c69fa96": {
+        "type": "nov-products-slider",
+        "settings": {
+          "title": "",
+          "size_title": "4.4rem",
+          "color_title": "#000000",
+          "subheading": "",
+          "size_sub": "13px",
+          "color_sub": "#222222",
+          "title_alignment": "text-center",
+          "background_color": "",
+          "collection": "frontpage",
+          "grid_number": 6,
+          "grid_number_lg_tablet": 4,
+          "items_tablet": 3,
+          "items_mobile": 2,
+          "limit": 14,
+          "number_row": "1",
+          "row_mobile": "1",
+          "show_nav": false,
+          "class": "p_lr_20 pb-lg-80 pb-md-0",
+          "has_fullwidth": true,
+          "distance_top": "0px",
+          "distance_bottom": "120px"
+        }
+      },
+      "f50256a7-8055-426c-8cbc-b8c585c5e813": {
+        "type": "nov-collection-tabs",
+        "blocks": {
+          "f50256a7-8055-426c-8cbc-b8c585c5e813-166571076185fcdd1a-0": {
+            "type": "tabitem",
+            "settings": {
+              "tab_title": "New",
+              "collection_handle": "face-serums"
+            }
+          },
+          "f50256a7-8055-426c-8cbc-b8c585c5e813-166571076185fcdd1a-1": {
+            "type": "tabitem",
+            "settings": {
+              "tab_title": "Trending",
+              "collection_handle": "shop-makeup"
+            }
+          },
+          "f50256a7-8055-426c-8cbc-b8c585c5e813-166571076185fcdd1a-2": {
+            "type": "tabitem",
+            "settings": {
+              "tab_title": "Sale",
+              "collection_handle": "shop-skincare"
+            }
+          }
+        },
+        "block_order": [
+          "f50256a7-8055-426c-8cbc-b8c585c5e813-166571076185fcdd1a-0",
+          "f50256a7-8055-426c-8cbc-b8c585c5e813-166571076185fcdd1a-1",
+          "f50256a7-8055-426c-8cbc-b8c585c5e813-166571076185fcdd1a-2"
+        ],
+        "settings": {
+          "title": "Gotta Have It",
+          "size_title": "44px",
+          "color_title": "#000000",
+          "title_alignment": "text-left",
+          "grid_number": 4,
+          "grid_number_lg_tablet": 4,
+          "grid_number_tablet": 3,
+          "grid_number_mobile": 2,
+          "row_number": "1",
+          "limit": "30",
+          "view_all": false,
+          "button": "View all collection",
+          "color_button": "#222222",
+          "size_button": "1.6rem",
+          "link": "",
+          "class": "p_lr_20",
+          "show_nav": false,
+          "show_dot": false,
+          "has_fullwidth": true,
+          "distance_top": "60px",
+          "distance_bottom": "85px"
+        }
+      },
+      "5abbc140-56cc-4ccd-9904-3d9da64108e6": {
+        "type": "nov-blog",
+        "settings": {
+          "title": "Lastest News",
+          "size_title": "4.4rem",
+          "color_title": "#222222",
+          "subheading": "From Our Blog",
+          "size_sub": "18px",
+          "color_sub": "#82ca9c",
+          "title_alignment": "text-center",
+          "blog": "news",
+          "type_option": "slider",
+          "grid_number": 3,
+          "grid_number_lg_tablet": 3,
+          "items_tablet": 2,
+          "items_mobile": 1,
+          "number_row": "1",
+          "limit": 8,
+          "show_image": true,
+          "show_dots": false,
+          "show_nav": false,
+          "blog_show_comments": false,
+          "blog_show_author": false,
+          "blog_show_date": true,
+          "blog_show_excerpt": false,
+          "show_view_all": true,
+          "class": "",
+          "has_fullwidth": false,
+          "background_color": "",
+          "distance_top": "95px",
+          "distance_bottom": "100px"
+        }
+      },
+      "af6ad9da-a81d-44c8-8225-0ef1bf9a9299": {
+        "type": "nov-policy",
+        "blocks": {
+          "af6ad9da-a81d-44c8-8225-0ef1bf9a9299-166573107526d18425-0": {
+            "type": "item_policy",
+            "settings": {
+              "policy_icon": "shopify://shop_images/i-7.png",
+              "title_policy": "Free Shipping",
+              "size_title": "1.8rem",
+              "color_title": "#000000",
+              "sub_policy": "Free shipping on all US order or order above $200",
+              "size_sub": "1.6rem",
+              "color_sub": "#000000",
+              "class": "mb-md-30 mb-xs-0"
+            }
+          },
+          "af6ad9da-a81d-44c8-8225-0ef1bf9a9299-166573107526d18425-1": {
+            "type": "item_policy",
+            "settings": {
+              "policy_icon": "shopify://shop_images/i-8.png",
+              "title_policy": "Support 24/7",
+              "size_title": "1.8rem",
+              "color_title": "#000000",
+              "sub_policy": "Contact us 24 hours a day, 7 days a week",
+              "size_sub": "1.6rem",
+              "color_sub": "#000000",
+              "class": ""
+            }
+          },
+          "af6ad9da-a81d-44c8-8225-0ef1bf9a9299-166573107526d18425-2": {
+            "type": "item_policy",
+            "settings": {
+              "policy_icon": "shopify://shop_images/i-9.png",
+              "title_policy": "7 Days Return",
+              "size_title": "1.8rem",
+              "color_title": "#000000",
+              "sub_policy": "Simply return it within 7 days for an exchange.",
+              "size_sub": "1.6rem",
+              "color_sub": "#000000",
+              "class": ""
+            }
+          },
+          "49541360-c5a1-4c5a-a5bc-dda2994b3e53": {
+            "type": "item_policy",
+            "settings": {
+              "policy_icon": "shopify://shop_images/i-10.png",
+              "title_policy": "Payment Secure",
+              "size_title": "1.8rem",
+              "color_title": "#000000",
+              "sub_policy": "We ensure secure payment with PEV",
+              "size_sub": "1.6rem",
+              "color_sub": "#000000",
+              "class": ""
+            }
+          }
+        },
+        "block_order": [
+          "af6ad9da-a81d-44c8-8225-0ef1bf9a9299-166573107526d18425-0",
+          "af6ad9da-a81d-44c8-8225-0ef1bf9a9299-166573107526d18425-1",
+          "af6ad9da-a81d-44c8-8225-0ef1bf9a9299-166573107526d18425-2",
+          "49541360-c5a1-4c5a-a5bc-dda2994b3e53"
+        ],
+        "settings": {
+          "enable_image": true,
+          "width": "col-lg-3",
+          "width_tablet": "col-md-6",
+          "width_sm_mobile": "col-sm-6",
+          "width_xs_mobile": "col-xs-12",
+          "background_color": "",
+          "has_fullwidth": false,
+          "distance_top": "100px",
+          "distance_bottom": "80px"
+        }
+      },
+      "c028bb4b-d328-4a2f-9eb7-66de32bc84b0": {
+        "type": "nov-gallery-image",
+        "blocks": {
+          "c028bb4b-d328-4a2f-9eb7-66de32bc84b0-1665820007ef10257b-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/img-1.jpg",
+              "cta_label": "Lips",
+              "size_link": "18px",
+              "color_link": "#000000",
+              "link": "#",
+              "background_button": "#ffffff",
+              "class": ""
+            }
+          },
+          "c028bb4b-d328-4a2f-9eb7-66de32bc84b0-1665820007ef10257b-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/img-2.jpg",
+              "cta_label": "Body",
+              "size_link": "18px",
+              "color_link": "#000000",
+              "link": "#",
+              "background_button": "#ffffff",
+              "class": ""
+            }
+          },
+          "be1dcc83-7d38-47dd-ad3c-807f63e83ad9": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/img-3.jpg",
+              "cta_label": "Face",
+              "size_link": "18px",
+              "color_link": "#000000",
+              "link": "#",
+              "background_button": "#ffffff",
+              "class": ""
+            }
+          },
+          "a0705958-fe3b-433f-b1ed-a73f48af80cf": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/img-4.jpg",
+              "cta_label": "Eyes",
+              "size_link": "18px",
+              "color_link": "#000000",
+              "link": "#",
+              "background_button": "#ffffff",
+              "class": ""
+            }
+          }
+        },
+        "block_order": [
+          "c028bb4b-d328-4a2f-9eb7-66de32bc84b0-1665820007ef10257b-0",
+          "c028bb4b-d328-4a2f-9eb7-66de32bc84b0-1665820007ef10257b-1",
+          "be1dcc83-7d38-47dd-ad3c-807f63e83ad9",
+          "a0705958-fe3b-433f-b1ed-a73f48af80cf"
+        ],
+        "settings": {
+          "title": "",
+          "size_title": "14px",
+          "color_title": "#222222",
+          "title_alignment": "text-left",
+          "spacing": "20",
+          "has_fullwidth": true,
+          "background_color": "",
+          "class_section": "p_lr_20",
+          "distance_top": "20px",
+          "distance_bottom": "30px"
+        }
+      },
+      "646819b0-e070-43cb-8a09-a3c04c5c096f": {
+        "type": "nov-img-text",
+        "blocks": {
+          "92c28541-a740-4428-8648-6a4447739637": {
+            "type": "block_left",
+            "settings": {
+              "icon": "shopify://shop_images/i-1.png",
+              "title": "100% Pure natural hemp seed oil",
+              "class_text": ""
+            }
+          },
+          "c1774f82-0f34-4725-aaed-75ee5cd0712f": {
+            "type": "block_left",
+            "settings": {
+              "icon": "shopify://shop_images/i-4.png",
+              "title": "Protect your skin from the sun light",
+              "class_text": ""
+            }
+          },
+          "113129a8-acf9-4af2-b917-e68a861af52b": {
+            "type": "block_left",
+            "settings": {
+              "icon": "shopify://shop_images/i-2.png",
+              "title": "Provides a deep cleasing",
+              "class_text": ""
+            }
+          },
+          "9d545f6d-c62d-4816-9f48-3bcccdfd1405": {
+            "type": "block_left",
+            "settings": {
+              "icon": "shopify://shop_images/i-5.png",
+              "title": "Avoid direct heat exposure",
+              "class_text": ""
+            }
+          },
+          "ab19a1b4-fd13-43d8-b58f-97d06ab71cf6": {
+            "type": "block_left",
+            "settings": {
+              "icon": "shopify://shop_images/i-3.png",
+              "title": "Skin is restored with radiance",
+              "class_text": ""
+            }
+          },
+          "83988030-487f-4c77-93c3-d3d9d96b2dfa": {
+            "type": "block_left",
+            "settings": {
+              "icon": "shopify://shop_images/i-6.png",
+              "title": "Keep irritants off your skin",
+              "class_text": ""
+            }
+          }
+        },
+        "block_order": [
+          "92c28541-a740-4428-8648-6a4447739637",
+          "c1774f82-0f34-4725-aaed-75ee5cd0712f",
+          "113129a8-acf9-4af2-b917-e68a861af52b",
+          "9d545f6d-c62d-4816-9f48-3bcccdfd1405",
+          "ab19a1b4-fd13-43d8-b58f-97d06ab71cf6",
+          "83988030-487f-4c77-93c3-d3d9d96b2dfa"
+        ],
+        "settings": {
+          "title": "Safe and effective",
+          "t_color": "#000000",
+          "subheading": "Benefit",
+          "st_color": "#82ca9c",
+          "desc": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>",
+          "desc_color": "#000000",
+          "title_alignment": "text-left",
+          "image": "shopify://shop_images/img-5.png",
+          "background_color": "#ebeff0",
+          "has_fullwidth": true,
+          "class": "",
+          "distance_top": "95px",
+          "distance_bottom": "40px"
+        }
+      },
+      "baa6f8cb-c79c-4bd3-982c-0fd24c3c6426": {
+        "type": "nov-productdeal",
+        "settings": {
+          "title": "",
+          "size_title": "",
+          "color_title": "#222222",
+          "subheading": "",
+          "size_sub": "",
+          "color_sub": "#222222",
+          "title_alignment": "text-left",
+          "class": "",
+          "product_handle": "faux-suede-biker-jacket",
+          "show_description": true,
+          "distance_top": "50px",
+          "distance_bottom": "30px"
+        }
+      },
+      "9f660423-a7ab-4f03-a0a8-98eec7becb74": {
+        "type": "nov-video",
+        "settings": {
+          "video_url": "https://cdn.shopify.com/s/files/1/0560/8869/0853/files/video.mp4?v=1618909090",
+          "title_video": "Natural and organic is the future of skincare and life as we know it.",
+          "size_title": "4.4rem",
+          "size_title_mb": "3rem",
+          "color_title": "#ffffff",
+          "subheading": "WHY KARL?",
+          "size_sub": "1.8rem",
+          "color_sub": "#e49178",
+          "button_enable": true,
+          "color_button": "#6e6e6e",
+          "size_button": "1.6rem",
+          "video_youtube": "https://youtu.be/-CHwHtwKIS0",
+          "title_alignment": "text-center",
+          "image_overlay_opacity": 25,
+          "class": "",
+          "distance_top": "30px",
+          "distance_bottom": "30px"
+        }
+      },
+      "642f4a2d-1b40-4991-b304-72e7ea80a170": {
+        "type": "nov-img-link-collection",
+        "blocks": {
+          "642f4a2d-1b40-4991-b304-72e7ea80a170-16659755020bef8826-0": {
+            "type": "block_text",
+            "settings": {
+              "width": "col-xl-6",
+              "width_lg": "col-lg-6",
+              "width_md": "col-md-12",
+              "title": "Prep. Correct. Perfect.",
+              "size_title": "4.4rem",
+              "color_title": "#000000",
+              "subtitle": "Whether you have five minutes to get out the door or an hour to play, these bestsellers are the key to fresh, healthy-looking skin.",
+              "size_sub": "1.6rem",
+              "color_sub": "#000000",
+              "show_button": true,
+              "button_label": "Shop The Essentials",
+              "color_button": "#222222",
+              "bg_title_link": "",
+              "button_link": "shopify://collections/shop-skincare",
+              "class_text": ""
+            }
+          },
+          "642f4a2d-1b40-4991-b304-72e7ea80a170-16659755020bef8826-1": {
+            "type": "block_image",
+            "settings": {
+              "width": "col-xl-6",
+              "width_lg": "col-lg-6",
+              "width_md": "col-md-12",
+              "image": "shopify://shop_images/img-6.jpg",
+              "class_image": ""
+            }
+          }
+        },
+        "block_order": [
+          "642f4a2d-1b40-4991-b304-72e7ea80a170-16659755020bef8826-0",
+          "642f4a2d-1b40-4991-b304-72e7ea80a170-16659755020bef8826-1"
+        ],
+        "settings": {
+          "background_color": "",
+          "has_fullwidth": true,
+          "class": "p_lr_20",
+          "distance_top": "70px",
+          "distance_bottom": "20px"
+        }
+      },
+      "12199278-d4b3-4dde-a656-863bc4499b3f": {
+        "type": "nov-img-certification",
+        "settings": {
+          "title": "Vinova Image With Certification",
+          "t_color": "#000000",
+          "subheading": "Subtitle from happy customers",
+          "title_alignment": "text-left",
+          "image": "shopify://shop_images/img-7.png",
+          "position": "bottom",
+          "heading": "No.1 Selling Skincare brand",
+          "size_title": "4.4rem",
+          "color_title": "#000000",
+          "subtitle": "AWARDS",
+          "size_sub": "1.8rem",
+          "color_sub": "#82ca9c",
+          "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt",
+          "size_desc": "1.8rem",
+          "color_desc": "#000000",
+          "img1": "shopify://shop_images/img-8.jpg",
+          "img2": "shopify://shop_images/img-9.jpg",
+          "background_color": "#e5ede5",
+          "has_fullwidth": true,
+          "class": "mt-100",
+          "distance_top": "0",
+          "distance_bottom": "0"
+        }
+      },
+      "8ef294ef-d4fd-4485-83a4-f08f80af11ae": {
+        "type": "nov-newsletter",
+        "settings": {
+          "section_title": "Sign up now & get 10% off",
+          "size_title": "3rem",
+          "color_title": "#000000",
+          "subheading": "Be the first to know about our new arrivals and exclusive offers.",
+          "size_subheading": "1.6rem",
+          "color_subheading": "#000000",
+          "title_alignment": "text-center",
+          "background_color": "",
+          "background_image": "shopify://shop_images/img-10.jpg",
+          "social_newsletter": false,
+          "full_width": false,
+          "distance_top": "90px",
+          "distance_bottom": "100px"
+        }
+      }
+    },
+    "content_for_index": [
+      "16181993638d9f1738",
+      "c028bb4b-d328-4a2f-9eb7-66de32bc84b0",
+      "f50256a7-8055-426c-8cbc-b8c585c5e813",
+      "646819b0-e070-43cb-8a09-a3c04c5c096f",
+      "baa6f8cb-c79c-4bd3-982c-0fd24c3c6426",
+      "9f660423-a7ab-4f03-a0a8-98eec7becb74",
+      "642f4a2d-1b40-4991-b304-72e7ea80a170",
+      "16214764952c69fa96",
+      "12199278-d4b3-4dde-a656-863bc4499b3f",
+      "5abbc140-56cc-4ccd-9904-3d9da64108e6",
+      "8ef294ef-d4fd-4485-83a4-f08f80af11ae",
+      "af6ad9da-a81d-44c8-8225-0ef1bf9a9299"
+    ],
+    "blocks": {
+      "855628211100114053": {
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
+      },
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      },
+      "12120936241911852800": {
+        "type": "shopify://apps/judge-me-reviews/blocks/reviews_tab/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {
+          "position": "right"
+        }
+      },
+      "14952540001915115444": {
+        "type": "shopify://apps/upcart-cart-drawer/blocks/app-embed/af3da5fb-f5f7-40ec-8273-41bf50059d4b",
+        "disabled": false,
+        "settings": {}
+      },
+      "8870143681839208269": {
+        "type": "shopify://apps/bold-discounts-the-sales-app/blocks/v3_cart-prices/22ca27ee-084f-4527-b863-69a3cd4c8b2c",
+        "disabled": true,
+        "settings": {
+          "cart-total-value-locator": "totals__total-value",
+          "cart-item-locator": "cart-item",
+          "cart-line-item-price-locator": "price price--end",
+          "cart-item-price-locator": "product-option",
+          "cart-checkout-button-id": "checkout",
+          "check-cart-change-interval": 1000
+        }
+      },
+      "3973909653238217764": {
+        "type": "shopify://apps/bold-discounts-the-sales-app/blocks/v3_sales_clock/22ca27ee-084f-4527-b863-69a3cd4c8b2c",
+        "disabled": true,
+        "settings": {
+          "inject-clock-in": "form[action='/cart/add']",
+          "enable-sales-clock-on-other-pages": false,
+          "inject-clock-in-other": ".shopify-section.section",
+          "product_id": "0",
+          "append-at-end": false
+        }
+      },
+      "13951170544780599758": {
+        "type": "shopify://apps/tapita-seo-speed/blocks/app-embed/cd37ca7a-40ad-4fdc-afd3-768701482209",
+        "disabled": false,
+        "settings": {}
+      },
+      "11095253573082077043": {
+        "type": "shopify://apps/bold-discounts-the-sales-app/blocks/dup-and-hide/22ca27ee-084f-4527-b863-69a3cd4c8b2c",
+        "disabled": false,
+        "settings": {
+          "product_element_locator": ".grid__item",
+          "product_search_element_locator": ".grid__item",
+          "predictive_search_element_locator": "#predictive-search-results-products-list",
+          "delay_pred_search": 100
+        }
+      },
+      "6279071938380501511": {
+        "type": "shopify://apps/powerful-form-builder/blocks/app-embed/e4bcb1eb-35b2-42e6-bc37-bfe0e1542c9d",
+        "disabled": false,
+        "settings": {}
+      },
+      "1965340868851369860": {
+        "type": "shopify://apps/bold-discounts-flash-sales/blocks/v3_price/22ca27ee-084f-4527-b863-69a3cd4c8b2c",
+        "disabled": false,
+        "settings": {
+          "product-price-locator": "price-item price-item--regular",
+          "collection-item-locator": "card-wrapper",
+          "collection-item-price-locator": "price-item price-item--regular",
+          "delay-after-page-load": 500,
+          "delay-after-content-change": 300,
+          "check-variant-change-interval": 1000,
+          "enable-product-drawer": false,
+          "listen-product-fetch": "/products/",
+          "drawer-locator": ".quick-add-modal__content.global-settings-popup"
+        }
+      },
+      "1792281811906624321": {
+        "type": "shopify://apps/unlimited-smart-upsell-offers/blocks/app-embed-block/a5bd0e15-ca06-4f5c-9df9-a37857b468c9",
+        "disabled": true,
+        "settings": {}
+      },
+      "16337957280554425121": {
+        "type": "shopify://apps/bold-discounts-flash-sales/blocks/sale-icon-product/22ca27ee-084f-4527-b863-69a3cd4c8b2c",
+        "disabled": false,
+        "settings": {
+          "icon_style": "tag.svg",
+          "icon_height": 56,
+          "icon_width": 56,
+          "icon_position": "top-right",
+          "icon_style_custom": ".shappify-sales-icon-product {}"
+        }
+      },
+      "1602517437617170218": {
+        "type": "shopify://apps/bold-discounts-flash-sales/blocks/v3_sales_icon/22ca27ee-084f-4527-b863-69a3cd4c8b2c",
+        "disabled": false,
+        "settings": {
+          "inject-icon-in": ".product__media.media.media--transparent",
+          "append-at-end": false,
+          "force_absolute": false,
+          "inject-icon-in-collection": ".card__media",
+          "icon_additional_css": "#bold_sales_icon {}"
+        }
+      },
+      "2076966522491132125": {
+        "type": "shopify://apps/bold-discounts-flash-sales/blocks/sale-icon-collection/22ca27ee-084f-4527-b863-69a3cd4c8b2c",
+        "disabled": false,
+        "settings": {
+          "icon_style": "banner.svg",
+          "icon_height": 48,
+          "icon_width": 48,
+          "icon_position": "top-right",
+          "custom_badge_class_selector": ".card__badge { display: block !important; }",
+          "icon_style_custom": ".shappify-sales-icon-product {}"
+        }
+      },
+      "11760791271547246492": {
+        "type": "shopify://apps/bold-discounts-flash-sales/blocks/v3_bold_pr/22ca27ee-084f-4527-b863-69a3cd4c8b2c",
+        "disabled": false,
+        "settings": {
+          "enable_compare_at": true,
+          "skip_pr_js_load": false
+        }
+      },
+      "10605408327587305396": {
+        "type": "shopify://apps/eg-auto-add-to-cart/blocks/app-embed/0f7d4f74-1e89-4820-aec4-6564d7e535d2",
+        "disabled": false,
+        "settings": {
+          "version": "v3"
+        }
+      },
+      "11992809879816417862": {
+        "type": "shopify://apps/discounthub-smart-discounts/blocks/app-embed/019e2f29-2a64-7089-bd8f-1358893211c5",
+        "disabled": false,
+        "settings": {}
+      }
+    }
+  },
+  "presets": {}
+}
