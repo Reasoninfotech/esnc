@@ -278,9 +278,6 @@
     font-size: 11px;
     color: #bca07e;
   }
-  .sticky-slot .slot-product-info {
-    padding: 2px;
-  }
   .sticky-slot .slot-product-image {
     width: 100%;
     height: 100%;
@@ -362,25 +359,27 @@
       align-items: stretch;
       justify-content: center;
       background: #fff;
-      padding: 8px;
+      padding: 5px 8px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-      gap: 8px;
+      gap: 5px;
       pointer-events: auto;
       display: inline-flex;
       margin: 0 auto;
+      width: 100%;
     }
     .sticky-slots {
       gap: 5px;
+      width: calc(70% - 2.5px);
     }
     .sticky-slot {
-      width: 55px;
-      height: 55px;
+      width: calc(33.33% - 3.33px);
+      height: 80px;
       flex: none;
     }
     .sticky-action {
       flex-direction: column;
       justify-content: space-between;
-      width: 95px;
+      width: calc(30% - 2.5px);
       padding: 0;
     }
     .sticky-price {
