@@ -366,77 +366,26 @@
 
     .offer-action-box .price-row{width: calc(40% - 2.5px);padding: 10px 5px;background: #F1EFEF;}
 
-    .offer-action-box .offer-checkout-btn{
-      width: calc(60% - 2.5px);
-    }
+    .offer-action-box .offer-checkout-btn{width: calc(60% - 2.5px); }
 
     /* Floating Mobile Sticky Bar */
-    .offer-mobile-sticky-bar {
-      background: transparent !important;
-      box-shadow: none !important;
-      padding: 0 15px 15px 15px !important;
-      pointer-events: none;
-      text-align: center;
-    }
-    .sticky-inner {
-      flex-direction: row;
-      align-items: stretch;
-      justify-content: center;
-      background: #fff;
-      padding: 5px 8px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-      gap: 5px;
-      pointer-events: auto;
-      display: inline-flex;
-      margin: 0 auto;
-      width: 100%;
-    }
-    .sticky-slots {
-      gap: 5px;
-      width: calc(70% - 2.5px);
-    }
+    .offer-mobile-sticky-bar {background: transparent !important; box-shadow: none !important; padding: 0 15px 15px 15px !important; pointer-events: none; text-align: center; }
 
-    .sticky-slots .sticky-slot-wrapper{
-      width: calc(33.33% - 3.33px);
-      height: 100%;
-    }
+    .sticky-inner {flex-direction: row; align-items: stretch; justify-content: center; background: #fff; padding: 5px 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); gap: 5px; pointer-events: auto; display: inline-flex; margin: 0 auto; width: 100%; }
+    
+    .sticky-slots {gap: 5px; width: calc(70% - 2.5px); }
 
-    .sticky-action {
-      flex-direction: column;
-      justify-content: center;
-      width: calc(30% - 2.5px);
-      padding: 0;
-      gap: 10px;
-    }
+    .sticky-slots .sticky-slot-wrapper{ width: calc(33.33% - 3.33px); height: 100%; }
+
+    .sticky-action { flex-direction: column; justify-content: center; width: calc(30% - 2.5px); padding: 0; gap: 10px; }
 
     .slot-product-info .slot-remove-btn{padding: 4px!important;}
 
-    .sticky-price {
-      background: #F1EFEF;
-      padding: 8px 5px;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex: none;
-      gap: 5px;
-    }
+    .sticky-price { background: #F1EFEF; padding: 8px 5px; justify-content: space-between; align-items: flex-start; flex: none; gap: 5px; }
 
-    .sticky-price span {
-      font-size: 9px;
-      line-height: 1;
-      text-align: left;
-      color: #454545;
-    }
-    .sticky-price strong {
-      font-size: 11px;
-      line-height: 1;
-    }
-    .sticky-action .btn-checkout {
-      font-size: 11px;
-      padding: 5px;
-      height: 28px;
-      flex: none;
-      width: 100%;
-    }
+    .sticky-price span {font-size: 9px; line-height: 1; text-align: left; color: #454545; }
+    .sticky-price strong { font-size: 11px; line-height: 1; }
+    .sticky-action .btn-checkout { font-size: 11px; padding: 5px; height: 28px; flex: none; width: 100%;}
   }
 
   .item-product .btnAddToCart.loading_btn {
@@ -475,6 +424,13 @@
     .offer-mobile-sticky-bar .sticky-action{justify-content: flex-start;}
     .offer-mobile-sticky-bar .sticky-slot-wrapper .sticky-slot{height: 90px!important;}
     .offer-mobile-sticky-bar .sticky-slot-wrapper .sticky-slot .slot-icon svg{width: 25px;height: 25px;}
+
+    .offer-action-box .price-row,
+    .offer-action-box .offer-checkout-btn{width: calc(50% - 2.5px); }
+  }
+
+  @media (max-width: 439px){
+    .offer-mobile-sticky-bar .sticky-slot-wrapper .sticky-slot{height: 68px!important;}
   }
 
 </style>
