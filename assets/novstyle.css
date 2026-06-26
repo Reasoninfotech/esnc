@@ -29627,3 +29627,5 @@ ul.dropdown_menu.site-nav__dropdown li a {
 
 body.temp_buy-2-get-1-free .product__price .formAddToCart1,
 body.temp_buy-2-get-1-free .item-product .formAddToCart{display:none !important;} 
+
+.temp_offer-collection .header-top{display: none;}
