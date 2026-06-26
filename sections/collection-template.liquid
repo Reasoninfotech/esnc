@@ -80,7 +80,7 @@
         <div class="col-lg-3 sidebar-filter{% if viewtype == 'rightsidebar' %} order-0 order-md-2{% endif %}">
           {% include 'collection-filters', results: collection %}
         </div>
-        <div class="{% if viewtype == 'canvas' %}col-lg-12 col-md-12{% else %}col-lg-9{% endif %}">
+        <div class="{% if viewtype == 'canvas' %}col-lg-12 col-md-12{% else %}col-lg-9{% endif %} offer_collection_grid_wrp">
           
           {% if template == 'collection.offer-collection' %}
           <style>

@@ -8,6 +8,7 @@
   <div class="offer-banner-content-wrapper" style="padding-top: 40px; text-align: center;">
     <div class="container container_1320">
       
+      <div class="offer_title_subtitle_wrp">
       {% if section.settings.title != blank %}
         <h2 class="offer-title" style="font-family: var(--f_family_second); font-size: 32px; font-weight: 400; margin-bottom: 10px; color: #101010;">{{ section.settings.title }}</h2>
       {% endif %}
@@ -15,6 +16,7 @@
       {% if section.settings.subtitle != blank %}
         <p class="offer-subtitle" style="font-size: 15px; color: #555; margin-bottom: 30px;">{{ section.settings.subtitle }}</p>
       {% endif %}
+      </div>
 
       <div class="offer-bundle-wrapper">
         {% for i in (1..section.settings.num_slots) %}
@@ -319,6 +321,9 @@
   }
 
   @media (max-width: 767px) {
+
+    .offer-bundle-wrapper{padding: 10px;}
+
     .offer-title {
       font-size: 24px !important;
     }
@@ -335,21 +340,38 @@
       gap: 5px !important;
     }
     .offer-slot {
-      width: 90px;
-      height: 90px;
+      width: 100%;
+      height: 120px;
       flex: none;
     }
     .slot-product-image {
-      height: 60px;
+      height: 100%;
     }
     .offer-action-area {
       max-width: 100%;
       width: 100%;
     }
+
+    .offer-bundle-wrapper .slot-wrapper{
+      width: calc(33.33% - 11.25px);
+    }
+
     .offer-action-box {
       width: 100%;
       height: auto;
-      flex-direction: column;
+      flex-direction: row;
+      background: transparent;
+      padding: 0;
+    }
+
+    .offer-action-box .price-row{
+      width: calc(40% - 2.5px);
+      padding: 10px 5px;
+      background: #F1EFEF;
+    }
+
+    .offer-action-box .offer-checkout-btn{
+      width: calc(60% - 2.5px);
     }
 
     /* Floating Mobile Sticky Bar */
@@ -436,6 +458,19 @@
     background-repeat: no-repeat;
     opacity: 1 !important;
   }
+
+
+  @media (max-width: 575px){
+
+    .offer-slot {
+      width: 100%;
+      height: 112px;
+      flex: none;
+    }
+
+    .price-row span{font-size: 14px;}
+  }
+
 </style>
 
 <script>
