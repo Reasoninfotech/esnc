@@ -212,150 +212,265 @@
           <div class="colletTemplate collection__product-content collection--product-{{ viewtype }}" {% if viewtype == 'canvas' %}data-grid="grid-4"{% else %}data-grid="grid-3"{% endif %}>
             <div id="ProductGridContainer">
               {%- paginate collection.products by section.settings.products_per_page -%} 
+
                 {%- if collection.products.size == 0 -%}
+                  
                   <div id="product-grid" data-id="{{ section.id }}" class="text-center pt-60">
                     <h2 class="mb-20">{{ 'collections.filters.empty' | t }}</h2>
                     <h4>{{ 'collections.filters.use_fewer_filters_html' | t: link: collection.url }}</h4>
                   </div>
+
                 {%- else -%}
+
                   <div id="product-grid" data-id="{{ section.id }}" class="row grid--view-items spacing-md-15">
-                    {%- for product in collection.products -%}
 
-{% comment %}                  
-location based out of stock and producr hide    
-data-product-handle="{{ product.handle }}"
-{% endif %}
+                    {% assign selected_collection = section.settings.collection %} 
 
+                    {% if selected_collection != blank %}
+                      {% for product in selected_collection.products %}
+                         <div class="product--item col" data-search="{{ product.title | escape | downcase }} {% for tag in product.tags %}{{ tag | escape | downcase }} {% endfor %} {{ product.metafields.custom.scent_material.value | escape | downcase }} {% for variant in product.variants %}{{ variant.sku | escape | downcase }} {{ variant.title | escape | downcase }} {% endfor %}">
+                            <div class="item-product{% unless product.available %} product-price--sold-out{% endunless %}">
+                              {% assign variantCount = product.variants | size %}
+                              <div class="thumbnail-container{% if product.images.size > 2 %} has-multiimage{% endif %}{% if settings.show_variant_color and variantCount > 1 %} has_variants{% endif %}">
+                                <a href="{{ product.url }}">
+                                  <div class="materialtype">
+                                    {% assign checkvariant = "" %}
+                                    {% for variant in product.variants %}
+                                      {% for option in variant.options %}
+                                        {% if product.options[forloop.index0] == 'Material' %}
+                                          {% if checkvariant == blank %}
+                                            <p class="{{ variant.title }}">
+                                              {{ variant.title }}
+                                              {% assign checkvariant = variant.title %}
+                                            </p> 
+                                          {% endif %}
+                                        {% endif %}
+                                        {% endfor %}
 
-{% assign location_id = detected_location_id %}
-{% assign stock_key = 'custom.stock_' | append: location_id %}
-{% assign location_stock = product.metafields.custom[stock_key] | default: 0 %}
-
-{% if location_stock > 0 %}
-{% endcomment %} 
-
-
-                      <div class="product--item col" data-search="{{ product.title | escape | downcase }} {% for tag in product.tags %}{{ tag | escape | downcase }} {% endfor %} {{ product.metafields.custom.scent_material.value | escape | downcase }} {% for variant in product.variants %}{{ variant.sku | escape | downcase }} {{ variant.title | escape | downcase }} {% endfor %}">
-                        <div class="item-product{% unless product.available %} product-price--sold-out{% endunless %}">
-                          {% assign variantCount = product.variants | size %}
-                          <div class="thumbnail-container{% if product.images.size > 2 %} has-multiimage{% endif %}{% if settings.show_variant_color and variantCount > 1 %} has_variants{% endif %}">
-                            <a href="{{ product.url }}">
-                              <div class="materialtype">
-                                {% assign checkvariant = "" %}
-                                {% for variant in product.variants %}
-                                  {% for option in variant.options %}
-                                    {% if product.options[forloop.index0] == 'Material' %}
-                                      {% if checkvariant == blank %}
-                                        <p class="{{ variant.title }}">
-                                          {{ variant.title }}
+                                        {% if product.metafields.custom.scent_material != blank %}
                                           {% assign checkvariant = variant.title %}
+                                          <p class="{{ product.metafields.custom.scent_material.value }}">
+                                            {{ product.metafields.custom.scent_material.value }}
+                                            {% assign checkvariant = product.metafields.custom.scent_material.value %}
+                                          </p> 
+                                        {% endif %}
+                                      
+                                    {% endfor %}
+                                  </div>
+                                  <div class="respone_image" style="padding-top:{{ 1 | divided_by: product.featured_image.aspect_ratio | times: 100}}%">
+                                    {% assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                                    <noscript>
+                                      <img class="img-fluid product__thumbnail-second lazyload" data-src="{{ product.featured_image.src | img_url: '1024x' }}" alt="{{ product.featured_image.src.alt }}">
+                                    </noscript>
+                                    <img class="product__thumbnail lazyload"
+                                      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 10'%3E%3C/svg%3E"
+                                      data-src="{{ img_url }}"
+                                      data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048, 4472]"
+                                      data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+                                      data-sizes="auto"
+                                      alt="{{ product.featured_image.alt }}" 
+                                      data-image>
+                                    {% for image in product.images %}
+                                      {% assign img_second = image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                                      {% if forloop.first != true %}
+                                        <img id="{{ img_id }}"
+                                          class="img-fluid product__thumbnail-second lazyload"
+                                          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 10'%3E%3C/svg%3E"
+                                          data-src="{{ img_second }}"
+                                          data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                                          data-aspectratio="{{ image.aspect_ratio }}"
+                                          data-sizes="auto"
+                                          alt="{{ image.src.alt }}"
+                                          data-image>
+                                        {% break %}
+                                      {% endif %}
+                                    {% endfor %}
+                                  </div>
+                                </a>
+                                {% include 'group_buttons' %}
+                                  <div class="badge">
+                                    {% if product.compare_at_price > product.price %}
+                                      <div class="badge_sale">
+                                      </div>
+                                    {% endif %}
+                                  </div>                     
+                                <div class="badge_sale-old"></div>                          
+                              </div>
+                              <div class="product__info">
+                                <div class="block_product_info">
+                                  <div class="cate">
+                                    {% for collection in product.collections %}
+                                      {% if forloop.first == true %}
+                                        <a href="{{ collection.url }}" title="{{ collection.title }}">{{ collection.title }}</a>
+                                      {% endif %}
+                                    {% endfor %}
+                                  </div>
+                                  <div class="product__title">
+                                    <a href="{{ product.url }}">{{ product.title }}</a>
+                                  </div>
+                                  {% if settings.show_rating %}
+                                    <div class="product__review">
+                                    {% render 'judgeme_widgets'
+                                      , widget_type: 'judgeme_preview_badge'
+                                      , jm_style: ''
+                                      , concierge_install: true
+                                      , product: product %}
+                                    </div>
+                                  {% endif %}
+                                  <div class="product__price{% if settings.show_rating == false %} pb-20{% endif %}">
+                                    {% include 'product-price' %}
+                                  </div>
+                                  {% if product.variants.size > 0 %}
+                                    {% if settings.show_variant_color %}
+                                      <div class="selectorVariants {% if product.variants.size > 0 %} has-border{% endif %}">
+                                        {% include 'nov-swatch-color' with 'Color' %}
+                                      </div>
+                                    {% endif %}
+                                  {% endif %}
+                                  {% unless product.available %}
+                                    <div class="available_product d-flex">
+                                      <span class="product__available sold-out mt-15">
+                                        <i class="zmdi zmdi-alert-octagon"></i>
+                                        <span>{{ "products.product.sold_out" | t }}</span>
+                                      </span>
+                                    </div>
+                                  {% else %}
+                                    <div class="available_product d-flex">
+                                      <span class="product__available in-stock mt-15">
+                                        <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                        <span>{{ "products.product.in_stock" | t }}</span>
+                                      </span>
+                                    </div>
+                                  {% endunless %}
+                                  <div class="desc mt-15">{{ product.description | strip_html | truncate: 230 }}</div>
+                                </div>
+                              </div>
+                            </div>
+                         </div>
+                      {% endfor %} 
+                    {% else %}  
+                      {%- for product in collection.products -%}
+                        <div class="product--item col" data-search="{{ product.title | escape | downcase }} {% for tag in product.tags %}{{ tag | escape | downcase }} {% endfor %} {{ product.metafields.custom.scent_material.value | escape | downcase }} {% for variant in product.variants %}{{ variant.sku | escape | downcase }} {{ variant.title | escape | downcase }} {% endfor %}">
+                          <div class="item-product{% unless product.available %} product-price--sold-out{% endunless %}">
+                            {% assign variantCount = product.variants | size %}
+                            <div class="thumbnail-container{% if product.images.size > 2 %} has-multiimage{% endif %}{% if settings.show_variant_color and variantCount > 1 %} has_variants{% endif %}">
+                              <a href="{{ product.url }}">
+                                <div class="materialtype">
+                                  {% assign checkvariant = "" %}
+                                  {% for variant in product.variants %}
+                                    {% for option in variant.options %}
+                                      {% if product.options[forloop.index0] == 'Material' %}
+                                        {% if checkvariant == blank %}
+                                          <p class="{{ variant.title }}">
+                                            {{ variant.title }}
+                                            {% assign checkvariant = variant.title %}
+                                          </p> 
+                                        {% endif %}
+                                      {% endif %}
+                                      {% endfor %}
+
+                                      {% if product.metafields.custom.scent_material != blank %}
+                                        {% assign checkvariant = variant.title %}
+                                        <p class="{{ product.metafields.custom.scent_material.value }}">
+                                          {{ product.metafields.custom.scent_material.value }}
+                                          {% assign checkvariant = product.metafields.custom.scent_material.value %}
                                         </p> 
                                       {% endif %}
+                                    
+                                  {% endfor %}
+                                </div>
+                                <div class="respone_image" style="padding-top:{{ 1 | divided_by: product.featured_image.aspect_ratio | times: 100}}%">
+                                  {% assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                                  <noscript>
+                                    <img class="img-fluid product__thumbnail-second lazyload" data-src="{{ product.featured_image.src | img_url: '1024x' }}" alt="{{ product.featured_image.src.alt }}">
+                                  </noscript>
+                                  <img class="product__thumbnail lazyload"
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 10'%3E%3C/svg%3E"
+                                    data-src="{{ img_url }}"
+                                    data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048, 4472]"
+                                    data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+                                    data-sizes="auto"
+                                    alt="{{ product.featured_image.alt }}" 
+                                    data-image>
+                                  {% for image in product.images %}
+                                    {% assign img_second = image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                                    {% if forloop.first != true %}
+                                      <img id="{{ img_id }}"
+                                        class="img-fluid product__thumbnail-second lazyload"
+                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 10'%3E%3C/svg%3E"
+                                        data-src="{{ img_second }}"
+                                        data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                                        data-aspectratio="{{ image.aspect_ratio }}"
+                                        data-sizes="auto"
+                                        alt="{{ image.src.alt }}"
+                                        data-image>
+                                      {% break %}
                                     {% endif %}
-                                    {% endfor %}
-
-                                    {% if product.metafields.custom.scent_material != blank %}
-                                      {% assign checkvariant = variant.title %}
-                                      <p class="{{ product.metafields.custom.scent_material.value }}">
-                                        {{ product.metafields.custom.scent_material.value }}
-                                        {% assign checkvariant = product.metafields.custom.scent_material.value %}
-                                      </p> 
-                                    {% endif %}
-                                  
-                                {% endfor %}
-                              </div>
-                              <div class="respone_image" style="padding-top:{{ 1 | divided_by: product.featured_image.aspect_ratio | times: 100}}%">
-                                {% assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-                                <noscript>
-                                  <img class="img-fluid product__thumbnail-second lazyload" data-src="{{ product.featured_image.src | img_url: '1024x' }}" alt="{{ product.featured_image.src.alt }}">
-                                </noscript>
-                                <img class="product__thumbnail lazyload"
-                                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 10'%3E%3C/svg%3E"
-                                  data-src="{{ img_url }}"
-                                  data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048, 4472]"
-                                  data-aspectratio="{{ product.featured_image.aspect_ratio }}"
-                                  data-sizes="auto"
-                                  alt="{{ product.featured_image.alt }}" 
-                                  data-image>
-                                {% for image in product.images %}
-                                  {% assign img_second = image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-                                  {% if forloop.first != true %}
-                                    <img id="{{ img_id }}"
-                                      class="img-fluid product__thumbnail-second lazyload"
-                                      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 10'%3E%3C/svg%3E"
-                                      data-src="{{ img_second }}"
-                                      data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
-                                      data-aspectratio="{{ image.aspect_ratio }}"
-                                      data-sizes="auto"
-                                      alt="{{ image.src.alt }}"
-                                      data-image>
-                                    {% break %}
+                                  {% endfor %}
+                                </div>
+                              </a>
+                              {% include 'group_buttons' %}
+                                <div class="badge">
+                                  {% if product.compare_at_price > product.price %}
+                                    <div class="badge_sale">
+                                    </div>
                                   {% endif %}
-                                {% endfor %}
-                              </div>
-                            </a>
-                            {% include 'group_buttons' %}
-                              <div class="badge">
-                                {% if product.compare_at_price > product.price %}
-                                  <div class="badge_sale">
+                                </div>                     
+                              <div class="badge_sale-old"></div>                          
+                            </div>
+                            <div class="product__info">
+                              <div class="block_product_info">
+                                <div class="cate">
+                                  {% for collection in product.collections %}
+                                    {% if forloop.first == true %}
+                                      <a href="{{ collection.url }}" title="{{ collection.title }}">{{ collection.title }}</a>
+                                    {% endif %}
+                                  {% endfor %}
+                                </div>
+                                <div class="product__title">
+                                  <a href="{{ product.url }}">{{ product.title }}</a>
+                                </div>
+                                {% if settings.show_rating %}
+                                  <div class="product__review">
+                                  {% render 'judgeme_widgets'
+                                    , widget_type: 'judgeme_preview_badge'
+                                    , jm_style: ''
+                                    , concierge_install: true
+                                    , product: product %}
                                   </div>
                                 {% endif %}
-                              </div>                     
-                            <div class="badge_sale-old"></div>                          
-                          </div>
-                          <div class="product__info">
-                            <div class="block_product_info">
-                              <div class="cate">
-                                {% for collection in product.collections %}
-                                  {% if forloop.first == true %}
-                                    <a href="{{ collection.url }}" title="{{ collection.title }}">{{ collection.title }}</a>
+                                <div class="product__price{% if settings.show_rating == false %} pb-20{% endif %}">
+                                  {% include 'product-price' %}
+                                </div>
+                                {% if product.variants.size > 0 %}
+                                  {% if settings.show_variant_color %}
+                                    <div class="selectorVariants {% if product.variants.size > 0 %} has-border{% endif %}">
+                                      {% include 'nov-swatch-color' with 'Color' %}
+                                    </div>
                                   {% endif %}
-                                {% endfor %}
-                              </div>
-                              <div class="product__title">
-                                <a href="{{ product.url }}">{{ product.title }}</a>
-                              </div>
-                              {% if settings.show_rating %}
-                                <div class="product__review">
-                                {% render 'judgeme_widgets'
-                                  , widget_type: 'judgeme_preview_badge'
-                                  , jm_style: ''
-                                  , concierge_install: true
-                                  , product: product %}
-                                </div>
-                              {% endif %}
-                              <div class="product__price{% if settings.show_rating == false %} pb-20{% endif %}">
-                                {% include 'product-price' %}
-                              </div>
-                              {% if product.variants.size > 0 %}
-                                {% if settings.show_variant_color %}
-                                  <div class="selectorVariants {% if product.variants.size > 0 %} has-border{% endif %}">
-                                    {% include 'nov-swatch-color' with 'Color' %}
-                                  </div>
                                 {% endif %}
-                              {% endif %}
-                              {% unless product.available %}
-                                <div class="available_product d-flex">
-                                  <span class="product__available sold-out mt-15">
-                                    <i class="zmdi zmdi-alert-octagon"></i>
-                                    <span>{{ "products.product.sold_out" | t }}</span>
-                                  </span>
-                                </div>
-                              {% else %}
-                                <div class="available_product d-flex">
-                                  <span class="product__available in-stock mt-15">
-                                    <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                                    <span>{{ "products.product.in_stock" | t }}</span>
-                                  </span>
-                                </div>
-                              {% endunless %}
-                              <div class="desc mt-15">{{ product.description | strip_html | truncate: 230 }}</div>
+                                {% unless product.available %}
+                                  <div class="available_product d-flex">
+                                    <span class="product__available sold-out mt-15">
+                                      <i class="zmdi zmdi-alert-octagon"></i>
+                                      <span>{{ "products.product.sold_out" | t }}</span>
+                                    </span>
+                                  </div>
+                                {% else %}
+                                  <div class="available_product d-flex">
+                                    <span class="product__available in-stock mt-15">
+                                      <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                      <span>{{ "products.product.in_stock" | t }}</span>
+                                    </span>
+                                  </div>
+                                {% endunless %}
+                                <div class="desc mt-15">{{ product.description | strip_html | truncate: 230 }}</div>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-
-                    {%- endfor -%}
+                      {%- endfor -%}
+                    {% endif %}
                   </div>
                   
                   {%- if paginate.pages > 1 -%}
@@ -388,6 +503,11 @@ data-product-handle="{{ product.handle }}"
         "type": "image_picker",
         "id": "banner",
         "label": "Banner"
+      },
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Collection"
       },
       {
         "type": "range",
@@ -436,6 +556,7 @@ container: '#product-grid',
 pagination: '.infinite_next',
 });
 </script>
+
 <script>
 setTimeout(function () {
   var filters = document.querySelectorAll('.js-filter');
@@ -502,7 +623,6 @@ $("#ProductGridContainer").find('.product--item').each(function(){
     $(this).find('a').attr('href', url);
 });
 
-// Client-side search filtering for offer collections
 $('.search-header-offer').on('submit', function(e) {
   e.preventDefault();
 });
@@ -519,4 +639,5 @@ $('.search-header-offer input[name="q"]').on('keyup input', function() {
     }
   });
 });
+
 </script>

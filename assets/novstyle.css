@@ -29629,3 +29629,12 @@ body.temp_buy-2-get-1-free .product__price .formAddToCart1,
 body.temp_buy-2-get-1-free .item-product .formAddToCart{display:none !important;} 
 
 .temp_offer-collection .header-top{display: none;}
+
+
+@media (max-width: 767px){
+ .temp_offer-collection footer .footer-layout .logo_footer{text-align: center;}
+}
+
+@media (min-width: 768px){
+   .temp_offer-collection .contentsticky_logo{flex: 0 0 33.333333%!important; max-width: 33.333333%!important;margin: 0 !important;}
+}
