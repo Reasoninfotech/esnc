@@ -20,6 +20,12 @@
   {% endif %}
 {% endif %}
 {% include 'nov-breadcrumb' %}
+{% if collection.handle == 'offer-collection' %}
+<style>
+  .collection-leftsidebar { margin-bottom: 0 !important; }
+  .footer-layout { display: none !important; }
+</style>
+{% endif %}
 <div id="main-collection-filters" data-id="{{ section.id }}">
   <div class="container_90 {% if settings.breadcrumbs_enable %} collection_mt{% endif %}">
     <div class="collection-{{ viewtype }}">
