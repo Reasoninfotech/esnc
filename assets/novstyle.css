@@ -1353,6 +1353,10 @@ footer .footer-layout .logo_footer {
   text-align: center;
   margin-bottom: 60px;
 }
+
+.temp_offer-collection footer .footer-layout{padding-top: 50px;padding-bottom: 40px;}
+.temp_offer-collection footer .footer-layout .logo_footer{margin-bottom: 0!important;}
+
 footer .footer-layout .footer_contact .block-content .contact,
 footer .footer-layout .footer_menu .block-content .list-unstyled .site-footer__linklist-item a,
 footer .footer_copyright .copyright {
