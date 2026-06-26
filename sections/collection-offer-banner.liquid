@@ -466,41 +466,41 @@
     justify-content: center;
   }
   #custom-alert-modal .custom-alert-content {
-    background-color: #2a2626;
-    color: #fff;
+    background-color: #fff;
+    color: #000;
     padding: 30px 20px;
     border-radius: 15px;
     width: 90%;
     max-width: 400px;
     text-align: center;
     box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    position: relative;
+  }
+  #custom-alert-modal .custom-alert-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 24px;
+    line-height: 1;
+    color: #666;
+    transition: color 0.3s;
+  }
+  #custom-alert-modal .custom-alert-close:hover {
+    color: #000;
   }
   #custom-alert-modal p {
     font-size: 16px;
-    margin-bottom: 25px;
+    margin-bottom: 0;
     line-height: 1.5;
-  }
-  #custom-alert-modal button {
-    background-color: #f8b0c4;
-    color: #000;
-    padding: 10px 35px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 15px;
-    transition: background-color 0.3s;
-  }
-  #custom-alert-modal button:hover {
-    background-color: #f39db4;
   }
 
 </style>
 
 <div id="custom-alert-modal">
   <div class="custom-alert-content">
+    <span class="custom-alert-close" onclick="document.getElementById('custom-alert-modal').style.display='none'">&times;</span>
     <p id="custom-alert-text"></p>
-    <button onclick="document.getElementById('custom-alert-modal').style.display='none'">OK</button>
   </div>
 </div>
 
@@ -538,7 +538,7 @@
           e.stopPropagation();
 
           if (selectedProducts.length >= MAX_SLOTS) {
-            showCustomAlert('You have already selected ' + MAX_SLOTS + ' samples.');
+            showCustomAlert('You have already selected the maximum of ' + MAX_SLOTS + ' samples. Please remove one before adding a new sample.');
             return;
           }
 
