@@ -174,7 +174,7 @@ data-product-handle="{{ product.handle }}"
 {% endcomment %} 
 
 
-                      <div class="product--item col">
+                      <div class="product--item col" data-search="{{ product.title | escape | downcase }} {% for tag in product.tags %}{{ tag | escape | downcase }} {% endfor %} {{ product.metafields.custom.scent_material.value | escape | downcase }} {% for variant in product.variants %}{{ variant.sku | escape | downcase }} {{ variant.title | escape | downcase }} {% endfor %}">
                         <div class="item-product{% unless product.available %} product-price--sold-out{% endunless %}">
                           {% assign variantCount = product.variants | size %}
                           <div class="thumbnail-container{% if product.images.size > 2 %} has-multiimage{% endif %}{% if settings.show_variant_color and variantCount > 1 %} has_variants{% endif %}">
@@ -439,5 +439,23 @@ $("#ProductGridContainer").find('.product--item').each(function(){
     var geturl = $(this).find('a').attr('href');
     const url = geturl.split('?')[0];
     $(this).find('a').attr('href', url);
+});
+
+// Client-side search filtering for offer collections
+$('.search-header-offer').on('submit', function(e) {
+  e.preventDefault();
+});
+
+$('.search-header-offer input[name="q"]').on('keyup input', function() {
+  var searchQuery = $(this).val().toLowerCase();
+  
+  $('#ProductGridContainer .product--item').each(function() {
+    var searchData = $(this).attr('data-search') || '';
+    if (searchData.indexOf(searchQuery) > -1) {
+      $(this).show();
+    } else {
+      $(this).hide();
+    }
+  });
 });
 </script>
