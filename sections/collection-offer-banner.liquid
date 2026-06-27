@@ -242,7 +242,7 @@
 
   /* Sticky Bar Base (Desktop & Mobile) */
   .offer-mobile-sticky-bar {position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999; padding: 0; padding: 0 15px 15px 15px !important;text-align: center; }
-  .offer-mobile-sticky-bar .container {background: #fff; padding: 10px; width: 100%; max-width: 700px; box-shadow: 0 -2px 15px rgba(0,0,0,0.1); }
+  .offer-mobile-sticky-bar .container {background: #fff; padding: 10px; width: 100%; max-width: 650px; box-shadow: 0 -2px 15px rgba(0,0,0,0.1); }
   
   .offer-mobile-sticky-bar .sticky-inner {display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 10px; }
   
@@ -404,12 +404,18 @@
   #custom-alert-modal .custom-alert-close {
     position: absolute;
     top: 10px;
-    right: 15px;
-    cursor: pointer;
-    font-size: 24px;
-    line-height: 1;
-    color: #666;
+    right: 10px;
     transition: color 0.3s;
+    background: #fff;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 22px;
+    height: 22px;
   }
   #custom-alert-modal .custom-alert-close:hover {
     color: #000;
@@ -424,7 +430,9 @@
 
 <div id="custom-alert-modal">
   <div class="custom-alert-content">
-    <span class="custom-alert-close" onclick="document.getElementById('custom-alert-modal').style.display='none'">&times;</span>
+    <span class="custom-alert-close" onclick="document.getElementById('custom-alert-modal').style.display='none'">
+       <svg width="10" height="10" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 1L1 13M1 1L13 13" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </span>
     <p id="custom-alert-text"></p>
   </div>
 </div>
