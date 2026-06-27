@@ -1,3 +1,5 @@
+{% assign offer_product = section.settings.main_product %}
+
 <div class="offer-banner-section" id="offer-banner-{{ section.id }}" style="background-color: {{ section.settings.bg_color | default: '#ebebd3' }}; padding-bottom: 40px;">
   {% if section.settings.banner_image != blank %}
     <div class="offer-banner-image">
@@ -311,13 +313,17 @@
 
     .offer-mobile-sticky-bar .sticky-slots,
     .offer-mobile-sticky-bar .sticky-action{width: 100%!important;}
-    
-    .slot-product-info .slot-remove-btn{padding: 4px!important;}
 
+    .offer-mobile-sticky-bar .sticky-price{width: calc(40% - 2.5px);}
+    
 
     .offer-mobile-sticky-bar .sticky-price span {font-size: 9px; line-height: 1; text-align: left; color: #454545; }
     .offer-mobile-sticky-bar .sticky-price strong { font-size: 11px; line-height: 1; }
-    .offer-mobile-sticky-bar .sticky-action .btn-checkout { font-size: 11px; padding: 5px; height: 28px; flex: none;}
+    .offer-mobile-sticky-bar .sticky-action .btn-checkout { font-size: 11px; padding: 5px; height: 28px; flex: none;width: calc(60% - 2.5px);}
+
+    .slot-product-info .slot-remove-btn{padding: 4px!important;}
+
+
   }
 
   .item-product .btnAddToCart.loading_btn {
@@ -789,13 +795,13 @@
       "type": "html",
       "id": "title",
       "label": "Title",
-      "default": "Get 3 x 2ml Samples for Only $3, Limited Time Only"
+      "default": "Get 3 x 2ml Samples for Only {{ offer_product.price | money }}, Limited Time Only"
     },
     {
       "type": "html",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "Complete Your Set To Enjoy All 3 Samples For Only $3."
+      "default": "Complete Your Set To Enjoy All 3 Samples For Only {{ offer_product.price | money }}."
     },
     {
       "type": "range",
@@ -810,7 +816,7 @@
       "type": "html",
       "id": "initial_price",
       "label": "Initial Price Display",
-      "default": "$5"
+      "default": "{{ offer_product.price | money }}"
     },
     {
       "type": "header",
