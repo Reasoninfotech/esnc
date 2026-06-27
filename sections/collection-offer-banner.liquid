@@ -241,7 +241,7 @@
   }
 
   /* Sticky Bar Base (Desktop & Mobile) */
-  .offer-mobile-sticky-bar {position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999; padding: 0; }
+  .offer-mobile-sticky-bar {position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999; padding: 0; padding: 0 15px 15px 15px !important;text-align: center; }
   .offer-mobile-sticky-bar .container {background: #fff; padding: 10px; width: 100%; max-width: 700px; box-shadow: 0 -2px 15px rgba(0,0,0,0.1); }
   
   .offer-mobile-sticky-bar .sticky-inner {display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 10px; }
@@ -266,10 +266,10 @@
   
   .offer-mobile-sticky-bar .sticky-action { display: flex; align-items: center; flex: 1;flex-direction: column; justify-content: center; width: calc(30% - 2.5px); padding: 0; gap: 10px; }
 
-  .offer-mobile-sticky-bar .sticky-price { display: flex; flex-direction: column; gap: 5px; align-items: flex-end; justify-content: center; }
+  .offer-mobile-sticky-bar .sticky-price { display: flex; flex-direction: column; background: #F1EFEF; padding: 8px 5px; justify-content: space-between; align-items: flex-start; flex: none; gap: 5px; }
   .offer-mobile-sticky-bar .sticky-price span { font-size: 13px; color: #666; }
   .offer-mobile-sticky-bar .sticky-price strong { font-size: 18px; color: #000; }
-  .offer-mobile-sticky-bar .sticky-action .btn-checkout { padding: 12px 30px; font-size: 16px; min-width: 200px; }
+  .offer-mobile-sticky-bar .sticky-action .btn-checkout { padding: 12px 30px; font-size: 16px;width: 100%;min-width: 200px; }
 
 
   @media (max-width: 767px) {
@@ -305,18 +305,16 @@
     .offer-action-box #offer-checkout-btn{width: calc(60% - 2.5px); }
 
     /* Floating Mobile Sticky Bar */
-    .offer-mobile-sticky-bar {background: transparent !important; box-shadow: none !important; padding: 0 15px 15px 15px !important; pointer-events: none; text-align: center; }
 
     .sticky-inner {flex-direction: row; align-items: stretch; justify-content: center; background: #fff; padding: 5px 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); gap: 5px; pointer-events: auto; display: inline-flex; margin: 0 auto; width: 100%; }
     
 
     .slot-product-info .slot-remove-btn{padding: 4px!important;}
 
-    .sticky-price { background: #F1EFEF; padding: 8px 5px; justify-content: space-between; align-items: flex-start; flex: none; gap: 5px; }
 
-    .sticky-price span {font-size: 9px; line-height: 1; text-align: left; color: #454545; }
-    .sticky-price strong { font-size: 11px; line-height: 1; }
-    .sticky-action .btn-checkout { font-size: 11px; padding: 5px; height: 28px; flex: none; width: 100%;}
+    .offer-mobile-sticky-bar .sticky-price span {font-size: 9px; line-height: 1; text-align: left; color: #454545; }
+    .offer-mobile-sticky-bar .sticky-price strong { font-size: 11px; line-height: 1; }
+    .offer-mobile-sticky-bar .sticky-action .btn-checkout { font-size: 11px; padding: 5px; height: 28px; flex: none;}
   }
 
   .item-product .btnAddToCart.loading_btn {
