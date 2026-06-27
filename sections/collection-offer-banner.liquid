@@ -359,14 +359,19 @@
     .offer-slot {width: 100%;height: 100px;flex: none;}
     .price-row span{font-size: 14px;}
 
+    .offer-bundle-wrapper{gap: 5px;}
+    .offer-bundle-wrapper .slot-wrapper{width: calc(33.33% - 3.33px);}
+
     .offer-mobile-sticky-bar .container{padding: 0!important;}
     .offer-mobile-sticky-bar .sticky-action{justify-content: flex-start;}
     .offer-mobile-sticky-bar .sticky-slot-wrapper .sticky-slot{height: 90px!important;}
+    
+    .offer-slot .slot-inner .slot-icon svg,
     .offer-mobile-sticky-bar .sticky-slot-wrapper .sticky-slot .slot-icon svg{width: 25px;height: 25px;}
 
     .offer-action-box .price-row,
     .offer-action-box #offer-checkout-btn{width: calc(50% - 2.5px); }
-    .offer-action-box #offer-checkout-btn{padding: 10px 10px;font-size: 16px;}
+    .offer-action-box #offer-checkout-btn{padding: 10px 10px;font-size: 14px;}
 
     .offer-mobile-sticky-bar .sticky-price,
     .offer-mobile-sticky-bar .sticky-action .btn-checkout{width: calc(50% - 5px);}
@@ -374,7 +379,7 @@
   }
 
   @media (max-width: 439px){
-    .offer-mobile-sticky-bar .sticky-slot-wrapper .sticky-slot{height: 68px!important;}
+    .offer-mobile-sticky-bar .sticky-slot-wrapper .sticky-slot{height: 100px!important;}
   }
 
   @media (max-width: 374px){
